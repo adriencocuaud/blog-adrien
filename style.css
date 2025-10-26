@@ -14,13 +14,12 @@ root {
 
 body {
     font-family: "Manrope", sans-serif;
-    font-optical-sizing: auto;  
+    font-optical-sizing: auto;
     line-height: 1.6;
     color: #333;
     background-color: whitesmoke;
 }
 
-/* Header avec image de présentation */
 .header-image {
     position: relative;
     width: 100%;
@@ -51,6 +50,8 @@ header .subtitle {
     font-weight: 400;
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
     animation: fadeUp 2s ease-out forwards;
+    animation-delay: 1s;
+    opacity: 0;
 }
 
 @keyframes fadeUp {
@@ -102,7 +103,7 @@ header .subtitle {
 
 nav {
     font-family: "Lora", serif;
-    letter-spacing: 1px; 
+    letter-spacing: 1px;
     position: fixed;
     top: 0;
     left: 0;
@@ -173,33 +174,36 @@ nav {
     align-items: center;
 }
 
-.photo-container {
-    flex-shrink: 0;
-}
-
 @keyframes traveling {
-  from {
-    object-position: right center;
-  }
-  to {
-    object-position: left center;
-  }
+    from {
+        object-position: right center;
+    }
+
+    to {
+        object-position: left center;
+    }
 }
 
 .profile-photo {
-  border-radius: 20px;
-  width: 280px;
-  height: 380px;
-  object-fit: cover;
-  box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.15),
-              -10px -10px 10px white;
-  animation: traveling both ease-out;
-  animation-timeline: view();
-  animation-range: entry 0% cover 65%;
+    flex-shrink: 0;
+    border-radius: 1em;
+    width: 300px;
+    height: 400px;
+    object-fit: cover;
+    box-shadow: 8px 8px 12px rgba(0, 0, 0, 0.1);
+    animation: traveling both ease-out;
+    animation-timeline: view();
+    animation-range: entry 0% cover 50%;
 }
 
 .presentation-text {
     flex: 1;
+    position: relative;
+}
+
+.presentation-text h1 {
+    margin-bottom: 0.5em;
+    transition: opacity 0.7s, transform 0.7s;
 }
 
 .presentation-text p {
@@ -216,21 +220,8 @@ nav {
         url(images/neige.jpg);
     background-size: cover;
     background-position: center;
-    background-attachment: fixed; 
-    padding: 60px 30px;
-}
-
-.articles-container {
-    max-width: 1100px;
-    margin: 0 auto;
-}
-
-.section-title {
-    font-size: 2.5em;
-    color: #667eea;
-    margin-bottom: 40px;
-    text-align: center;
-    font-weight: 300;
+    background-attachment: fixed;
+    padding: 100px;
 }
 
 .articles-grid {
@@ -240,49 +231,57 @@ nav {
 }
 
 .article-card {
-    background: white;
-    border-radius: 8px;
-    overflow: hidden;
+    position: relative;
+    border-radius: 1em;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
-}
-
-.article-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-}
-
-.article-image {
-    width: 100%;
-    height: 200px;
-    background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 3em;
+    width: 320px;
+    height: 420px;
+    overflow: hidden;
+    background-image: inherit;
+    background-size: cover;
+    background-position: center;
 }
 
 .article-content {
-    padding: 25px;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    color: white;
+    text-align: center;
+    backdrop-filter: blur(0px) brightness(1);
+    transition: backdrop-filter 0.5s, brightness 0.5s;
 }
 
-.article-title {
-    font-size: 1.4em;
-    color: #333;
-    margin-bottom: 10px;
+.article-content:hover {
+    backdrop-filter: blur(3px) brightness(0.7);
 }
 
-.article-excerpt {
-    color: #666;
-    line-height: 1.6;
+.article-content h3 {
+    font-size: 1.5em;
     margin-bottom: 15px;
+    transition: transform 0.5s ease;
 }
 
-.article-date {
-    color: #999;
-    font-size: 0.9em;
-    font-style: italic;
+.article-content:hover h3 {
+    transform: translateY(-20px);
+}
+
+.article-content p {
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.5s ease;
+    line-height: 1.6;
+}
+
+.article-content:hover p {
+    opacity: 1;
+    transform: scale(1);
 }
 
 /* Footer */
