@@ -1,0 +1,324 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&display=swap');
+
+root {
+    --orangeCasse: #cb8f50;
+    --bleuNuit: #3A4B58;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Manrope", sans-serif;
+    font-optical-sizing: auto;
+    line-height: 1.6;
+    color: #333;
+    background-color: whitesmoke;
+}
+
+.header-image {
+    position: relative;
+    width: 100%;
+    height: 420px;
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+        url(images/entete.png);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    gap: 150px;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    color: white;
+}
+
+header h1 {
+    font-family: "Cabin Sketch", sans-serif;
+    font-weight: 400;
+    font-size: 3.5em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+header .subtitle {
+    font-size: 2.5em;
+    font-family: "Cabin Sketch", sans-serif;
+    font-weight: 400;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+    animation: fadeUp 2s ease-out forwards;
+    animation-delay: 1s;
+    opacity: 0;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fadeLeft {
+    display: inline-block;
+    animation: fadeLeft 2s ease-out forwards;
+}
+
+@keyframes fadeLeft {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.fadeRight {
+    margin-left: 2em;
+    display: inline-block;
+    animation: fadeRight 2s ease-out forwards;
+}
+
+@keyframes fadeRight {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+nav {
+    font-family: "Lora", serif;
+    letter-spacing: 1px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1rem 3rem;
+    background: rgba(20, 30, 40, 0.0);
+    backdrop-filter: blur(0px);
+    transition: background 0.3s ease;
+    /* Animation pilotée par le scroll */
+    animation: shrinkAndDarken both linear;
+    animation-timeline: scroll();
+    animation-range: 0 400px;
+}
+
+@keyframes shrinkAndDarken {
+    0% {
+        padding: 1.5rem 3rem;
+        background: rgba(20, 30, 40, 0);
+        backdrop-filter: blur(0px);
+    }
+
+    100% {
+        padding: 0.5rem 3rem;
+        background: rgba(20, 30, 40, 0.7);
+        backdrop-filter: blur(5px);
+    }
+}
+
+.nav-links {
+    display: flex;
+    gap: 2em;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 0.8em;
+    position: relative;
+    text-transform: uppercase;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0%;
+    height: 1px;
+    background: white;
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* Section présentation */
+.presentation {
+    max-width: 1100px;
+    margin: 60px auto;
+    padding: 0 30px;
+    display: flex;
+    gap: 50px;
+    align-items: center;
+}
+
+@keyframes traveling {
+    from {
+        object-position: right center;
+    }
+
+    to {
+        object-position: left center;
+    }
+}
+
+.profile-photo {
+    flex-shrink: 0;
+    border-radius: 1em;
+    width: 300px;
+    height: 400px;
+    object-fit: cover;
+    box-shadow: 8px 8px 12px rgba(0, 0, 0, 0.1);
+    animation: traveling both ease-out;
+    animation-timeline: view();
+    animation-range: entry 0% cover 50%;
+}
+
+.presentation-text {
+    flex: 1;
+    position: relative;
+}
+
+.presentation-text h1 {
+    margin-bottom: 0.5em;
+    transition: opacity 0.7s, transform 0.7s;
+}
+
+.presentation-text p {
+    font-size: 1.1em;
+    line-height: 1.8;
+    margin-bottom: 10px;
+    text-align: justify;
+}
+
+/* Section articles */
+.articles-section {
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        url(images/neige.jpg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding: 100px;
+}
+
+.articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.article-card {
+    position: relative;
+    border-radius: 1em;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    width: 320px;
+    height: 420px;
+    overflow: hidden;
+    background-image: inherit;
+    background-size: cover;
+    background-position: center;
+}
+
+.article-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    color: white;
+    text-align: center;
+    backdrop-filter: blur(0px) brightness(1);
+    transition: backdrop-filter 0.5s, brightness 0.5s;
+}
+
+.article-content:hover {
+    backdrop-filter: blur(3px) brightness(0.7);
+}
+
+.article-content h3 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    transition: transform 0.5s ease;
+}
+
+.article-content:hover h3 {
+    transform: translateY(-20px);
+}
+
+.article-content p {
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.5s ease;
+    line-height: 1.6;
+}
+
+.article-content:hover p {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Footer */
+footer {
+    background: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 30px;
+    margin-top: 60px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .header-title h1 {
+        font-size: 2em;
+    }
+
+    .header-title .subtitle {
+        font-size: 1.1em;
+    }
+
+    .presentation {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+
+    .profile-photo {
+        width: 220px;
+        height: 220px;
+    }
+
+    .presentation-text p {
+        text-align: left;
+    }
+
+    .articles-grid {
+        grid-template-columns: 1fr;
+    }
+}
