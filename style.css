@@ -18,12 +18,19 @@ body {
     line-height: 1.6;
     color: #333;
     background-color: whitesmoke;
+    overflow-x: hidden;
 }
 
+/* === Animation d'intro === */
+body.intro-active {
+    overflow: hidden;
+}
+
+/* Header avec animation d'intro */
 .header-image {
     position: relative;
     width: 100%;
-    height: 420px;
+    height: 100vh; /* Commence en plein écran */
     background-image:
         linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
         url(images/entete.png);
@@ -35,13 +42,26 @@ body {
     justify-content: center;
     overflow: hidden;
     color: white;
+    /* Animation de réduction */
+    animation: headerShrink 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 0.5s;
+}
+
+@keyframes headerShrink {
+    from {
+        height: 100vh;
+    }
+    to {
+        height: 420px;
+    }
 }
 
 header h1 {
     font-family: "Cabin Sketch", sans-serif;
-    font-weight: 400;
-    font-size: 3.5em;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    font-weight: 700;
+    font-size: 4em;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+    letter-spacing: 0.05em;
 }
 
 header .subtitle {
@@ -49,55 +69,54 @@ header .subtitle {
     font-family: "Cabin Sketch", sans-serif;
     font-weight: 400;
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
-    animation: fadeUp 2s ease-out forwards;
-    animation-delay: 1s;
-    opacity: 0;
+    clip-path: inset(0 100% 0 0);
+    animation: revealFromRight 1s ease forwards;
+    animation-delay: 0.8s;
 }
+
 
 @keyframes fadeUp {
     from {
         opacity: 0;
         transform: translateY(20px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
 
+/* Animation clip-path reveal pour les titres */
 .fadeLeft {
     display: inline-block;
-    animation: fadeLeft 2s ease-out forwards;
+    clip-path: inset(0 100% 0 0);
+    animation: revealFromRight 0.8s ease forwards;
+    animation-delay: 0.3s;
 }
 
-@keyframes fadeLeft {
+@keyframes revealFromRight {
     from {
-        opacity: 0;
-        transform: translateX(20px);
+        clip-path: inset(0 100% 0 0);
     }
-
     to {
-        opacity: 1;
-        transform: translateX(0);
+        clip-path: inset(0 0 0 0);
     }
 }
 
 .fadeRight {
     margin-left: 2em;
     display: inline-block;
-    animation: fadeRight 2s ease-out forwards;
+    clip-path: inset(0 0 0 100%);
+    animation: revealFromLeft 0.8s ease forwards;
+    animation-delay: 0.5s;
 }
 
-@keyframes fadeRight {
+@keyframes revealFromLeft {
     from {
-        opacity: 0;
-        transform: translateX(-20px);
+        clip-path: inset(0 0 0 100%);
     }
-
     to {
-        opacity: 1;
-        transform: translateX(0);
+        clip-path: inset(0 0 0 0);
     }
 }
 
@@ -116,10 +135,24 @@ nav {
     background: rgba(20, 30, 40, 0.0);
     backdrop-filter: blur(0px);
     transition: background 0.3s ease;
-    /* Animation pilotée par le scroll */
-    animation: shrinkAndDarken both linear;
-    animation-timeline: scroll();
-    animation-range: 0 400px;
+    /* Apparition après l'intro */
+    opacity: 0;
+    transform: translateY(-100%);
+    animation: navReveal 0.8s ease-out forwards, shrinkAndDarken both linear;
+    animation-delay: 1.5s, 0s;
+    animation-timeline: auto, scroll();
+    animation-range: normal, 0 400px;
+}
+
+@keyframes navReveal {
+    from {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @keyframes shrinkAndDarken {
@@ -184,13 +217,32 @@ nav {
     }
 }
 
-.profile-photo {
+.profile-photo-container {
     flex-shrink: 0;
-    border-radius: 1em;
+    position: relative;
     width: 300px;
     height: 400px;
+}
+
+.profile-photo-container::before {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #cb8f50;
+    border-radius: 1em;
+    z-index: -1;
+    transition: all 0.4s ease;
+}
+
+.profile-photo {
+    width: 100%;
+    height: 100%;
+    border-radius: 1em;
     object-fit: cover;
-    box-shadow: 8px 8px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 12px 12px 25px rgba(0, 0, 0, 0.2);
     animation: traveling both ease-out;
     animation-timeline: view();
     animation-range: entry 0% cover 50%;
@@ -202,8 +254,17 @@ nav {
 }
 
 .presentation-text h1 {
+    font-family: "Lora", serif;
     margin-bottom: 0.5em;
-    transition: opacity 0.7s, transform 0.7s;
+    color: #3A4B58;
+}
+
+.presentation-text h1.reveal-in {
+    animation: revealFromLeft 0.6s ease forwards;
+}
+
+.presentation-text h1.reveal-out {
+    animation: revealFromRight 0.6s ease reverse forwards;
 }
 
 .presentation-text p {
@@ -211,6 +272,22 @@ nav {
     line-height: 1.8;
     margin-bottom: 10px;
     text-align: justify;
+    padding-left: 5px;
+}
+
+.presentation-text p:last-child {
+    margin-bottom: 0;
+}
+
+.presentation-text p:first-of-type::first-letter {
+    font-family: "Lora", serif;
+    font-size: 3em;
+    float: left;
+    line-height: 1;
+    margin-right: 10px;
+    margin-top: 5px;
+    color: #cb8f50;
+    font-weight: 700;
 }
 
 /* Section articles */
@@ -221,76 +298,277 @@ nav {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    padding: 100px;
+    min-height: 100vh;
+    padding: 80px 60px;
+    overflow: hidden;
+}
+
+/* Topic header avec flèches */
+.topic-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+.topic-title {
+    font-family: "Cabin Sketch", sans-serif;
+    font-size: 2.5em;
+    color: white;
+    text-align: center;
+    letter-spacing: 0.05em;
+    min-width: 280px;
+}
+
+.topic-title.slide-out-left {
+    animation: slideOutLeft 0.4s ease forwards;
+}
+
+.topic-title.slide-out-right {
+    animation: slideOutRight 0.4s ease forwards;
+}
+
+.topic-title.slide-in-left {
+    animation: slideInLeft 0.4s ease forwards;
+}
+
+.topic-title.slide-in-right {
+    animation: slideInRight 0.4s ease forwards;
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideOutLeft {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+}
+
+@keyframes slideOutRight {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+}
+
+.topic-arrow {
+    font-family: "Cabin Sketch", sans-serif;
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 3em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 10px 15px;
+}
+
+.topic-arrow:hover {
+    color: white;
+}
+
+.topic-arrow-left:hover {
+    transform: scale(1.2) translateX(-4px);
+}
+
+.topic-arrow-right:hover {
+    transform: scale(1.2) translateX(4px);
+}
+
+.topic {
+    display: none;
+}
+
+.topic.active {
+    display: block;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* Animation de sortie */
+.topic.active.slide-out-left {
+    opacity: 0;
+    transform: translateX(-100px);
+}
+
+.topic.active.slide-out-right {
+    opacity: 0;
+    transform: translateX(100px);
+}
+
+/* Animation d'entrée */
+.topic.slide-in-right {
+    animation: slideInRight 0.5s ease forwards;
+}
+
+.topic.slide-in-left {
+    animation: slideInLeft 0.5s ease forwards;
 }
 
 .articles-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 350px;
+    grid-auto-flow: dense;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Carte agrandie au clic */
+.article-card.expanded {
+    grid-column: span 2;
+    grid-row: span 2;
+    animation: cardExpand 0.4s ease forwards;
+}
+
+/* Carte en dernière colonne : s'étend vers la gauche */
+.article-card.expanded.expand-left {
+    grid-column: 2 / 4;
+}
+
+@keyframes cardExpand {
+    from {
+        opacity: 0.8;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Titre plus grand pour la carte agrandie */
+.article-card.expanded .article-content h3 {
+    font-size: 1.8em;
+    transition: font-size 0.3s ease;
 }
 
 .article-card {
     position: relative;
-    border-radius: 1em;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    width: 320px;
-    height: 420px;
+    border-radius: 1.2em;
     overflow: hidden;
-    background-image: inherit;
     background-size: cover;
     background-position: center;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
 }
 
+
 .article-content {
-    position: relative;
-    width: 100%;
-    height: 100%;
+    position: absolute;
+    inset: 0;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
+    justify-content: flex-end;
+    padding: 30px;
     color: white;
-    text-align: center;
+    background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.15) 50%, transparent 100%);
     backdrop-filter: blur(0px) brightness(1);
-    transition: backdrop-filter 0.5s, brightness 0.5s;
+    transition: all 0.5s ease;
 }
 
 .article-content:hover {
-    backdrop-filter: blur(3px) brightness(0.7);
+    backdrop-filter: blur(3px) brightness(0.8);
+    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 60%, rgba(0,0,0,0.2) 100%);
 }
 
 .article-content h3 {
-    font-size: 1.5em;
-    margin-bottom: 15px;
-    transition: transform 0.5s ease;
+    font-family: "Lora", serif;
+    font-size: 1.4em;
+    margin-bottom: 10px;
+    transition: transform 0.4s ease, font-size 0.3s ease;
 }
 
 .article-content:hover h3 {
-    transform: translateY(-20px);
+    transform: translateY(-10px);
 }
 
 .article-content p {
+    font-size: 0.95em;
     opacity: 0;
-    transform: scale(0);
-    transition: all 0.5s ease;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
     line-height: 1.6;
 }
 
 .article-content:hover p {
     opacity: 1;
-    transform: scale(1);
+    transform: translateY(0);
 }
 
 /* Footer */
 footer {
-    background: #2c3e50;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
     color: white;
     text-align: center;
-    padding: 30px;
-    margin-top: 60px;
+    padding: 50px 30px 30px;
+}
+
+.footer-socials {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.footer-socials a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.footer-socials a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-5px);
+}
+
+.footer-socials svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+}
+
+footer p {
+    opacity: 0.7;
+    font-size: 0.9em;
+    margin: 0;
 }
 
 /* Responsive */
