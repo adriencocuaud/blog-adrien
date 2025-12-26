@@ -58,12 +58,10 @@ body.intro-active {
 
 header h1 {
     font-family: "Cabin Sketch", sans-serif;
-    font-weight: 400;
-    font-size: 3.5em;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    opacity: 0;
-    animation: titleReveal 1s ease-out forwards;
-    animation-delay: 0.3s;
+    font-weight: 700;
+    font-size: 4em;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+    letter-spacing: 0.05em;
 }
 
 header .subtitle {
@@ -71,21 +69,11 @@ header .subtitle {
     font-family: "Cabin Sketch", sans-serif;
     font-weight: 400;
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
-    opacity: 0;
-    animation: fadeUp 1s ease-out forwards;
+    clip-path: inset(0 100% 0 0);
+    animation: revealFromRight 1s ease forwards;
     animation-delay: 0.8s;
 }
 
-@keyframes titleReveal {
-    from {
-        opacity: 0;
-        transform: scale(0.8);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
 
 @keyframes fadeUp {
     from {
@@ -98,40 +86,37 @@ header .subtitle {
     }
 }
 
+/* Animation clip-path reveal pour les titres */
 .fadeLeft {
     display: inline-block;
-    opacity: 0;
-    animation: fadeLeft 1s ease-out forwards;
+    clip-path: inset(0 100% 0 0);
+    animation: revealFromRight 0.8s ease forwards;
     animation-delay: 0.3s;
 }
 
-@keyframes fadeLeft {
+@keyframes revealFromRight {
     from {
-        opacity: 0;
-        transform: translateX(30px);
+        clip-path: inset(0 100% 0 0);
     }
     to {
-        opacity: 1;
-        transform: translateX(0);
+        clip-path: inset(0 0 0 0);
     }
 }
 
 .fadeRight {
     margin-left: 2em;
     display: inline-block;
-    opacity: 0;
-    animation: fadeRight 1s ease-out forwards;
+    clip-path: inset(0 0 0 100%);
+    animation: revealFromLeft 0.8s ease forwards;
     animation-delay: 0.5s;
 }
 
-@keyframes fadeRight {
+@keyframes revealFromLeft {
     from {
-        opacity: 0;
-        transform: translateX(-30px);
+        clip-path: inset(0 0 0 100%);
     }
     to {
-        opacity: 1;
-        transform: translateX(0);
+        clip-path: inset(0 0 0 0);
     }
 }
 
@@ -266,8 +251,34 @@ nav {
 }
 
 .presentation-text h1 {
+    font-family: "Lora", serif;
     margin-bottom: 0.5em;
-    transition: opacity 0.7s, transform 0.7s;
+}
+
+.presentation-text h1.reveal-in {
+    animation: revealIn 0.6s ease forwards;
+}
+
+.presentation-text h1.reveal-out {
+    animation: revealOut 0.6s ease forwards;
+}
+
+@keyframes revealIn {
+    from {
+        clip-path: inset(0 0 0 100%);
+    }
+    to {
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+@keyframes revealOut {
+    from {
+        clip-path: inset(0 0 0 0);
+    }
+    to {
+        clip-path: inset(0 100% 0 0);
+    }
 }
 
 .presentation-text p {
