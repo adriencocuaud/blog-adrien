@@ -1,4 +1,4 @@
-// Configuration
+// Carrousel de titres - Section présentation
 const titles = [
     "À propos de moi",
     "Aventurier moderne",
@@ -30,25 +30,3 @@ function rotateTitle() {
 setTimeout(() => {
     setInterval(rotateTitle, 5000);
 }, 5000);
-
-// Animation au scroll (titre + cards)
-const articlesTitle = document.querySelector('.articles-section h2');
-const cards = document.querySelectorAll('.article-card');
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            // Titre : animation clip-path
-            if (entry.target.tagName === 'H2') {
-                entry.target.classList.add('reveal-in');
-            } else {
-                entry.target.classList.add('visible');
-            }
-        }
-    });
-}, {
-    threshold: 0.2
-});
-
-if (articlesTitle) observer.observe(articlesTitle);
-cards.forEach(card => observer.observe(card));
