@@ -293,6 +293,7 @@ nav {
     background-attachment: fixed;
     min-height: 100vh;
     padding: 80px 60px;
+    overflow: hidden;
 }
 
 /* Topic header avec flèches */
@@ -336,16 +337,8 @@ nav {
     transform: scale(1.1);
 }
 
-/* Topics container */
-.topics-container {
-    position: relative;
-    overflow: hidden;
-}
-
 .topic {
     display: none;
-    opacity: 1;
-    transform: translateX(0);
 }
 
 .topic.active {

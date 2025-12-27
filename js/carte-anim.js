@@ -1,8 +1,5 @@
 // Configuration des sujets
-const topics = [
-    { id: 'explorations', title: 'Explorations' },
-    { id: 'litterature', title: 'Littérature' }
-];
+const topics = ['Explorations', 'Littérature'];
 
 let currentTopicIndex = 0;
 let isTransitioning = false;
@@ -19,51 +16,34 @@ function switchTopic(direction) {
     isTransitioning = true;
 
     const currentTopic = topicElements[currentTopicIndex];
-
-    // Calculer le nouvel index
-    if (direction === 'next') {
-        currentTopicIndex = (currentTopicIndex + 1) % topics.length;
-    } else {
-        currentTopicIndex = (currentTopicIndex - 1 + topics.length) % topics.length;
-    }
-
-    const newTopic = topicElements[currentTopicIndex];
-
-    // Classes d'animation selon la direction
     const exitClass = direction === 'next' ? 'slide-out-left' : 'slide-out-right';
     const enterClass = direction === 'next' ? 'slide-in-right' : 'slide-in-left';
 
-    // Animation de sortie (garder active pendant l'anim)
-    currentTopic.classList.add(exitClass);
+    // Calculer le nouvel index
+    currentTopicIndex = direction === 'next'
+        ? (currentTopicIndex + 1) % topics.length
+        : (currentTopicIndex - 1 + topics.length) % topics.length;
 
-    // Animer le titre
+    const newTopic = topicElements[currentTopicIndex];
+
+    // Animation de sortie
+    currentTopic.classList.add(exitClass);
     topicTitle.style.opacity = '0';
 
     setTimeout(() => {
-        // Mettre à jour le titre
-        topicTitle.textContent = topics[currentTopicIndex].title;
+        topicTitle.textContent = topics[currentTopicIndex];
         topicTitle.style.opacity = '1';
 
-        // Nettoyer l'ancien sujet
         currentTopic.classList.remove('active', exitClass);
-
-        // Activer le nouveau sujet avec animation d'entrée
         newTopic.classList.add('active', enterClass);
 
-        // Nettoyer les classes d'animation après la fin
         setTimeout(() => {
             newTopic.classList.remove(enterClass);
             isTransitioning = false;
         }, 500);
-
     }, 400);
 }
 
-// Event listeners pour les flèches
-if (arrowLeft) {
-    arrowLeft.addEventListener('click', () => switchTopic('prev'));
-}
-
-if (arrowRight) {
-    arrowRight.addEventListener('click', () => switchTopic('next'));
-}
+// Event listeners
+arrowLeft?.addEventListener('click', () => switchTopic('prev'));
+arrowRight?.addEventListener('click', () => switchTopic('next'));
