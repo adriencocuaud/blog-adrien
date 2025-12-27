@@ -1,5 +1,8 @@
 // Configuration des sujets
-const topics = ['Explorations', 'Littérature'];
+const topics = [
+    { title: 'Explorations', bg: 'images/neige.jpg' },
+    { title: 'Littérature', bg: 'images/map.jpg' }
+];
 
 let currentTopicIndex = 0;
 let isTransitioning = false;
@@ -7,6 +10,7 @@ let isTransitioning = false;
 // Éléments du DOM
 const topicTitle = document.querySelector('.topic-title');
 const topicElements = document.querySelectorAll('.topic');
+const articlesSection = document.querySelector('.articles-section');
 const arrowLeft = document.querySelector('.topic-arrow-left');
 const arrowRight = document.querySelector('.topic-arrow-right');
 
@@ -31,8 +35,11 @@ function switchTopic(direction) {
     topicTitle.style.opacity = '0';
 
     setTimeout(() => {
-        topicTitle.textContent = topics[currentTopicIndex];
+        topicTitle.textContent = topics[currentTopicIndex].title;
         topicTitle.style.opacity = '1';
+
+        // Changer le background
+        articlesSection.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(${topics[currentTopicIndex].bg})`;
 
         currentTopic.classList.remove('active', exitClass);
         newTopic.classList.add('active', enterClass);
