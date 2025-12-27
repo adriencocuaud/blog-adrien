@@ -58,3 +58,45 @@ function switchTopic(direction) {
 // Event listeners
 arrowLeft?.addEventListener('click', () => switchTopic('prev'));
 arrowRight?.addEventListener('click', () => switchTopic('next'));
+
+// Gestion de l'expansion des cartes au clic
+function initCardExpansion() {
+    const cards = document.querySelectorAll('.article-card');
+
+    cards.forEach((card, index) => {
+        card.addEventListener('click', (e) => {
+            // Éviter de suivre le lien si présent
+            if (e.target.tagName === 'A') return;
+
+            const isExpanded = card.classList.contains('expanded');
+
+            // Retirer l'expansion et styles de toutes les cartes
+            cards.forEach(c => {
+                c.classList.remove('expanded', 'expand-left');
+                c.style.gridRow = '';
+                c.style.gridColumn = '';
+            });
+
+            // Si la carte n'était pas déjà agrandie, l'agrandir
+            if (!isExpanded) {
+                card.classList.add('expanded');
+
+                // Calculer la rangée actuelle (1-indexed)
+                const row = Math.floor(index / 3) + 1;
+                // Calculer la colonne actuelle (1-indexed)
+                const col = (index % 3) + 1;
+
+                // Forcer la carte à rester sur sa rangée (span 2)
+                card.style.gridRow = `${row} / ${row + 2}`;
+
+                // Si dernière colonne, s'étendre vers la gauche
+                if (col === 3) {
+                    card.style.gridColumn = '2 / 4';
+                }
+            }
+        });
+    });
+}
+
+// Initialiser l'expansion des cartes
+initCardExpansion();

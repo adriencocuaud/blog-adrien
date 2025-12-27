@@ -436,48 +436,41 @@ nav {
 
 .articles-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(4, 280px);
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 350px;
+    grid-auto-flow: dense;
     gap: 20px;
     max-width: 1200px;
     margin: 0 auto;
 }
 
-/* Pattern bento pour 4 premières cards */
-.article-card:nth-child(1) {
-    grid-column: 1 / 3;
+/* Carte agrandie au clic */
+.article-card.expanded {
+    grid-column: span 2;
     grid-row: span 2;
+    animation: cardExpand 0.4s ease forwards;
 }
 
-.article-card:nth-child(2) {
-    grid-column: 3 / 5;
+/* Carte en dernière colonne : s'étend vers la gauche */
+.article-card.expanded.expand-left {
+    grid-column: 2 / 4;
 }
 
-/* Pattern symétrique pour cards 5-8 */
-.article-card:nth-child(5) {
-    grid-column: 3 / 5;
-    grid-row: 3 / 5;
+@keyframes cardExpand {
+    from {
+        opacity: 0.8;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
-.article-card:nth-child(6) {
-    grid-column: 1 / 3;
-    grid-row: 3;
-}
-
-.article-card:nth-child(7) {
-    grid-column: 1;
-    grid-row: 4;
-}
-
-.article-card:nth-child(8) {
-    grid-column: 2;
-    grid-row: 4;
-}
-
-/* Titre plus grand pour les grandes cards */
-.article-card:nth-child(1) .article-content h3,
-.article-card:nth-child(5) .article-content h3 {
+/* Titre plus grand pour la carte agrandie */
+.article-card.expanded .article-content h3 {
     font-size: 1.8em;
+    transition: font-size 0.3s ease;
 }
 
 .article-card {
@@ -513,7 +506,7 @@ nav {
     font-family: "Lora", serif;
     font-size: 1.4em;
     margin-bottom: 10px;
-    transition: transform 0.4s ease;
+    transition: transform 0.4s ease, font-size 0.3s ease;
 }
 
 .article-content:hover h3 {
