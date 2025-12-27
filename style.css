@@ -316,25 +316,27 @@ nav {
 }
 
 .topic-arrow {
+    font-family: "Cabin Sketch", sans-serif;
     background: transparent;
-    border: 2px solid rgba(255, 255, 255, 0.6);
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 1.5em;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
+    border: none;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 3em;
+    font-weight: bold;
     cursor: pointer;
     transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    padding: 10px 15px;
 }
 
 .topic-arrow:hover {
-    background: rgba(255, 255, 255, 0.15);
-    border-color: white;
     color: white;
-    transform: scale(1.1);
+}
+
+.topic-arrow-left:hover {
+    transform: scale(1.2) translateX(-4px);
+}
+
+.topic-arrow-right:hover {
+    transform: scale(1.2) translateX(4px);
 }
 
 .topic {
