@@ -283,19 +283,66 @@ nav {
     text-align: center;
     letter-spacing: 0.05em;
     min-width: 280px;
-    clip-path: inset(0 100% 0 0);
-    animation: revealFromRight 0.8s ease forwards;
-    animation-delay: 0.3s;
 }
 
-.topic-title.animated {
-    animation: none;
-    clip-path: inset(0 0 0 0);
-    transition: clip-path 0.4s ease;
+.topic-title.slide-out-left {
+    animation: slideOutLeft 0.4s ease forwards;
 }
 
-.topic-title.animated.hide-title {
-    clip-path: inset(0 100% 0 0);
+.topic-title.slide-out-right {
+    animation: slideOutRight 0.4s ease forwards;
+}
+
+.topic-title.slide-in-left {
+    animation: slideInLeft 0.4s ease forwards;
+}
+
+.topic-title.slide-in-right {
+    animation: slideInRight 0.4s ease forwards;
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideOutLeft {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+}
+
+@keyframes slideOutRight {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(100px);
+    }
 }
 
 .topic-arrow {
@@ -349,28 +396,6 @@ nav {
 
 .topic.slide-in-left {
     animation: slideInLeft 0.5s ease forwards;
-}
-
-@keyframes slideInRight {
-    from {
-        opacity: 0;
-        transform: translateX(100px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes slideInLeft {
-    from {
-        opacity: 0;
-        transform: translateX(-100px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
 }
 
 .articles-grid {

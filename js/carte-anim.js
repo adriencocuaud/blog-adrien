@@ -14,11 +14,6 @@ const articlesSection = document.querySelector('.articles-section');
 const arrowLeft = document.querySelector('.topic-arrow-left');
 const arrowRight = document.querySelector('.topic-arrow-right');
 
-// Après l'animation initiale, passer en mode transition
-setTimeout(() => {
-    topicTitle.classList.add('animated');
-}, 1200);
-
 // Navigation entre sujets
 function switchTopic(direction) {
     if (isTransitioning) return;
@@ -35,26 +30,26 @@ function switchTopic(direction) {
 
     const newTopic = topicElements[currentTopicIndex];
 
-    // Animation de sortie
+    // Animation de sortie (cartes + titre synchronisés)
     currentTopic.classList.add(exitClass);
-
-    // Animer le titre avec clip-path (sortie)
-    topicTitle.classList.add('hide-title');
+    topicTitle.classList.add(exitClass);
 
     setTimeout(() => {
+        // Changer le texte du titre
         topicTitle.textContent = topics[currentTopicIndex].title;
-
-        // Animer l'entrée du nouveau titre
-        topicTitle.classList.remove('hide-title');
+        topicTitle.classList.remove(exitClass);
 
         // Changer le background
         articlesSection.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(${topics[currentTopicIndex].bg})`;
 
+        // Animation d'entrée (cartes + titre synchronisés)
         currentTopic.classList.remove('active', exitClass);
         newTopic.classList.add('active', enterClass);
+        topicTitle.classList.add(enterClass);
 
         setTimeout(() => {
             newTopic.classList.remove(enterClass);
+            topicTitle.classList.remove(enterClass);
             isTransitioning = false;
         }, 500);
     }, 400);
