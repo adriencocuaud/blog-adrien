@@ -1,6 +1,6 @@
 // Configuration des sujets
 const topics = [
-    { title: 'Explorations', bg: 'images/neige.jpg' },
+    { title: 'Pérégrinations', bg: 'images/neige.jpg' },
     { title: 'Littérature', bg: 'images/map.jpg' }
 ];
 
@@ -13,6 +13,11 @@ const topicElements = document.querySelectorAll('.topic');
 const articlesSection = document.querySelector('.articles-section');
 const arrowLeft = document.querySelector('.topic-arrow-left');
 const arrowRight = document.querySelector('.topic-arrow-right');
+
+// Après l'animation initiale, passer en mode transition
+setTimeout(() => {
+    topicTitle.classList.add('animated');
+}, 1200);
 
 // Navigation entre sujets
 function switchTopic(direction) {
@@ -32,11 +37,15 @@ function switchTopic(direction) {
 
     // Animation de sortie
     currentTopic.classList.add(exitClass);
-    topicTitle.style.opacity = '0';
+
+    // Animer le titre avec clip-path (sortie)
+    topicTitle.classList.add('hide-title');
 
     setTimeout(() => {
         topicTitle.textContent = topics[currentTopicIndex].title;
-        topicTitle.style.opacity = '1';
+
+        // Animer l'entrée du nouveau titre
+        topicTitle.classList.remove('hide-title');
 
         // Changer le background
         articlesSection.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(${topics[currentTopicIndex].bg})`;
