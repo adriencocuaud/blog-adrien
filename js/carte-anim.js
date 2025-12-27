@@ -59,7 +59,7 @@ function switchTopic(direction) {
 arrowLeft?.addEventListener('click', () => switchTopic('prev'));
 arrowRight?.addEventListener('click', () => switchTopic('next'));
 
-// Gestion de l'expansion des cartes au clic
+// Gestion de l'expansion des cartes au clic avec animation FLIP
 function initCardExpansion() {
     const cards = document.querySelectorAll('.article-card');
 
@@ -69,6 +69,13 @@ function initCardExpansion() {
             if (e.target.tagName === 'A') return;
 
             const isExpanded = card.classList.contains('expanded');
+
+            // FLIP: First - Capturer les positions initiales
+            const positions = new Map();
+            cards.forEach(c => {
+                const rect = c.getBoundingClientRect();
+                positions.set(c, { left: rect.left, top: rect.top, width: rect.width, height: rect.height });
+            });
 
             // Retirer l'expansion et styles de toutes les cartes
             cards.forEach(c => {
@@ -94,6 +101,39 @@ function initCardExpansion() {
                     card.style.gridColumn = '2 / 4';
                 }
             }
+
+            // FLIP: Last & Invert & Play - Animer vers les nouvelles positions
+            requestAnimationFrame(() => {
+                cards.forEach(c => {
+                    const oldPos = positions.get(c);
+                    const newRect = c.getBoundingClientRect();
+
+                    const deltaX = oldPos.left - newRect.left;
+                    const deltaY = oldPos.top - newRect.top;
+                    const scaleX = oldPos.width / newRect.width;
+                    const scaleY = oldPos.height / newRect.height;
+
+                    // Appliquer la transformation inverse
+                    c.style.transform = `translate(${deltaX}px, ${deltaY}px) scale(${scaleX}, ${scaleY})`;
+                    c.style.transformOrigin = 'top left';
+                    c.style.transition = 'none';
+
+                    // Forcer un reflow
+                    c.offsetHeight;
+
+                    // Animer vers la position finale
+                    c.style.transition = 'transform 0.4s ease';
+                    c.style.transform = '';
+                });
+
+                // Nettoyer après l'animation
+                setTimeout(() => {
+                    cards.forEach(c => {
+                        c.style.transition = '';
+                        c.style.transformOrigin = '';
+                    });
+                }, 400);
+            });
         });
     });
 }
