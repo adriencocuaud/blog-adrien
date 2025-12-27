@@ -1,6 +1,6 @@
 // Carrousel de titres - Section présentation
 const titles = [
-    "À propos de moi",
+    "Point de départ",
     "Aventurier moderne",
     "Enseignant passionné",
     "Développeur curieux"
