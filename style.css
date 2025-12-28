@@ -437,40 +437,23 @@ nav {
 .articles-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: 350px;
+    grid-auto-rows: 220px;
     grid-auto-flow: dense;
-    gap: 20px;
+    gap: 18px;
     max-width: 1200px;
     margin: 0 auto;
 }
 
-/* Carte agrandie au clic */
-.article-card.expanded {
+/* Pattern Bento : hero, tall, tall, hero (cycle de 4) */
+.article-card:nth-child(4n+1),
+.article-card:nth-child(4n) {
     grid-column: span 2;
     grid-row: span 2;
-    animation: cardExpand 0.4s ease forwards;
 }
 
-/* Carte en dernière colonne : s'étend vers la gauche */
-.article-card.expanded.expand-left {
-    grid-column: 2 / 4;
-}
-
-@keyframes cardExpand {
-    from {
-        opacity: 0.8;
-        transform: scale(0.95);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-/* Titre plus grand pour la carte agrandie */
-.article-card.expanded .article-content h3 {
-    font-size: 1.8em;
-    transition: font-size 0.3s ease;
+.article-card:nth-child(4n+2),
+.article-card:nth-child(4n+3) {
+    grid-row: span 2;
 }
 
 .article-card {
@@ -479,10 +462,15 @@ nav {
     overflow: hidden;
     background-size: cover;
     background-position: center;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-    cursor: pointer;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.article-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
 
 .article-content {
     position: absolute;
@@ -572,6 +560,13 @@ footer p {
 }
 
 /* Responsive */
+@media (max-width: 1024px) {
+    .articles-grid {
+        grid-auto-rows: 200px;
+        gap: 14px;
+    }
+}
+
 @media (max-width: 768px) {
     .header-title h1 {
         font-size: 2em;
@@ -597,6 +592,28 @@ footer p {
     }
 
     .articles-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 180px;
+    }
+
+    .article-card:nth-child(4n+1),
+    .article-card:nth-child(4n) {
+        grid-column: span 2;
+    }
+}
+
+@media (max-width: 480px) {
+    .articles-grid {
         grid-template-columns: 1fr;
+        grid-auto-rows: 200px;
+    }
+
+    .article-card:nth-child(n) {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+
+    .articles-section {
+        padding: 40px 20px;
     }
 }
