@@ -59,3 +59,6 @@ function switchTopic(direction) {
 arrowLeft?.addEventListener('click', () => switchTopic('prev'));
 arrowRight?.addEventListener('click', () => switchTopic('next'));
 
+// Rendre les cartes focusables pour le click CSS
+document.querySelectorAll('.article-card').forEach(card => card.tabIndex = 0);
+

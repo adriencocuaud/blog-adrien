@@ -463,13 +463,18 @@ nav {
     background-size: cover;
     background-position: center;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-                box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Hover : léger zoom image */
 .article-card:hover {
-    transform: translateY(-8px) scale(1.02);
+    transform: translateY(-5px) scale(1.02);
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+}
+
+.article-card:focus {
+    outline: none;
 }
 
 .article-content {
@@ -482,10 +487,11 @@ nav {
     color: white;
     background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.15) 50%, transparent 100%);
     backdrop-filter: blur(0px) brightness(1);
-    transition: all 0.5s ease;
+    transition: all 0.4s ease;
 }
 
-.article-content:hover {
+/* Click (focus) : blur/darken + texte */
+.article-card:focus .article-content {
     backdrop-filter: blur(3px) brightness(0.8);
     background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 60%, rgba(0,0,0,0.2) 100%);
 }
@@ -494,11 +500,11 @@ nav {
     font-family: "Lora", serif;
     font-size: 1.4em;
     margin-bottom: 10px;
-    transition: transform 0.4s ease, font-size 0.3s ease;
+    transition: transform 0.4s ease;
 }
 
 .article-content:hover h3 {
-    transform: translateY(-10px);
+    transform: translateY(-8px) scale(1.01);
 }
 
 .article-content p {
@@ -509,7 +515,7 @@ nav {
     line-height: 1.6;
 }
 
-.article-content:hover p {
+.article-card:focus .article-content p {
     opacity: 1;
     transform: translateY(0);
 }
