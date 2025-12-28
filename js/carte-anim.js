@@ -40,7 +40,7 @@ function switchTopic(direction) {
         topicTitle.classList.remove(exitClass);
 
         // Changer le background
-        articlesSection.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(${topics[currentTopicIndex].bg})`;
+        articlesSection.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(${topics[currentTopicIndex].bg})`;
 
         // Animation d'entrée (cartes + titre synchronisés)
         currentTopic.classList.remove('active', exitClass);
@@ -59,84 +59,6 @@ function switchTopic(direction) {
 arrowLeft?.addEventListener('click', () => switchTopic('prev'));
 arrowRight?.addEventListener('click', () => switchTopic('next'));
 
-// Gestion de l'expansion des cartes au clic avec animation FLIP
-function initCardExpansion() {
-    const cards = document.querySelectorAll('.article-card');
+// Rendre les cartes focusables pour le click CSS
+document.querySelectorAll('.article-card').forEach(card => card.tabIndex = 0);
 
-    cards.forEach((card, index) => {
-        card.addEventListener('click', (e) => {
-            // Éviter de suivre le lien si présent
-            if (e.target.tagName === 'A') return;
-
-            const isExpanded = card.classList.contains('expanded');
-
-            // FLIP: First - Capturer les positions initiales
-            const positions = new Map();
-            cards.forEach(c => {
-                const rect = c.getBoundingClientRect();
-                positions.set(c, { left: rect.left, top: rect.top, width: rect.width, height: rect.height });
-            });
-
-            // Retirer l'expansion et styles de toutes les cartes
-            cards.forEach(c => {
-                c.classList.remove('expanded', 'expand-left');
-                c.style.gridRow = '';
-                c.style.gridColumn = '';
-            });
-
-            // Si la carte n'était pas déjà agrandie, l'agrandir
-            if (!isExpanded) {
-                card.classList.add('expanded');
-
-                // Calculer la rangée actuelle (1-indexed)
-                const row = Math.floor(index / 3) + 1;
-                // Calculer la colonne actuelle (1-indexed)
-                const col = (index % 3) + 1;
-
-                // Forcer la carte à rester sur sa rangée (span 2)
-                card.style.gridRow = `${row} / ${row + 2}`;
-
-                // Si dernière colonne, s'étendre vers la gauche
-                if (col === 3) {
-                    card.style.gridColumn = '2 / 4';
-                }
-            }
-
-            // FLIP: Last & Invert & Play - Animer vers les nouvelles positions
-            requestAnimationFrame(() => {
-                cards.forEach(c => {
-                    const oldPos = positions.get(c);
-                    const newRect = c.getBoundingClientRect();
-
-                    const deltaX = oldPos.left - newRect.left;
-                    const deltaY = oldPos.top - newRect.top;
-                    const scaleX = oldPos.width / newRect.width;
-                    const scaleY = oldPos.height / newRect.height;
-
-                    // Appliquer la transformation inverse
-                    c.style.transform = `translate(${deltaX}px, ${deltaY}px) scale(${scaleX}, ${scaleY})`;
-                    c.style.transformOrigin = 'top left';
-                    c.style.transition = 'none';
-
-                    // Forcer un reflow
-                    c.offsetHeight;
-
-                    // Animer vers la position finale
-                    c.style.transition = 'transform 0.4s ease';
-                    c.style.transform = '';
-                });
-
-                // Nettoyer après l'animation
-                setTimeout(() => {
-                    cards.forEach(c => {
-                        c.style.transition = '';
-                        c.style.transformOrigin = '';
-                    });
-                }, 400);
-            });
-        });
-    });
-}
-
-// Initialiser l'expansion des cartes
-initCardExpansion();
