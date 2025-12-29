@@ -40,7 +40,7 @@ function switchTopic(direction) {
         topicTitle.classList.remove(exitClass);
 
         // Changer le background
-        articlesSection.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(${topics[currentTopicIndex].bg})`;
+        articlesSection.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(${topics[currentTopicIndex].bg})`;
 
         // Animation d'entrée (cartes + titre synchronisés)
         currentTopic.classList.remove('active', exitClass);
