@@ -524,7 +524,7 @@ nav {
 }
 
 .article-content:hover h3 {
-    transform: translateY(-8px) scale(1.01);
+    transform: translateY(-4px) scale(0.95);
 }
 
 .article-content p {
