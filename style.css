@@ -471,7 +471,7 @@ nav {
     content: '';
     position: absolute;
     inset: 0;
-    background: inherit;
+    background-image: var(--bg);
     background-size: cover;
     background-position: center;
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
