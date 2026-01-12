@@ -5,9 +5,16 @@
     const fullscreenTitle = fullscreen.querySelector('.fullscreen-title');
     const fullscreenText = fullscreen.querySelector('.fullscreen-text');
 
-    // Ouvrir le fullscreen au clic sur une carte (article ou livre)
-    document.querySelectorAll('.article-card, .book-card').forEach(card => {
+    // Ouvrir le fullscreen au clic sur une carte (article seulement, pas les livres)
+    document.querySelectorAll('.article-card').forEach(card => {
         card.addEventListener('click', () => openFullscreen(card));
+    });
+
+    // Flip 3D pour les book-card
+    document.querySelectorAll('.book-card').forEach(card => {
+        card.addEventListener('click', () => {
+            card.classList.toggle('flipped');
+        });
     });
 
     function openFullscreen(card) {
