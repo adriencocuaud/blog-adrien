@@ -294,7 +294,7 @@ nav {
 .articles-section {
     background-image:
         linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-        url(images/neige.jpg);
+        url(images/peregrinations.jpg);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -550,6 +550,7 @@ nav {
     grid-template-columns: repeat(3, 300px);
     gap: 30px;
     justify-content: center;
+    perspective: 1000px;
 }
 
 .book-card {
@@ -557,26 +558,19 @@ nav {
     width: 300px;
     height: 430px;
     cursor: pointer;
-    perspective: 1000px;
-}
-
-.book-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
     transform-style: preserve-3d;
     transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.book-card:hover .book-inner {
+.book-card:hover {
     transform: translateY(-10px) rotateY(-5deg);
 }
 
-.book-card.flipped .book-inner {
+.book-card.flipped {
     transform: rotateY(-180deg);
 }
 
-.book-card.flipped:hover .book-inner {
+.book-card.flipped:hover {
     transform: rotateY(-180deg) translateY(-5px);
 }
 
@@ -603,7 +597,7 @@ nav {
     object-fit: cover;
 }
 
-.book-title {
+.book-front h3 {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -611,12 +605,9 @@ nav {
     padding: 15px 20px;
     background: linear-gradient(135deg, #3A4B58 0%, #2a3a45 100%);
     border-top: 3px solid #cb8f50;
-}
-
-.book-title h3 {
     font-family: "Lora", serif;
     font-size: 1.1em;
-    line-height: 1.3;
+    line-height: 1.5;
     margin: 0;
     text-align: center;
     color: white;

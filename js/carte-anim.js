@@ -1,7 +1,7 @@
 // Configuration des sujets
 const topics = [
-    { title: 'Pérégrinations', bg: 'images/neige.jpg' },
-    { title: 'Littérature', bg: 'images/map.jpg' }
+    { title: 'Pérégrinations', bg: 'images/peregrinations.jpg' },
+    { title: 'Littérature', bg: 'images/litterature.jpg' }
 ];
 
 let currentTopicIndex = 0;
