@@ -4,18 +4,24 @@
     const fullscreenBg = fullscreen.querySelector('.fullscreen-bg');
     const fullscreenTitle = fullscreen.querySelector('.fullscreen-title');
     const fullscreenText = fullscreen.querySelector('.fullscreen-text');
-    const closeBtn = fullscreen.querySelector('.fullscreen-close');
 
-    // Ouvrir le fullscreen au clic sur une carte
+    // Ouvrir le fullscreen au clic sur une carte (article seulement, pas les livres)
     document.querySelectorAll('.article-card').forEach(card => {
         card.addEventListener('click', () => openFullscreen(card));
     });
 
+    // Flip 3D pour les book-card
+    document.querySelectorAll('.book-card').forEach(card => {
+        card.addEventListener('click', () => {
+            card.classList.toggle('flipped');
+        });
+    });
+
     function openFullscreen(card) {
-        // Récupérer les données de la carte
-        const img = card.querySelector('.card-bg');
-        const title = card.querySelector('.article-content h3');
-        const paragraphs = card.querySelectorAll('.article-content p');
+        // Récupérer les données de la carte (article-card ou book-card)
+        const img = card.querySelector('.card-bg, .book-cover');
+        const title = card.querySelector('.article-content h3, .book-content h3');
+        const paragraphs = card.querySelectorAll('.article-content p, .book-content p');
 
         // Remplir le fullscreen avec le contenu
         fullscreenBg.src = img.src;
@@ -42,8 +48,8 @@
         document.body.classList.remove('fullscreen-open');
     }
 
-    // Fermer au clic sur le bouton
-    closeBtn.addEventListener('click', closeFullscreen);
+    // Fermer au clic n'importe où
+    fullscreen.addEventListener('click', closeFullscreen);
 
     // Fermer avec la touche Escape
     document.addEventListener('keydown', (e) => {
