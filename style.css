@@ -617,26 +617,41 @@ nav {
 /* Face arrière (contenu) */
 .book-back {
     transform: rotateY(180deg);
-    background: linear-gradient(135deg, #3A4B58 0%, #2a3a45 100%);
+    background:
+        linear-gradient(135deg, rgba(245, 240, 230, 0.03) 0%, transparent 50%),
+        linear-gradient(to bottom, #f5f0e6 0%, #e8e0d0 100%);
     box-shadow:
         5px 5px 20px rgba(0, 0, 0, 0.5),
-        0 0 5px rgba(0, 0, 0, 0.2);
+        0 0 5px rgba(0, 0, 0, 0.2),
+        inset 0 0 30px rgba(0, 0, 0, 0.05);
     padding: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
+    color: #2a2a2a;
     overflow: hidden;
 }
 
+.book-back::before {
+    content: '';
+    position: absolute;
+    inset: 12px;
+    border: 1px solid #cb8f50;
+    pointer-events: none;
+    opacity: 0.6;
+}
+
 .book-back p {
-    font-size: 0.75em;
-    line-height: 1.5;
-    opacity: 0.9;
+    font-family: "Lora", serif;
+    font-size: 0.72em;
+    line-height: 1.6;
     margin: 0;
+    padding: 6px;
     overflow-y: auto;
     text-align: justify;
     hyphens: auto;
+    font-style: italic;
+    color: #3a3a3a;
 }
 
 .book-back p::first-letter {
@@ -648,6 +663,7 @@ nav {
     margin-top: 0px;
     color: #cb8f50;
     font-weight: 700;
+    font-style: normal;
 }
 
 /* Footer */
