@@ -621,16 +621,33 @@ nav {
     box-shadow:
         5px 5px 20px rgba(0, 0, 0, 0.5),
         0 0 5px rgba(0, 0, 0, 0.2);
-    padding: 30px 25px;
+    padding: 15px;
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     color: white;
+    overflow: hidden;
 }
 
 .book-back p {
-    font-size: 1em;
-    line-height: 1.7;
+    font-size: 0.75em;
+    line-height: 1.5;
     opacity: 0.9;
+    margin: 0;
+    overflow-y: auto;
+    text-align: justify;
+    hyphens: auto;
+}
+
+.book-back p::first-letter {
+    font-family: "Lora", serif;
+    font-size: 2.5em;
+    float: left;
+    line-height: 1;
+    margin-right: 8px;
+    margin-top: 3px;
+    color: #cb8f50;
+    font-weight: 700;
 }
 
 /* Footer */
