@@ -853,6 +853,115 @@ nav {
     }
 }
 
+/* === Page Pérégrinations - Articles en format fullscreen === */
+.peregrinations-page {
+    background: #0a0a0a;
+}
+
+.destination-article {
+    width: 100%;
+}
+
+.destination-header {
+    position: relative;
+    width: 100%;
+    height: 70vh;
+    min-height: 400px;
+    overflow: hidden;
+}
+
+.destination-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* Séparateur décoratif après chaque article (sauf le dernier) */
+.destination-article:not(:last-of-type) .destination-text::after {
+    content: '———  ◆  ———';
+    display: block;
+    text-align: center;
+    margin-top: 50px;
+    font-size: 1em;
+    color: #cb8f50;
+    letter-spacing: 3px;
+    opacity: 0.7;
+}
+
+.destination-title-wrapper {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 40px 60px 20px;
+    background: linear-gradient(to top,
+        rgba(10, 10, 10, 1) 0%,
+        rgba(10, 10, 10, 0.6) 40%,
+        transparent 100%);
+}
+
+.destination-title {
+    font-family: "Lora", serif;
+    font-size: 3.5em;
+    color: white;
+    margin: 0;
+    text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.5);
+}
+
+.destination-body {
+    background: #0a0a0a;
+    padding: 50px 60px 80px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.destination-text p {
+    font-size: 1.2em;
+    line-height: 2;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 30px;
+}
+
+.destination-text p:first-of-type::first-letter {
+    font-family: "Lora", serif;
+    font-size: 3.5em;
+    float: left;
+    line-height: 1;
+    margin-right: 12px;
+    margin-top: 6px;
+    color: #cb8f50;
+    font-weight: 700;
+}
+
+@media (max-width: 768px) {
+    .destination-header {
+        height: 50vh;
+        min-height: 300px;
+    }
+
+    .destination-title {
+        font-size: 2.2em;
+    }
+
+    .destination-title-wrapper {
+        padding: 30px 25px 15px;
+    }
+
+    .destination-body {
+        padding: 30px 25px 60px;
+    }
+
+    .destination-text p {
+        font-size: 1.1em;
+        line-height: 1.8;
+    }
+
+    .destination-text p:first-of-type::first-letter {
+        font-size: 2.8em;
+    }
+}
+
 /* Footer */
 footer {
     background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
