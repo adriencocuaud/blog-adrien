@@ -1,33 +1,34 @@
 // Fullscreen Article - Expansion plein écran
 (function() {
     const fullscreen = document.getElementById('fullscreenArticle');
-    const fullscreenBg = fullscreen.querySelector('.fullscreen-bg');
-    const fullscreenTitle = fullscreen.querySelector('.fullscreen-title');
-    const fullscreenText = fullscreen.querySelector('.fullscreen-text');
 
-    // Ouvrir le fullscreen au clic sur une carte (article seulement, pas les livres)
-    document.querySelectorAll('.article-card').forEach(card => {
-        card.addEventListener('click', () => openFullscreen(card));
-    });
-
-    // Flip 3D pour les book-card
+    // Flip 3D pour les book-card (toujours actif)
     document.querySelectorAll('.book-card').forEach(card => {
         card.addEventListener('click', () => {
             card.classList.toggle('flipped');
         });
     });
 
-    function openFullscreen(card) {
-        // Récupérer les données de la carte (article-card ou book-card)
-        const img = card.querySelector('.card-bg, .book-cover');
-        const title = card.querySelector('.article-content h3, .book-content h3');
-        const paragraphs = card.querySelectorAll('.article-content p, .book-content p');
+    // Le reste ne s'exécute que si fullscreen existe
+    if (!fullscreen) return;
 
-        // Remplir le fullscreen avec le contenu
+    const fullscreenBg = fullscreen.querySelector('.fullscreen-bg');
+    const fullscreenTitle = fullscreen.querySelector('.fullscreen-title');
+    const fullscreenText = fullscreen.querySelector('.fullscreen-text');
+
+    // Ouvrir le fullscreen au clic sur une carte article
+    document.querySelectorAll('.article-card').forEach(card => {
+        card.addEventListener('click', () => openFullscreen(card));
+    });
+
+    function openFullscreen(card) {
+        const img = card.querySelector('.card-bg');
+        const title = card.querySelector('.article-content h3');
+        const paragraphs = card.querySelectorAll('.article-content p');
+
         fullscreenBg.src = img.src;
         fullscreenTitle.textContent = title.textContent;
 
-        // Vider et remplir le texte
         fullscreenText.innerHTML = '';
         paragraphs.forEach(p => {
             const newP = document.createElement('p');
@@ -35,11 +36,8 @@
             fullscreenText.appendChild(newP);
         });
 
-        // Activer le fullscreen
         fullscreen.classList.add('active');
         document.body.classList.add('fullscreen-open');
-
-        // Reset scroll position
         fullscreen.scrollTop = 0;
     }
 
@@ -48,10 +46,8 @@
         document.body.classList.remove('fullscreen-open');
     }
 
-    // Fermer au clic n'importe où
     fullscreen.addEventListener('click', closeFullscreen);
 
-    // Fermer avec la touche Escape
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && fullscreen.classList.contains('active')) {
             closeFullscreen();
