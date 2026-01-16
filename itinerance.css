@@ -30,7 +30,7 @@ nav {
     z-index: 1000;
     width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     padding: 1rem 3rem;
     background: rgba(20, 30, 40, 0.0);
@@ -96,6 +96,42 @@ nav {
 
 .nav-links a:hover::after {
     width: 100%;
+}
+
+.nav-links a.actif {
+    color: #cb8f50;
+    pointer-events: none;
+}
+
+.nav-links a.actif::after {
+    display: none;
+}
+
+.nav-home {
+    text-decoration: none;
+    color: white;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    position: relative;
+}
+
+.nav-home::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0%;
+    height: 1px;
+    background: white;
+    transition: width 0.3s ease;
+}
+
+.nav-home:hover::after {
+    width: 100%;
+}
+
+.nav-spacer {
+    width: 120px; /* même largeur que nav-home pour équilibrer */
 }
 
 /* Section articles */
