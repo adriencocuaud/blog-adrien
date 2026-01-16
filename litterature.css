@@ -21,8 +21,7 @@ body {
     overflow-x: hidden;
 }
 
-/* === Navigation statique (pages intérieures) === */
-.nav-static {
+nav {
     font-family: "Lora", serif;
     letter-spacing: 1px;
     position: fixed;
@@ -31,88 +30,206 @@ body {
     z-index: 1000;
     width: 100%;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-around;
     align-items: center;
-    padding: 1rem 2rem;
-    background: rgba(20, 30, 40, 0.8);
-    backdrop-filter: blur(8px);
+    padding: 1rem 3rem;
+    background: rgba(20, 30, 40, 0.0);
+    backdrop-filter: blur(0px);
+    transition: background 0.3s ease;
+    /* Apparition après l'intro */
+    opacity: 0;
+    transform: translateY(-100%);
+    animation: navReveal 0.8s ease-out forwards, shrinkAndDarken both linear;
+    animation-delay: 1.5s, 0s;
+    animation-timeline: auto, scroll();
+    animation-range: normal, 0 400px;
 }
 
-.nav-static .nav-links a {
+@keyframes navReveal {
+    from {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes shrinkAndDarken {
+    0% {
+        padding: 1.5rem 3rem;
+        background: rgba(20, 30, 40, 0);
+        backdrop-filter: blur(0px);
+    }
+
+    100% {
+        padding: 0.5rem 3rem;
+        background: rgba(20, 30, 40, 0.7);
+        backdrop-filter: blur(5px);
+    }
+}
+
+.nav-links {
+    display: flex;
+    gap: 2em;
+}
+
+.nav-links a {
     text-decoration: none;
     color: white;
-    font-size: 0.9em;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    transition: opacity 0.3s ease;
-}
-
-.nav-static .nav-links a:hover {
-    opacity: 0.8;
-}
-
-/* === Page header (pages intérieures) === */
-.page-header {
+    font-size: 0.8em;
     position: relative;
+    text-transform: uppercase;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0%;
+    height: 1px;
+    background: white;
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
     width: 100%;
-    height: 50vh;
-    min-height: 300px;
+}
+
+/* === Animation d'intro === */
+body.intro-active {
+    overflow: hidden;
+}
+
+/* Section bookshelf */
+.bookshelf-section {
+    position: relative;
+    background-image: url(images/litterature.jpg);
     background-size: cover;
     background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    padding: 0 60px 80px;
+}
+
+/* Overlay noir animé - commence léger puis s'assombrit */
+.bookshelf-section::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 1);
+    z-index: 0;
+    opacity: 0.3;
+    animation: overlayDarken 1s ease-out forwards;
+    animation-delay: 1.2s;
+}
+
+@keyframes overlayDarken {
+    from {
+        opacity: 0.3;
+    }
+    to {
+        opacity: 0.75;
+    }
+}
+
+/* Header d'intro (titre + subtitle) */
+.intro-header {
+    position: relative;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: white;
+    z-index: 10;
+    animation: introHeaderShrink 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 1.5s;
 }
 
-.page-header h1 {
+@keyframes introHeaderShrink {
+    from {
+        height: 100vh;
+    }
+    to {
+        height: 280px;
+    }
+}
+
+.intro-header h1 {
     font-family: "Cabin Sketch", sans-serif;
     font-weight: 700;
     font-size: 4em;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
     letter-spacing: 0.05em;
     margin-bottom: 10px;
+    text-align: center;
+    color: white;
+    /* Animation reveal */
+    clip-path: inset(0 100% 0 0);
+    animation: revealFromRight 0.8s ease forwards;
+    animation-delay: 0.3s;
 }
 
-.page-header .subtitle {
+@keyframes revealFromRight {
+    from {
+        clip-path: inset(0 100% 0 0);
+    }
+    to {
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+.intro-header .subtitle {
     font-family: "Lora", serif;
     font-size: 1.5em;
-    opacity: 0.9;
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    color: white;
+    margin: 0;
+    /* Animation reveal */
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards;
+    animation-delay: 0.8s;
 }
 
-/* === Page section (pages intérieures) === */
-.page-section {
-    background-attachment: scroll;
-    min-height: auto;
-    padding: 60px 60px 80px;
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 0.9;
+        transform: translateY(0);
+    }
 }
 
-/* Section articles (conteneur de base) */
-.articles-section {
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    min-height: 100vh;
-    padding: 80px 60px;
-    overflow: hidden;
-}
-
-.bookshelf-section {
-    background-image:
-        linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
-        url(images/litterature.jpg);
-}
-
-/* === Bookshelf (Littérature) === */
+/* === Bookshelf === */
 .bookshelf {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
     perspective: 1000px;
+    position: relative;
+    z-index: 1;
+    /* Animation slide-up */
+    opacity: 0;
+    transform: translateY(60px);
+    animation: cardsSlideUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 2.3s;
+}
+
+@keyframes cardsSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(60px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .book-card {
@@ -141,6 +258,9 @@ body {
     height: 100%;
     backface-visibility: hidden;
     overflow: hidden;
+    box-shadow:
+        -5px 5px 20px rgba(0, 0, 0, 0.5),
+        0 0 5px rgba(0, 0, 0, 0.2);
 }
 
 .book-back {
@@ -148,23 +268,6 @@ body {
     inset: 0;
     backface-visibility: hidden;
     overflow: hidden;
-}
-
-/* Face avant (couverture) */
-.book-front {
-    box-shadow:
-        -5px 5px 20px rgba(0, 0, 0, 0.5),
-        0 0 5px rgba(0, 0, 0, 0.2);
-}
-
-.book-cover {
-    height: 100%;
-    width: auto;
-    display: block;
-}
-
-/* Face arrière (contenu) */
-.book-back {
     transform: rotateY(180deg);
     background:
         linear-gradient(135deg, rgba(245, 240, 230, 0.03) 0%, transparent 50%),
@@ -178,7 +281,12 @@ body {
     align-items: center;
     justify-content: center;
     color: #2a2a2a;
-    overflow: hidden;
+}
+
+.book-cover {
+    height: 100%;
+    width: auto;
+    display: block;
 }
 
 .book-back::before {
@@ -262,15 +370,15 @@ footer p {
 
 /* Responsive */
 @media (max-width: 768px) {
-    .page-header h1 {
+    .intro-header h1 {
         font-size: 2.5em;
     }
 
-    .page-header .subtitle {
+    .intro-header .subtitle {
         font-size: 1.2em;
     }
 
-    .page-section {
-        padding: 40px 20px 60px;
+    .bookshelf-section {
+        padding: 0 20px 60px;
     }
 }
