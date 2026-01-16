@@ -98,11 +98,6 @@ nav {
     width: 100%;
 }
 
-/* === Animation d'intro === */
-body.intro-active {
-    overflow: hidden;
-}
-
 /* Section bookshelf */
 .bookshelf-section {
     position: relative;

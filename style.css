@@ -21,11 +21,6 @@ body {
     overflow-x: hidden;
 }
 
-/* === Animation d'intro === */
-body.intro-active {
-    overflow: hidden;
-}
-
 /* Header avec animation d'intro */
 .header-image {
     position: relative;
@@ -302,7 +297,7 @@ nav {
 .section-link-card {
     flex: 1;
     position: relative;
-    height: 350px;
+    height: 300px;
     border-radius: 1.2em;
     overflow: hidden;
     text-decoration: none;
@@ -314,7 +309,7 @@ nav {
 }
 
 .section-link-card:hover {
-    transform: translateY(-8px) scale(1.02);
+    transform: translateY(-5px) scale(1.02);
     box-shadow:
         0 12px 40px rgba(0, 0, 0, 0.4),
         0 0 0 1px rgba(255, 255, 255, 0.15),
@@ -420,11 +415,11 @@ footer p {
 
 /* Responsive */
 @media (max-width: 768px) {
-    .header-title h1 {
+    header h1 {
         font-size: 2em;
     }
 
-    .header-title .subtitle {
+    header .subtitle {
         font-size: 1.1em;
     }
 

@@ -1,15 +1,6 @@
 // Fullscreen Article - Expansion plein écran
 (function() {
     const fullscreen = document.getElementById('fullscreenArticle');
-
-    // Flip 3D pour les book-card (toujours actif)
-    document.querySelectorAll('.book-card').forEach(card => {
-        card.addEventListener('click', () => {
-            card.classList.toggle('flipped');
-        });
-    });
-
-    // Le reste ne s'exécute que si fullscreen existe
     if (!fullscreen) return;
 
     const fullscreenBg = fullscreen.querySelector('.fullscreen-bg');
