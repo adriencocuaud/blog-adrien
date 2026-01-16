@@ -1,6 +1,6 @@
 // Configuration des sujets
 const topics = [
-    { title: 'Pérégrinations', bg: 'images/peregrinations.jpg' },
+    { title: 'Itinérances', bg: 'images/itinerances.jpg' },
     { title: 'Littérature', bg: 'images/litterature.jpg' }
 ];
 

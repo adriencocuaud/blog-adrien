@@ -1,0 +1,276 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&display=swap');
+
+root {
+    --orangeCasse: #cb8f50;
+    --bleuNuit: #3A4B58;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Manrope", sans-serif;
+    font-optical-sizing: auto;
+    line-height: 1.6;
+    color: #333;
+    background-color: whitesmoke;
+    overflow-x: hidden;
+}
+
+/* === Navigation statique (pages intérieures) === */
+.nav-static {
+    font-family: "Lora", serif;
+    letter-spacing: 1px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: rgba(20, 30, 40, 0.8);
+    backdrop-filter: blur(8px);
+}
+
+.nav-static .nav-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 0.9em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: opacity 0.3s ease;
+}
+
+.nav-static .nav-links a:hover {
+    opacity: 0.8;
+}
+
+/* === Page header (pages intérieures) === */
+.page-header {
+    position: relative;
+    width: 100%;
+    height: 50vh;
+    min-height: 300px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.page-header h1 {
+    font-family: "Cabin Sketch", sans-serif;
+    font-weight: 700;
+    font-size: 4em;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    letter-spacing: 0.05em;
+    margin-bottom: 10px;
+}
+
+.page-header .subtitle {
+    font-family: "Lora", serif;
+    font-size: 1.5em;
+    opacity: 0.9;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* === Page section (pages intérieures) === */
+.page-section {
+    background-attachment: scroll;
+    min-height: auto;
+    padding: 60px 60px 80px;
+}
+
+/* Section articles (conteneur de base) */
+.articles-section {
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    padding: 80px 60px;
+    overflow: hidden;
+}
+
+.bookshelf-section {
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
+        url(images/litterature.jpg);
+}
+
+/* === Bookshelf (Littérature) === */
+.bookshelf {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    perspective: 1000px;
+}
+
+.book-card {
+    position: relative;
+    height: 400px;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.book-card:hover {
+    transform: translateY(-10px) rotateY(-5deg);
+}
+
+.book-card.flipped {
+    transform: rotateY(-180deg);
+}
+
+.book-card.flipped:hover {
+    transform: rotateY(-180deg) translateY(-5px);
+}
+
+/* Face avant et arrière */
+.book-front {
+    position: relative;
+    height: 100%;
+    backface-visibility: hidden;
+    overflow: hidden;
+}
+
+.book-back {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    overflow: hidden;
+}
+
+/* Face avant (couverture) */
+.book-front {
+    box-shadow:
+        -5px 5px 20px rgba(0, 0, 0, 0.5),
+        0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.book-cover {
+    height: 100%;
+    width: auto;
+    display: block;
+}
+
+/* Face arrière (contenu) */
+.book-back {
+    transform: rotateY(180deg);
+    background:
+        linear-gradient(135deg, rgba(245, 240, 230, 0.03) 0%, transparent 50%),
+        linear-gradient(to bottom, #f5f0e6 0%, #e8e0d0 100%);
+    box-shadow:
+        5px 5px 20px rgba(0, 0, 0, 0.5),
+        0 0 5px rgba(0, 0, 0, 0.2),
+        inset 0 0 30px rgba(0, 0, 0, 0.05);
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #2a2a2a;
+    overflow: hidden;
+}
+
+.book-back::before {
+    content: '';
+    position: absolute;
+    inset: 12px;
+    border: 1px solid #cb8f50;
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+.book-back p {
+    font-family: "Lora", serif;
+    font-size: 0.72em;
+    line-height: 1.6;
+    margin: 0;
+    padding: 6px;
+    overflow-y: auto;
+    text-align: justify;
+    hyphens: auto;
+    font-style: italic;
+    color: #3a3a3a;
+}
+
+.book-back p::first-letter {
+    font-family: "Lora", serif;
+    font-size: 2.8em;
+    float: left;
+    line-height: 1;
+    margin-right: 5px;
+    margin-top: 0px;
+    color: #cb8f50;
+    font-weight: 700;
+    font-style: normal;
+}
+
+/* Footer */
+footer {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: white;
+    text-align: center;
+    padding: 50px 30px 30px;
+}
+
+.footer-socials {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.footer-socials a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.footer-socials a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-5px);
+}
+
+.footer-socials svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+}
+
+footer p {
+    opacity: 0.7;
+    font-size: 0.9em;
+    margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .page-header h1 {
+        font-size: 2.5em;
+    }
+
+    .page-header .subtitle {
+        font-size: 1.2em;
+    }
+
+    .page-section {
+        padding: 40px 20px 60px;
+    }
+}
