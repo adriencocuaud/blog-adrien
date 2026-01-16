@@ -286,18 +286,98 @@ nav {
 }
 
 /* === Section liens d'accès (page d'accueil) === */
+.sections-access-wrapper {
+    position: relative;
+    margin: 60px 0;
+}
+
 .sections-access {
     display: flex;
-    gap: 30px;
-    max-width: 1200px;
-    margin: 60px auto;
-    padding: 0 30px;
+    gap: 25px;
+    padding: 40px 80px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    /* Cacher la scrollbar */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.sections-access::-webkit-scrollbar {
+    display: none;
+}
+
+/* Flèches de navigation */
+.scroll-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 65px;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    backdrop-filter: blur(4px);
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+.scroll-arrow:hover {
+    opacity: 1;
+    transform: translateY(-50%) scale(1.1);
+    background: rgba(0, 0, 0, 0.35);
+}
+
+.scroll-arrow .sketch-circle {
+    position: absolute;
+    inset: -2px;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+}
+
+.scroll-arrow:hover .sketch-circle {
+    opacity: 1;
+}
+
+.scroll-arrow span {
+    font-family: "Cabin Sketch", sans-serif;
+    font-size: 2.8em;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1;
+    margin-top: -4px;
+    transition: color 0.3s ease;
+}
+
+.scroll-arrow:hover span {
+    color: white;
+}
+
+.scroll-arrow-left {
+    left: 12px;
+}
+
+.scroll-arrow-left span {
+    margin-right: 3px;
+}
+
+.scroll-arrow-right {
+    right: 12px;
+}
+
+.scroll-arrow-right span {
+    margin-left: 3px;
 }
 
 .section-link-card {
-    flex: 1;
+    flex: 0 0 300px;
     position: relative;
-    height: 300px;
+    height: 320px;
     border-radius: 1.2em;
     overflow: hidden;
     text-decoration: none;
@@ -308,8 +388,24 @@ nav {
                 box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Décalage vertical alternant */
+.section-link-card:nth-child(odd) {
+    transform: translateY(-20px);
+}
+
+.section-link-card:nth-child(even) {
+    transform: translateY(20px);
+}
+
+.section-link-card:nth-child(odd):hover {
+    transform: translateY(-30px) scale(1.03);
+}
+
+.section-link-card:nth-child(even):hover {
+    transform: translateY(10px) scale(1.03);
+}
+
 .section-link-card:hover {
-    transform: translateY(-5px) scale(1.02);
     box-shadow:
         0 12px 40px rgba(0, 0, 0, 0.4),
         0 0 0 1px rgba(255, 255, 255, 0.15),
@@ -438,13 +534,26 @@ footer p {
         text-align: left;
     }
 
+    .sections-access-wrapper {
+        margin: 40px 0;
+    }
+
     .sections-access {
-        flex-direction: column;
-        gap: 20px;
+        padding: 30px 20px;
+        gap: 15px;
     }
 
     .section-link-card {
-        height: 250px;
+        flex: 0 0 260px;
+        height: 280px;
+    }
+
+    .section-link-card:nth-child(odd) {
+        transform: translateY(-15px);
+    }
+
+    .section-link-card:nth-child(even) {
+        transform: translateY(15px);
     }
 
     .section-link-content h2 {
