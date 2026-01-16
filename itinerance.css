@@ -98,19 +98,66 @@ nav {
     width: 100%;
 }
 
+/* === Animation d'intro === */
+body.intro-active {
+    overflow: hidden;
+}
+
 /* Section articles */
 .articles-section {
-    background-image:
-        linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-        url(images/itinerances.jpg);
+    position: relative;
+    background-image: url(images/itinerances.jpg);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     min-height: 100vh;
-    padding: 80px 60px;
+    padding: 0 60px 80px;
 }
 
-.articles-section h1 {
+/* Overlay noir animé - commence léger puis s'assombrit */
+.articles-section::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 1);
+    z-index: 0;
+    opacity: 0.3;
+    animation: overlayDarken 1s ease-out forwards;
+    animation-delay: 1.2s;
+}
+
+@keyframes overlayDarken {
+    from {
+        opacity: 0.3;
+    }
+    to {
+        opacity: 0.7;
+    }
+}
+
+/* Header d'intro (titre + subtitle) */
+.intro-header {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    animation: introHeaderShrink 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 1.5s;
+}
+
+@keyframes introHeaderShrink {
+    from {
+        height: 100vh;
+    }
+    to {
+        height: 280px;
+    }
+}
+
+.intro-header h1 {
     font-family: "Cabin Sketch", sans-serif;
     font-weight: 700;
     font-size: 4em;
@@ -119,16 +166,43 @@ nav {
     margin-bottom: 10px;
     text-align: center;
     color: white;
+    /* Animation reveal */
+    clip-path: inset(0 100% 0 0);
+    animation: revealFromRight 0.8s ease forwards;
+    animation-delay: 0.3s;
 }
 
-.articles-section .subtitle {
+@keyframes revealFromRight {
+    from {
+        clip-path: inset(0 100% 0 0);
+    }
+    to {
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+.intro-header .subtitle {
     font-family: "Lora", serif;
     font-size: 1.5em;
-    opacity: 0.9;
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
     text-align: center;
     color: white;
-    margin-bottom: 40px;
+    margin: 0;
+    /* Animation reveal */
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards;
+    animation-delay: 0.8s;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 0.9;
+        transform: translateY(0);
+    }
 }
 
 /* Topic header avec flèches */
@@ -270,6 +344,24 @@ nav {
     gap: 18px;
     max-width: 1200px;
     margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    /* Animation slide-up */
+    opacity: 0;
+    transform: translateY(60px);
+    animation: cardsSlideUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 2.3s;
+}
+
+@keyframes cardsSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(60px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Pattern Bento : hero, tall, tall, hero (cycle de 4) */
