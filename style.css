@@ -288,6 +288,53 @@ nav {
 /* === Section liens d'accès (page d'accueil) === */
 .sections-access-wrapper {
     position: relative;
+    overflow: hidden;
+}
+
+.waves-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.wave {
+    fill: none;
+    stroke: #cb8f50;
+    stroke-linecap: round;
+}
+
+.wave-1 {
+    stroke-width: 2.5;
+    opacity: 0.6;
+    animation: wave-move-1 12s linear infinite;
+}
+
+.wave-2 {
+    stroke-width: 2;
+    opacity: 0.8;
+    animation: wave-move-2 18s linear infinite;
+}
+
+.wave-3 {
+    stroke-width: 1.5;
+    animation: wave-move-3 15s linear infinite;
+}
+
+@keyframes wave-move-1 {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(300px); }
+}
+
+@keyframes wave-move-2 {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-300px); }
+}
+
+@keyframes wave-move-3 {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(200px); }
 }
 
 .sections-access-title {
@@ -296,6 +343,21 @@ nav {
     text-align: center;
     padding: 20px;
     color: #3A4B58;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    clip-path: inset(0 100% 0 0);
+    animation: typewriter 1.5s steps(25) forwards paused;
+}
+
+.sections-access-title.animate {
+    animation-play-state: running;
+}
+
+@keyframes typewriter {
+    to {
+        clip-path: inset(0 0 0 0);
+    }
 }
 
 .sections-access {
