@@ -1,0 +1,346 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Manrope", sans-serif;
+    font-optical-sizing: auto;
+    line-height: 1.6;
+    color: #1a1a2e;
+    overflow-x: hidden;
+    min-height: 100vh;
+    /* Fond comics - halftone dots + couleurs pop */
+    background-color: #ffe66d;
+    background-image:
+        /* Points de trame (halftone) */
+        radial-gradient(circle, #ff6b6b 1px, transparent 1px),
+        radial-gradient(circle, #4ecdc4 1px, transparent 1px),
+        /* Bandes diagonales subtiles */
+        repeating-linear-gradient(
+            45deg,
+            transparent 0px,
+            transparent 40px,
+            rgba(255,107,107,0.08) 40px,
+            rgba(255,107,107,0.08) 80px
+        );
+    background-size: 24px 24px, 24px 24px, 100px 100px;
+    background-position: 0 0, 12px 12px, 0 0;
+    background-attachment: fixed;
+}
+
+nav {
+    font-family: "Bangers", cursive;
+    letter-spacing: 2px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 3rem;
+    background: rgba(26, 26, 46, 0);
+    backdrop-filter: blur(0px);
+    transition: background 0.3s ease;
+    opacity: 0;
+    transform: translateY(-100%);
+    animation: navReveal 0.8s ease-out forwards, shrinkAndDarken both linear;
+    animation-delay: 0.5s, 0s;
+    animation-timeline: auto, scroll();
+    animation-range: normal, 0 400px;
+}
+
+@keyframes navReveal {
+    from {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes shrinkAndDarken {
+    0% {
+        padding: 1.5rem 3rem;
+        background: rgba(26, 26, 46, 0);
+        backdrop-filter: blur(0px);
+    }
+
+    100% {
+        padding: 0.5rem 3rem;
+        background: rgba(26, 26, 46, 0.95);
+        backdrop-filter: blur(5px);
+    }
+}
+
+.nav-links {
+    display: flex;
+    gap: 2em;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 0.8em;
+    position: relative;
+    text-transform: uppercase;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0%;
+    height: 1px;
+    background: white;
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.nav-links a.actif {
+    color: #ffe66d;
+    pointer-events: none;
+}
+
+.nav-links a.actif::after {
+    display: none;
+}
+
+.nav-home {
+    text-decoration: none;
+    color: white;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    position: relative;
+}
+
+.nav-home::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0%;
+    height: 1px;
+    background: white;
+    transition: width 0.3s ease;
+}
+
+.nav-home:hover::after {
+    width: 100%;
+}
+
+.nav-spacer {
+    width: 120px;
+}
+
+/* Section cards */
+.cards-section {
+    position: relative;
+    min-height: 100vh;
+    padding: 60px;
+    background: transparent;
+}
+
+/* Header d'intro */
+.intro-header {
+    position: relative;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.intro-header h1 {
+    font-family: "Bangers", cursive;
+    font-weight: 400;
+    font-size: 4.5em;
+    letter-spacing: 0.08em;
+    margin-bottom: 10px;
+    text-align: center;
+    color: #1a1a2e;
+    text-shadow:
+        4px 4px 0 #ff6b6b,
+        -2px -2px 0 #4ecdc4;
+    clip-path: inset(0 100% 0 0);
+    animation: revealFromRight 0.8s ease forwards;
+    animation-delay: 0.3s;
+}
+
+@keyframes revealFromRight {
+    from {
+        clip-path: inset(0 100% 0 0);
+    }
+    to {
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+.intro-header .subtitle {
+    font-family: "Bangers", cursive;
+    font-size: 1.5em;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-align: center;
+    color: #ff6b6b;
+    text-shadow: 2px 2px 0 #1a1a2e;
+    margin: 0;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards;
+    animation-delay: 0.8s;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 0.9;
+        transform: translateY(0);
+    }
+}
+
+/* Cards grid */
+.cards-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 20px;
+    justify-content: center;
+    perspective: 1000px;
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    transform: translateY(60px);
+    animation: cardsSlideUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 1.2s;
+}
+
+@keyframes cardsSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(60px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card {
+    position: relative;
+    width: 220px;
+    height: 280px;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover {
+    transform: translateY(-8px) rotateY(-8deg);
+}
+
+.card.flipped {
+    transform: rotateY(-180deg);
+}
+
+.card.flipped:hover {
+    transform: rotateY(-180deg) translateY(-8px);
+}
+
+/* Face avant */
+.card-front {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    background: #fff;
+    border: 4px solid #1a1a2e;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    box-shadow: 6px 6px 0 #1a1a2e;
+    transition: box-shadow 0.2s ease;
+}
+
+.card:hover .card-front {
+    box-shadow: 8px 8px 0 #1a1a2e;
+}
+
+.card-icon {
+    font-size: 3.5em;
+}
+
+.card-front h3 {
+    font-family: "Bangers", cursive;
+    font-size: 1.4em;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    color: #1a1a2e;
+    text-align: center;
+}
+
+/* Face arriere */
+.card-back {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
+    background: #4ecdc4;
+    border: 4px solid #1a1a2e;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 6px 6px 0 #1a1a2e;
+}
+
+.card-back p {
+    font-family: "Lora", serif;
+    font-size: 0.85em;
+    line-height: 1.7;
+    text-align: center;
+    color: #1a1a2e;
+    font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .intro-header h1 {
+        font-size: 2.5em;
+    }
+
+    .intro-header .subtitle {
+        font-size: 1.2em;
+    }
+
+    .cards-section {
+        padding: 0 20px 60px;
+    }
+
+    .card {
+        width: 180px;
+        height: 240px;
+    }
+
+    .card-icon {
+        font-size: 3em;
+    }
+}
