@@ -40,7 +40,7 @@ nav {
     opacity: 0;
     transform: translateY(-100%);
     animation: navReveal 0.8s ease-out forwards, shrinkAndDarken both linear;
-    animation-delay: 1.5s, 0s;
+    animation-delay: 0.5s, 0s;
     animation-timeline: auto, scroll();
     animation-range: normal, 0 400px;
 }
@@ -142,7 +142,7 @@ nav {
     background-position: center;
     background-attachment: fixed;
     min-height: 100vh;
-    padding: 0 60px 80px;
+    padding: 60px;
 }
 
 /* Overlay noir animé - commence léger puis s'assombrit */
@@ -169,23 +169,12 @@ nav {
 /* Header d'intro (titre + subtitle) */
 .intro-header {
     position: relative;
-    height: 100vh;
+    height: 200px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     z-index: 10;
-    animation: introHeaderShrink 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    animation-delay: 1.5s;
-}
-
-@keyframes introHeaderShrink {
-    from {
-        height: 100vh;
-    }
-    to {
-        height: 280px;
-    }
 }
 
 .intro-header h1 {
@@ -241,6 +230,7 @@ nav {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+    padding: 20px;
     justify-content: center;
     perspective: 1000px;
     position: relative;
@@ -249,7 +239,7 @@ nav {
     opacity: 0;
     transform: translateY(60px);
     animation: cardsSlideUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    animation-delay: 2.3s;
+    animation-delay: 1.2s;
 }
 
 @keyframes cardsSlideUp {
