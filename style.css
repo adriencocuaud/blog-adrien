@@ -39,7 +39,7 @@ body {
     color: white;
     /* Animation de réduction */
     animation: headerShrink 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    animation-delay: 0.5s;
+    animation-delay: 1.5s;
 }
 
 @keyframes headerShrink {
@@ -65,8 +65,8 @@ header .subtitle {
     font-weight: 400;
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
     clip-path: inset(0 100% 0 0);
-    animation: revealFromRight 1s ease forwards;
-    animation-delay: 0.8s;
+    animation: revealFromRight 1.5s ease forwards;
+    animation-delay: 0.5s;
 }
 
 
@@ -81,7 +81,7 @@ header .subtitle {
     }
 }
 
-/* Animation clip-path reveal pour les titres */
+/* Animation clip-path reveal pour le titre présentation */
 .fadeLeft {
     display: inline-block;
     clip-path: inset(0 100% 0 0);
@@ -275,12 +275,12 @@ nav {
 }
 
 .presentation-text p:first-of-type::first-letter {
-    font-family: "Lora", serif;
+    font-family: "Cabin Sketch", sans-serif;
     font-size: 3em;
     float: left;
     line-height: 1;
     margin-right: 10px;
-    margin-top: 6px;
+    margin-top: 10px;
     color: #cb8f50;
     font-weight: 700;
 }
