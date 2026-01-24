@@ -542,11 +542,10 @@ nav {
 /* Footer */
 footer {
     position: relative;
-    background: linear-gradient(180deg, #3d2a1f 0%, #2a1d15 100%);
-    color: #f5ebe0;
+    background: linear-gradient(180deg, #352620 0%, #2a1d15 100%);
+    color: #e0d5c8;
     text-align: center;
-    padding: 60px 30px 30px;
-    overflow: hidden;
+    padding: 50px 30px 30px;
 }
 
 footer::before {
@@ -555,60 +554,42 @@ footer::before {
     top: 0;
     left: 0;
     right: 0;
-    height: 4px;
+    height: 2px;
     background: linear-gradient(90deg,
-        transparent 0%,
-        #cb8f50 20%,
-        #e8b96e 50%,
-        #cb8f50 80%,
-        transparent 100%
+        transparent 5%,
+        rgba(203, 143, 80, 0.6) 30%,
+        rgba(203, 143, 80, 0.8) 50%,
+        rgba(203, 143, 80, 0.6) 70%,
+        transparent 95%
     );
-}
-
-footer::after {
-    content: "";
-    position: absolute;
-    top: 4px;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg,
-        transparent 0%,
-        rgba(203, 143, 80, 0.3) 30%,
-        rgba(203, 143, 80, 0.3) 70%,
-        transparent 100%
-    );
-    box-shadow: 0 0 20px rgba(203, 143, 80, 0.2);
 }
 
 .footer-socials {
     display: flex;
     justify-content: center;
-    gap: 30px;
-    margin-bottom: 30px;
-    position: relative;
-    z-index: 1;
+    gap: 25px;
+    margin-bottom: 25px;
 }
 
 .footer-socials a {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 50px;
-    height: 50px;
+    width: 46px;
+    height: 46px;
     border-radius: 50%;
-    background: rgba(203, 143, 80, 0.15);
-    border: 1px solid rgba(203, 143, 80, 0.3);
-    color: #cb8f50;
+    background: rgba(203, 143, 80, 0.1);
+    border: 1px solid rgba(203, 143, 80, 0.25);
+    color: #b8956a;
     text-decoration: none;
     transition: all 0.3s ease;
 }
 
 .footer-socials a:hover {
-    background: rgba(203, 143, 80, 0.3);
-    border-color: #cb8f50;
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(203, 143, 80, 0.2);
+    background: rgba(203, 143, 80, 0.2);
+    border-color: rgba(203, 143, 80, 0.5);
+    color: #cb8f50;
+    transform: translateY(-4px);
 }
 
 .footer-socials svg {
