@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&display=swap');
 
-root {
+:root {
     --orangeCasse: #cb8f50;
     --bleuNuit: #3A4B58;
 }
@@ -17,8 +17,34 @@ body {
     font-optical-sizing: auto;
     line-height: 1.6;
     color: #333;
-    background-color: whitesmoke;
     overflow-x: hidden;
+    min-height: 100vh;
+    /* Fond boisé simplifié */
+    background:
+        /* Veines du bois verticales */
+        repeating-linear-gradient(
+            90deg,
+            transparent 0px,
+            transparent 38px,
+            rgba(173, 97, 54, 0.3) 39px,
+            rgba(214, 171, 119, 0.4) 40px
+        ),
+        /* Grain horizontal subtil */
+        repeating-linear-gradient(
+            0deg,
+            transparent 0px,
+            transparent 12px,
+            rgba(255,255,255,0.03) 13px
+        ),
+        repeating-linear-gradient(
+            0deg,
+            transparent 0px,
+            transparent 28px,
+            rgba(255,255,255,0.02) 29px
+        ),
+        /* Dégradé de base bois doré */
+        radial-gradient(ellipse at center, #D1A46B 0%, #B57744 100%);
+    background-attachment: fixed;
 }
 
 nav {
@@ -59,13 +85,13 @@ nav {
 @keyframes shrinkAndDarken {
     0% {
         padding: 1.5rem 3rem;
-        background: rgba(20, 30, 40, 0);
+        background: rgba(61, 42, 31, 0);
         backdrop-filter: blur(0px);
     }
 
     100% {
         padding: 0.5rem 3rem;
-        background: rgba(20, 30, 40, 0.7);
+        background: rgba(61, 42, 31, 0.7);
         backdrop-filter: blur(5px);
     }
 }
@@ -99,8 +125,8 @@ nav {
 }
 
 .nav-links a.actif {
-    color: #cb8f50;
     pointer-events: none;
+    color: #93463a;
 }
 
 .nav-links a.actif::after {
@@ -137,33 +163,10 @@ nav {
 /* Section bookshelf */
 .bookshelf-section {
     position: relative;
-    background-image: url(images/litterature.jpg);
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
     min-height: 100vh;
     padding: 60px;
-}
-
-/* Overlay noir animé - commence léger puis s'assombrit */
-.bookshelf-section::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 1);
-    z-index: 0;
-    opacity: 0.3;
-    animation: overlayDarken 1s ease-out forwards;
-    animation-delay: 1.2s;
-}
-
-@keyframes overlayDarken {
-    from {
-        opacity: 0.3;
-    }
-    to {
-        opacity: 0.75;
-    }
+    background: transparent;
+    z-index: 10;
 }
 
 /* Header d'intro (titre + subtitle) */
@@ -178,14 +181,15 @@ nav {
 }
 
 .intro-header h1 {
-    font-family: "Cabin Sketch", sans-serif;
-    font-weight: 700;
-    font-size: 4em;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
-    letter-spacing: 0.05em;
+    font-family: "Lora", serif;
+    font-weight: 600;
+    font-style: italic;
+    font-size: 3.5em;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+    letter-spacing: 0.02em;
     margin-bottom: 10px;
     text-align: center;
-    color: white;
+    color: #3d2a1f;
     /* Animation reveal */
     clip-path: inset(0 100% 0 0);
     animation: revealFromRight 0.8s ease forwards;
@@ -203,10 +207,12 @@ nav {
 
 .intro-header .subtitle {
     font-family: "Lora", serif;
-    font-size: 1.5em;
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+    font-size: 1.3em;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 4px rgba(255, 255, 255, 0.3);
     text-align: center;
-    color: white;
+    color: #93463a;
     margin: 0;
     /* Animation reveal */
     opacity: 0;

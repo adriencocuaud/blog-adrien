@@ -27,7 +27,7 @@ body {
 }
 
 nav {
-    font-family: "Lora", serif;
+    font-family: "Caveat", cursive;
     letter-spacing: 1px;
     position: fixed;
     top: 0;
@@ -104,8 +104,8 @@ nav {
 }
 
 .nav-links a.actif {
-    color: var(--stamp-red);
     pointer-events: none;
+    color: var(--stamp-red);
 }
 
 .nav-links a.actif::after {

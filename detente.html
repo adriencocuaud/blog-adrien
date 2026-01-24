@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="detente.css">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="apple-touch-icon" href="images/favicon.png">
+    <title>Detente - Adrien Cocuaud</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav>
+        <a href="index.html" class="nav-home">&#10094; Point de depart</a>
+        <div class="nav-links">
+            <a href="itinerances.html">Itinerances</a>
+            <a href="lectures.html">Lectures</a>
+            <a href="#">Pedagogie</a>
+            <a href="#">algorithmes</a>
+            <a href="detente.html" class="actif">Detente</a>
+        </div>
+        <div class="nav-spacer"></div>
+    </nav>
+
+    <section class="cards-section">
+        <div class="intro-header">
+            <h1>Detente</h1>
+            <p class="subtitle">Echappees ludiques</p>
+        </div>
+        <div class="cards-grid">
+            <article class="card">
+                <div class="card-front">
+                    <div class="card-icon">&#127918;</div>
+                    <h3>Jeux video</h3>
+                </div>
+                <div class="card-back">
+                    <p>Des mondes virtuels a explorer, des histoires a vivre, des defis a relever. Du RPG narratif aux puzzles cerebraux, une selection de jeux qui marquent.</p>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-front">
+                    <div class="card-icon">&#127932;</div>
+                    <h3>Musique</h3>
+                </div>
+                <div class="card-back">
+                    <p>Decouvertes sonores et playlists pour accompagner le travail, la reflexion ou simplement le plaisir d'ecouter. Du classique a l'electronique.</p>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-front">
+                    <div class="card-icon">&#127916;</div>
+                    <h3>Films & Series</h3>
+                </div>
+                <div class="card-back">
+                    <p>Coups de coeur cinematographiques et series qui valent le detour. Science-fiction, drames, documentaires et perles meconnues.</p>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-front">
+                    <div class="card-icon">&#9824;</div>
+                    <h3>Jeux de societe</h3>
+                </div>
+                <div class="card-back">
+                    <p>L'art de rassembler autour d'une table. Jeux de strategie, d'ambiance ou de cooperation pour des soirees memorables.</p>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-front">
+                    <div class="card-icon">&#127860;</div>
+                    <h3>Cuisine</h3>
+                </div>
+                <div class="card-back">
+                    <p>Recettes testees et approuvees, experimentations culinaires et petits plaisirs gourmands a partager.</p>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-front">
+                    <div class="card-icon">&#127793;</div>
+                    <h3>Nature</h3>
+                </div>
+                <div class="card-back">
+                    <p>Randonnees, observations, moments de calme. Se reconnecter au monde naturel et apprecier sa beaute.</p>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <script>
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('click', () => {
+                card.classList.toggle('flipped');
+            });
+        });
+    </script>
+</body>
+
+</html>
