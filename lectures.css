@@ -19,7 +19,7 @@ body {
     color: #333;
     overflow-x: hidden;
     min-height: 100vh;
-    /* Fond boisé simplifié */
+    /* Fond boisé avec veines */
     background:
         /* Veines du bois verticales */
         repeating-linear-gradient(
@@ -29,22 +29,21 @@ body {
             rgba(173, 97, 54, 0.3) 39px,
             rgba(214, 171, 119, 0.4) 40px
         ),
-        /* Grain horizontal subtil */
-        repeating-linear-gradient(
-            0deg,
-            transparent 0px,
-            transparent 12px,
-            rgba(255,255,255,0.03) 13px
-        ),
-        repeating-linear-gradient(
-            0deg,
-            transparent 0px,
-            transparent 28px,
-            rgba(255,255,255,0.02) 29px
-        ),
         /* Dégradé de base bois doré */
         radial-gradient(ellipse at center, #D1A46B 0%, #B57744 100%);
     background-attachment: fixed;
+}
+
+/* Grain boisé SVG */
+.wood-grain-svg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    mix-blend-mode: multiply;
 }
 
 nav {
