@@ -28,7 +28,7 @@ body {
     height: 100vh; /* Commence en plein écran */
     background-image:
         linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
-        url(images/entete.png);
+        url(../images/entete.png);
     background-size: cover;
     background-position: center;
     display: flex;
