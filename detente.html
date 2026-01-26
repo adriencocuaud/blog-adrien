@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="detente.css">
+    <link rel="stylesheet" href="css/detente.css">
     <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="apple-touch-icon" href="images/favicon.png">
-    <title>Detente - Adrien Cocuaud</title>
+    <title>Détente - Adrien Cocuaud</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
@@ -16,92 +16,67 @@
 
 <body>
     <nav>
-        <a href="index.html" class="nav-home">&#10094; Point de depart</a>
+        <a href="index.html" class="nav-home">&#10094; Point de départ</a>
         <div class="nav-links">
-            <a href="itinerances.html">Itinerances</a>
+            <a href="itinerances.html">Itinérances</a>
+            <a href="pedagogie.html">Pédagogie</a>
             <a href="lectures.html">Lectures</a>
-            <a href="#">Pedagogie</a>
+            <a href="detente.html" class="actif">Détente</a>
             <a href="#">algorithmes</a>
-            <a href="detente.html" class="actif">Detente</a>
         </div>
         <div class="nav-spacer"></div>
     </nav>
 
-    <section class="cards-section">
+    <section class="detente-section">
         <div class="intro-header">
-            <h1>Detente</h1>
-            <p class="subtitle">Echappées ludiques</p>
+            <h1>Détente</h1>
+            <p class="subtitle">Échappées ludiques et sportives</p>
         </div>
-        <div class="cards-grid">
-            <article class="card">
-                <div class="card-front">
-                    <div class="card-icon">&#127918;</div>
-                    <h3>Jeux video</h3>
-                </div>
-                <div class="card-back">
-                    <p>Des mondes virtuels a explorer, des histoires a vivre, des defis a relever. Du RPG narratif aux puzzles cerebraux, une selection de jeux qui marquent.</p>
-                </div>
-            </article>
-
-            <article class="card">
-                <div class="card-front">
-                    <div class="card-icon">&#127932;</div>
-                    <h3>Musique</h3>
-                </div>
-                <div class="card-back">
-                    <p>Decouvertes sonores et playlists pour accompagner le travail, la reflexion ou simplement le plaisir d'ecouter. Du classique a l'electronique.</p>
+        <div class="detente-grid">
+            <article class="detente-card" data-category="Jeux">
+                <div class="card-content">
+                    <h3>Échecs en ligne</h3>
+                    <p>Quelques parties mémorables et puzzles tactiques que j'aime revisiter. Les échecs, c'est voyager sans bouger.</p>
+                    <div class="card-links">
+                        <a href="#" class="card-link">Lichess</a>
+                        <a href="#" class="card-link">Puzzles favoris</a>
+                    </div>
                 </div>
             </article>
 
-            <article class="card">
-                <div class="card-front">
-                    <div class="card-icon">&#127916;</div>
-                    <h3>Films & Series</h3>
-                </div>
-                <div class="card-back">
-                    <p>Coups de coeur cinematographiques et series qui valent le detour. Science-fiction, drames, documentaires et perles meconnues.</p>
-                </div>
-            </article>
-
-            <article class="card">
-                <div class="card-front">
-                    <div class="card-icon">&#9824;</div>
-                    <h3>Jeux de societe</h3>
-                </div>
-                <div class="card-back">
-                    <p>L'art de rassembler autour d'une table. Jeux de strategie, d'ambiance ou de cooperation pour des soirees memorables.</p>
+            <article class="detente-card" data-category="Musique">
+                <div class="card-content">
+                    <h3>Playlists du moment</h3>
+                    <p>De la bossa nova pour les matins calmes, du jazz manouche pour cuisiner, et du rock progressif pour coder tard le soir.</p>
+                    <div class="card-links">
+                        <a href="#" class="card-link">Spotify</a>
+                    </div>
                 </div>
             </article>
 
-            <article class="card">
-                <div class="card-front">
-                    <div class="card-icon">&#127860;</div>
-                    <h3>Cuisine</h3>
-                </div>
-                <div class="card-back">
-                    <p>Recettes testees et approuvees, experimentations culinaires et petits plaisirs gourmands a partager.</p>
+            <article class="detente-card" data-category="Cuisine">
+                <div class="card-content">
+                    <h3>Recettes d'ailleurs</h3>
+                    <p>Des recettes glanées au fil des voyages. Le ceviche péruvien, le bún bò de Hué, la cachupa capverdienne.</p>
+                    <div class="card-links">
+                        <a href="#" class="card-link">Ceviche</a>
+                        <a href="#" class="card-link">Cachupa</a>
+                        <a href="#" class="card-link">Bún bò</a>
+                    </div>
                 </div>
             </article>
 
-            <article class="card">
-                <div class="card-front">
-                    <div class="card-icon">&#127793;</div>
-                    <h3>Nature</h3>
-                </div>
-                <div class="card-back">
-                    <p>Randonnees, observations, moments de calme. Se reconnecter au monde naturel et apprecier sa beaute.</p>
+            <article class="detente-card" data-category="Cinéma">
+                <div class="card-content">
+                    <h3>Films marquants</h3>
+                    <p>Une sélection de films qui m'ont accompagné, de Tarkovski à Miyazaki, en passant par le cinéma latino-américain.</p>
+                    <div class="card-links">
+                        <a href="#" class="card-link">Ma sélection</a>
+                    </div>
                 </div>
             </article>
         </div>
     </section>
-
-    <script>
-        document.querySelectorAll('.card').forEach(card => {
-            card.addEventListener('click', () => {
-                card.classList.toggle('flipped');
-            });
-        });
-    </script>
 </body>
 
 </html>

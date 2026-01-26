@@ -1,0 +1,462 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
+
+:root {
+    --sand-light: #f0e4d0;
+    --sand-mid: #e0cdb3;
+    --sand-dark: #c4a882;
+    --ocean-deep: #0077b6;
+    --ocean-mid: #2a8a9e;
+    --ocean-light: #7ecfe0;
+    --foam-white: #eef7fa;
+    --coral: #e07a5f;
+    --driftwood: #7a6552;
+    --shell-pink: #f2c4b6;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Manrope", sans-serif;
+    font-optical-sizing: auto;
+    line-height: 1.6;
+    color: var(--driftwood);
+    overflow-x: hidden;
+    min-height: 100vh;
+    background-color: var(--sand-light);
+}
+
+/* === SAND GRAIN (CSS only) === */
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    background:
+        repeating-conic-gradient(#0003 0.000001%, #fff0 .00005%, #fff0 .00035%, #fff0 .00005%),
+        repeating-conic-gradient(#fff2 0.00002%, #fff0 .00008%, #fff0 .0008%, #fff0 .00008%);
+    opacity: 0.75;
+    filter: blur(1px);
+}
+
+body::after {
+    transform: rotate(180deg) scale(5);
+    filter: none;
+}
+
+/* === NAVIGATION === */
+nav {
+    font-family: "Quicksand", sans-serif;
+    font-weight: 600;
+    letter-spacing: 1px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 3rem;
+    background: rgba(240, 228, 208, 0);
+    backdrop-filter: blur(0px);
+    transition: background 0.3s ease;
+    opacity: 0;
+    transform: translateY(-100%);
+    animation: navReveal 0.8s ease-out forwards, shrinkAndDarken both linear;
+    animation-delay: 0.5s, 0s;
+    animation-timeline: auto, scroll();
+    animation-range: normal, 0 400px;
+}
+
+@keyframes navReveal {
+    from {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes shrinkAndDarken {
+    0% {
+        padding: 1.5rem 3rem;
+        background: rgba(240, 228, 208, 0);
+        backdrop-filter: blur(0px);
+    }
+    100% {
+        padding: 0.5rem 3rem;
+        background: rgba(240, 228, 208, 0.8);
+        backdrop-filter: blur(5px);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    }
+}
+
+.nav-links {
+    display: flex;
+    gap: 2em;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--driftwood);
+    font-size: 0.85em;
+    position: relative;
+    text-transform: uppercase;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0%;
+    height: 1.5px;
+    background: var(--ocean-mid);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.nav-links a.actif {
+    pointer-events: none;
+    color: var(--coral);
+}
+
+.nav-links a.actif::after {
+    display: none;
+}
+
+.nav-home {
+    text-decoration: none;
+    color: var(--driftwood);
+    font-size: 0.85em;
+    text-transform: uppercase;
+    position: relative;
+}
+
+.nav-home::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0%;
+    height: 1.5px;
+    background: var(--ocean-mid);
+    transition: width 0.3s ease;
+}
+
+.nav-home:hover::after {
+    width: 100%;
+}
+
+.nav-spacer {
+    width: 120px;
+}
+
+/* === MAIN SECTION - SAND === */
+.detente-section {
+    position: relative;
+    min-height: 100vh;
+    padding: 60px 60px 60px;
+    background:
+        /* Subtle warm gradient */
+        linear-gradient(180deg,
+            var(--sand-light) 0%,
+            #ecdcc4 40%,
+            var(--sand-mid) 100%);
+    z-index: 2;
+}
+
+/* Line drawn in sand — wobbly stick/finger trace */
+.detente-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 36px;
+    width: 8px;
+    height: 100%;
+    z-index: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='80' viewBox='0 0 8 80'%3E%3Cpath d='M4,0 C3,13 5,27 4,40 C3,53 5,67 4,80' stroke='%23b5976e' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3Cpath d='M5,0 C4,13 6,27 5,40 C4,53 6,67 5,80' stroke='%23f5ead4' stroke-width='1' fill='none' stroke-linecap='round' opacity='0.6'/%3E%3C/svg%3E");
+    background-repeat: repeat-y;
+    background-size: 8px 80px;
+    opacity: 0.7;
+}
+
+/* === INTRO HEADER === */
+.intro-header {
+    position: relative;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.intro-header h1 {
+    font-family: "Pacifico", cursive;
+    font-weight: 400;
+    font-size: 3.8em;
+    letter-spacing: 0.02em;
+    margin-bottom: 10px;
+    text-align: center;
+    color: var(--ocean-deep);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    clip-path: inset(0 100% 0 0);
+    animation: revealFromRight 0.8s ease forwards;
+    animation-delay: 0.3s;
+}
+
+@keyframes revealFromRight {
+    from { clip-path: inset(0 100% 0 0); }
+    to { clip-path: inset(0 0 0 0); }
+}
+
+.intro-header .subtitle {
+    font-family: "Quicksand", sans-serif;
+    font-weight: 500;
+    font-size: 1.4em;
+    letter-spacing: 0.1em;
+    /* text-transform: uppercase; */
+    text-align: center;
+    color: var(--coral);
+    margin: 0;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards;
+    animation-delay: 0.8s;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 0.85;
+        transform: translateY(0);
+    }
+}
+
+/* === CONTENT GRID === */
+.detente-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px 35px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    transform: translateY(60px);
+    animation: cardsSlideUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 1.2s;
+}
+
+@keyframes cardsSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(60px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* === DETENTE CARDS - Postcard on sand === */
+.detente-card {
+    position: relative;
+    width: calc(50% - 20px);
+    max-width: 480px;
+    padding: 25px;
+    background:
+        linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 50%),
+        linear-gradient(to bottom, #fefcf8 0%, #f8f3eb 100%);
+    border-radius: 4px;
+    box-shadow:
+        0 4px 12px rgba(122, 101, 82, 0.2),
+        0 8px 30px rgba(122, 101, 82, 0.1),
+        inset 0 0 0 1px rgba(196, 168, 130, 0.3);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.4s ease;
+}
+
+/* Subtle rotations */
+.detente-card:nth-child(1) { transform: rotate(-1deg); }
+.detente-card:nth-child(2) { transform: rotate(0.8deg); }
+.detente-card:nth-child(3) { transform: rotate(0.5deg); }
+.detente-card:nth-child(4) { transform: rotate(-0.7deg); }
+
+.detente-card:hover {
+    transform: rotate(0deg) translateY(-6px);
+    box-shadow:
+        0 12px 30px rgba(122, 101, 82, 0.25),
+        0 20px 50px rgba(122, 101, 82, 0.1);
+}
+
+/* Category badge */
+.detente-card::after {
+    content: attr(data-category);
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    font-family: "Quicksand", sans-serif;
+    font-size: 0.75em;
+    font-weight: 600;
+    color: var(--ocean-mid);
+    padding: 3px 10px;
+    background: rgba(126, 207, 224, 0.15);
+    border-radius: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Card image */
+.detente-card .card-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 3px;
+    filter: saturate(0.95) contrast(1.02);
+    transition: filter 0.4s ease;
+}
+
+.detente-card:hover .card-image {
+    filter: saturate(1.05) contrast(1.05);
+}
+
+/* Card content */
+.card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.card-content h3 {
+    font-family: "Caveat", cursive;
+    font-size: 1.6em;
+    font-weight: 700;
+    color: var(--ocean-deep);
+    line-height: 1.2;
+    margin: 0;
+}
+
+.card-content p {
+    font-family: "Quicksand", sans-serif;
+    font-size: 1em;
+    font-weight: 400;
+    color: var(--driftwood);
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Card links */
+.card-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 5px;
+}
+
+.card-link {
+    font-family: "Quicksand", sans-serif;
+    font-size: 0.85em;
+    font-weight: 600;
+    color: var(--ocean-deep);
+    text-decoration: none;
+    padding: 4px 12px;
+    background: rgba(126, 207, 224, 0.12);
+    border: 1.5px solid var(--ocean-mid);
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease, background 0.6s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.card-link:hover {
+    background: var(--ocean-mid);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(42, 138, 158, 0.3);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 900px) {
+    .detente-card {
+        width: 100%;
+        max-width: 500px;
+    }
+}
+
+@media (max-width: 768px) {
+    .detente-section {
+        padding: 20px 30px 60px;
+    }
+
+    .detente-grid {
+        gap: 30px 20px;
+        padding: 15px;
+    }
+
+    .intro-header h1 {
+        font-size: 2.8em;
+    }
+
+    .intro-header .subtitle {
+        font-size: 1.2em;
+    }
+
+}
+
+@media (max-width: 480px) {
+    .detente-section {
+        padding: 15px 15px 40px;
+    }
+
+    .detente-grid {
+        gap: 25px;
+        padding: 10px;
+    }
+
+    .detente-card {
+        padding: 20px 15px;
+    }
+
+    .detente-card:nth-child(1) { transform: rotate(-0.5deg); }
+    .detente-card:nth-child(2) { transform: rotate(0.4deg); }
+    .detente-card:nth-child(3) { transform: rotate(0.3deg); }
+    .detente-card:nth-child(4) { transform: rotate(-0.4deg); }
+
+    .intro-header h1 {
+        font-size: 2.2em;
+    }
+
+    .intro-header .subtitle {
+        font-size: 1em;
+    }
+
+    .card-content h3 {
+        font-size: 1.4em;
+    }
+}
