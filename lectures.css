@@ -21,14 +21,15 @@ body {
     min-height: 100vh;
     /* Fond boisé avec veines */
     background:
-        /* Veines du bois verticales */
-        /* repeating-linear-gradient(
+        /* Veine gauche */
+        linear-gradient(
             90deg,
             transparent 0px,
             transparent 38px,
             rgba(173, 97, 54, 0.3) 39px,
-            rgba(214, 171, 119, 0.4) 40px
-        ), */
+            rgba(214, 171, 119, 0.4) 40px,
+            transparent 42px
+        ),
         /* Dégradé de base bois doré */
         radial-gradient(ellipse at center, #C38E58 20%, #C68B50 100%);
         /* repeating-radial-gradient(#B57744, #D1A46B 10%, #B57744 15%); */
