@@ -7,14 +7,14 @@
     const fullscreenTitle = fullscreen.querySelector('.fullscreen-title');
     const fullscreenText = fullscreen.querySelector('.fullscreen-text');
 
-    // Ouvrir le fullscreen au clic sur une carte article
-    document.querySelectorAll('.article-card').forEach(card => {
+    // Ouvrir le fullscreen au clic sur une carte article ou détente
+    document.querySelectorAll('.article-card, .detente-card').forEach(card => {
         card.addEventListener('click', () => openFullscreen(card));
     });
 
     function openFullscreen(card) {
         const img = card.querySelector('.card-bg');
-        const title = card.querySelector('.article-content h3');
+        const title = card.querySelector('.article-content h3') || card.querySelector('h3');
         const paragraphs = card.querySelectorAll('.article-content p');
 
         fullscreenBg.src = img.src;
