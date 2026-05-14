@@ -117,7 +117,7 @@ nav {
     bottom: -3px;
     left: 0;
     width: 0%;
-    height: 1px;
+    height: 1.2px;
     background: white;
     transition: width 0.3s ease;
 }
@@ -149,7 +149,7 @@ nav {
     bottom: -3px;
     left: 0;
     width: 0%;
-    height: 1px;
+    height: 1.2px;
     background: white;
     transition: width 0.3s ease;
 }
