@@ -149,7 +149,7 @@ nav {
     background:
         linear-gradient(135deg, transparent 25%, rgba(0,0,0,0.02) 25%, rgba(0,0,0,0.02) 50%, transparent 50%, transparent 75%, rgba(0,0,0,0.02) 75%),
         linear-gradient(45deg, transparent 25%, rgba(0,0,0,0.02) 25%, rgba(0,0,0,0.02) 50%, transparent 50%, transparent 75%, rgba(0,0,0,0.02) 75%);
-    background-color: var(--paper-kraft);
+    background-color: #ebe1cc;
     background-size: 20px 20px;
 }
 
@@ -277,7 +277,7 @@ nav {
     position: relative;
     width: 320px;
     height: 380px;
-    background: var(--paper-cream);
+    background: whitesmoke;
     padding: 12px;
     border-radius: 3px;
     box-shadow:
