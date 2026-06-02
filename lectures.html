@@ -13,20 +13,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <!-- SVG Grain boisé -->
-    <svg class="wood-grain-svg" aria-hidden="true">
-        <filter id="woodGrain">
-            <feTurbulence type="fractalNoise" baseFrequency="0.015 0.12" numOctaves="4" seed="3" result="noise"/>
-            <feColorMatrix type="matrix" values="0.3 0 0 0 0  0 0.2 0 0 0  0 0 0.1 0 0  0 0 0 0.10 0" result="brown"/>
-        </filter>
-        <rect width="100%" height="100%" filter="url(#woodGrain)"/>
-    </svg>
-
     <nav>
-        <a href="index.html" class="nav-home">❮ Départ</a>
+        <a href="index.html" class="nav-home"><span class="nav-back-arrow">❮</span> Départ</a>
         <div class="nav-links">
             <a href="itinerances.html">Itinérances</a>
             <a href="pedagogie.html">Pédagogie</a>
@@ -42,82 +34,1968 @@
             <h1>Lectures</h1>
             <p class="subtitle">Traversées littéraires et poétiques</p>
         </div>
-        <div class="bookshelf">
-            <article class="book-card">
-                <div class="book-front">
-                    <img src="images/lectures/detectives.webp" class="book-cover" alt="">
-                </div>
-                <div class="book-back">
-                    <p>En 1975, Juan García Madero abandonne ses études pour se consacrer à la poésie. Il plonge dans les bas-fonds de Mexico et fait la rencontre d'Ulises Lima et Arturo Belano, chefs de file des réal-viscéralistes, un groupe de poètes avant-gardistes. Accompagnés d'une prostituée nommée Lupe, les trois hommes se lancent à la recherche de la poétesse mythique Cesárea Tinajero, dont la trace se perd dans le désert… Parviendront-ils à la retrouver ?</p>
-                </div>
-            </article>
+        
+    <section class="year-section" id="2026">
+      <div class="year-header">
+        <h2>2026</h2><span class="year-count"></span>
+      </div>
+      <div class="book-grid">
 
-            <article class="book-card">
-                <div class="book-front">
-                    <img src="images/lectures/cavaliers.jpg" class="book-cover" alt="">
-                </div>
-                <div class="book-back">
-                    <p>Ouroz et sa longue marche au bout de l'enfer... Le grand Toursène fidèle à sa légende de <i>tchopendoz</i> toujours victorieux... Mokkhi, le bon <i>sais</i>, au destin inversé par la haine et la découverte de la femme... Zéré qui dans l'humiliation efface les souillures d'une misère qui date de l'origine des temps... Et puis l'inoubliable Guardi Guedj, le conteur centenaire à qui son peuple a donné le plus beau des noms : «Aïeul de tout le monde»... Enfin, Jehol «le Cheval Fou», dont la présence tutélaire et «humaine» plane sur cette chanson de geste...</p>
-                </div>
-            </article>
-
-            <article class="book-card">
-                <div class="book-front">
-                    <img src="images/lectures/mer.jpg" class="book-cover" alt="">
-                </div>
-                <div class="book-back">
-                    <p>Saint-Domingue, 1770. Zarité Sedella, dite Tété, a neuf ans lorsqu'elle est vendue comme esclave à Toulouse Valmorain. Zarité va découvrir la plantation, avec ses champs de canne à sucre et les esclaves courbés sous le soleil de plomb, la violence des maîtres, le refuge du vaudou. Et le désir de liberté. Car entre soldats, courtisanes mulâtres, pirates et maîtres blancs, souffle le vent de la révolte. Lorsque Valmorain, réchappé de l'insurrection grâce au courage et à la détermination de son esclave, parvient à embarquer pour La Nouvelle-Orléans, Tété doit le suivre. Mais la lutte pour la dignité et l'émancipation ne peut être arrêtée...</p>
-                </div>
-            </article>
-
-            <article class="book-card">
-                <div class="book-front">
-                    <img src="images/lectures/solaris.jpg" class="book-cover" alt="">
-                </div>
-                <div class="book-back">
-                    <p>Solaris, planète longtemps oubliée par les explorations humaines, tourne autour de deux soleils, et ne semble pas abriter de vie. Un jour pourtant, un groupe de scientifiques y découvre une étonnante entité sous la forme d'un vaste océan protoplasmique. Mais après de nombreuses études, elle est déclarée non pensante et sans intérêt, l'ensemble des stimuli humains n'ayant jamais engendré de réponse. Jusqu'au jour où le docteur Kelvin débarque sur la planète et rencontre la femme qu'il avait aimée et qui s'était depuis suicidée. Étonnement, effroi puis incompréhension vont alors se succéder et pousser Kelvin à chercher d'où vient ce si réaliste et désirable mirage.</p>
-                </div>
-            </article>
-
-            <article class="book-card">
-                <div class="book-front">
-                    <img src="images/lectures/syrtes.jpg" class="book-cover" alt="">
-                </div>
-                <div class="book-back">
-                    <p>À la suite d'un chagrin d'amour, Aldo se fait affecter par le gouvernement de la principauté d'Orsenna dans une forteresse sur le front des Syrtes. Il est là pour observer l'ennemi de toujours, replié sur le rivage d'en face, le Farghestan. S'ensuit alors la marche à l'abîme des deux ennemis imaginaires et héréditaires. Les pays comme les civilisations sont mortels.</p>
-                </div>
-            </article>
-
-            <article class="book-card">
-                <div class="book-front">
-                    <img src="images/lectures/bienveillantes.jpg" class="book-cover" alt="">
-                </div>
-                <div class="book-back">
-                    <p>En fait, j'aurais tout aussi bien pu ne pas écrire. Après tout, ce n'est pas une obligation. Depuis la guerre, je suis resté un homme discret ; grâce à Dieu, je n'ai jamais eu besoin, comme certains de mes anciens collègues, d'écrire mes Mémoires à fin de justification, car je n'ai rien à justifier, ni dans un but lucratif, car je gagne assez bien ma vie comme ça. Je ne regrette rien: j'ai fait mon travail, voilà tout. Malgré mes travers, et ils ont été nombreux, je suis resté de ceux qui pensent que les seules choses indispensables à la vie humaine sont l'air, le manger, le boire et l'excrétion, et la recherche de la vérité. Le reste est facultatif.</p>
-                </div>
-            </article>
-
-            <article class="book-card">
-                <div class="book-front">
-                    <img src="images/lectures/kundera.jpg" class="book-cover" alt="">
-                </div>
-                <div class="book-back">
-                    <p>Qu'est-il resté des agonisants du Cambodge ? Une grande photo de la star américaine tenant dans ses bras un enfant jaune. Qu'est-il resté de Tomas ? Une inscription : Il voulait le Royaume de Dieu sur la terre. Qu'est-il resté de Beethoven ? Un homme morose à l'invraisemblable crinière, qui prononce d'une voix sombre : "Es muss sein !" Qu'est-il resté de Franz ? Une inscription : Après un long égarement, le retour. Et ainsi de suite, et ainsi de suite. Avant d'être oubliés, nous serons changés en kitsch. Le kitsch, c'est la station de correspondance entre l'être et l'oubli.</p>
-                </div>
-            </article>
-
-            <article class="book-card">
-                <div class="book-front">
-                    <img src="images/lectures/jaworski.jpg" class="book-cover" alt="">
-                </div>
-                <div class="book-back">
-                    <p>Gagner une guerre, c'est bien joli, mais quand il faut partager le butin entre les vainqueurs, et quand ces triomphateurs sont des nobles pourris d'orgueil et d'ambition, le coup de grâce infligé à l'ennemi n'est qu'un amuse-gueule. C'est la curée qui commence. On en vient à regretter les bonnes vieilles batailles rangées et les tueries codifiées selon l'art militaire. Désormais, pour rafler le pactole, c'est au sein de la famille qu'on sort les couteaux. Et il se trouve que les couteaux, justement, c'est plutôt mon rayon...</p>
-                </div>
-            </article>
+        <div class="book-card" data-cover="samarcande">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Samarcande</div>
+          <div class="book-author">Amin Maalouf</div>
         </div>
+        <div class="book-card" data-cover="solenoide">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Solénoïde</div>
+          <div class="book-author">Mircea Cărtărescu</div>
+        </div>
+        <div class="book-card" data-cover="syndrome-scaphandrier">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Le syndrome du scaphandrier</div>
+          <div class="book-author">Serge Brussolo</div>
+        </div>
+        <div class="book-card" data-cover="bird-box">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Bird Box</div>
+          <div class="book-author">Josh Malerman</div>
+        </div>
+        <div class="book-card" data-cover="homme-qui-savait">
+          <div class="cover-wrap"></div>
+          <div class="book-title">L'homme qui savait la langue des Serpents</div>
+          <div class="book-author">Andrus Kivirähk</div>
+        </div>
+        <div class="book-card" data-cover="the-stand">
+          <div class="cover-wrap"></div>
+          <div class="book-title">The Stand</div>
+          <div class="book-author">Stephen King</div>
+        </div>
+        <div class="book-card" data-cover="chien-51">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Chien 51</div>
+          <div class="book-author">Laurent Gaudé</div>
+        </div>
+        <div class="book-card" data-cover="le-conte-de-lassassin">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Le Conte de l'assassin</div>
+          <div class="book-author">Jean-Philippe Jaworski</div>
+        </div>
+        <div class="book-card" data-cover="house-of-suns">
+          <div class="cover-wrap"></div>
+          <div class="book-title">House of Suns</div>
+          <div class="book-author">Alastair Reynolds</div>
+        </div>
+        <div class="book-card" data-cover="les-livres-de-jakob">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Les Livres de Jakób</div>
+          <div class="book-author">Olga Tokarczuk</div>
+        </div>
+        <div class="book-card" data-cover="widjigo">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Widjigo</div>
+          <div class="book-author">Estelle Faye</div>
+        </div>
+        <div class="book-card" data-cover="more-than-a-crown">
+          <div class="cover-wrap"></div>
+          <div class="book-title">More than a Crown</div>
+          <div class="book-author">Naomie Nishimwe</div>
+        </div>
+        <div class="book-card" data-cover="the-road">
+          <div class="cover-wrap"></div>
+          <div class="book-title">The Road</div>
+          <div class="book-author">Cormac McCarthy</div>
+        </div>
+        <div class="book-card" data-cover="les-ombres-du-monde">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Les ombres du monde</div>
+          <div class="book-author">Michel Bussi</div>
+        </div>
+        <div class="book-card" data-cover="before-the-coffee-gets-cold">
+          <div class="cover-wrap"></div>
+          <div class="book-title">before the coffee gets cold</div>
+          <div class="book-author">Toshikazu Kawaguchi</div>
+        </div>
+        <div class="book-card" data-cover="nouvelles-du-rwanda">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Nouvelles du Rwanda</div>
+          <div class="book-author">Beata Umubyeyi Mairesse, Joseph Ndwaniye, Dorcy Rugamba, Kivu Ruhorahoza, Daniel Rafiki, Darla Rudakubana</div>
+        </div>
+        <div class="book-card" data-cover="nuestra-parte-de-noche">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Nuestra parte de noche</div>
+          <div class="book-author">Mariana Enriquez</div>
+        </div>
+      </div>
     </section>
 
-    <script src="js/book-flip.js"></script>
+    <section class="year-section" id="2025">
+      <div class="year-header">
+        <h2>2025</h2><span class="year-count"></span>
+      </div>
+      <div class="book-grid">
+
+        <div class="book-card" data-cover="le-rivage-des-syrtes">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Le Rivage des Syrtes</div>
+          <div class="book-author">Julien Gracq</div>
+          <div class="book-back">
+            <p>À la suite d'un chagrin d'amour, Aldo se fait affecter par le gouvernement de la principauté d'Orsenna dans une forteresse sur le front des Syrtes. Il est là pour observer l'ennemi de toujours, replié sur le rivage d'en face, le Farghestan. S'ensuit alors la marche à l'abîme des deux ennemis imaginaires et héréditaires. Les pays comme les civilisations sont mortels.</p>
+          </div>
+        </div>
+        <div class="book-card" data-cover="le-soleil-des-scorta">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Le soleil des Scorta</div>
+          <div class="book-author">Laurent Gaudé</div>
+        </div>
+        <div class="book-card" data-cover="invention-des-autres-jours">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Invention des autres jours</div>
+          <div class="book-author">Jean-Daniel Dupuy</div>
+        </div>
+        <div class="book-card" data-cover="the-secret-history">
+          <div class="cover-wrap"></div>
+          <div class="book-title">The secret history</div>
+          <div class="book-author">Donna Tartt</div>
+        </div>
+        <div class="book-card" data-cover="lanomalie">
+          <div class="cover-wrap"></div>
+          <div class="book-title">L’anomalie</div>
+          <div class="book-author">Hervé Le Tellier</div>
+        </div>
+        <div class="book-card" data-cover="el-club-dumas">
+          <div class="cover-wrap"></div>
+          <div class="book-title">El Club Dumas</div>
+          <div class="book-author">Arturo Pérez-Reverte</div>
+        </div>
+        <div class="book-card" data-cover="les-onze">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Les Onze</div>
+          <div class="book-author">Pierre Michon</div>
+        </div>
+        <div class="book-card" data-cover="aventures-guyane">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Aventures en Guyane</div>
+          <div class="book-author">Raymond Maufrais</div>
+        </div>
+        <div class="book-card" data-cover="le-tournoi-de-preux">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Le tournoi de Preux</div>
+          <div class="book-author">Jean Philippe Jaworski</div>
+        </div>
+        <div class="book-card" data-cover="une-sortie-honorable">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Une sortie honorable</div>
+          <div class="book-author">Éric Vuillard</div>
+        </div>
+        <div class="book-card" data-cover="la-invencion-de-morel">
+          <div class="cover-wrap"></div>
+          <div class="book-title">La invención de Morel</div>
+          <div class="book-author">Adolfo Bioy Casares</div>
+        </div>
+        <div class="book-card" data-cover="du-cote-de-chez-swann-combray">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Du côté de chez Swann</div>
+          <div class="book-author">Marcel Proust</div>
+        </div>
+        <div class="book-card" data-cover="lenfant-de-sable">
+          <div class="cover-wrap"></div>
+          <div class="book-title">L’enfant de sable</div>
+          <div class="book-author">Tahar ben Jelloun</div>
+        </div>
+        <div class="book-card" data-cover="the-terror">
+          <div class="cover-wrap"></div>
+          <div class="book-title">The Terror</div>
+          <div class="book-author">Dan Simmons</div>
+        </div>
+        <div class="book-card" data-cover="a-lequinoxe-au-dela">
+          <div class="cover-wrap"></div>
+          <div class="book-title">À l’équinoxe et au-delà</div>
+          <div class="book-author">Natsume Sôseki</div>
+        </div>
+        <div class="book-card" data-cover="sycomore-sickamour">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Sycomore Sickamour</div>
+          <div class="book-author">Pacôme Thiellement</div>
+        </div>
+        <div class="book-card" data-cover="novella-luminosa">
+          <div class="cover-wrap"></div>
+          <div class="book-title">La novella luminosa</div>
+          <div class="book-author">Mario Levrero</div>
+        </div>
+        <div class="book-card" data-cover="nadie-los-vio-salir">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Nadie los vio salir</div>
+          <div class="book-author">Eduardo Antonio Parra</div>
+        </div>
+        <div class="book-card" data-cover="lautre-nom">
+          <div class="cover-wrap"></div>
+          <div class="book-title">L’autre Nom</div>
+          <div class="book-author">Jon Fosse</div>
+        </div>
+        <div class="book-card" data-cover="rendezvous-with-rama">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Rendez-vous with Rama</div>
+          <div class="book-author">Arthur C. Clarke</div>
+        </div>
+        <div class="book-card" data-cover="guillotine-seche">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Guillotine Sèche</div>
+          <div class="book-author">René Belbenoit</div>
+        </div>
+        <div class="book-card" data-cover="imperatrice">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Impératrice</div>
+          <div class="book-author">Shan Sa</div>
+        </div>
+        <div class="book-card" data-cover="chroniques-mers-sud">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Chroniques des mers du Sud et autres contes</div>
+          <div class="book-author">Michel Humbert</div>
+        </div>
+        <div class="book-card" data-cover="seven-sisters">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Seven Sisters</div>
+          <div class="book-author">Lucinda Riley</div>
+        </div>
+        <div class="book-card" data-cover="ocho-milliones-dioses">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Ocho milliones de dioses</div>
+          <div class="book-author">David B. Gil</div>
+        </div>
+        <div class="book-card" data-cover="train-zero">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Le train zéro</div>
+          <div class="book-author">Iouri Bouïda</div>
+        </div>
+        <div class="book-card" data-cover="les-meteores">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Les météores</div>
+          <div class="book-author">Michel Tournier</div>
+        </div>
+        <div class="book-card" data-cover="emotional-intelligence">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Emotional Intelligence</div>
+          <div class="book-author">Daniel Goleman</div>
+        </div>
+        <div class="book-card" data-cover="la-prueba-del-laberinto">
+          <div class="cover-wrap"></div>
+          <div class="book-title">La prueba del laberinto</div>
+          <div class="book-author">Fernando Sánchez Dragó</div>
+        </div>
+        <div class="book-card" data-cover="dans-lombre-de-la-lumiere">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Dans l’ombre de la lumière</div>
+          <div class="book-author">Claude Pujade-Renaud</div>
+        </div>
+        <div class="book-card" data-cover="the-left-hand-of-darkness">
+          <div class="cover-wrap"></div>
+          <div class="book-title">The left hand of darkness</div>
+          <div class="book-author">Ursula Le Guin</div>
+        </div>
+        <div class="book-card" data-cover="ni-deve-ni-dadam">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Ni d’Eve ni d’Adam</div>
+          <div class="book-author">Amélie Nothomb</div>
+        </div>
+        <div class="book-card" data-cover="nocturno-de-chile">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Nocturno de Chile</div>
+          <div class="book-author">Bolaño</div>
+        </div>
+        <div class="book-card" data-cover="lenquete-infinie">
+          <div class="cover-wrap"></div>
+          <div class="book-title">L’enquête infinie</div>
+          <div class="book-author">Pacôme Thiellement</div>
+        </div>
+        <div class="book-card" data-cover="stupeur-et-tremblements">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Stupeur et tremblements</div>
+          <div class="book-author">Amélie Nothomb</div>
+        </div>
+        <div class="book-card" data-cover="solaris">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Solaris</div>
+          <div class="book-author">Stanislaw Lem</div>
+          <div class="book-back">
+            <p>Solaris, planète longtemps oubliée par les explorations humaines, tourne autour de deux soleils, et ne semble pas abriter de vie. Un jour pourtant, un groupe de scientifiques y découvre une étonnante entité sous la forme d'un vaste océan protoplasmique. Mais après de nombreuses études, elle est déclarée non pensante et sans intérêt, l'ensemble des stimuli humains n'ayant jamais engendré de réponse. Jusqu'au jour où le docteur Kelvin débarque sur la planète et rencontre la femme qu'il avait aimée et qui s'était depuis suicidée. Étonnement, effroi puis incompréhension vont alors se succéder et pousser Kelvin à chercher d'où vient ce si réaliste et désirable mirage.</p>
+          </div>
+        </div>
+        <div class="book-card" data-cover="les-abeilles-grises">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Les abeilles grises</div>
+          <div class="book-author">Andreï Kourkov</div>
+        </div>
+        <div class="book-card" data-cover="la-saison-de-lombre">
+          <div class="cover-wrap"></div>
+          <div class="book-title">La Saison de l’ombre</div>
+          <div class="book-author">Léonora Miano</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="year-section" id="2024">
+      <div class="year-header">
+        <h2>2024</h2><span class="year-count"></span>
+      </div>
+      <div class="book-grid">
+
+        <div class="book-card" data-cover="tres-tristes-tigres">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Tres tristes tigres</div>
+          <div class="book-author">G. Cabrera Infante</div>
+        </div>
+        <div class="book-card" data-cover="metro-2033">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Metro 2033</div>
+          <div class="book-author">Dmitry Glukhovsky</div>
+        </div>
+        <div class="book-card" data-cover="hygiene-de-lassassin">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Hygiène de l’assassin</div>
+          <div class="book-author">Amélie Nothomb</div>
+        </div>
+        <div class="book-card" data-cover="annapurna-premier-8000">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Annapurna premier 8000</div>
+          <div class="book-author">Maurice Herzog</div>
+        </div>
+        <div class="book-card" data-cover="sing-unburied-sing">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Sing unburied, sing</div>
+          <div class="book-author">Jesmyn Ward</div>
+        </div>
+        <div class="book-card" data-cover="amuleto">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Amuleto</div>
+          <div class="book-author">Roberto Bolaño</div>
+        </div>
+        <div class="book-card" data-cover="la-conscience-de-zeno">
+          <div class="cover-wrap"></div>
+          <div class="book-title">La conscience de Zeno</div>
+          <div class="book-author">Italo Svevo</div>
+        </div>
+        <div class="book-card" data-cover="la-chute">
+          <div class="cover-wrap"></div>
+          <div class="book-title">La chute</div>
+          <div class="book-author">Albert Camus</div>
+        </div>
+        <div class="book-card" data-cover="saison-orages">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Sorceleur – La saison des orages</div>
+          <div class="book-author">Andrej Sapkowski</div>
+        </div>
+        <div class="book-card" data-cover="premier-sang">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Premier sang</div>
+          <div class="book-author">Amélie Nothomb</div>
+        </div>
+        <div class="book-card" data-cover="jacaranda">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Jacaranda</div>
+          <div class="book-author">Gael Faye</div>
+        </div>
+        <div class="book-card" data-cover="lamant">
+          <div class="cover-wrap"></div>
+          <div class="book-title">L’Amant</div>
+          <div class="book-author">Marguerite Duras</div>
+        </div>
+        <div class="book-card" data-cover="blandin">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Montefellóne, Comment Blandin fut perdu</div>
+          <div class="book-author">Jean-Philippe Jaworski</div>
+        </div>
+        <div class="book-card" data-cover="el-amor-en-los-tiempos-del-colera">
+          <div class="cover-wrap"></div>
+          <div class="book-title">El amor en los tiempos del cólera</div>
+          <div class="book-author">Gabriel Garcia Marquez</div>
+        </div>
+        <div class="book-card" data-cover="figures-de-limmanence">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Figures de l’immanence, pour une lecture philosophique du Yi King</div>
+          <div class="book-author">François Jullien</div>
+        </div>
+        <div class="book-card" data-cover="histoire-de-la-colonne-infame">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Histoire de la colonne infâme</div>
+          <div class="book-author">Alessandro Manzoni</div>
+        </div>
+        <div class="book-card" data-cover="courir-apres-les-ombres">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Courir après les ombres</div>
+          <div class="book-author">Sigolène Vinson</div>
+        </div>
+        <div class="book-card" data-cover="stabat-mater-2">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Stabat Mater</div>
+          <div class="book-author">Xavier Bazot</div>
+        </div>
+        <div class="book-card" data-cover="blood-meridian">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Blood meridian</div>
+          <div class="book-author">Cormac McCarthy</div>
+        </div>
+        <div class="book-card" data-cover="la-horde-du-contrevent">
+          <div class="cover-wrap"></div>
+          <div class="book-title">La horde du Contrevent</div>
+          <div class="book-author">Alain Damasio</div>
+        </div>
+        <div class="book-card" data-cover="do-androids-dream-of-electric-sheep">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Do Androids Dream of Electric Sheep?</div>
+          <div class="book-author">Philip K. Dick.</div>
+        </div>
+        <div class="book-card" data-cover="laine-des-orphelins">
+          <div class="cover-wrap"></div>
+          <div class="book-title">L’ainé des orphelins</div>
+          <div class="book-author">Tierno Monénembo</div>
+        </div>
+        <div class="book-card" data-cover="les-bienveillantes">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Les bienveillantes</div>
+          <div class="book-author">Jonathan Littell</div>
+          <div class="book-back">
+            <p>En fait, j'aurais tout aussi bien pu ne pas écrire. Après tout, ce n'est pas une obligation. Depuis la guerre, je suis resté un homme discret ; grâce à Dieu, je n'ai jamais eu besoin, comme certains de mes anciens collègues, d'écrire mes Mémoires à fin de justification, car je n'ai rien à justifier, ni dans un but lucratif, car je gagne assez bien ma vie comme ça. Je ne regrette rien: j'ai fait mon travail, voilà tout. Malgré mes travers, et ils ont été nombreux, je suis resté de ceux qui pensent que les seules choses indispensables à la vie humaine sont l'air, le manger, le boire et l'excrétion, et la recherche de la vérité. Le reste est facultatif.</p>
+          </div>
+        </div>
+        <div class="book-card" data-cover="une-si-longue-lettre">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Une si longue lettre</div>
+          <div class="book-author">Mariama Bâ</div>
+        </div>
+        <div class="book-card" data-cover="marcher">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Marcher</div>
+          <div class="book-author">Tomas Espedal</div>
+        </div>
+        <div class="book-card" data-cover="kafka-sur-le-rivage">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Kafka sur le rivage</div>
+          <div class="book-author">Haruki Murakami</div>
+        </div>
+        <div class="book-card" data-cover="smart-couple-finish-rich">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Smart Couple finish rich</div>
+          <div class="book-author">David Bach</div>
+        </div>
+        <div class="book-card" data-cover="la-pista-de-hielo">
+          <div class="cover-wrap"></div>
+          <div class="book-title">La pista de hielo</div>
+          <div class="book-author">Roberto Bolaño</div>
+        </div>
+        <div class="book-card" data-cover="el-informe-de-brodie">
+          <div class="cover-wrap"></div>
+          <div class="book-title">El informe de Brodie</div>
+          <div class="book-author">Jorge Luis Borges</div>
+        </div>
+        <div class="book-card" data-cover="la-victoire-des-sans-roi">
+          <div class="cover-wrap"></div>
+          <div class="book-title">La victoire des sans Roi</div>
+          <div class="book-author">Pacôme Thiellement</div>
+        </div>
+        <div class="book-card" data-cover="le-bal-des-voleurs">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Le voyageur sans bagage<br>Le bal des voleurs</div>
+          <div class="book-author">Jean Anouilh</div>
+        </div>
+        <div class="book-card" data-cover="a-confederacy-of-dunces">
+          <div class="cover-wrap"></div>
+          <div class="book-title">A confederacy of Dunces</div>
+          <div class="book-author">John Kennedy Toole</div>
+        </div>
+        <div class="book-card" data-cover="gens-de-la-mer-a-dar-essalaam">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Gens de la mer à Dar es-Salaam</div>
+          <div class="book-author">Georges Loire</div>
+        </div>
+        <div class="book-card" data-cover="cles-du-desert">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Les clés du désert</div>
+          <div class="book-author">L.N. Lavolle</div>
+        </div>
+        <div class="book-card" data-cover="rhum-histoires-vraies">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Rhum, Histoires vraies</div>
+          <div class="book-author">Blaise Cendrar</div>
+        </div>
+        <div class="book-card" data-cover="travel-in-the-interior-district-of-africa">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Travel in the interior district of Africa</div>
+          <div class="book-author">Mungo Park</div>
+        </div>
+        <div class="book-card" data-cover="water-music">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Water Music</div>
+          <div class="book-author">T.C. Boyle</div>
+        </div>
+        <div class="book-card" data-cover="histoire-naturelle-du-silence">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Histoire naturelle du silence</div>
+          <div class="book-author">Jérôme Sueur</div>
+        </div>
+        <div class="book-card" data-cover="lidentite">
+          <div class="cover-wrap"></div>
+          <div class="book-title">L’identité</div>
+          <div class="book-author">Milan Kundera</div>
+        </div>
+        <div class="book-card" data-cover="le-rapport-de-brodeck">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Le Rapport de Brodeck</div>
+          <div class="book-author">Philippe Claudel</div>
+        </div>
+        <div class="book-card" data-cover="lait-et-miel">
+          <div class="cover-wrap"></div>
+          <div class="book-title">lait et miel</div>
+          <div class="book-author">Rupi Kaur</div>
+        </div>
+        <div class="book-card" data-cover="joyeux-noel">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Joyeux Noël&nbsp;!</div>
+          <div class="book-author">Auteurs multiples (folio)</div>
+        </div>
+        <div class="book-card" data-cover="ubik">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Ubik</div>
+          <div class="book-author">Philip K. Dick</div>
+        </div>
+        <div class="book-card" data-cover="oncle-vania">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Oncle Vania</div>
+          <div class="book-author">Anton Tchekhov</div>
+        </div>
+        <div class="book-card" data-cover="lannonce-faite-a-marie">
+          <div class="cover-wrap"></div>
+          <div class="book-title">L’annonce faite à Marie</div>
+          <div class="book-author">Paul Claudel</div>
+        </div>
+        <div class="book-card" data-cover="les-furtifs">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Les furtifs</div>
+          <div class="book-author">Alain Damasio</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="year-section" id="2023">
+      <div class="year-header">
+        <h2>2023</h2><span class="year-count"></span>
+      </div>
+      <div class="book-grid">
+
+        <div class="book-card" data-cover="ojo-por-diente">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Ojo por diente</div>
+          <div class="book-author">Rubén Bareiro Saguier</div>
+        </div>
+        <div class="book-card" data-cover="la-fille-du-capitaine">
+          <div class="cover-wrap"></div>
+          <div class="book-title">La fille du capitaine</div>
+          <div class="book-author">Alexandre Pouchkine</div>
+        </div>
+        <div class="book-card" data-cover="vol-de-nuit">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Vol de nuit</div>
+          <div class="book-author">Antoine de Saint-Exupéry</div>
+        </div>
+        <div class="book-card" data-cover="el-cartero-de-neruda">
+          <div class="cover-wrap"></div>
+          <div class="book-title">El cartero de Neruda</div>
+          <div class="book-author">Antonio Skármeta</div>
+        </div>
+        <div class="book-card" data-cover="lezardes-et-autres-nouvelles">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Lézardes et autres nouvelles</div>
+          <div class="book-author">Beata Umubyeyi Maisesse</div>
+        </div>
+        <div class="book-card" data-cover="la-venus-dille-vision-de-charles-xi-il-viccolo-di-madama-lucrezia">
+          <div class="cover-wrap"></div>
+          <div class="book-title">La vénus d’Ille, Vision de Charles XI, Il Viccolo di Madama Lucrezia</div>
+          <div class="book-author">Prosper Mérimée</div>
+        </div>
+        <div class="book-card" data-cover="ejo">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Ejo</div>
+          <div class="book-author">Beata Umubyeyi Maisesse</div>
+        </div>
+        <div class="book-card" data-cover="les-rats">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Les rats</div>
+          <div class="book-author">Bernard Frank</div>
+        </div>
+        <div class="book-card" data-cover="el-secreto-del-mal">
+          <div class="cover-wrap"></div>
+          <div class="book-title">El secreto del mal</div>
+          <div class="book-author">Bolaño</div>
+        </div>
+        <div class="book-card" data-cover="medee">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Médée</div>
+          <div class="book-author">Anouilh</div>
+        </div>
+        <div class="book-card" data-cover="the-book-without-words">
+          <div class="cover-wrap"></div>
+          <div class="book-title">The book without words</div>
+          <div class="book-author">AVI</div>
+        </div>
+        <div class="book-card" data-cover="lettres-persanes">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Lettres persanes</div>
+          <div class="book-author">Montesquieu</div>
+        </div>
+        <div class="book-card" data-cover="blizzard">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Blizzard</div>
+          <div class="book-author">Marie Vingtras</div>
+        </div>
+        <div class="book-card" data-cover="la-fuite-a-constantinople">
+          <div class="cover-wrap"></div>
+          <div class="book-title">La fuite à Constantinople</div>
+          <div class="book-author">Jacques Almira</div>
+        </div>
+        <div class="book-card" data-cover="quo-vadis">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Quo Vadis</div>
+          <div class="book-author">Henryk Sienkiewicz</div>
+        </div>
+        <div class="book-card" data-cover="la-sombra-del-viento">
+          <div class="cover-wrap"></div>
+          <div class="book-title">La Sombra del Viento</div>
+          <div class="book-author">Carlos Ruiz Zafón</div>
+        </div>
+        <div class="book-card" data-cover="memoires-dhadrien">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Mémoires d’Hadrien</div>
+          <div class="book-author">Marguerite Yourcenar</div>
+        </div>
+        <div class="book-card" data-cover="desertion">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Desertion</div>
+          <div class="book-author">Abdulrazak Gurnah</div>
+        </div>
+        <div class="book-card" data-cover="les-liaisons-dangereuses">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Les Liaisons dangereuses</div>
+          <div class="book-author">Choderlos de Laclos</div>
+        </div>
+        <div class="book-card" data-cover="lepopee-de-gilgamesh">
+          <div class="cover-wrap"></div>
+          <div class="book-title">L’Épopée de Gilgamesh</div>
+          <div class="book-author">Jacques Cassabois</div>
+        </div>
+        <div class="book-card" data-cover="herodias">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Herodias</div>
+          <div class="book-author">Flaubert</div>
+        </div>
+        <div class="book-card" data-cover="midnights-children">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Midnight’s Children</div>
+          <div class="book-author">Salman Rushdie</div>
+        </div>
+        <div class="book-card" data-cover="azazel">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Azazel</div>
+          <div class="book-author">Boris Akounine</div>
+        </div>
+        <div class="book-card" data-cover="ubu-roi">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Ubu roi</div>
+          <div class="book-author">Jarry</div>
+        </div>
+        <div class="book-card" data-cover="un-ocean-deux-mers-trois-continents">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Un océan, deux mers, trois continents</div>
+          <div class="book-author">Wilfried N’Sondé</div>
+        </div>
+        <div class="book-card" data-cover="moravagine">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Moravagine</div>
+          <div class="book-author">Blaise Cendrars</div>
+        </div>
+        <div class="book-card" data-cover="el-aleph">
+          <div class="cover-wrap"></div>
+          <div class="book-title">El Aleph</div>
+          <div class="book-author">Jorge Luis Borges</div>
+        </div>
+        <div class="book-card" data-cover="le-passage-du-gitan">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Le passage du gitan</div>
+          <div class="book-author">Yves Heurté</div>
+        </div>
+        <div class="book-card" data-cover="estrella-distante">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Estrella distante</div>
+          <div class="book-author">Roberto Bolaño</div>
+        </div>
+        <div class="book-card" data-cover="les-cavaliers">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Les cavaliers</div>
+          <div class="book-author">Joseph Kessel</div>
+          <div class="book-back">
+            <p>Ouroz et sa longue marche au bout de l'enfer... Le grand Toursène fidèle à sa légende de <i>tchopendoz</i> toujours victorieux... Mokkhi, le bon <i>sais</i>, au destin inversé par la haine et la découverte de la femme... Zéré qui dans l'humiliation efface les souillures d'une misère qui date de l'origine des temps... Et puis l'inoubliable Guardi Guedj, le conteur centenaire à qui son peuple a donné le plus beau des noms : «Aïeul de tout le monde»... Enfin, Jehol «le Cheval Fou», dont la présence tutélaire et «humaine» plane sur cette chanson de geste...</p>
+          </div>
+        </div>
+        <div class="book-card" data-cover="the-passanger">
+          <div class="cover-wrap"></div>
+          <div class="book-title">The passanger</div>
+          <div class="book-author">Cormac McCarthy</div>
+        </div>
+        <div class="book-card" data-cover="le-desert-des-tartares">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Le désert des Tartares</div>
+          <div class="book-author">Dino Buzzati</div>
+        </div>
+        <div class="book-card">
+          <div class="cover-wrap"></div>
+          <div class="book-title">El invierno en Lisboa (pas fini)</div>
+          <div class="book-author">Antonio Muñoz Molina</div>
+        </div>
+        <div class="book-card" data-cover="rumeur">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Rumeur</div>
+          <div class="book-author">Thomas Lavachery</div>
+        </div>
+        <div class="book-card">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Musashi, livre 3</div>
+          <div class="book-author">Eiji Yoshikawa</div>
+        </div>
+        <div class="book-card" data-cover="murambi-le-livre-des-ossements">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Murambi le livre des ossements</div>
+          <div class="book-author">Boubacar Boris Diop</div>
+        </div>
+        <div class="book-card" data-cover="les-travailleurs-de-la-mer">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Les travailleurs de la mer</div>
+          <div class="book-author">Victor Hugo</div>
+        </div>
+        <div class="book-card">
+          <div class="cover-wrap"></div>
+          <div class="book-title">O manuscrito 512 : A cidade perdida da bahia</div>
+          <div class="book-author">Wagner Ribeiro de Carvalho (FACE-UNEB)</div>
+        </div>
+        <div class="book-card" data-cover="on-ne-badine-pas-avec-lamour">
+          <div class="cover-wrap"></div>
+          <div class="book-title">On ne badine pas avec l’amour</div>
+          <div class="book-author">Musset</div>
+        </div>
+        <div class="book-card" data-cover="au-bord-2">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Au bord</div>
+          <div class="book-author">Xavier Bazot</div>
+        </div>
+        <div class="book-card" data-cover="musashi-livre-1-et-2">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Musashi, livre 1 et 2</div>
+          <div class="book-author">Eiji Yoshikawa</div>
+        </div>
+        <div class="book-card" data-cover="du-monde-entiers-poesies-completes-19121924">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Du monde entiers, Poésies complètes 1912-1924</div>
+          <div class="book-author">Blaise Cendrars</div>
+        </div>
+        <div class="book-card" data-cover="el-libro-de-arena">
+          <div class="cover-wrap"></div>
+          <div class="book-title">El Libro de Arena</div>
+          <div class="book-author">Jorge Luis Borges</div>
+        </div>
+        <div class="book-card" data-cover="la-tradition-du-songe">
+          <div class="cover-wrap"></div>
+          <div class="book-title">La tradition du Songe</div>
+          <div class="book-author">J.B. Tati Loutard</div>
+        </div>
+        <div class="book-card" data-cover="le-sang-du-serpent-a-plumes">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Le sang du serpent à plumes</div>
+          <div class="book-author">Laurence Schaack</div>
+        </div>
+        <div class="book-card" data-cover="le-tambour">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Le tambour</div>
+          <div class="book-author">Günter Grass</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="year-section" id="2022">
+      <div class="year-header">
+        <h2>2022</h2><span class="year-count"></span>
+      </div>
+      <div class="book-grid">
+
+        <div class="book-card" data-cover="lettre-a-menecee">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Lettre à Ménécée</div>
+          <div class="book-author">Épicure</div>
+        </div>
+        <div class="book-card" data-cover="un-roi-sans-divertissement">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Un roi sans divertissement</div>
+          <div class="book-author">Jean Giono</div>
+        </div>
+        <div class="book-card" data-cover="la-belle-amour-humaine">
+          <div class="cover-wrap"></div>
+          <div class="book-title">La belle amour humaine</div>
+          <div class="book-author">Lyonel Trouillot</div>
+        </div>
+        <div class="book-card" data-cover="el-gaucho-insufrible">
+          <div class="cover-wrap"></div>
+          <div class="book-title">El gaucho insufrible</div>
+          <div class="book-author">Bolaño</div>
+        </div>
+        <div class="book-card" data-cover="a-la-recherche-du-fleuve-sacre-les-sources-du-nil">
+          <div class="cover-wrap"></div>
+          <div class="book-title">À la recherche du fleuve sacré : Les sources du Nil</div>
+          <div class="book-author">Philippe Nessmann</div>
+        </div>
+        <div class="book-card" data-cover="la-foret-illuminee">
+          <div class="cover-wrap"></div>
+          <div class="book-title">La forêt illuminée</div>
+          <div class="book-author">Gervais Mendo Ze</div>
+        </div>
+        <div class="book-card" data-cover="gagner-la-guerre">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Gagner la guerre</div>
+          <div class="book-author">Jean-Philippe Jaworski</div>
+          <div class="book-back">
+            <p>Gagner une guerre, c'est bien joli, mais quand il faut partager le butin entre les vainqueurs, et quand ces triomphateurs sont des nobles pourris d'orgueil et d'ambition, le coup de grâce infligé à l'ennemi n'est qu'un amuse-gueule. C'est la curée qui commence. On en vient à regretter les bonnes vieilles batailles rangées et les tueries codifiées selon l'art militaire. Désormais, pour rafler le pactole, c'est au sein de la famille qu'on sort les couteaux. Et il se trouve que les couteaux, justement, c'est plutôt mon rayon...</p>
+          </div>
+        </div>
+        <div class="book-card" data-cover="la-voie-royale">
+          <div class="cover-wrap"></div>
+          <div class="book-title">La voie royale</div>
+          <div class="book-author">André Malraux</div>
+        </div>
+        <div class="book-card" data-cover="le-coup-de-grace">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Le coup de grâce</div>
+          <div class="book-author">Marguerite Yourcenar</div>
+        </div>
+        <div class="book-card">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Charte du Verstolhen</div>
+          <div class="book-author">Cynthia Fleury &amp; Antoine Fenoglio</div>
+        </div>
+        <div class="book-card" data-cover="lor-de-cajamalca">
+          <div class="cover-wrap"></div>
+          <div class="book-title">L’or de Cajamalca</div>
+          <div class="book-author">Jakob Wassermann</div>
+        </div>
+        <div class="book-card" data-cover="el-hombre-que-amaba-a-los-perros">
+          <div class="cover-wrap"></div>
+          <div class="book-title">El hombre que amaba a los perros</div>
+          <div class="book-author">Leonardo Padura</div>
+        </div>
+        <div class="book-card" data-cover="le-parfum-des-belles-de-nuit">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Le parfum des belles de nuit</div>
+          <div class="book-author">Xavier Orville</div>
+        </div>
+        <div class="book-card" data-cover="les-fauxmonnayeurs">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Les faux-monnayeurs</div>
+          <div class="book-author">André Gide</div>
+        </div>
+        <div class="book-card" data-cover="anthologie-de-la-nouvelle-poesie-negre-et-malgache">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Anthologie de la nouvelle poésie nègre et malgache</div>
+          <div class="book-author">Léopold Sédar Senghor</div>
+        </div>
+        <div class="book-card" data-cover="life-of-pi">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Life of Pi</div>
+          <div class="book-author">Yann Martel</div>
+        </div>
+        <div class="book-card" data-cover="le-pendu-de-conakry">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Le pendu de Conakry</div>
+          <div class="book-author">Jean-Christophe Rufin</div>
+        </div>
+        <div class="book-card" data-cover="llamadas-telefonicas">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Llamadas telefónicas</div>
+          <div class="book-author">Roberto Bolaño</div>
+        </div>
+        <div class="book-card" data-cover="le-grand-meaulnes">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Le grand Meaulnes</div>
+          <div class="book-author">Alain Fournier</div>
+        </div>
+        <div class="book-card">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Versus and other stories</div>
+          <div class="book-author">The Huza Press Anthology 2015</div>
+        </div>
+        <div class="book-card" data-cover="un-corps-tropical">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Un corps tropical</div>
+          <div class="book-author">Philippe Marczewski</div>
+        </div>
+        <div class="book-card" data-cover="ficciones">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Ficciones</div>
+          <div class="book-author">Jorge Luis Borges</div>
+        </div>
+        <div class="book-card" data-cover="la-plus-secrete-memoire-des-hommes">
+          <div class="cover-wrap"></div>
+          <div class="book-title">La plus secrète mémoire des hommes</div>
+          <div class="book-author">Mohamed Mbougar Sarr</div>
+        </div>
+        <div class="book-card" data-cover="tous-tes-enfants-disperses">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Tous tes enfants dispersés</div>
+          <div class="book-author">Beata Umubyeyi Mairesse</div>
+        </div>
+        <div class="book-card" data-cover="le-barbier-de-seville">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Le Barbier de Séville</div>
+          <div class="book-author">Beaumarchais</div>
+        </div>
+        <div class="book-card" data-cover="nuit-de-vent">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Nuit de vent</div>
+          <div class="book-author">António Aurélio Gonçalves</div>
+        </div>
+        <div class="book-card" data-cover="paroles">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Paroles</div>
+          <div class="book-author">Jacques Prévert</div>
+        </div>
+        <div class="book-card">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Vingt mille lieues sous les mers</div>
+          <div class="book-author">Victor Hugo</div>
+        </div>
+        <div class="book-card" data-cover="une-saison-au-congo">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Une saison au congo</div>
+          <div class="book-author">Aimé Césaire</div>
+        </div>
+        <div class="book-card" data-cover="hija-de-la-fortuna">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Hija de la fortuna</div>
+          <div class="book-author">Isabelle Allende</div>
+        </div>
+        <div class="book-card" data-cover="personne-ne-precede">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Personne ne précède</div>
+          <div class="book-author">Gaspard Hons</div>
+        </div>
+        <div class="book-card" data-cover="frere-dame">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Frère d’âme</div>
+          <div class="book-author">David Diop</div>
+        </div>
+        <div class="book-card" data-cover="lenfant-et-la-riviere">
+          <div class="cover-wrap"></div>
+          <div class="book-title">L’enfant et la rivière</div>
+          <div class="book-author">Henri Bosco</div>
+        </div>
+        <div class="book-card" data-cover="aminata">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Aminata</div>
+          <div class="book-author">Francis Imbuga</div>
+        </div>
+        <div class="book-card" data-cover="le-loup-des-steppes">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Le Loup des steppes</div>
+          <div class="book-author">Hermann Hesse</div>
+        </div>
+        <div class="book-card" data-cover="lile-aux-esclaves">
+          <div class="cover-wrap"></div>
+          <div class="book-title">L’Île aux esclaves</div>
+          <div class="book-author">Marivaux</div>
+        </div>
+        <div class="book-card">
+          <div class="cover-wrap"></div>
+          <div class="book-title">O prisioneiro</div>
+          <div class="book-author">Érico Veríssimo</div>
+        </div>
+        <div class="book-card" data-cover="lil-du-leopard">
+          <div class="cover-wrap"></div>
+          <div class="book-title">L’œil du léopard</div>
+          <div class="book-author">Henning Mankell</div>
+        </div>
+        <div class="book-card" data-cover="linsolation">
+          <div class="cover-wrap"></div>
+          <div class="book-title">L’insolation</div>
+          <div class="book-author">Rachid Boudjedra</div>
+        </div>
+        <div class="book-card" data-cover="reves-amers">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Rếves amers</div>
+          <div class="book-author">Maryse Condé</div>
+        </div>
+        <div class="book-card">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Pièces courtes</div>
+          <div class="book-author">Des mots pour la vie (secours populaire français)</div>
+        </div>
+        <div class="book-card" data-cover="poemes-en-prose-et-autres-poemes-inedits">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Poèmes en prose et autres poèmes inédits</div>
+          <div class="book-author">Ivan Tourgueniev</div>
+        </div>
+        <div class="book-card" data-cover="berlin-alexanderplatz">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Berlin Alexanderplatz</div>
+          <div class="book-author">Alfred Döblin</div>
+        </div>
+        <div class="book-card" data-cover="la-vache-du-roi-musinga">
+          <div class="cover-wrap"></div>
+          <div class="book-title">La vache du roi Musinga</div>
+          <div class="book-author">Scholastique Mukasonga</div>
+        </div>
+        <div class="book-card">
+          <div class="cover-wrap"></div>
+          <div class="book-title">The Concert</div>
+          <div class="book-author">Ismael Kadare</div>
+        </div>
+        <div class="book-card" data-cover="antigone">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Antigone</div>
+          <div class="book-author">Jean Anouilh</div>
+        </div>
+        <div class="book-card" data-cover="memoires-de-porcepic">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Mémoires de porc-épic</div>
+          <div class="book-author">Alain Mabanckou</div>
+        </div>
+        <div class="book-card" data-cover="roberto-zucco-tabataba-coco">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Roberto Zucco, Tabataba, Coco</div>
+          <div class="book-author">Bernard-Marie Koltès</div>
+        </div>
+        <div class="book-card" data-cover="habitante-irreal">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Habitante irreal</div>
+          <div class="book-author">Paulo Scott</div>
+        </div>
+        <div class="book-card" data-cover="la-goutte-dor">
+          <div class="cover-wrap"></div>
+          <div class="book-title">La goutte d’or</div>
+          <div class="book-author">Michel Tournier</div>
+        </div>
+        <div class="book-card" data-cover="the-caucasian-chalk-circle">
+          <div class="cover-wrap"></div>
+          <div class="book-title">The caucasian chalk circle</div>
+          <div class="book-author">Bertold Brecht</div>
+        </div>
+        <div class="book-card" data-cover="les-fourmis">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Les fourmis</div>
+          <div class="book-author">Bernard Werber</div>
+        </div>
+        <div class="book-card">
+          <div class="cover-wrap"></div>
+          <div class="book-title">2666 – Livre 5</div>
+          <div class="book-author">Roberto Bolaño</div>
+        </div>
+        <div class="book-card">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Rapport : Les inégalités tuent</div>
+          <div class="book-author">Oxfam</div>
+        </div>
+        <div class="book-card" data-cover="pilote-de-guerre">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Pilote de guerre</div>
+          <div class="book-author">Antoine de Saint-Exupéry</div>
+        </div>
+        <div class="book-card">
+          <div class="cover-wrap"></div>
+          <div class="book-title">2666 – Livre 4</div>
+          <div class="book-author">Roberto Bolaño</div>
+        </div>
+        <div class="book-card" data-cover="siddhartha">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Siddhartha</div>
+          <div class="book-author">Hermann Hesse</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="year-section" id="2021">
+      <div class="year-header">
+        <h2>2021</h2><span class="year-count"></span>
+      </div>
+      <div class="book-grid">
+
+        <div class="book-card" data-cover="2666-livre-1-a-3">
+          <div class="cover-wrap"></div>
+          <div class="book-title">2666 – livre 1 à 3</div>
+          <div class="book-author">Roberto Bolaño</div>
+        </div>
+        <div class="book-card" data-cover="la-carte-et-le-territoire">
+          <div class="cover-wrap"></div>
+          <div class="book-title">La carte et le territoire</div>
+          <div class="book-author">Michel Houellebecq</div>
+        </div>
+        <div class="book-card" data-cover="the-interesting-narrative-of-the-life-of-olaudah-equiano">
+          <div class="cover-wrap"></div>
+          <div class="book-title">The Interesting Narrative of the Life of Olaudah Equiano</div>
+          <div class="book-author">Olaudah Equiano</div>
+        </div>
+        <div class="book-card" data-cover="photo-de-groupe-au-bord-du-fleuve">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Photo de groupe au bord du fleuve</div>
+          <div class="book-author">Emmanuel Dongala</div>
+        </div>
+        <div class="book-card" data-cover="na-minha-pele">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Na minha pele</div>
+          <div class="book-author">Lázaro Ramos</div>
+        </div>
+        <div class="book-card" data-cover="mateo-falcone">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Mateo Falcone</div>
+          <div class="book-author">Prosper Mérimée</div>
+        </div>
+        <div class="book-card" data-cover="the-handmaids-tale">
+          <div class="cover-wrap"></div>
+          <div class="book-title">The Handmaid’s tale</div>
+          <div class="book-author">Margaret Atwood</div>
+        </div>
+        <div class="book-card" data-cover="la-valse-aux-adieux">
+          <div class="cover-wrap"></div>
+          <div class="book-title">La valse aux adieux</div>
+          <div class="book-author">Kundera</div>
+        </div>
+        <div class="book-card" data-cover="les-fleurs-du-mal">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Les fleurs du mal</div>
+          <div class="book-author">Baudelaire</div>
+        </div>
+        <div class="book-card" data-cover="perro-muerto">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Perro muerto</div>
+          <div class="book-author">Boris Quercia</div>
+        </div>
+        <div class="book-card" data-cover="camps-volants">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Camps volants</div>
+          <div class="book-author">Xavier Bazot</div>
+        </div>
+        <div class="book-card" data-cover="cahier-dun-retour-au-pays-natal">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Cahier d’un retour au pays natal</div>
+          <div class="book-author">Aimé Césaire</div>
+        </div>
+        <div class="book-card">
+          <div class="cover-wrap"></div>
+          <div class="book-title">From the heart of Africa : short stories form Rwanda</div>
+          <div class="book-author">Timothy Njoroge</div>
+        </div>
+        <div class="book-card" data-cover="la-remontee-des-cendres">
+          <div class="cover-wrap"></div>
+          <div class="book-title">La remontée des cendres</div>
+          <div class="book-author">Tahar Ben Jelloum</div>
+        </div>
+        <div class="book-card" data-cover="le-roi-de-kahel">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Le roi de Kahel</div>
+          <div class="book-author">Tierno Monénembo</div>
+        </div>
+        <div class="book-card" data-cover="la-boda-del-poeta">
+          <div class="cover-wrap"></div>
+          <div class="book-title">La boda del poeta</div>
+          <div class="book-author">Antonio Skármeta</div>
+        </div>
+        <div class="book-card" data-cover="conquistadors">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Conquistadors</div>
+          <div class="book-author">Éric Vuillard</div>
+        </div>
+        <div class="book-card" data-cover="lequipage">
+          <div class="cover-wrap"></div>
+          <div class="book-title">L’équipage</div>
+          <div class="book-author">Joseph Kessel</div>
+        </div>
+        <div class="book-card">
+          <div class="cover-wrap"></div>
+          <div class="book-title">O continente II</div>
+          <div class="book-author">Érico Veríssimo</div>
+        </div>
+        <div class="book-card" data-cover="supplement-au-voyage-de-bougainville">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Supplément au Voyage de Bougainville</div>
+          <div class="book-author">Diderot</div>
+        </div>
+        <div class="book-card" data-cover="voyage-autour-du-monde">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Voyage autour du monde</div>
+          <div class="book-author">Bougainville</div>
+        </div>
+        <div class="book-card" data-cover="la-sauvegarde-du-peuple">
+          <div class="cover-wrap"></div>
+          <div class="book-title">La sauvegarde du peuple</div>
+          <div class="book-author">Edwy Plenel</div>
+        </div>
+        <div class="book-card" data-cover="mesmo-sem-dinheiro-comprei-um-esqueite-novo">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Mesmo sem dinheiro comprei um esqueite novo</div>
+          <div class="book-author">Paulo Scott</div>
+        </div>
+        <div class="book-card" data-cover="o-continente-i">
+          <div class="cover-wrap"></div>
+          <div class="book-title">O continente I</div>
+          <div class="book-author">Érico Veríssimo</div>
+        </div>
+        <div class="book-card" data-cover="romances-sans-paroles-cellulairement">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Romances sans paroles, Cellulairement</div>
+          <div class="book-author">Verlaine</div>
+        </div>
+        <div class="book-card" data-cover="philadelphia-fire">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Philadelphia Fire</div>
+          <div class="book-author">John Edgar Wideman</div>
+        </div>
+        <div class="book-card" data-cover="ecrits-vagabonds">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Ecrits vagabonds</div>
+          <div class="book-author">Carlo Rovelli</div>
+        </div>
+        <div class="book-card" data-cover="la-vouivre">
+          <div class="cover-wrap"></div>
+          <div class="book-title">La vouivre</div>
+          <div class="book-author">Marcel Aymé</div>
+        </div>
+        <div class="book-card" data-cover="el-llano-en-llamas">
+          <div class="cover-wrap"></div>
+          <div class="book-title">El llano en llamas</div>
+          <div class="book-author">Juan Rulfo</div>
+        </div>
+        <div class="book-card" data-cover="la-metamorphose">
+          <div class="cover-wrap"></div>
+          <div class="book-title">La métamorphose</div>
+          <div class="book-author">Kafka</div>
+        </div>
+        <div class="book-card">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Cap-Vert: notes atlantiques</div>
+          <div class="book-author">Jean-Yves Loude et Viviane Lièvre</div>
+        </div>
+        <div class="book-card" data-cover="os-supridores">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Os supridores</div>
+          <div class="book-author">José Falero</div>
+        </div>
+        <div class="book-card" data-cover="seven-pillars-of-wisdom-book-1">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Seven pillars of wisdom, Book 1</div>
+          <div class="book-author">Thomas Edward Lawrence</div>
+        </div>
+        <div class="book-card" data-cover="alcools">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Alcools</div>
+          <div class="book-author">Apollinaire</div>
+        </div>
+        <div class="book-card" data-cover="desert">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Désert</div>
+          <div class="book-author">J.M.G Le Clézio</div>
+        </div>
+        <div class="book-card" data-cover="lart-daimer">
+          <div class="cover-wrap"></div>
+          <div class="book-title">L’art d’aimer</div>
+          <div class="book-author">Erich Fromm</div>
+        </div>
+        <div class="book-card" data-cover="ce-qui-reste-en-foret">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Ce qui reste en forêt</div>
+          <div class="book-author">Colin Niel</div>
+        </div>
+        <div class="book-card" data-cover="rayuela">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Rayuela</div>
+          <div class="book-author">Julio Cortázar</div>
+        </div>
+        <div class="book-card">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Pour une culture de paix dans la région des Grands Lacs Africains, Anthologie 2</div>
+          <div class="book-author">Édition Sembura</div>
+        </div>
+        <div class="book-card" data-cover="britannicus">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Britannicus</div>
+          <div class="book-author">Racine</div>
+        </div>
+        <div class="book-card" data-cover="neige">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Neige</div>
+          <div class="book-author">Orhan Pamuk</div>
+        </div>
+        <div class="book-card" data-cover="os-da-minha-rua">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Os da minha rua</div>
+          <div class="book-author">Ondjaki</div>
+        </div>
+        <div class="book-card" data-cover="luvre-au-noir">
+          <div class="cover-wrap"></div>
+          <div class="book-title">L’œuvre au noir</div>
+          <div class="book-author">Marguerite Yourcenar</div>
+        </div>
+        <div class="book-card" data-cover="cyrano-de-bergerac">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Cyrano de Bergerac</div>
+          <div class="book-author">Edmond Rostand</div>
+        </div>
+        <div class="book-card" data-cover="la-casa-verde">
+          <div class="cover-wrap"></div>
+          <div class="book-title">La casa verde</div>
+          <div class="book-author">Mario Vargas Llosa</div>
+        </div>
+        <div class="book-card" data-cover="kindred">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Kindred</div>
+          <div class="book-author">Octavia E. Butler</div>
+        </div>
+        <div class="book-card" data-cover="la-condition-humaine">
+          <div class="cover-wrap"></div>
+          <div class="book-title">La condition humaine</div>
+          <div class="book-author">André Malraux</div>
+        </div>
+        <div class="book-card">
+          <div class="cover-wrap"></div>
+          <div class="book-title">The Snows of Kilimanjaro</div>
+          <div class="book-author">Ernerst Hemingway</div>
+        </div>
+        <div class="book-card">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Les 101 plus belles Fables de La Fontaine</div>
+          <div class="book-author">Jean de la Fontaine</div>
+        </div>
+        <div class="book-card" data-cover="the-crook-factory">
+          <div class="cover-wrap"></div>
+          <div class="book-title">The crook factory</div>
+          <div class="book-author">Dan Simmons</div>
+        </div>
+        <div class="book-card" data-cover="le-coup-de-lune">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Le coup de Lune</div>
+          <div class="book-author">Simenon</div>
+        </div>
+        <div class="book-card">
+          <div class="cover-wrap"></div>
+          <div class="book-title">L’œuvre scolaire à Madagarcar, Mission chez les Mahafalys</div>
+          <div class="book-author">Revue de Madagascar</div>
+        </div>
+        <div class="book-card" data-cover="o-avesso-da-pele">
+          <div class="cover-wrap"></div>
+          <div class="book-title">O avesso da pele</div>
+          <div class="book-author">Jeferson Tenorio</div>
+        </div>
+        <div class="book-card">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Dernier carnet de route au Soudan français</div>
+          <div class="book-author">Lieutenant-colonel Klobb</div>
+        </div>
+        <div class="book-card" data-cover="lecume-des-jours">
+          <div class="cover-wrap"></div>
+          <div class="book-title">L’écume des jours</div>
+          <div class="book-author">Boris Vian</div>
+        </div>
+        <div class="book-card" data-cover="pssica">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Pssica</div>
+          <div class="book-author">Edyr Augusto</div>
+        </div>
+        <div class="book-card" data-cover="la-mediterranee">
+          <div class="cover-wrap"></div>
+          <div class="book-title">La Méditerranée</div>
+          <div class="book-author">Fernand Braudel</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="year-section" id="2020">
+      <div class="year-header">
+        <h2>2020</h2><span class="year-count"></span>
+      </div>
+      <div class="book-grid">
+
+        <div class="book-card" data-cover="putas-assassinas">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Putas Assassinas</div>
+          <div class="book-author">Roberto Bolaño</div>
+        </div>
+        <div class="book-card" data-cover="laure-du-bout-du-monde">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Laure du bout du monde</div>
+          <div class="book-author">Pierre Magnan</div>
+        </div>
+        <div class="book-card" data-cover="dune">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Dune</div>
+          <div class="book-author">Frank Herbert</div>
+        </div>
+        <div class="book-card" data-cover="salammbo">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Salammbô</div>
+          <div class="book-author">Gustave Flaubert</div>
+        </div>
+        <div class="book-card" data-cover="negrinha">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Negrinha</div>
+          <div class="book-author">Monteiro Lobato</div>
+        </div>
+        <div class="book-card" data-cover="life-times-of-michael-k">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Life &amp; Times of Michael K</div>
+          <div class="book-author">J.M. Coetzee</div>
+        </div>
+        <div class="book-card">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Et l’amour aussi a besoin de repos</div>
+          <div class="book-author">Drago Jancar</div>
+        </div>
+        <div class="book-card" data-cover="la-guyane-du-capitaine-anato">
+          <div class="cover-wrap"></div>
+          <div class="book-title">La guyane du capitaine Anato</div>
+          <div class="book-author">Colin Niel</div>
+        </div>
+        <div class="book-card" data-cover="o-problema-dos-tres-corpos">
+          <div class="cover-wrap"></div>
+          <div class="book-title">O problema dos três corpos</div>
+          <div class="book-author">Cixin Liu</div>
+        </div>
+        <div class="book-card" data-cover="la-vie-est-ailleurs">
+          <div class="cover-wrap"></div>
+          <div class="book-title">La vie est ailleurs</div>
+          <div class="book-author">Milan Kundera</div>
+        </div>
+        <div class="book-card" data-cover="batouala">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Batouala</div>
+          <div class="book-author">René Maran</div>
+        </div>
+        <div class="book-card" data-cover="el-salvaje">
+          <div class="cover-wrap"></div>
+          <div class="book-title">El salvaje</div>
+          <div class="book-author">Guillermo Arriaga</div>
+        </div>
+        <div class="book-card" data-cover="invention-des-autres-jours-2">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Invention des autres jours</div>
+          <div class="book-author">Jean-Daniel Dupuy</div>
+        </div>
+        <div class="book-card" data-cover="au-bord-2">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Au bord</div>
+          <div class="book-author">Xavier Bazot</div>
+        </div>
+        <div class="book-card" data-cover="half-of-a-yellow-sun">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Half of a yellow sun</div>
+          <div class="book-author">Chimamanda Ngozi Adichie</div>
+        </div>
+        <div class="book-card">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Au Fil de l’Âme</div>
+          <div class="book-author">Robert Hanay</div>
+        </div>
+        <div class="book-card" data-cover="ravage">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Ravage</div>
+          <div class="book-author">René Barjavel</div>
+        </div>
+        <div class="book-card" data-cover="poncia-vicencio">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Ponciá Vicêncio</div>
+          <div class="book-author">Conceição Evaristo</div>
+        </div>
+        <div class="book-card" data-cover="le-terroriste-noir">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Le terroriste noir</div>
+          <div class="book-author">Tierno Monénembo</div>
+        </div>
+        <div class="book-card" data-cover="vidas-secas">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Vidas Secas</div>
+          <div class="book-author">Graciliano Ramos</div>
+        </div>
+        <div class="book-card" data-cover="le-ventre-de-latlantique">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Le ventre de l’Atlantique</div>
+          <div class="book-author">Fatou Diome</div>
+        </div>
+        <div class="book-card" data-cover="heart-of-darkness-youth">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Heart of Darkness, Youth</div>
+          <div class="book-author">Joseph Conrad</div>
+        </div>
+        <div class="book-card" data-cover="histoire-dun-voyage-faict-en-la-terre-du-bresil">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Histoire d’un voyage faict en la terre du Brésil</div>
+          <div class="book-author">Jean de Léry</div>
+        </div>
+        <div class="book-card" data-cover="le-lion">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Le Lion</div>
+          <div class="book-author">Joseph Kessel</div>
+        </div>
+        <div class="book-card">
+          <div class="cover-wrap"></div>
+          <div class="book-title">O senhor embaixador</div>
+          <div class="book-author">Érico Veríssimo</div>
+        </div>
+        <div class="book-card" data-cover="yeruldelgger">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Yeruldelgger</div>
+          <div class="book-author">Ian Manook</div>
+        </div>
+        <div class="book-card" data-cover="can-such-things-be">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Can such things be ?</div>
+          <div class="book-author">Ambrose Bierce</div>
+        </div>
+        <div class="book-card" data-cover="mon-terroir-cest-les-galaxies">
+          <div class="cover-wrap"></div>
+          <div class="book-title">mon terroir c’est les galaxies</div>
+          <div class="book-author">Julos Beaucarne</div>
+        </div>
+        <div class="book-card" data-cover="balzac-et-la-petite-tailleuse-chinoise">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Balzac et la petite tailleuse chinoise</div>
+          <div class="book-author">Dai Sijie</div>
+        </div>
+        <div class="book-card" data-cover="ana-non">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Ana Non</div>
+          <div class="book-author">A. Gomez-Arcos</div>
+        </div>
+        <div class="book-card" data-cover="my-traitors-heart">
+          <div class="cover-wrap"></div>
+          <div class="book-title">My traitor’s heart</div>
+          <div class="book-author">Rian Malan</div>
+        </div>
+        <div class="book-card" data-cover="la-isla-bajo-el-mar">
+          <div class="cover-wrap"></div>
+          <div class="book-title">La isla bajo el mar</div>
+          <div class="book-author">Isabel Allende</div>
+          <div class="book-back">
+            <p>Saint-Domingue, 1770. Zarité Sedella, dite Tété, a neuf ans lorsqu'elle est vendue comme esclave à Toulouse Valmorain. Zarité va découvrir la plantation, avec ses champs de canne à sucre et les esclaves courbés sous le soleil de plomb, la violence des maîtres, le refuge du vaudou. Et le désir de liberté. Car entre soldats, courtisanes mulâtres, pirates et maîtres blancs, souffle le vent de la révolte. Lorsque Valmorain, réchappé de l'insurrection grâce au courage et à la détermination de son esclave, parvient à embarquer pour La Nouvelle-Orléans, Tété doit le suivre. Mais la lutte pour la dignité et l'émancipation ne peut être arrêtée...</p>
+          </div>
+        </div>
+        <div class="book-card" data-cover="the-bottle-imp">
+          <div class="cover-wrap"></div>
+          <div class="book-title">The Bottle Imp</div>
+          <div class="book-author">R.L. Stevenson</div>
+        </div>
+        <div class="book-card" data-cover="matin-brun">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Matin brun</div>
+          <div class="book-author">Franck Pavloff</div>
+        </div>
+        <div class="book-card" data-cover="stabat-mater-2">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Stabat Mater</div>
+          <div class="book-author">Xavier Bazot</div>
+        </div>
+        <div class="book-card" data-cover="cat-215">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Cat 215</div>
+          <div class="book-author">Antonin Varenne</div>
+        </div>
+        <div class="book-card" data-cover="o-meu-pe-de-laranja-lima">
+          <div class="cover-wrap"></div>
+          <div class="book-title">O meu pé de laranja lima</div>
+          <div class="book-author">José Mauro de Vasconcelos</div>
+        </div>
+        <div class="book-card" data-cover="tales-of-edgar-allan-poe">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Tales of Edgar Allan Poe</div>
+          <div class="book-author">Edgar Allan Poe</div>
+        </div>
+        <div class="book-card" data-cover="veinte-poemas-de-amor-y-una-cancion-desesperada">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Veinte poemas de amor y una canción desesperada</div>
+          <div class="book-author">Pablo Neruda</div>
+        </div>
+        <div class="book-card">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Principes d’un combat pour la France et pour l’humanité</div>
+          <div class="book-author">Jacques Cheminade</div>
+        </div>
+        <div class="book-card" data-cover="historia-universal-de-la-infamia">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Historia universal de la infamia</div>
+          <div class="book-author">Jorge Luis Borges</div>
+        </div>
+        <div class="book-card" data-cover="los-rios-profundos">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Los rios profundos</div>
+          <div class="book-author">José Maria Arrguedas</div>
+        </div>
+        <div class="book-card" data-cover="le-sermon-sur-la-chute-de-rome">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Le Sermon sur la chute de Rome</div>
+          <div class="book-author">Jérôme Ferrari</div>
+        </div>
+        <div class="book-card" data-cover="memorial-do-convento">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Memorial do Convento</div>
+          <div class="book-author">José Saramago</div>
+        </div>
+        <div class="book-card" data-cover="blues-pour-trois-tombes-et-un-fantome">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Blues pour trois tombes et un fantôme</div>
+          <div class="book-author">Philippe Marczewski</div>
+        </div>
+        <div class="book-card" data-cover="la-composicion">
+          <div class="cover-wrap"></div>
+          <div class="book-title">La composición</div>
+          <div class="book-author">Antonio Skármeta</div>
+        </div>
+        <div class="book-card" data-cover="memoria-de-mis-putas-tristes">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Memoria de mis putas tristes</div>
+          <div class="book-author">Gabriel García Márquez</div>
+        </div>
+        <div class="book-card" data-cover="le-club-des-incorigibles-optimistes">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Le Club des Incorigibles Optimistes</div>
+          <div class="book-author">Jean-Michel Guenassia</div>
+        </div>
+        <div class="book-card" data-cover="american-pastoral">
+          <div class="cover-wrap"></div>
+          <div class="book-title">American Pastoral</div>
+          <div class="book-author">Philip Roth</div>
+        </div>
+        <div class="book-card" data-cover="en-attendant-godot">
+          <div class="cover-wrap"></div>
+          <div class="book-title">En attendant Godot</div>
+          <div class="book-author">Samuel Beckett</div>
+        </div>
+        <div class="book-card">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Animal farm</div>
+          <div class="book-author">Gœrge Orwell</div>
+        </div>
+        <div class="book-card" data-cover="a-legiao-estrangeira">
+          <div class="cover-wrap"></div>
+          <div class="book-title">A legião estrangeira</div>
+          <div class="book-author">Clarice Lispector</div>
+        </div>
+        <div class="book-card" data-cover="le-hussard-sur-le-toit">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Le hussard sur le toit</div>
+          <div class="book-author">Jean Giono</div>
+        </div>
+        <div class="book-card">
+          <div class="cover-wrap"></div>
+          <div class="book-title">L’invisibilité sociale : une responsabilité collective</div>
+          <div class="book-author">Rapport 2016 ONPES</div>
+        </div>
+        <div class="book-card" data-cover="la-peste">
+          <div class="cover-wrap"></div>
+          <div class="book-title">La peste</div>
+          <div class="book-author">Albert Camus</div>
+        </div>
+        <div class="book-card" data-cover="regresso-ao-paraiso">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Regresso ao paraíso</div>
+          <div class="book-author">Germano Almeida</div>
+        </div>
+        <div class="book-card">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Celles qui comptent</div>
+          <div class="book-author">Rapport Oxfam 2020</div>
+        </div>
+        <div class="book-card" data-cover="the-sleepwalkers">
+          <div class="cover-wrap"></div>
+          <div class="book-title">The Sleepwalkers</div>
+          <div class="book-author">Christopher Clark</div>
+        </div>
+        <div class="book-card" data-cover="lord-of-flies">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Lord of flies</div>
+          <div class="book-author">William Golding</div>
+        </div>
+        <div class="book-card" data-cover="theorie-de-leconomie-a-lequilibre-dynamique">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Théorie de l’économie à l’équilibre dynamique</div>
+          <div class="book-author">Stéphane Hairy, Benjamin Albouy</div>
+        </div>
+        <div class="book-card" data-cover="promenades-africaines">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Promenades africaines</div>
+          <div class="book-author">Alberto Moravia</div>
+        </div>
+        <div class="book-card" data-cover="los-detectives-salvajes">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Los detectives salvajes</div>
+          <div class="book-author">Roberto Bolaño</div>
+          <div class="book-back">
+            <p>En 1975, Juan García Madero abandonne ses études pour se consacrer à la poésie. Il plonge dans les bas-fonds de Mexico et fait la rencontre d'Ulises Lima et Arturo Belano, chefs de file des réal-viscéralistes, un groupe de poètes avant-gardistes. Accompagnés d'une prostituée nommée Lupe, les trois hommes se lancent à la recherche de la poétesse mythique Cesárea Tinajero, dont la trace se perd dans le désert… Parviendront-ils à la retrouver ?</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="year-section" id="2019">
+      <div class="year-header">
+        <h2>2019</h2><span class="year-count"></span>
+      </div>
+      <div class="book-grid">
+
+        <div class="book-card" data-cover="le-coupeur-de-mots">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Le coupeur de mots</div>
+          <div class="book-author">Hans Joachim Schadlich</div>
+        </div>
+        <div class="book-card" data-cover="linsoutenable-legerete-de-letre">
+          <div class="cover-wrap"></div>
+          <div class="book-title">L’insoutenable légèreté de l’être</div>
+          <div class="book-author">Milan Kundera</div>
+          <div class="book-back">
+            <p>Qu'est-il resté des agonisants du Cambodge ? Une grande photo de la star américaine tenant dans ses bras un enfant jaune. Qu'est-il resté de Tomas ? Une inscription : Il voulait le Royaume de Dieu sur la terre. Qu'est-il resté de Beethoven ? Un homme morose à l'invraisemblable crinière, qui prononce d'une voix sombre : "Es muss sein !" Qu'est-il resté de Franz ? Une inscription : Après un long égarement, le retour. Et ainsi de suite, et ainsi de suite. Avant d'être oubliés, nous serons changés en kitsch. Le kitsch, c'est la station de correspondance entre l'être et l'oubli.</p>
+          </div>
+        </div>
+        <div class="book-card" data-cover="la-sorciere-de-la-rue-mouffetard">
+          <div class="cover-wrap"></div>
+          <div class="book-title">La sorcière de la rue Mouffetard</div>
+          <div class="book-author">Pierre Gripari</div>
+        </div>
+        <div class="book-card" data-cover="equateur">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Équateur</div>
+          <div class="book-author">Antonin Varenne</div>
+        </div>
+        <div class="book-card" data-cover="100-poemes-du-monde-pour-les-enfants">
+          <div class="cover-wrap"></div>
+          <div class="book-title">100 poèmes du monde pour les enfants</div>
+          <div class="book-author">Jean Orizet</div>
+        </div>
+        <div class="book-card" data-cover="red-shambala">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Red Shambala</div>
+          <div class="book-author">Andrei Znamenski</div>
+        </div>
+        <div class="book-card" data-cover="lamour-au-pied-des-pyramides">
+          <div class="cover-wrap"></div>
+          <div class="book-title">L’amour au pied des pyramides</div>
+          <div class="book-author">Naguib Mahfouz</div>
+        </div>
+        <div class="book-card" data-cover="histoires-pressees">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Histoires pressées</div>
+          <div class="book-author">Bernard Friot</div>
+        </div>
+        <div class="book-card" data-cover="la-derniere-harde">
+          <div class="cover-wrap"></div>
+          <div class="book-title">La dernière harde</div>
+          <div class="book-author">Maurice Genevoix</div>
+        </div>
+        <div class="book-card" data-cover="o-quinze">
+          <div class="cover-wrap"></div>
+          <div class="book-title">O Quinze</div>
+          <div class="book-author">Rachel de Queiroz</div>
+        </div>
+        <div class="book-card">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Encyclique Laudato si’</div>
+          <div class="book-author">Pape Francis</div>
+        </div>
+        <div class="book-card" data-cover="ainsi-parlait-zarathoustra">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Ainsi parlait Zarathoustra</div>
+          <div class="book-author">Nietsche</div>
+        </div>
+        <div class="book-card" data-cover="bakhita">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Bakhita</div>
+          <div class="book-author">Véronique Olmi</div>
+        </div>
+        <div class="book-card" data-cover="la-supplication">
+          <div class="cover-wrap"></div>
+          <div class="book-title">La supplication</div>
+          <div class="book-author">Svetlana Alexievitch</div>
+        </div>
+        <div class="book-card" data-cover="chiquinho">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Chiquinho</div>
+          <div class="book-author">Baltasar Lopes</div>
+        </div>
+        <div class="book-card" data-cover="le-proces">
+          <div class="cover-wrap"></div>
+          <div class="book-title">le procès</div>
+          <div class="book-author">Kafka</div>
+        </div>
+        <div class="book-card" data-cover="la-steppe">
+          <div class="cover-wrap"></div>
+          <div class="book-title">La Steppe</div>
+          <div class="book-author">Tchekhov</div>
+        </div>
+        <div class="book-card" data-cover="les-hirondelles-de-kaboul">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Les hirondelles de Kaboul</div>
+          <div class="book-author">Yasmina Khadra</div>
+        </div>
+        <div class="book-card">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Les grands textes fondateurs</div>
+          <div class="book-author">Editions Magnard</div>
+        </div>
+        <div class="book-card" data-cover="the-goldfinch">
+          <div class="cover-wrap"></div>
+          <div class="book-title">The Goldfinch</div>
+          <div class="book-author">Donna Tartt</div>
+        </div>
+        <div class="book-card" data-cover="le-jeu-du-chat-et-de-la-souris">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Le jeu du chat et de la souris</div>
+          <div class="book-author">A Yi</div>
+        </div>
+        <div class="book-card" data-cover="la-fiancee-du-nil">
+          <div class="cover-wrap"></div>
+          <div class="book-title">La fiancée du Nil</div>
+          <div class="book-author">Christian Jacq</div>
+        </div>
+        <div class="book-card" data-cover="o-alquimista">
+          <div class="cover-wrap"></div>
+          <div class="book-title">O Alquimista</div>
+          <div class="book-author">Paulo Coelho</div>
+        </div>
+        <div class="book-card" data-cover="notredame-du-nil">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Notre-Dame du Nil</div>
+          <div class="book-author">Scholastique Mukasonga</div>
+        </div>
+        <div class="book-card" data-cover="les-dieux-ont-soif">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Les dieux ont soif</div>
+          <div class="book-author">Anatole France</div>
+        </div>
+        <div class="book-card" data-cover="gouverneurs-de-la-rosee">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Gouverneurs de la rosée</div>
+          <div class="book-author">Jacques Roumain</div>
+        </div>
+        <div class="book-card">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Le bois du templier pendu</div>
+          <div class="book-author">Henri Bélraud</div>
+        </div>
+        <div class="book-card" data-cover="la-monnaie">
+          <div class="cover-wrap"></div>
+          <div class="book-title">La monnaie</div>
+          <div class="book-author">les économistes atterés</div>
+        </div>
+        <div class="book-card" data-cover="la-guerre-des-pauvres">
+          <div class="cover-wrap"></div>
+          <div class="book-title">La guerre des pauvres</div>
+          <div class="book-author">Éric Vuillard</div>
+        </div>
+        <div class="book-card">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Contra mar e vento</div>
+          <div class="book-author">Henrique Teixeiira de Sousa</div>
+        </div>
+        <div class="book-card" data-cover="terre-debene">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Terre d'ébène</div>
+          <div class="book-author">Albert Londres</div>
+        </div>
+        <div class="book-card" data-cover="serotonine">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Sérotonine</div>
+          <div class="book-author">Michel Houellebecq</div>
+        </div>
+        <div class="book-card">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Tropique de la violence</div>
+          <div class="book-author">Natacha Appanach</div>
+        </div>
+        <div class="book-card" data-cover="capitaes-das-areias">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Capitães das areias</div>
+          <div class="book-author">Jorge Amado</div>
+        </div>
+        <div class="book-card" data-cover="le-comte-de-montecristo">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Le Comte de Monte-Cristo</div>
+          <div class="book-author">Alexandre Dumas</div>
+        </div>
+        <div class="book-card" data-cover="flowers-for-algernon">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Flowers for Algernon</div>
+          <div class="book-author">Daniel Keyes</div>
+        </div>
+        <div class="book-card" data-cover="caminho-de-sao-tome">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Caminho de São Tomé</div>
+          <div class="book-author">Ana Paula Fontainhas</div>
+        </div>
+        <div class="book-card" data-cover="les-ecailles-du-ciel">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Les Écailles du ciel</div>
+          <div class="book-author">Tierno Monénembo</div>
+        </div>
+        <div class="book-card" data-cover="liguifou">
+          <div class="cover-wrap"></div>
+          <div class="book-title">L'Iguifou</div>
+          <div class="book-author">Scholastique Mukasonga</div>
+        </div>
+        <div class="book-card" data-cover="lordre-du-jour">
+          <div class="cover-wrap"></div>
+          <div class="book-title">L’ordre du jour</div>
+          <div class="book-author">Éric Vuillard</div>
+        </div>
+        <div class="book-card" data-cover="le-capital-au-xxie-siecle">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Le Capital au XXIe siècle</div>
+          <div class="book-author">Thomas Piketty</div>
+        </div>
+        <div class="book-card" data-cover="tristes-tropiques">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Tristes tropiques</div>
+          <div class="book-author">Claude Lévi-Strauss</div>
+        </div>
+        <div class="book-card">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Les rois du monde, tome 1 et 2</div>
+          <div class="book-author">Jean-Philippe Jaworski</div>
+        </div>
+        <div class="book-card" data-cover="lespoir">
+          <div class="cover-wrap"></div>
+          <div class="book-title">L’espoir</div>
+          <div class="book-author">André Malraux</div>
+        </div>
+        <div class="book-card" data-cover="the-city-and-the-city">
+          <div class="cover-wrap"></div>
+          <div class="book-title">The city and the city</div>
+          <div class="book-author">China Miéville</div>
+        </div>
+        <div class="book-card" data-cover="zulu">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Zulu</div>
+          <div class="book-author">Caryl Férey</div>
+        </div>
+        <div class="book-card" data-cover="obia">
+          <div class="cover-wrap"></div>
+          <div class="book-title">Obia</div>
+          <div class="book-author">Colin Niel</div>
+        </div>
+        <div class="book-card" data-cover="laine-des-orphelins-2">
+          <div class="cover-wrap"></div>
+          <div class="book-title">L’ainé des orphelins</div>
+          <div class="book-author">Tierno Monénembo</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="book-modal" id="bookModal" hidden>
+        <div class="book-modal-backdrop"></div>
+        <div class="book-modal-box" role="dialog" aria-modal="true">
+            <h3 class="book-modal-title"></h3>
+            <p class="book-modal-author"></p>
+            <div class="book-modal-text"></div>
+        </div>
+    </div>
+
+    <script src="js/lectures.js"></script>
 </body>
 
 </html>

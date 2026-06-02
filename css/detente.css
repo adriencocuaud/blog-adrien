@@ -164,6 +164,15 @@ nav {
     width: 100%;
 }
 
+.nav-back-arrow {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.nav-home:hover .nav-back-arrow {
+    transform: translateX(-3px);
+}
+
 .nav-spacer {
     width: 120px;
 }
