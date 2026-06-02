@@ -219,9 +219,24 @@ nav {
     text-align: center;
     color: var(--ocean-deep);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.4rem;
     clip-path: inset(0 100% 0 0);
     animation: revealFromRight 0.8s ease forwards;
     animation-delay: 0.3s;
+}
+
+/* Déco latérale : petite vague */
+.intro-header h1::before,
+.intro-header h1::after {
+    content: '';
+    flex: none;
+    width: 50px;
+    height: 14px;
+    transform: translateY(7px);
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='50' height='14' viewBox='0 0 50 14'%3E%3Cpath d='M2 9 Q8 2 14 9 T26 9 T38 9 T50 9' fill='none' stroke='%232a8a9e' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center / contain;
 }
 
 @keyframes revealFromRight {
