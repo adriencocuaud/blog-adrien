@@ -27,4 +27,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { threshold: 0 });
         cards.forEach(card => cardsObserver.observe(card));
     }
+
+    const map = document.querySelector('#travel-map');
+    if (map) {
+        const mapObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('map-reveal');
+                    mapObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+        mapObserver.observe(map);
+    }
 });

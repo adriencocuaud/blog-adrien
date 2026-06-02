@@ -298,6 +298,14 @@ nav {
     width: 90vw;
     margin: 60px auto 0;
     background: transparent;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+#travel-map.map-reveal {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .world-svg {
@@ -559,8 +567,8 @@ nav {
 /* Footer */
 footer {
     position: relative;
-    background: linear-gradient(180deg, #fbf6ee 0%, #f5ede0 100%);
-    color: #8a7560;
+    background: linear-gradient(180deg, #d4a064 0%, #c0823f 100%);
+    color: #3A4B58;
     padding: 35px 60px;
     display: flex;
     justify-content: space-between;
@@ -588,7 +596,7 @@ footer::before {
     height: 1px;
     background: linear-gradient(90deg,
         transparent 0%,
-        rgba(203, 143, 80, 0.35) 50%,
+        rgba(255, 246, 235, 0.5) 50%,
         transparent 100%
     );
 }
@@ -604,13 +612,13 @@ footer::before {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #a89580;
+    color: #ffffff;
     text-decoration: none;
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .footer-socials a:hover {
-    color: #cb8f50;
+    color: #3A4B58;
     transform: translateY(-2px);
 }
 
@@ -623,7 +631,7 @@ footer::before {
 footer p {
     font-size: 0.9em;
     margin: 0;
-    color: #8a7560;
+    color: #3A4B58;
     position: relative;
     z-index: 1;
 }
