@@ -335,9 +335,9 @@ nav {
     font-family: "Caveat", cursive;
     font-size: 1em;
     font-weight: 600;
-    color: var(--stamp-red);
+    color: #2b2b2b;
     padding: 4px 10px;
-    border: 2px solid var(--stamp-red);
+    border: 2px solid #2b2b2b;
     border-radius: 3px;
     transform: rotate(12deg);
     opacity: 0.85;
@@ -345,6 +345,13 @@ nav {
     text-transform: uppercase;
     letter-spacing: 1px;
     background: rgba(255,255,255,0.7);
+    transition: color 0.4s ease, border-color 0.4s ease;
+}
+
+/* Au survol : le tampon de lieu reprend sa couleur rouge */
+.article-card:hover::before {
+    color: var(--stamp-red);
+    border-color: var(--stamp-red);
 }
 
 /* Date en bas style annotation manuscrite */
@@ -370,13 +377,13 @@ nav {
                 filter 0.4s ease;
     z-index: 0;
     will-change: transform;
-    /* Effet photo vintage légère */
-    filter: saturate(0.9) contrast(1.05);
+    /* Noir & blanc par défaut, couleur au survol */
+    filter: grayscale(1) contrast(1.05);
 }
 
 /* Hover : légère élévation et rotation neutralisée */
 .article-card:hover {
-    transform: rotate(0deg) translateY(-8px) scale(1.02);
+    transform: rotate(0deg) translateY(-4px) scale(1.01);
     box-shadow:
         0 12px 30px rgba(0, 0, 0, 0.25),
         0 20px 50px rgba(0, 0, 0, 0.15);
@@ -385,7 +392,7 @@ nav {
 }
 
 .article-card:hover .card-bg {
-    filter: saturate(1) contrast(1.1);
+    filter: grayscale(0) saturate(1) contrast(1.1);
 }
 
 /* Contenu sous la photo (style légende de carnet) */
