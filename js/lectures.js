@@ -92,10 +92,9 @@
             });
         });
 
-        // Bouton « Haut de page » du footer
-        var backToTop = document.querySelector('.back-to-top');
-        if (backToTop) {
-            backToTop.addEventListener('click', function () {
+        // Titre du footer cliquable → remonte en haut de page
+        if (footerYear) {
+            footerYear.addEventListener('click', function () {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         }
