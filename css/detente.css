@@ -193,21 +193,6 @@ nav {
     z-index: 2;
 }
 
-/* Line drawn in sand — wobbly stick/finger trace */
-.detente-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 36px;
-    width: 8px;
-    height: 100%;
-    z-index: 0;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='80' viewBox='0 0 8 80'%3E%3Cpath d='M4,0 C3,13 5,27 4,40 C3,53 5,67 4,80' stroke='%23b5976e' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3Cpath d='M5,0 C4,13 6,27 5,40 C4,53 6,67 5,80' stroke='%23f5ead4' stroke-width='1' fill='none' stroke-linecap='round' opacity='0.6'/%3E%3C/svg%3E");
-    background-repeat: repeat-y;
-    background-size: 8px 80px;
-    opacity: 0.7;
-}
-
 /* === INTRO HEADER === */
 .intro-header {
     position: relative;
@@ -278,17 +263,16 @@ nav {
     }
 }
 
-/* === CONTENT GRID === */
-.detente-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 40px 35px;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+/* === TWO COLUMNS LAYOUT === */
+.detente-columns {
     position: relative;
     z-index: 1;
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    max-width: 1100px;
+    margin: 30px auto 0;
+    padding: 20px;
     opacity: 0;
     transform: translateY(60px);
     animation: cardsSlideUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
@@ -306,118 +290,126 @@ nav {
     }
 }
 
-/* === DETENTE CARDS — Photo on sand with parasol + mini castle === */
-.detente-card {
-    position: relative;
-    width: calc(50% - 20px);
-    max-width: 320px;
-    padding: 0 0 24px;
-    cursor: pointer;
+.detente-col {
+    flex: 1 1 0;
+    min-width: 0;
+    padding: 0 48px;
 }
 
-.detente-card:nth-child(odd)  { transform: rotate(-1deg); }
-.detente-card:nth-child(even) { transform: rotate(0.8deg); }
+/* === COLUMN TITLE + DOODLE === */
+.col-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 36px;
+}
 
-/* Parasol — 3/4 view, dome extends ABOVE card, pole hidden behind photo */
-/* Parasol — pseudo-element with SVG background, 3 striped color variants */
-.detente-card::before {
-    content: '';
+.col-doodle {
+    width: 175px;
+    height: auto;
+    filter: drop-shadow(1px 2px 1px rgba(95, 65, 35, 0.12));
+}
+
+.title-wrap {
+    position: relative;
+    display: inline-block;
+}
+
+.col-title h2 {
+    font-family: "Pacifico", cursive;
+    font-weight: 400;
+    font-size: 1.8em;
+    color: var(--ocean-deep);
+    text-align: center;
+    margin-top: 6px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+/* === GAME / SPORT LIST === */
+.jeux-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.jeu {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 6px 8px;
+}
+
+.jeu-nom {
+    font-family: "Caveat", cursive;
+    font-weight: 700;
+    font-size: 2em;
+    line-height: 1.05;
+    text-align: center;
+    color: rgba(95, 65, 35, 0.75);
+    text-shadow:
+        1px 1px 0 rgba(255, 250, 235, 0.65),
+        -1px -1px 1px rgba(60, 40, 15, 0.18);
+    transition: color 0.35s ease, transform 0.35s ease;
+}
+
+.jeu:hover .jeu-nom {
+    color: var(--ocean-deep);
+    transform: scale(1.06);
+}
+
+/* === PARASOL unique par colonne — planté à côté du titre (full CSS) === */
+.col-parasol {
     position: absolute;
-    bottom: -4px;
-    width: 95px;
-    height: 114px;
-    z-index: 3;
+    bottom: -2px;
+    width: 50px;
+    height: 60px;
+    z-index: 4;
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    filter: drop-shadow(2px 4px 5px rgba(0, 0, 0, 0.28));
-    pointer-events: none;
+    filter: drop-shadow(2px 4px 4px rgba(0, 0, 0, 0.25));
     transform-origin: bottom center;
-    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.55s cubic-bezier(0.34, 1.2, 0.4, 1);
+    pointer-events: none;
 }
 
-/* Side alternation */
-.detente-card:nth-child(odd)::before  { left: -14px;  transform: rotate(18deg); }
-.detente-card:nth-child(even)::before { right: -14px; transform: rotate(-18deg); }
+/* Côté + inclinaison au repos (penché vers le bord de page) */
+.col-gauche .col-parasol {
+    right: 100%;
+    margin-right: 14px;
+    transform: rotate(-40deg);
+}
 
-/* Color cycle: blue / red / yellow (striped) */
-/* Variant 1 — dominant BLUE, accents red & yellow */
-.detente-card:nth-child(3n+1)::before {
+.col-droite .col-parasol {
+    left: 100%;
+    margin-left: 14px;
+    transform: rotate(40deg);
+}
+
+/* Au survol d'un jeu/sport de la colonne : le parasol se redresse */
+.col-gauche:has(.jeux-list:hover) .col-parasol,
+.col-droite:has(.jeux-list:hover) .col-parasol {
+    transform: rotate(0deg);
+}
+
+/* Variantes de couleur (mêmes SVG que les anciennes cartes) */
+.col-parasol.v1 {
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 120'><line x1='50' y1='48' x2='50' y2='120' stroke='%237a5c3e' stroke-width='3' stroke-linecap='round'/><ellipse cx='50' cy='46' rx='46' ry='10' fill='%232a6f80' opacity='0.35'/><path d='M4 46 Q4 4 50 4 Q96 4 96 46 Q70 53 50 53 Q30 53 4 46 Z' fill='%237ecfe0'/><path d='M50 4 Q24 8 4 46 Q15 50 27 51 Q32 28 50 4 Z' fill='%23e07a5f'/><path d='M50 4 Q76 8 96 46 Q85 50 73 51 Q68 28 50 4 Z' fill='%23f0c987'/><path d='M27 51 Q38 53 50 53 Q50 28 50 4 Q40 28 27 51 Z' fill='%237ecfe0'/><path d='M73 51 Q62 53 50 53 Q50 28 50 4 Q60 28 73 51 Z' fill='%23e07a5f'/><path d='M4 46 Q14 52 27 51 Q40 56 50 53 Q60 56 73 51 Q86 52 96 46' fill='none' stroke='%232a6f80' stroke-width='1.4' stroke-linejoin='round'/><line x1='50' y1='4' x2='50' y2='53' stroke='%232a6f80' stroke-width='0.8' opacity='0.5'/><line x1='27' y1='51' x2='50' y2='4' stroke='%232a6f80' stroke-width='0.6' opacity='0.4'/><line x1='73' y1='51' x2='50' y2='4' stroke='%232a6f80' stroke-width='0.6' opacity='0.4'/><circle cx='50' cy='3' r='2.5' fill='%237a5c3e'/></svg>");
 }
 
-/* Variant 2 — dominant RED, accents yellow & blue */
-.detente-card:nth-child(3n+2)::before {
+.col-parasol.v2 {
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 120'><line x1='50' y1='48' x2='50' y2='120' stroke='%237a5c3e' stroke-width='3' stroke-linecap='round'/><ellipse cx='50' cy='46' rx='46' ry='10' fill='%239c4d3a' opacity='0.35'/><path d='M4 46 Q4 4 50 4 Q96 4 96 46 Q70 53 50 53 Q30 53 4 46 Z' fill='%23e07a5f'/><path d='M50 4 Q24 8 4 46 Q15 50 27 51 Q32 28 50 4 Z' fill='%23f0c987'/><path d='M50 4 Q76 8 96 46 Q85 50 73 51 Q68 28 50 4 Z' fill='%237ecfe0'/><path d='M27 51 Q38 53 50 53 Q50 28 50 4 Q40 28 27 51 Z' fill='%23e07a5f'/><path d='M73 51 Q62 53 50 53 Q50 28 50 4 Q60 28 73 51 Z' fill='%23f0c987'/><path d='M4 46 Q14 52 27 51 Q40 56 50 53 Q60 56 73 51 Q86 52 96 46' fill='none' stroke='%239c4d3a' stroke-width='1.4' stroke-linejoin='round'/><line x1='50' y1='4' x2='50' y2='53' stroke='%239c4d3a' stroke-width='0.8' opacity='0.5'/><line x1='27' y1='51' x2='50' y2='4' stroke='%239c4d3a' stroke-width='0.6' opacity='0.4'/><line x1='73' y1='51' x2='50' y2='4' stroke='%239c4d3a' stroke-width='0.6' opacity='0.4'/><circle cx='50' cy='3' r='2.5' fill='%237a5c3e'/></svg>");
 }
 
-/* Variant 3 — dominant YELLOW, accents blue & red */
-.detente-card:nth-child(3n)::before {
+.col-parasol.v3 {
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 120'><line x1='50' y1='48' x2='50' y2='120' stroke='%237a5c3e' stroke-width='3' stroke-linecap='round'/><ellipse cx='50' cy='46' rx='46' ry='10' fill='%23b88c3a' opacity='0.35'/><path d='M4 46 Q4 4 50 4 Q96 4 96 46 Q70 53 50 53 Q30 53 4 46 Z' fill='%23f0c987'/><path d='M50 4 Q24 8 4 46 Q15 50 27 51 Q32 28 50 4 Z' fill='%237ecfe0'/><path d='M50 4 Q76 8 96 46 Q85 50 73 51 Q68 28 50 4 Z' fill='%23e07a5f'/><path d='M27 51 Q38 53 50 53 Q50 28 50 4 Q40 28 27 51 Z' fill='%23f0c987'/><path d='M73 51 Q62 53 50 53 Q50 28 50 4 Q60 28 73 51 Z' fill='%237ecfe0'/><path d='M4 46 Q14 52 27 51 Q40 56 50 53 Q60 56 73 51 Q86 52 96 46' fill='none' stroke='%23b88c3a' stroke-width='1.4' stroke-linejoin='round'/><line x1='50' y1='4' x2='50' y2='53' stroke='%23b88c3a' stroke-width='0.8' opacity='0.5'/><line x1='27' y1='51' x2='50' y2='4' stroke='%23b88c3a' stroke-width='0.6' opacity='0.4'/><line x1='73' y1='51' x2='50' y2='4' stroke='%23b88c3a' stroke-width='0.6' opacity='0.4'/><circle cx='50' cy='3' r='2.5' fill='%237a5c3e'/></svg>");
 }
 
-.detente-card:hover::before { transform: rotate(0deg); }
-
-/* Photo — sits directly on sand, no white polaroid border */
-.towel-inner {
-    position: relative;
-    z-index: 2;
-}
-
-.card-photo {
-    position: relative;
-    width: 100%;
-    height: 200px;
-    overflow: hidden;
-    padding: 6px;
-    background: #fffefa;
-    border-radius: 3px 5px 2px 6px / 4px 3px 5px 2px;
-    box-shadow:
-        0 6px 14px rgba(60, 40, 15, 0.28),
-        0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.card-photo::after {
-    content: '';
-    position: absolute;
-    inset: 9px;
-    z-index: 2;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200' preserveAspectRatio='none'><g fill='none' stroke='%234a2f15' stroke-width='1.2' stroke-linecap='round'><line x1='150' y1='14' x2='150' y2='186' stroke-dasharray='1,5'/><rect x='240' y='14' width='46' height='42' stroke-dasharray='3,4'/><line x1='168' y1='128' x2='282' y2='128'/><line x1='168' y1='148' x2='282' y2='148'/><line x1='168' y1='168' x2='282' y2='168'/></g></svg>");
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    opacity: 0.4;
-    pointer-events: none;
-    mix-blend-mode: multiply;
-}
-
-.detente-card:nth-child(odd):hover  .card-photo { transform: rotate(1deg) scale(1.03); }
-.detente-card:nth-child(even):hover .card-photo { transform: rotate(-1deg) scale(1.03); }
-
-.card-photo .card-bg {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border: 3px solid #ffffff;
-    box-shadow: 0 0 0 1px rgba(140, 105, 60, 0.18);
-}
-
-.detente-card h3 {
-    font-family: "Caveat", cursive;
-    font-weight: 700;
-    font-size: 1.9em;
-    color: rgba(95, 65, 35, 0.7);
-    text-align: center;
-    padding: 14px 6px 0;
-    margin: 0;
-    line-height: 1.1;
-    text-shadow:
-        1px 1px 0 rgba(255, 250, 235, 0.65),
-        -1px -1px 1px rgba(60, 40, 15, 0.2);
-}
-
-
-/* Hide description in card view — used by fullscreen JS */
-.detente-card .article-content {
+/* Données masquées — lues par le JS fullscreen */
+.jeu .card-bg,
+.jeu .article-content {
     display: none;
 }
 
@@ -548,21 +540,24 @@ body.fullscreen-open {
 }
 
 /* === RESPONSIVE === */
-@media (max-width: 900px) {
-    .detente-card {
-        width: 100%;
-        max-width: 500px;
-    }
-}
-
 @media (max-width: 768px) {
     .detente-section {
         padding: 20px 30px 60px;
     }
 
-    .detente-grid {
-        gap: 30px 20px;
+    /* Colonnes empilées : séparateur central masqué */
+    .detente-columns {
+        flex-direction: column;
+        gap: 50px;
         padding: 15px;
+    }
+
+    .detente-columns::before {
+        display: none;
+    }
+
+    .detente-col {
+        padding: 0 10px;
     }
 
     .intro-header h1 {
@@ -572,27 +567,12 @@ body.fullscreen-open {
     .intro-header .subtitle {
         font-size: 1.2em;
     }
-
 }
 
 @media (max-width: 480px) {
     .detente-section {
         padding: 15px 15px 40px;
     }
-
-    .detente-grid {
-        gap: 25px;
-        padding: 10px;
-    }
-
-    .detente-card {
-        padding: 20px 15px;
-    }
-
-    .detente-card:nth-child(1) { transform: rotate(-0.5deg); }
-    .detente-card:nth-child(2) { transform: rotate(0.4deg); }
-    .detente-card:nth-child(3) { transform: rotate(0.3deg); }
-    .detente-card:nth-child(4) { transform: rotate(-0.4deg); }
 
     .intro-header h1 {
         font-size: 2.2em;
@@ -602,7 +582,11 @@ body.fullscreen-open {
         font-size: 1em;
     }
 
-    .card-content h3 {
-        font-size: 1.4em;
+    .col-title h2 {
+        font-size: 1.5em;
+    }
+
+    .jeu-nom {
+        font-size: 1.7em;
     }
 }
