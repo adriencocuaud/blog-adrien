@@ -181,7 +181,7 @@ nav {
 .detente-section {
     position: relative;
     min-height: 100vh;
-    padding: 60px 60px 60px;
+    padding: 50px 24px 60px;
     background-image:
         radial-gradient(circle at 18% 28%, rgba(95, 65, 35, 0.15) 1.2px, transparent 2.4px),
         radial-gradient(circle at 68% 55%, rgba(95, 65, 35, 0.12) 1px, transparent 2px),
@@ -263,15 +263,57 @@ nav {
     }
 }
 
+/* === TITRE DE COLONNE (en haut de chaque colonne, aligné au haut de l'image) === */
+.col-title {
+    margin-bottom: 18px;
+    text-align: center;
+}
+
+.col-title h2 {
+    font-family: "Pacifico", cursive;
+    font-weight: 400;
+    font-size: 1.9em;
+    color: var(--ocean-deep);
+    text-align: center;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+/* === HERO ILLUSTRATION (planche à voile, fond détouré) — colonne centrale === */
+.detente-hero {
+    flex: 0 0 auto;
+    align-self: flex-start;
+    display: block;
+    /* taille proportionnelle à l'écran (≈36 %), bornée min/max */
+    width: clamp(260px, 36vw, 510px);
+    /* boîte à ratio FIXE + contain : les images de ratios différents
+       gardent la même hauteur → aucun reflow (donc aucune saccade) au swap */
+    aspect-ratio: 1.63;
+    height: auto;
+    object-fit: contain;
+    margin: 0 4px;
+    /* ombre douce posée sur le sable, cohérente avec les doodles */
+    filter: drop-shadow(2px 5px 10px rgba(95, 65, 35, 0.15));
+}
+
+@media (max-width: 768px) {
+    .detente-hero {
+        /* colonnes empilées : l'image occupe une large part de l'écran */
+        width: min(420px, 82vw);
+        align-self: center;
+        margin: 0 auto;
+    }
+}
+
 /* === TWO COLUMNS LAYOUT === */
 .detente-columns {
     position: relative;
     z-index: 1;
     display: flex;
+    align-items: flex-start;
     justify-content: center;
     gap: 0;
-    max-width: 1100px;
-    margin: 30px auto 0;
+    max-width: 1440px;
+    margin: 0 auto;
     padding: 20px;
     opacity: 0;
     transform: translateY(60px);
@@ -293,47 +335,18 @@ nav {
 .detente-col {
     flex: 1 1 0;
     min-width: 0;
-    padding: 0 48px;
+    padding: 0 30px;
 }
 
-/* === COLUMN TITLE + DOODLE === */
-.col-title {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 36px;
-}
-
-.col-doodle {
-    width: 175px;
-    height: auto;
-    filter: drop-shadow(1px 2px 1px rgba(95, 65, 35, 0.12));
-}
-
-.title-wrap {
-    position: relative;
-    display: inline-block;
-}
-
-.col-title h2 {
-    font-family: "Pacifico", cursive;
-    font-weight: 400;
-    font-size: 1.8em;
-    color: var(--ocean-deep);
-    text-align: center;
-    margin-top: 6px;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.08);
-}
-
-/* === GAME / SPORT LIST === */
-.jeux-list {
+/* === LISTES JEUX / SPORTS === */
+.detente-list {
     list-style: none;
     display: flex;
     flex-direction: column;
     gap: 22px;
 }
 
-.jeu {
+.detente-item {
     position: relative;
     display: flex;
     align-items: center;
@@ -342,7 +355,7 @@ nav {
     padding: 6px 8px;
 }
 
-.jeu-nom {
+.item-nom {
     font-family: "Caveat", cursive;
     font-weight: 700;
     font-size: 2em;
@@ -355,189 +368,66 @@ nav {
     transition: color 0.35s ease, transform 0.35s ease;
 }
 
-.jeu:hover .jeu-nom {
-    color: var(--ocean-deep);
+/* survol / jeu actif : brun plus sombre + léger zoom (le bleu reste aux titres) */
+.detente-item:hover .item-nom,
+.jeu-item.actif .item-nom {
+    color: rgba(60, 40, 15, 0.92);
     transform: scale(1.06);
 }
 
-/* === PARASOL unique par colonne — planté à côté du titre (full CSS) === */
-.col-parasol {
-    position: absolute;
-    bottom: -2px;
-    width: 50px;
-    height: 60px;
-    z-index: 4;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    filter: drop-shadow(2px 4px 4px rgba(0, 0, 0, 0.25));
-    transform-origin: bottom center;
-    transition: transform 0.55s cubic-bezier(0.34, 1.2, 0.4, 1);
-    pointer-events: none;
-}
-
-/* Côté + inclinaison au repos (penché vers le bord de page) */
-.col-gauche .col-parasol {
-    right: 100%;
-    margin-right: 14px;
-    transform: rotate(-40deg);
-}
-
-.col-droite .col-parasol {
-    left: 100%;
-    margin-left: 14px;
-    transform: rotate(40deg);
-}
-
-/* Au survol d'un jeu/sport de la colonne : le parasol se redresse */
-.col-gauche:has(.jeux-list:hover) .col-parasol,
-.col-droite:has(.jeux-list:hover) .col-parasol {
-    transform: rotate(0deg);
-}
-
-/* Variantes de couleur (mêmes SVG que les anciennes cartes) */
-.col-parasol.v1 {
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 120'><line x1='50' y1='48' x2='50' y2='120' stroke='%237a5c3e' stroke-width='3' stroke-linecap='round'/><ellipse cx='50' cy='46' rx='46' ry='10' fill='%232a6f80' opacity='0.35'/><path d='M4 46 Q4 4 50 4 Q96 4 96 46 Q70 53 50 53 Q30 53 4 46 Z' fill='%237ecfe0'/><path d='M50 4 Q24 8 4 46 Q15 50 27 51 Q32 28 50 4 Z' fill='%23e07a5f'/><path d='M50 4 Q76 8 96 46 Q85 50 73 51 Q68 28 50 4 Z' fill='%23f0c987'/><path d='M27 51 Q38 53 50 53 Q50 28 50 4 Q40 28 27 51 Z' fill='%237ecfe0'/><path d='M73 51 Q62 53 50 53 Q50 28 50 4 Q60 28 73 51 Z' fill='%23e07a5f'/><path d='M4 46 Q14 52 27 51 Q40 56 50 53 Q60 56 73 51 Q86 52 96 46' fill='none' stroke='%232a6f80' stroke-width='1.4' stroke-linejoin='round'/><line x1='50' y1='4' x2='50' y2='53' stroke='%232a6f80' stroke-width='0.8' opacity='0.5'/><line x1='27' y1='51' x2='50' y2='4' stroke='%232a6f80' stroke-width='0.6' opacity='0.4'/><line x1='73' y1='51' x2='50' y2='4' stroke='%232a6f80' stroke-width='0.6' opacity='0.4'/><circle cx='50' cy='3' r='2.5' fill='%237a5c3e'/></svg>");
-}
-
-.col-parasol.v2 {
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 120'><line x1='50' y1='48' x2='50' y2='120' stroke='%237a5c3e' stroke-width='3' stroke-linecap='round'/><ellipse cx='50' cy='46' rx='46' ry='10' fill='%239c4d3a' opacity='0.35'/><path d='M4 46 Q4 4 50 4 Q96 4 96 46 Q70 53 50 53 Q30 53 4 46 Z' fill='%23e07a5f'/><path d='M50 4 Q24 8 4 46 Q15 50 27 51 Q32 28 50 4 Z' fill='%23f0c987'/><path d='M50 4 Q76 8 96 46 Q85 50 73 51 Q68 28 50 4 Z' fill='%237ecfe0'/><path d='M27 51 Q38 53 50 53 Q50 28 50 4 Q40 28 27 51 Z' fill='%23e07a5f'/><path d='M73 51 Q62 53 50 53 Q50 28 50 4 Q60 28 73 51 Z' fill='%23f0c987'/><path d='M4 46 Q14 52 27 51 Q40 56 50 53 Q60 56 73 51 Q86 52 96 46' fill='none' stroke='%239c4d3a' stroke-width='1.4' stroke-linejoin='round'/><line x1='50' y1='4' x2='50' y2='53' stroke='%239c4d3a' stroke-width='0.8' opacity='0.5'/><line x1='27' y1='51' x2='50' y2='4' stroke='%239c4d3a' stroke-width='0.6' opacity='0.4'/><line x1='73' y1='51' x2='50' y2='4' stroke='%239c4d3a' stroke-width='0.6' opacity='0.4'/><circle cx='50' cy='3' r='2.5' fill='%237a5c3e'/></svg>");
-}
-
-.col-parasol.v3 {
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 120'><line x1='50' y1='48' x2='50' y2='120' stroke='%237a5c3e' stroke-width='3' stroke-linecap='round'/><ellipse cx='50' cy='46' rx='46' ry='10' fill='%23b88c3a' opacity='0.35'/><path d='M4 46 Q4 4 50 4 Q96 4 96 46 Q70 53 50 53 Q30 53 4 46 Z' fill='%23f0c987'/><path d='M50 4 Q24 8 4 46 Q15 50 27 51 Q32 28 50 4 Z' fill='%237ecfe0'/><path d='M50 4 Q76 8 96 46 Q85 50 73 51 Q68 28 50 4 Z' fill='%23e07a5f'/><path d='M27 51 Q38 53 50 53 Q50 28 50 4 Q40 28 27 51 Z' fill='%23f0c987'/><path d='M73 51 Q62 53 50 53 Q50 28 50 4 Q60 28 73 51 Z' fill='%237ecfe0'/><path d='M4 46 Q14 52 27 51 Q40 56 50 53 Q60 56 73 51 Q86 52 96 46' fill='none' stroke='%23b88c3a' stroke-width='1.4' stroke-linejoin='round'/><line x1='50' y1='4' x2='50' y2='53' stroke='%23b88c3a' stroke-width='0.8' opacity='0.5'/><line x1='27' y1='51' x2='50' y2='4' stroke='%23b88c3a' stroke-width='0.6' opacity='0.4'/><line x1='73' y1='51' x2='50' y2='4' stroke='%23b88c3a' stroke-width='0.6' opacity='0.4'/><circle cx='50' cy='3' r='2.5' fill='%237a5c3e'/></svg>");
-}
-
-/* Données masquées — lues par le JS fullscreen */
-.jeu .card-bg,
-.jeu .article-content {
+/* Données masquées — lues par le JS (image du sport, texte du jeu) */
+.sport-img,
+.jeu-content {
     display: none;
 }
 
-/* === FULLSCREEN ARTICLE === */
-.fullscreen-article {
-    position: fixed;
-    inset: 0;
-    z-index: 2000;
-    background: var(--sand-light);
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(100%);
-    transition: opacity 0.5s ease,
-                transform 0.6s cubic-bezier(0.4, 0, 0.2, 1),
-                visibility 0.5s ease;
-    overflow-y: auto;
-    overflow-x: hidden;
-    cursor: pointer;
+/* Le sport actif n'apparaît pas dans la liste (son nom devient le titre) */
+.sport-item.actif {
+    display: none;
 }
 
-.fullscreen-article.active {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-
-.fullscreen-header {
+/* === SECTION CONTENU DU JEU (sous les colonnes, mise à jour au clic) === */
+.jeu-detail {
     position: relative;
-    width: 100%;
-    max-width: 900px;
-    margin: 40px auto 0;
-    padding: 0 40px;
-}
-
-.fullscreen-bg {
-    width: 100%;
-    height: auto;
-    max-height: 65vh;
-    object-fit: cover;
-    border: 6px solid white;
-    border-radius: 6px;
-    box-shadow:
-        0 6px 18px rgba(0, 0, 0, 0.18),
-        0 2px 5px rgba(0, 0, 0, 0.1);
-    transform: rotate(-0.8deg);
-    animation: fullscreenPhotoReveal 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-
-@keyframes fullscreenPhotoReveal {
-    from {
-        transform: rotate(-0.8deg) scale(0.95);
-        opacity: 0;
-    }
-    to {
-        transform: rotate(-0.8deg) scale(1);
-        opacity: 1;
-    }
-}
-
-.fullscreen-title-wrapper {
-    position: absolute;
-    bottom: -18px;
-    left: 30px;
-    z-index: 10;
-}
-
-.fullscreen-title {
-    font-family: "Pacifico", cursive;
-    font-size: 1.6em;
-    font-weight: 400;
-    color: var(--ocean-deep);
-    margin: 0;
-    padding: 8px 20px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-    transform: rotate(-2.5deg);
+    z-index: 2;
+    max-width: 760px;
+    margin: 48px auto 0;
+    padding: 0 24px;
     opacity: 0;
-    animation: fullscreenTitleReveal 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.4s forwards;
 }
 
-@keyframes fullscreenTitleReveal {
-    to { opacity: 1; }
+.jeu-detail h3 {
+    font-family: "Pacifico", cursive;
+    font-weight: 400;
+    font-size: 1.8em;
+    color: var(--ocean-deep);
+    text-align: center;
+    margin-bottom: 18px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.08);
 }
 
-.fullscreen-body {
-    padding: 40px 40px 100px;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.fullscreen-text p {
+.jeu-detail p {
     font-family: "Quicksand", sans-serif;
     font-size: 1.1em;
     line-height: 1.8;
     color: var(--driftwood);
-    margin-bottom: 24px;
-    opacity: 0;
-    transform: translateY(20px);
+    margin-bottom: 18px;
     text-align: justify;
 }
 
-.fullscreen-text p:nth-child(1) { animation: fullscreenTextReveal 0.6s ease 0.4s forwards; }
-.fullscreen-text p:nth-child(2) { animation: fullscreenTextReveal 0.6s ease 0.55s forwards; }
-.fullscreen-text p:nth-child(3) { animation: fullscreenTextReveal 0.6s ease 0.7s forwards; }
-.fullscreen-text p:nth-child(4) { animation: fullscreenTextReveal 0.6s ease 0.85s forwards; }
-.fullscreen-text p:nth-child(5) { animation: fullscreenTextReveal 0.6s ease 1s forwards; }
-
-@keyframes fullscreenTextReveal {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+/* === ANIMATION DE CHANGEMENT (image sport / texte jeu) — même esprit que l'entrée au chargement === */
+@keyframes detenteOut {
+    from { opacity: 1; transform: translateY(0); }
+    to   { opacity: 0; transform: translateY(-16px); }
 }
 
-.fullscreen-text p:first-of-type::first-letter {
-    font-family: "Pacifico", cursive;
-    font-size: 3em;
-    float: left;
-    line-height: 0.9;
-    margin-right: 8px;
-    margin-top: 6px;
-    color: var(--coral);
+@keyframes detenteIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 
-body.fullscreen-open {
-    overflow: hidden;
-}
+.anim-out { animation: detenteOut 0.25s ease forwards; }
+.anim-in  { animation: detenteIn 0.4s ease forwards; }
 
 /* === RESPONSIVE === */
 @media (max-width: 768px) {
@@ -586,7 +476,7 @@ body.fullscreen-open {
         font-size: 1.5em;
     }
 
-    .jeu-nom {
+    .item-nom {
         font-size: 1.7em;
     }
 }
