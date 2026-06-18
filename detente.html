@@ -22,7 +22,6 @@
             <a href="pedagogie.html">Pédagogie</a>
             <a href="lectures.html">Lectures</a>
             <a href="detente.html" class="actif">Détente</a>
-            <!-- <a href="#">algorithmes</a> -->
         </div>
         <div class="nav-spacer"></div>
     </nav>
@@ -79,8 +78,11 @@
                 </ul>
             </div>
 
-            <!-- Image planche à voile — colonne centrale -->
-            <img src="images/detente/planche-voile.png" class="detente-hero" alt="Planche à voile">
+            <!-- Zone centrale — image sport ou règles du jeu sélectionné -->
+            <div class="detente-hero-zone">
+                <img src="images/detente/planche-voile.png" class="detente-hero" alt="Planche à voile">
+                <section class="jeu-detail" id="jeuDetail" hidden></section>
+            </div>
 
             <!-- ============ COLONNE DROITE — SPORTS & ACTIVITÉS ============ -->
             <div class="detente-col col-droite">
@@ -88,23 +90,23 @@
                     <!-- titre = nom du sport actif (mis à jour par le diaporama / au clic) -->
                     <h2 id="sportTitle">Planche à voile</h2>
                 </div>
-                <ul class="detente-list">                    
+                <ul class="detente-list">
                     <li class="detente-item sport-item">
                         <span class="item-nom">Slackline</span>
                         <img src="images/detente/slakcline.png" class="sport-img" alt="Slackline" hidden>
                     </li>
-                    
+
                     <li class="detente-item sport-item">
                         <span class="item-nom">Planeur</span>
                         <img src="images/detente/planeur.png" class="sport-img" alt="Planeur" hidden>
                     </li>
-                    
+
                     <li class="detente-item sport-item">
                         <span class="item-nom">Danse Intore</span>
                         <img src="images/detente/intore.png" class="sport-img" alt="Danse Intore" hidden>
                     </li>
 
-                    <li class="detente-item sport-item actif">
+                    <li class="detente-item sport-item">
                         <span class="item-nom">Planche à voile</span>
                         <img src="images/detente/planche-voile.png" class="sport-img" alt="Planche à voile" hidden>
                     </li>
@@ -113,8 +115,6 @@
 
         </div>
 
-        <!-- Contenu du jeu sélectionné — rempli/mis à jour au clic sur un jeu -->
-        <section class="jeu-detail" id="jeuDetail" hidden></section>
     </section>
 
     <script src="js/detente.js"></script>

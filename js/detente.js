@@ -20,22 +20,40 @@
         el.addEventListener('animationend', enter, { once: true });
     }
 
-    // ===== SPORTS — diaporama (titre = sport actif, liste = les autres) =====
+    // ===== SPORTS — diaporama (titre = sport actif, liste = 3 suivants en cycle) =====
     const SLIDESHOW_MS = 10000;
+    const VISIBLE_SPORT_COUNT = 3;
     const sportItems = Array.from(document.querySelectorAll('.sport-item'));
     const sports = sportItems.map(it => ({
         el: it,
-        name: it.querySelector('.item-nom').textContent,
+        name: it.querySelector('.item-nom').textContent.trim(),
         src: it.querySelector('.sport-img').getAttribute('src'),
     }));
 
     let activeIndex = -1;
     let timer = null;
 
+    function renderSportList() {
+        const visibleIndexes = new Set();
+        const visibleCount = Math.min(VISIBLE_SPORT_COUNT, Math.max(sports.length - 1, 0));
+
+        for (let offset = 1; offset <= visibleCount; offset += 1) {
+            visibleIndexes.add((activeIndex + offset) % sports.length);
+        }
+
+        sports.forEach((s, idx) => {
+            s.el.classList.toggle('actif', idx === activeIndex);
+            s.el.classList.toggle('visible', visibleIndexes.has(idx));
+        });
+    }
+
     function showSport(i, animate) {
         if (!sports.length || i === activeIndex) return;
         activeIndex = i;
         const sport = sports[i];
+
+        if (detail) detail.hidden = true;
+        if (hero) hero.hidden = false;
 
         if (animate) {
             if (hero) {
@@ -48,8 +66,7 @@
             if (sportTitle) sportTitle.textContent = sport.name;
         }
 
-        // l'actif sort de la liste, les autres y restent (cliquables)
-        sports.forEach((s, idx) => s.el.classList.toggle('actif', idx === i));
+        renderSportList();
     }
 
     function startTimer() {
@@ -63,24 +80,26 @@
     });
 
     if (sports.length) {
-        // actif initial = sport correspondant à l'image centrale, sinon le premier
-        let start = hero ? sports.findIndex(s => hero.src.endsWith(s.src)) : 0;
+        // actif initial = sport correspondant au nom de l'image centrale, sinon à son src, sinon le premier
+        let start = hero ? sports.findIndex(s => s.name === hero.alt) : 0;
+        if (start < 0 && hero) start = sports.findIndex(s => hero.src.endsWith(s.src));
         if (start < 0) start = 0;
         showSport(start, false);
         startTimer();
     }
 
-    // ===== JEUX — le contenu s'affiche dans la section dédiée sous la page =====
+    // ===== JEUX — le contenu remplace l'image centrale =====
     document.querySelectorAll('.jeu-item').forEach(item => {
         item.addEventListener('click', () => {
             const content = item.querySelector('.jeu-content');
-            if (!content || !detail) return;
+            if (!content || !detail || !hero) return;
             const hadContent = !detail.hidden;
+            clearInterval(timer);
 
             transition(detail, () => {
                 detail.innerHTML = content.innerHTML;
+                hero.hidden = true;
                 detail.hidden = false;
-                detail.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             }, hadContent);
 
             document.querySelectorAll('.jeu-item').forEach(j => j.classList.remove('actif'));
