@@ -17,8 +17,9 @@ body {
     font-optical-sizing: auto;
     line-height: 1.6;
     color: #333;
-    background-color: whitesmoke;
     overflow-x: hidden;
+    min-height: 100vh;
+    background-color: whitesmoke;
 }
 
 /* Header avec animation d'intro */
@@ -69,17 +70,6 @@ header .subtitle {
     animation-delay: 0.5s;
 }
 
-
-@keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
 
 /* Animation clip-path reveal pour le titre présentation */
 .fadeLeft {
@@ -184,7 +174,6 @@ nav {
     bottom: -3px;
     left: 0;
     width: 0%;
-    height: 1px;
     height: 1.2px;
     background: white;
     transition: width 0.3s ease;
@@ -192,6 +181,38 @@ nav {
 
 .nav-links a:hover::after {
     width: 100%;
+}
+
+@keyframes shrinkAndDarkenMobile {
+    0% {
+        padding: 0.9rem 1.2rem;
+        background: rgba(20, 30, 40, 0);
+        backdrop-filter: blur(0px);
+    }
+    100% {
+        padding: 0.35rem 1.2rem;
+        background: rgba(150, 95, 45, 0.7);
+        backdrop-filter: blur(5px);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+}
+
+@media (max-width: 768px) {
+    nav {
+        padding: 0.7rem 1.2rem;
+        animation: navReveal 0.8s ease-out forwards, shrinkAndDarkenMobile both linear;
+        animation-delay: 1.5s, 0s;
+        animation-timeline: auto, scroll();
+        animation-range: normal, 0 400px;
+    }
+
+    .nav-links {
+        gap: 1em;
+    }
+
+    .nav-links a {
+        font-size: 0.68em;
+    }
 }
 
 /* Section présentation */

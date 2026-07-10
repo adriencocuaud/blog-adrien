@@ -162,7 +162,7 @@ nav {
 .algo-section {
     position: relative;
     min-height: 100vh;
-    padding: 100px 60px 80px;
+    padding: 60px 60px 80px;
     background-color: var(--bg-dark);
     background-image:
         repeating-linear-gradient(0deg, var(--grid-line) 0px, var(--grid-line) 1px, transparent 1px, transparent 34px),
@@ -174,11 +174,11 @@ nav {
 /* === INTRO HEADER === */
 .intro-header {
     position: relative;
+    min-height: 200px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-bottom: 50px;
     z-index: 10;
 }
 
@@ -337,8 +337,8 @@ nav {
     font-family: "Source Code Pro", monospace;
     font-weight: 500;
     font-size: 1em;
-    letter-spacing: -0.03em;
-    word-spacing: -0.24em;
+    letter-spacing: -0.05em;
+    word-spacing: -0.25em;
     line-height: 1.7;
     color: var(--text-light);
     word-break: break-word;
@@ -369,9 +369,43 @@ nav {
     }
 }
 
+@keyframes shrinkAndDarkenMobile {
+    0% {
+        padding: 0.9rem 1.2rem;
+        background: rgba(12, 14, 19, 0);
+        backdrop-filter: blur(0px);
+    }
+    100% {
+        padding: 0.35rem 1.2rem;
+        background: rgba(12, 14, 19, 0.85);
+        backdrop-filter: blur(6px);
+        box-shadow: 0 2px 14px rgba(0, 0, 0, 0.4);
+    }
+}
+
 @media (max-width: 768px) {
+    nav {
+        padding: 0.7rem 1.2rem;
+        animation: navReveal 0.8s ease-out forwards, shrinkAndDarkenMobile both linear;
+        animation-delay: 0.5s, 0s;
+        animation-timeline: auto, scroll();
+        animation-range: normal, 0 400px;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .nav-home {
+        font-size: 0.68em;
+    }
+
+    .nav-spacer {
+        width: 0;
+    }
+
     .algo-section {
-        padding: 110px 24px 60px;
+        padding: 60px 24px 60px;
     }
 
     .intro-header h1 {
@@ -398,11 +432,22 @@ nav {
 
 @media (max-width: 480px) {
     .algo-section {
-        padding: 100px 16px 50px;
+        padding: 60px 16px 50px;
     }
 
     .algo-img {
         width: 64px;
         height: 64px;
     }
+
+    .algo-name {
+    font-size: 1.05em;
+    margin-bottom: 4px;
+    }
+
+    .algo-formula {
+    font-size: 0.95em;
+    line-height: 1.2;
+    }
+
 }

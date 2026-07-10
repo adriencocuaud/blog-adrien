@@ -161,11 +161,54 @@ nav {
     width: 120px;
 }
 
+@keyframes shrinkAndDarkenMobile {
+    0% {
+        padding: 0.9rem 1.2rem;
+        background: rgba(74, 51, 32, 0);
+        backdrop-filter: blur(0px);
+    }
+    100% {
+        padding: 0.35rem 1.2rem;
+        background: rgba(74, 51, 32, 0.9);
+        backdrop-filter: blur(5px);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+    }
+}
+
+@media (max-width: 768px) {
+    nav {
+        padding: 0.7rem 1.2rem;
+        animation: navReveal 0.8s ease-out forwards, shrinkAndDarkenMobile both linear;
+        animation-delay: 0.5s, 0s;
+        animation-timeline: auto, scroll();
+        animation-range: normal, 0 400px;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .nav-home {
+        font-size: 0.68em;
+    }
+
+    .nav-spacer {
+        width: 0;
+    }
+
+    body {
+        /* background-attachment: fixed casse le rendu des éléments position:fixed
+           (la nav) pendant le scroll sur mobile (bug de compositing iOS Safari) */
+        background-attachment: scroll;
+    }
+}
+
 /* Section bookshelf */
 .bookshelf-section {
     position: relative;
     min-height: 100vh;
-    padding: 60px;
+    /* Pas de padding-top : le bandeau bois de .intro-header occupe lui-même cette zone */
+    padding: 0 60px 60px;
     background: transparent;
     z-index: 10;
 }
@@ -174,9 +217,9 @@ nav {
 .intro-header {
     position: relative;
     text-align: center;
-    /* Pleine largeur + remonte jusqu'en haut (sous la nav) : contrecarre le padding de .bookshelf-section */
-    margin: -60px -60px 50px;
-    padding: 4.5rem 2rem 0.4rem;
+    /* Pleine largeur : contrecarre le padding gauche/droite de .bookshelf-section */
+    margin: 0 -60px 50px;
+    padding: 6rem 2rem 0.4rem;
     color: #f3e7d2;
     background-color: #4a3320;
     background-image:
