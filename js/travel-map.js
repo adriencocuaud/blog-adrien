@@ -1,12 +1,12 @@
 (function () {
     const destinations = [
-        { name: 'France',    city: 'Paris',     coords: [  2.3522, 48.8566] },
-        { name: 'Guyane',    city: 'Cayenne',   coords: [-52.3333,  4.9333] },
-        { name: 'Paraguay',  city: 'Asunción',  coords: [-57.3333,-25.2867] },
-        { name: 'Cap-Vert',  city: 'Praia',     coords: [-23.5133, 14.9333] },
+        { name: 'France',    city: 'Besançon',     coords: [  2.3522, 48.8566] },
+        { name: 'Guyane',    city: 'Saint-Laurent',   coords: [-52.3333,  4.9333] },
+        { name: 'Paraguay',  city: 'Iguazu',  coords: [-57.3333,-25.2867] },
+        { name: 'Cabo-Verde',  city: 'Praia',     coords: [-23.5133, 14.9333] },
         { name: 'Chine',     city: 'Chengdu',   coords: [104.0668, 30.5728] },
         { name: 'Rwanda',    city: 'Kigali',    coords: [ 30.1044, -1.9706] },
-        { name: 'Pologne',   city: 'Varsovie',  coords: [ 21.0122, 52.2297] }
+        { name: 'Pologne',   city: 'Rzeszow',  coords: [ 21.0122, 52.2297] }
     ];
 
     const container = document.getElementById('travel-map');

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/algorithme.css">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="apple-touch-icon" href="images/favicon.png">
+    <title>Algorithmes - Adrien Cocuaud</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav>
+        <a href="index.html" class="nav-home"><span class="nav-back-arrow">&#10094;</span> Départ</a>
+        <div class="nav-links">
+            <a href="itinerances.html">Itinérance</a>
+            <a href="pedagogie.html">Pédagogie</a>
+            <a href="lectures.html">Lecture</a>
+            <a href="algorithme.html" class="actif">Algorithme</a>
+            <!-- <a href="detente.html">Détente</a> -->
+        </div>
+        <div class="nav-spacer"></div>
+    </nav>
+
+    <section class="algo-section">
+        <div class="intro-header">
+            <h1>Algorithme</h1>
+            <p class="subtitle">Résoudre le Rubik's cube grâce aux COLL</p>
+        </div>
+
+        <!-- ============ COLL PERM ============ -->
+        <div class="algo-group">
+            <h2 class="group-title">Permutations</h2>
+            <div class="algo-grid">
+                <article class="algo-card">
+                    <img src="images/algorithmes/perm_adjacent.png" class="algo-img" alt="COLL Perm — Adjacente">
+                    <div class="algo-content">
+                        <p class="algo-name"><span class="algo-num">01</span> Adjacente</p>
+                        <p class="algo-formula">
+                            <span class="trig-lasso">(R U R' F')</span> <span class="trig-sexy">(R U R' U')</span> (R' F R2 U' R')
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithmes/perm_diagonal.png" class="algo-img" alt="COLL Perm — Diagonale">
+                    <div class="algo-content">
+                        <p class="algo-name"><span class="algo-num">02</span> Diagonale</p>
+                        <p class="algo-formula">
+                            F <span class="trig-reload">(R U' R' U')</span> <span class="trig-lasso">(R U R' F')</span> <span class="trig-sexy">(R U R' U')</span> <span class="trig-sledge">(R'F R F')</span>
+                        </p>
+                        <p class="algo-formula algo-alt">
+                            (F U' F' U') r2 (U' R F R' U) R2
+                        </p>
+                    </div>
+                </article>
+            </div>
+        </div>
+
+        <!-- ============ COLL FORME H ============ -->
+        <div class="algo-group">
+            <h2 class="group-title">Forme H</h2>
+            <div class="algo-grid">
+                <article class="algo-card">
+                    <img src="images/algorithmes/H-rangs.png" class="algo-img" alt="COLL Forme H — Rangs">
+                    <div class="algo-content">
+                        <p class="algo-name"><span class="algo-num">01</span> Rangs</p>
+                        <p class="algo-formula">
+                            F <span class="trig-sexy">(R U R' U')</span><sup>3</sup> F'
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithmes/H-colones.png" class="algo-img" alt="COLL Forme H — Columns">
+                    <div class="algo-content">
+                        <p class="algo-name"><span class="algo-num">02</span> Colones</p>
+                        <p class="algo-formula">
+                            <span class="trig-whip">(R U2 R' U')</span> <span class="trig-sexy">(R U R' U')</span> R U' R'
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithmes/H-barre-bas.png" class="algo-img" alt="COLL Forme H — Barre en bas">
+                    <div class="algo-content">
+                        <p class="algo-name"><span class="algo-num">03</span> Barre en bas</p>
+                        <p class="algo-formula">
+                            F (R U' R' U) <span class="trig-whip">(R U2 R' U')</span> <span class="trig-sexy">(R U R' U')</span> F'
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithmes/H-barre-droite.png" class="algo-img" alt="COLL Forme H — Barre à droite">
+                    <div class="algo-content">
+                        <p class="algo-name"><span class="algo-num">04</span> Barre à droite</p>
+                        <p class="algo-formula">
+                            (R U R' U) (R U L' U) R' U' L
+                        </p>
+                    </div>
+                </article>
+            </div>
+        </div>
+
+        <!-- ============ COLL FORME PI ============ -->
+        <div class="algo-group">
+            <h2 class="group-title">Forme Pi</h2>
+            <div class="algo-grid">
+                <article class="algo-card">
+                    <img src="images/algorithmes/pi-barre-droite.png" class="algo-img" alt="COLL Forme Pi — Barre à droite">
+                    <div class="algo-content">
+                        <p class="algo-name"><span class="algo-num">01</span> Barre à droite</p>
+                        <p class="algo-formula">
+                            f <span class="trig-sexy">(R U R' U')</span> S' <span class="trig-sexy">(R U R' U')</span> F'
+                        </p>
+                        <p class="algo-formula algo-alt">
+                            F (R U R' U')<sup>2</sup> F'
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithmes/pi-barre-gauche.png" class="algo-img" alt="COLL Forme Pi — Barre à gauche">
+                    <div class="algo-content">
+                        <p class="algo-name"><span class="algo-num">02</span> Barre à gauche</p>
+                        <p class="algo-formula">
+                            R U D' (R U R' D) (R2 U' R' U') R2 U2' R
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithmes/pi-double-barre.png" class="algo-img" alt="COLL Forme Pi — Colonnes">
+                    <div class="algo-content">
+                        <p class="algo-name"><span class="algo-num">03</span> Double barre</p>
+                        <p class="algo-formula">
+                            <span class="trig-sledge">(r' F R F')</span> <span class="trig-reload">(r U' R' U')</span> R U' R'
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithmes/pi-slash-croissante.png" class="algo-img" alt="COLL Forme Pi — Diagonales croissantes">
+                    <div class="algo-content">
+                        <p class="algo-name"><span class="algo-num">04</span> Slash croissant</p>
+                        <p class="algo-formula">
+                            <span class="trig-sexy">(R U R' U')</span> R' F R <span class="trig-sexy">(R U R' U')</span><sup>2</sup> F'
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithmes/pi-slash-decroissante.png" class="algo-img" alt="COLL Forme Pi — Diagonales décroissantes">
+                    <div class="algo-content">
+                        <p class="algo-name"><span class="algo-num">05</span> Slash décroissant</p>
+                        <p class="algo-formula">
+                            R' F2 (R U2 R U2) R' F2 (U' R U' R')
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithmes/pi-double-slash.png" class="algo-img" alt="COLL Forme Pi — Doubles diagonales">
+                    <div class="algo-content">
+                        <p class="algo-name"><span class="algo-num">06</span> Double slash</p>
+                        <p class="algo-formula">
+                            R' U' F' <span class="trig-sexy">(R U R' U')</span> R' F R2 U2 R' U2 R
+                        </p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
