@@ -4,10 +4,9 @@
 
 :root {
     --bg-dark: #0c0e13;
-    --bg-panel: #14171f;
-    --card-bg: rgba(255, 255, 255, 0.035);
+    --bg-panel: #14171fdd;
+    --card-bg: #14171fdd;
     --card-border: rgba(255, 255, 255, 0.09);
-    --grid-line: rgba(255, 255, 255, 0.045);
     --text-light: #e7e9f0;
     --text-dim: #8890a4;
     --accent: #ff7a1a;
@@ -158,17 +157,18 @@ nav {
     width: 120px;
 }
 
-/* === SECTION — fond grille façon feuille technique === */
+/* === SECTION — fond quadrillage façon pièce de Rubik's cube (stickers arrondis) === */
 .algo-section {
     position: relative;
     min-height: 100vh;
     padding: 60px 60px 80px;
     background-color: var(--bg-dark);
     background-image:
-        repeating-linear-gradient(0deg, var(--grid-line) 0px, var(--grid-line) 1px, transparent 1px, transparent 34px),
-        repeating-linear-gradient(90deg, var(--grid-line) 0px, var(--grid-line) 1px, transparent 1px, transparent 34px),
+        url("../images/algorithmes/grille-cube-tile.svg"),
         radial-gradient(ellipse at 30% 0%, rgba(255, 122, 26, 0.08), transparent 55%),
         radial-gradient(ellipse at 80% 100%, rgba(59, 130, 246, 0.06), transparent 55%);
+    background-repeat: repeat, no-repeat, no-repeat;
+    background-size: 416px 416px, auto, auto;
 }
 
 /* === INTRO HEADER === */
@@ -333,6 +333,37 @@ nav {
     margin-right: 8px;
 }
 
+/* Sticker de bascule vers l'algorithme alternatif */
+.toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 6px;
+    padding: 0px 5px;
+    font-family: "Orbitron", sans-serif;
+    font-weight: 700;
+    font-size: 0.62em;
+    letter-spacing: 0.05em;
+    line-height: 1.6;
+    color: var(--accent);
+    background: rgba(255, 122, 26, 0.12);
+    border: 1px solid rgba(255, 122, 26, 0.4);
+    border-radius: 4px;
+    cursor: pointer;
+    vertical-align: middle;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.toggle:hover {
+    background: rgba(255, 122, 26, 0.25);
+}
+
+.algo-card.showing-alt .toggle {
+    color: var(--bg-dark);
+    background: var(--accent);
+    border-color: var(--accent);
+}
+
 .algo-formula {
     font-family: "Source Code Pro", monospace;
     font-weight: 500;
@@ -345,14 +376,124 @@ nav {
 }
 
 .algo-formula.algo-alt {
+    display: none;
     margin-top: 4px;
     color: var(--text-dim);
     font-size: 0.86em;
 }
 
+/* Quand le sticker est activé : la formule alt remplace la principale (même style, pas atténuée) */
+.algo-card.showing-alt .algo-formula:not(.algo-alt) {
+    display: none;
+}
+
+.algo-card.showing-alt .algo-formula.algo-alt {
+    display: block;
+    margin-top: 0;
+    color: var(--text-light);
+    font-size: 1em;
+}
+
 .algo-formula sup {
     color: inherit;
     font-size: 0.7em;
+}
+
+/* === ENTRAINEMENT === */
+.training-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    width: fit-content;
+    min-width: 70%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 36px;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    cursor: pointer;
+    user-select: none;
+    text-align: center;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.training-card:hover {
+    border-color: rgba(255, 122, 26, 0.45);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.35);
+}
+
+.training-card:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+}
+
+.training-img {
+    width: 160px;
+    height: 160px;
+    object-fit: contain;
+    filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.5));
+}
+
+.training-result {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.training-progress-track {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.training-progress-bar {
+    height: 100%;
+    width: 0%;
+    background: var(--accent);
+    border-radius: 2px;
+}
+
+.training-progress-bar.running {
+    animation: trainingProgress 5s linear forwards;
+}
+
+@keyframes trainingProgress {
+    from { width: 0%; }
+    to { width: 100%; }
+}
+
+.training-result .algo-name,
+.training-result .algo-formula {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.training-card.revealed .training-progress-track {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.training-card.revealed .algo-name,
+.training-card.revealed .algo-formula {
+    visibility: visible;
+    opacity: 1;
+}
+
+.training-result .algo-name {
+    margin-bottom: 8px;
 }
 
 /* === TRIGGERS COLORÉS === */
@@ -428,6 +569,20 @@ nav {
         width: 76px;
         height: 76px;
     }
+
+    .training-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .training-img {
+        width: 110px;
+        height: 110px;
+    }
+
+    .training-progress-track {
+        width: 110px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -450,4 +605,11 @@ nav {
     line-height: 1.2;
     }
 
+}
+
+/* === IMPRESSION === */
+@media print {
+    nav {
+        display: none;
+    }
 }

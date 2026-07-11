@@ -36,30 +36,45 @@
             <p class="subtitle">Résoudre le Rubik's cube avec la méthode ROUX</p>
         </div>
 
+        <!-- ============ ENTRAINEMENT ============ -->
+        <div class="algo-group">
+            <h2 class="group-title">Entraînement</h2>
+            <div class="training-card" id="training-card" tabindex="0" role="button" aria-label="Cliquer pour tirer un nouveau cas">
+                <img src="" alt="Cas à résoudre" class="training-img" id="training-img">
+                <div class="training-result" id="training-result">
+                    <div class="training-progress-track" id="training-progress-track">
+                        <div class="training-progress-bar" id="training-progress-bar"></div>
+                    </div>
+                    <p class="algo-name" id="training-name"></p>
+                    <p class="algo-formula" id="training-formula"></p>
+                </div>
+            </div>
+        </div>
+
         <!-- ============ COLL PERM ============ -->
         <div class="algo-group">
             <h2 class="group-title">Permutations</h2>
             <div class="algo-grid">
                 <article class="algo-card">
-                    <img src="images/algorithmes/perm_adjacent.png" class="algo-img" alt="COLL Perm — Adjacente">
+                    <img src="images/algorithmes/perm_adjacent.png" class="algo-img">
                     <div class="algo-content">
                         <p class="algo-name"><span class="algo-num">01</span> Adjacente</p>
                         <p class="algo-formula">
-                            <span class="trig-lasso">(R U R' F')</span> <span class="trig-sexy">(R U R' U')</span> (R' F R2 U' R')
+                            (R U R' F') <span class="trig-sexy">(R U R' U')</span> (R' F R2 U' R')
                         </p>
                     </div>
                 </article>
 
                 <article class="algo-card">
-                    <img src="images/algorithmes/perm_diagonal.png" class="algo-img" alt="COLL Perm — Diagonale">
+                    <img src="images/algorithmes/perm_diagonal.png" class="algo-img">
                     <div class="algo-content">
                         <p class="algo-name"><span class="algo-num">02</span> Diagonale</p>
                         <p class="algo-formula">
+                            (F U' F' U') r2 (U' R F R' U) r2
+                        </p>
+                        <p class="algo-formula algo-alt">
                             F <span class="trig-reload">(R U' R' U')</span> <span class="trig-lasso">(R U R' F')</span> <span class="trig-sexy">(R U R' U')</span> <span class="trig-sledge">(R'F R F')</span>
                         </p>
-                        <!-- <p class="algo-formula algo-alt">
-                            (F U' F' U') r2 (U' R F R' U) R2
-                        </p> -->
                     </div>
                 </article>
             </div>
@@ -70,7 +85,7 @@
             <h2 class="group-title">Forme H</h2>
             <div class="algo-grid">
                 <article class="algo-card">
-                    <img src="images/algorithmes/H-rangs.png" class="algo-img" alt="COLL Forme H — Rangs">
+                    <img src="images/algorithmes/H-rangs.png" class="algo-img">
                     <div class="algo-content">
                         <p class="algo-name"><span class="algo-num">01</span> Rangs</p>
                         <p class="algo-formula">
@@ -80,27 +95,30 @@
                 </article>
 
                 <article class="algo-card">
-                    <img src="images/algorithmes/H-colones.png" class="algo-img" alt="COLL Forme H — Columns">
+                    <img src="images/algorithmes/H-colones.png" class="algo-img">
                     <div class="algo-content">
                         <p class="algo-name"><span class="algo-num">02</span> Colones</p>
                         <p class="algo-formula">
-                            <span class="trig-whip">(R U2 R' U')</span> <span class="trig-sexy">(R U R' U')</span> R U' R'
+                            (R U2 R' U') <span class="trig-sexy">(R U R' U')</span> R U' R'
                         </p>
                     </div>
                 </article>
 
                 <article class="algo-card">
-                    <img src="images/algorithmes/H-barre-bas.png" class="algo-img" alt="COLL Forme H — Barre en bas">
+                    <img src="images/algorithmes/H-barre-bas.png" class="algo-img">
                     <div class="algo-content">
                         <p class="algo-name"><span class="algo-num">03</span> Barre en bas</p>
                         <p class="algo-formula">
-                            F (R U' R' U) <span class="trig-whip">(R U2 R' U')</span> <span class="trig-sexy">(R U R' U')</span> F'
+                            F <span class="trig-sexy">(R U R' U')</span> F' <span class="trig-sexy">(R U R' U')</span> <span class="trig-sledge">(R' F R' F')</span>
+                        </p>
+                        <p class="algo-formula algo-alt">
+                            f <span class="trig-sexy">(R U R' U')</span> f' <span class="trig-sexy">(R U R' U')</span> <span class="trig-sledge">(R' F R' F')</span>
                         </p>
                     </div>
                 </article>
 
                 <article class="algo-card">
-                    <img src="images/algorithmes/H-barre-droite.png" class="algo-img" alt="COLL Forme H — Barre à droite">
+                    <img src="images/algorithmes/H-barre-droite.png" class="algo-img">
                     <div class="algo-content">
                         <p class="algo-name"><span class="algo-num">04</span> Barre à droite</p>
                         <p class="algo-formula">
@@ -116,70 +134,155 @@
             <h2 class="group-title">Forme Pi</h2>
             <div class="algo-grid">
                 <article class="algo-card">
-                    <img src="images/algorithmes/pi-barre-droite.png" class="algo-img" alt="COLL Forme Pi — Barre à droite">
+                    <img src="images/algorithmes/pi-barre-droite.png" class="algo-img">
                     <div class="algo-content">
                         <p class="algo-name"><span class="algo-num">01</span> Barre à droite</p>
                         <p class="algo-formula">
+                            F <span class="trig-sexy">(R U R' U')</span><sup>2</sup> F'
+                        </p>
+                        <p class="algo-formula algo-alt">
                             f <span class="trig-sexy">(R U R' U')</span> S' <span class="trig-sexy">(R U R' U')</span> F'
                         </p>
-                        <!-- <p class="algo-formula algo-alt">
-                            F (R U R' U')<sup>2</sup> F'
-                        </p> -->
                     </div>
                 </article>
 
                 <article class="algo-card">
-                    <img src="images/algorithmes/pi-barre-gauche.png" class="algo-img" alt="COLL Forme Pi — Barre à gauche">
+                    <img src="images/algorithmes/pi-barre-gauche.png" class="algo-img">
                     <div class="algo-content">
                         <p class="algo-name"><span class="algo-num">02</span> Barre à gauche</p>
                         <p class="algo-formula">
+                            R' (F' U' F U') (R U R' U) R
+                        </p>
+                        <p class="algo-formula algo-alt">
                             R U D' (R U R' D) (R2 U' R' U') R2 U2' R
                         </p>
                     </div>
                 </article>
 
                 <article class="algo-card">
-                    <img src="images/algorithmes/pi-double-barre.png" class="algo-img" alt="COLL Forme Pi — Colonnes">
+                    <img src="images/algorithmes/pi-double-barre.png" class="algo-img">
                     <div class="algo-content">
                         <p class="algo-name"><span class="algo-num">03</span> Double barre</p>
                         <p class="algo-formula">
-                            <span class="trig-sledge">(r' F R F')</span> <span class="trig-reload">(r U' R' U')</span> R U' R'
+                            <span class="trig-sledge">(L F' L' F)</span> (l' U l U) L U L'
                         </p>
                     </div>
                 </article>
 
                 <article class="algo-card">
-                    <img src="images/algorithmes/pi-slash-croissante.png" class="algo-img" alt="COLL Forme Pi — Diagonales croissantes">
+                    <img src="images/algorithmes/pi-slash.png" class="algo-img">
                     <div class="algo-content">
-                        <p class="algo-name"><span class="algo-num">04</span> Slash croissant</p>
+                        <p class="algo-name"><span class="algo-num">04</span> Slash</p>
                         <p class="algo-formula">
-                            <span class="trig-sexy">(R U R' U')</span> R' F R <span class="trig-sexy">(R U R' U')</span><sup>2</sup> F'
+                            (R U2 R' U')  (R U R' U2') <span class="trig-sledge">(R' F R F')</span>
                         </p>
                     </div>
                 </article>
 
                 <article class="algo-card">
-                    <img src="images/algorithmes/pi-slash-decroissante.png" class="algo-img" alt="COLL Forme Pi — Diagonales décroissantes">
+                    <img src="images/algorithmes/pi-anti-slash.png" class="algo-img">
                     <div class="algo-content">
-                        <p class="algo-name"><span class="algo-num">05</span> Slash décroissant</p>
+                        <p class="algo-name"><span class="algo-num">05</span> Anti-slash</p>
                         <p class="algo-formula">
-                            R' F2 (R U2 R U2) R' F2 (U' R U' R')
+                            (L' U2 L U)  (L' U' L U2)  <span class="trig-sledge">(L F' L' F)</span>
                         </p>
                     </div>
                 </article>
 
                 <article class="algo-card">
-                    <img src="images/algorithmes/pi-double-slash.png" class="algo-img" alt="COLL Forme Pi — Doubles diagonales">
+                    <img src="images/algorithmes/pi-double-slash.png" class="algo-img">
                     <div class="algo-content">
                         <p class="algo-name"><span class="algo-num">06</span> Double slash</p>
                         <p class="algo-formula">
+                            (U' R' F R U) F U' <span class="trig-sexy">(R U R' U')</span> F'
+                        </p>
+                        <p class="algo-formula algo-alt">
                             R' U' F' <span class="trig-sexy">(R U R' U')</span> R' F R2 U2 R' U2 R
                         </p>
                     </div>
                 </article>
             </div>
         </div>
+
+        <!-- ============ COLL FORME U ============ -->
+        <div class="algo-group">
+            <h2 class="group-title">Forme U</h2>
+            <div class="algo-grid">
+                <article class="algo-card">
+                    <img src="images/algorithmes/U-barre-gauche.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name"><span class="algo-num">01</span> Barre à gauche</p>
+                        <p class="algo-formula">
+                            F <span class="trig-sexy">(R U R' U')</span> F'
+                        </p>
+                        <p class="algo-formula algo-alt">
+                            (R' U2 R) F U' (R' U' R U) F'
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithmes/U-barre-droite.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name"><span class="algo-num">02</span> Barre à droite</p>
+                        <p class="algo-formula">
+                            <span class="trig-sledge">(R' F R F')</span><sup>2</sup> <span class="trig-sexy">(R U R' U')</span><sup>2</sup>
+                        </p>
+                        <p class="algo-formula algo-alt">
+                            <span class="trig-sexy">(R U R' U')</span> (R U' R' U2)<sup>2</sup> R U R'
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithmes/U-double-barre.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name"><span class="algo-num">03</span> Double barre</p>
+                        <p class="algo-formula">
+                            <span class="trig-sexy">(R U R' U')</span> (R' F R U) (R' U' R F') R' U R
+                        </p>
+                        <p class="algo-formula algo-alt">
+                            (R' U' R) F R2 D' (R U R') D R2 U' F'
+                        </p>
+                    </div>
+                </article>
+                
+                <article class="algo-card">
+                    <img src="images/algorithmes/U-double-slash.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name"><span class="algo-num">06</span> Double slash</p>
+                        <p class="algo-formula">
+                            F (R U' R' U) <span class="trig-whip">(R U R' U)</span> (R U' R' F')
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithmes/U-slash-droit.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name"><span class="algo-num">04</span> Slash droit</p>
+                        <p class="algo-formula">
+                            (R' F R U)<sup>2</sup> F U2 F'
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithmes/U-slash-gauche.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name"><span class="algo-num">05</span> Slash gauche</p>
+                        <p class="algo-formula">
+                            (L F' L' U')<sup>2</sup> F' U2 F
+                        </p>
+                    </div>
+                </article>
+
+            </div>
+        </div>
     </section>
+
+    <!-- <script src="js/algorithme.js"></script> -->
+    <script src="js/algorithme-entrainement.js"></script>
 </body>
 
 </html>
