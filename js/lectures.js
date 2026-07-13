@@ -47,8 +47,27 @@
     // Une seule année affichée à la fois — switch via le year-nav
     var sections = document.querySelectorAll('.year-section');
     var navLinks = document.querySelectorAll('.year-nav a');
-    var footerYear = document.querySelector('.year-footer-year');
     var footerCount = document.querySelector('.year-footer-count');
+    var activeYear = null;
+    var footerCountTimer = null;
+
+    function countTextFor(year) {
+        var section = document.getElementById(year);
+        var count = section ? section.querySelector('.year-count') : null;
+        return (count ? count.textContent : '') + ' lus';
+    }
+
+    // Petit fondu enchaîné lors du changement de texte (survol/clic d'une année)
+    function setFooterCount(year) {
+        if (!footerCount) return;
+        var text = countTextFor(year);
+        clearTimeout(footerCountTimer);
+        footerCount.style.opacity = '0';
+        footerCountTimer = setTimeout(function () {
+            footerCount.textContent = text;
+            footerCount.style.opacity = '1';
+        }, 150);
+    }
 
     function activateYear(year) {
         var found = false;
@@ -62,9 +81,8 @@
             a.classList.toggle('active', a.getAttribute('href') === '#' + year);
         });
         if (activeSection) {
-            if (footerYear) footerYear.textContent = activeSection.id;
-            var count = activeSection.querySelector('.year-count');
-            if (footerCount) footerCount.textContent = (count ? count.textContent : '') + ' lus';
+            activeYear = year;
+            setFooterCount(year);
         }
         return found;
     }
@@ -90,13 +108,20 @@
                     if (header) header.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             });
-        });
 
-        // Titre du footer cliquable → remonte en haut de page
-        if (footerYear) {
-            footerYear.addEventListener('click', function () {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+            // Aperçu du nombre de livres de l'année survolée, sans changer l'année active
+            a.addEventListener('mouseenter', function () {
+                setFooterCount(a.getAttribute('href').replace('#', ''));
             });
-        }
+            a.addEventListener('mouseleave', function () {
+                setFooterCount(activeYear);
+            });
+            a.addEventListener('focus', function () {
+                setFooterCount(a.getAttribute('href').replace('#', ''));
+            });
+            a.addEventListener('blur', function () {
+                setFooterCount(activeYear);
+            });
+        });
     }
 })();

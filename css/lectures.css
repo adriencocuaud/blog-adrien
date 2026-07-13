@@ -254,13 +254,19 @@ nav {
     animation-delay: 0.3s;
 }
 
+/* Plume d'origine (style validé) étirée : même silhouette (arc + 2 barbes), plus longue et fine, pointe vers le titre */
 .intro-header h1::before,
 .intro-header h1::after {
     content: '';
-    height: 1px;
-    width: 3rem;
-    background: #e7c98a;
-    opacity: 0.55;
+    flex: none;
+    width: 48px;
+    height: 16px;
+    opacity: 0.85;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='46' height='15' viewBox='0 0 46 15' fill='none' stroke='%23e7c98a' stroke-width='1.1' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5.52 7.34 a12 3.6 0 0 1 16.98 -5.09 L36 6.3 V11.4 h-17 l-13.48 -4.06 Z'/%3E%3Cline x1='14' y1='4.8' x2='42' y2='13.2'/%3E%3Cline x1='11' y1='9' x2='28' y2='9'/%3E%3C/svg%3E") no-repeat center / contain;
+}
+
+.intro-header h1::after {
+    transform: scaleX(-1);
 }
 
 @keyframes revealFromRight {
@@ -280,7 +286,7 @@ nav {
     letter-spacing: 0.1em;
     text-align: center;
     color: #f3e7d2;
-    margin: 0;
+    margin: 0 0 3rem;
     /* Animation reveal */
     opacity: 0;
     animation: fadeUp 0.6s ease forwards;
@@ -299,17 +305,12 @@ nav {
     }
 }
 
-/* Années en bas du header — plaques laiton (style nav de bibliotheque.html) */
+/* Années — plaques laiton (style nav de bibliotheque.html), affichées dans le footer */
 .year-nav {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: 0.3rem;
-    margin-top: 3rem;
-    /* Animation reveal */
-    opacity: 0;
-    animation: fadeUp 0.6s ease forwards;
-    animation-delay: 1s;
 }
 
 .year-nav a {
@@ -420,8 +421,7 @@ nav {
     }
 }
 
-/* En-tête d'année en haut de section : masqué (l'année est déjà dans le year-nav).
-   L'année + le compteur sont désormais affichés dans le footer (.year-footer). */
+/* En-tête d'année en haut de section : masqué (la nav des années est dans le footer). */
 .year-header {
     display: none;
 }
@@ -444,54 +444,8 @@ nav {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
+    gap: 0.9rem;
     text-align: center;
-}
-
-/* Année : même style que le titre du header (traits sur les côtés).
-   Cliquable → remonte en haut de page (remplace l'ancien bouton). */
-.year-footer-year {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1.2rem;
-    font-family: 'Crimson Pro', Georgia, serif;
-    font-weight: 400;
-    font-size: 3.2em;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: #e7c98a;
-    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4), 0 2px 6px rgba(0, 0, 0, 0.3);
-    /* Reset bouton */
-    border: none;
-    background: none;
-    cursor: pointer;
-    padding: 0;
-    transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease;
-}
-
-.year-footer-year::before,
-.year-footer-year::after {
-    content: '';
-    height: 1px;
-    width: 3rem;
-    background: #e7c98a;
-    opacity: 0.55;
-    transition: width 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Survol : la dorure s'illumine (traits plus longs et lumineux, texte doré éclatant) */
-.year-footer-year:hover {
-    color: #ffe9b0;
-    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4), 0 0 14px rgba(231, 201, 138, 0.65);
-    transform: translateY(-2px);
-}
-
-.year-footer-year:hover::before,
-.year-footer-year:hover::after {
-    width: 4rem;
-    opacity: 1;
-    box-shadow: 0 0 8px rgba(231, 201, 138, 0.8);
 }
 
 /* Compteur : même style que le subtitle du header */
@@ -501,6 +455,7 @@ nav {
     font-size: 1.3em;
     letter-spacing: 0.1em;
     color: #f3e7d2;
+    transition: opacity 0.15s ease;
 }
 
 
