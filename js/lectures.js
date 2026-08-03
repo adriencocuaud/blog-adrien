@@ -1,4 +1,5 @@
-// Compteurs par année + couvertures (images/lectures/{slug}.jpg) + popup résumé
+// Compteurs par année + couvertures (data-cover = nom de fichier avec extension,
+// dans images/lectures/) + popup résumé
 (function () {
     document.querySelectorAll('.year-section').forEach(function (section) {
         var n = section.querySelectorAll('.book-card').length;
@@ -6,10 +7,21 @@
         if (span) span.textContent = n + ' livre' + (n > 1 ? 's' : '');
     });
     document.querySelectorAll('.book-card[data-cover]').forEach(function (card) {
+        // data-cover sans extension = pas encore de fichier : aucune requête émise
+        if (card.dataset.cover.indexOf('.') === -1) {
+            card.querySelector('.cover-wrap').classList.add('no-cover');
+            return;
+        }
         var img = document.createElement('img');
-        img.src = 'images/lectures/' + card.dataset.cover + '.jpg';
+        // "lazy" doit être posé AVANT src, sinon l'affectation de src déclenche
+        // le téléchargement immédiat et toutes les couvertures partent d'un coup
         img.loading = 'lazy';
-        img.onerror = function () { img.remove(); card.querySelector('.cover-wrap').classList.add('no-cover'); };
+        img.decoding = 'async';
+        img.src = 'images/lectures/' + card.dataset.cover;
+        img.onerror = function () {
+            img.remove();
+            card.querySelector('.cover-wrap').classList.add('no-cover');
+        };
         card.querySelector('.cover-wrap').appendChild(img);
     });
     document.querySelectorAll('.book-card:not([data-cover]) .cover-wrap').forEach(function (el) { el.classList.add('no-cover'); });
