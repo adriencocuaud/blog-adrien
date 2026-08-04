@@ -17,7 +17,15 @@
         const title = card.querySelector('.article-content h3') || card.querySelector('h3');
         const paragraphs = card.querySelectorAll('.article-content p');
 
+        // Affiche la miniature tout de suite, puis bascule sur la version
+        // pleine définition (data-full) une fois celle-ci téléchargée
         fullscreenBg.src = img.src;
+        const fullSrc = img.dataset.full;
+        if (fullSrc && fullSrc !== img.src) {
+            const loader = new Image();
+            loader.onload = () => { fullscreenBg.src = fullSrc; };
+            loader.src = fullSrc;
+        }
         fullscreenTitle.textContent = title.textContent;
 
         fullscreenText.innerHTML = '';
