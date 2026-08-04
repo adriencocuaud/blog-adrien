@@ -40,22 +40,33 @@
         <div class="algo-group">
             <div class="training-switch-bar">
                 <div class="training-switch" id="training-switch" data-active="PLL" role="radiogroup" aria-label="Groupe à tirer">
-                    <button type="button" class="training-switch-option" data-group="CLL" role="radio" aria-checked="false">CLL</button>
-                    <!-- <button type="button" class="training-switch-option" data-group="CMLL" role="radio" aria-checked="false">CMLL</button> -->
+                    <button type="button" class="training-switch-option" data-group="CLL" role="radio" aria-checked="false">OLL</button>
                     <button type="button" class="training-switch-option active" data-group="PLL" role="radio" aria-checked="true">PLL</button>
+                    <!-- <button type="button" class="training-switch-option" data-group="CMLL" role="radio" aria-checked="false">CMLL</button> -->
                     <div class="training-switch-thumb" aria-hidden="true"></div>
                 </div>
             </div>
             <div class="training-card" id="training-card" tabindex="0" role="button" aria-label="Cliquer pour tirer un nouveau cas">
                 <h2 class="training-title">
                     <span>Entrainement</span>
-                    <span class="training-timer-control" id="training-timer-control" role="group" aria-label="Durée du timer de résolution">
-                        <button type="button" class="training-timer-btn" id="training-timer-minus" aria-label="Réduire le temps">&#10094;</button>
-                        <span class="training-timer-value" id="training-timer-value">4</span>
-                        <button type="button" class="training-timer-btn" id="training-timer-plus" aria-label="Augmenter le temps">&#10095;</button>
-                    </span>
+                    <button type="button" class="training-options-btn" id="training-options-btn" aria-label="Options d'entrainement" aria-expanded="false">&#9881;</button>
                 </h2>
                 <img src="" alt="Cas à résoudre" class="training-img" id="training-img">
+                <div class="training-options" id="training-options">
+                    <div class="training-option-block">
+                        <p class="training-option-label">Timer</p>
+                        <span class="training-timer-control" id="training-timer-control" role="group" aria-label="Durée du timer de résolution">
+                            <button type="button" class="training-timer-btn" id="training-timer-minus" aria-label="Réduire le temps">&#10094;</button>
+                            <span class="training-timer-value" id="training-timer-value">4</span>
+                            <span class="training-timer-unit">sec</span>
+                            <button type="button" class="training-timer-btn" id="training-timer-plus" aria-label="Augmenter le temps">&#10095;</button>
+                        </span>
+                    </div>
+                    <div class="training-option-block">
+                        <p class="training-option-label">Groupes</p>
+                        <div class="training-subgroups" id="training-subgroups" role="group" aria-label="Sous-groupes inclus dans le tirage"></div>
+                    </div>
+                </div>
                 <p class="training-finished" aria-hidden="true">Terminé, bravo&nbsp;!</p>
                 <div class="training-result" id="training-result">
                     <div class="training-progress-track" id="training-progress-track">
@@ -67,10 +78,82 @@
             </div>
         </div>
 
-        <!-- ============  CORNER ============ -->
+        <!-- ============ ORIENTATION ============ -->
         <div class="algo-group" data-group="CLL">
+            <h2 class="group-title">Orienter la dernière face</h2>
+            <div class="algo-grid" data-subgroup="orienter-face">
+                <article class="algo-card">
+                    <img src="images/algorithme/OLL-U.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">Forme <em>U</em></p>
+                        <p class="algo-formula">
+                            R2 D' <span class="trig-paren">(R U2 R')</span> D <span class="trig-paren">(R U2 R)</span>
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithme/OLL-Pi.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">Forme <em>Pi</em></p>
+                        <p class="algo-formula">
+                            f <span class="trig-sexy">(R U R' U')</span> S' <span class="trig-sexy">(R U R' U')</span> F'
+                        </p>
+                    </div>
+                </article>
+                <article class="algo-card">
+                    <img src="images/algorithme/OLL-H.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">Forme <em>H</em></p>
+                        <p class="algo-formula">
+                            F <span class="trig-sexy">(R U R' U')</span><sup>3</sup> F'
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithme/OLL-T.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">Forme <em>T</em></p>
+                        <p class="algo-formula">
+                            <span class="trig-sexy">(r U R' U')</span> <span class="trig-sledge">(r' F R F')</span>
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithme/OLL-Sune.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">Forme <em>Sune</em></p>
+                        <p class="algo-formula">
+                            <span class="trig-whip">(R U R' U)</span> R U2 R'
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithme/OLL-Antisune.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">Forme <em>Anti Sune</em></p>
+                        <p class="algo-formula">
+                            <span class="trig-whip">(L' U' L U')</span> L' U2 L
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithme/OLL-L.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">Forme <em>L</em></p>
+                        <p class="algo-formula">
+                            <span class="trig-hedge">(F R' F' r)</span> <span class="trig-paren">(U R U' r')</span>
+                        </p>
+                    </div>
+                </article>
+            </div>
+
             <h2 class="group-title">Orienter les coins</h2>
-            <div class="algo-grid">
+            <div class="algo-grid" data-subgroup="orienter-coins">
                 <article class="algo-card">
                     <img src="images/algorithme/cll-U.png" class="algo-img">
                     <div class="algo-content">
@@ -113,7 +196,7 @@
                 <article class="algo-card">
                     <img src="images/algorithme/cll-S.png" class="algo-img">
                     <div class="algo-content">
-                        <p class="algo-name">Forme <em>Sun</em></p>
+                        <p class="algo-name">Forme <em>Sune</em></p>
                         <p class="algo-formula">
                             <span class="trig-whip">(R U R' U)</span> R U2 R'
                         </p>
@@ -123,7 +206,7 @@
                 <article class="algo-card">
                     <img src="images/algorithme/cll-AS.png" class="algo-img">
                     <div class="algo-content">
-                        <p class="algo-name">Forme <em>Anti-Sun</em></p>
+                        <p class="algo-name">Forme <em>Anti Sune</em></p>
                         <p class="algo-formula">
                             <span class="trig-whip">(L' U' L U')</span> L' U2 L
                         </p>
@@ -141,31 +224,8 @@
                 </article>
             </div>
 
-            <!-- <h2 class="group-title">Permuter les coins</h2>
-            <div class="algo-grid">
-                <article class="algo-card">
-                    <img src="images/algorithme/adjacent.png" class="algo-img">
-                    <div class="algo-content">
-                        <p class="algo-name">Permutation <em>Adjacente</em></p>
-                        <p class="algo-formula">
-                            r' L' U2 (R U R' U2) L U' r
-                        </p>
-                    </div>
-                </article>
-
-                <article class="algo-card">
-                    <img src="images/algorithme/diagonal.png" class="algo-img">
-                    <div class="algo-content">
-                        <p class="algo-name">Permutation <em>Diagonale</em></p>
-                        <p class="algo-formula">
-                            (F U' F' U') r2 (U' R F R' U) r2
-                        </p>
-                    </div>
-                </article>
-            </div> -->
-
-            <h2 class="group-title">Forme H</h2>
-            <div class="algo-grid">
+            <h2 class="group-title">Résoudre la forme H</h2>
+            <div class="algo-grid" data-subgroup="forme-h">
                 <article class="algo-card">
                     <img src="images/algorithme/H-rangs.png" class="algo-img">
                     <div class="algo-content">
@@ -191,7 +251,7 @@
                     <div class="algo-content">
                         <p class="algo-name"><em>H</em> barre en bas</p>
                         <p class="algo-formula">
-                            F <span class="trig-sexy">(R U R' U')</span> F' <span class="trig-sexy">(R U R' U')</span> <span class="trig-sledge">(R' F R F')</span>
+                            F <span class="trig-paren">(R U' R' U)</span> <span class="trig-paren">(R U2 R' U')</span> <span class="trig-sexy">(R U R' U')</span> F'
                         </p>
                     </div>
                 </article>
@@ -207,8 +267,297 @@
                 </article>
             </div>
 
-            <h2 class="group-title">Forme Pi</h2>
-            <div class="algo-grid">
+
+        </div>
+
+        <!-- ============ PERMUTATION ============ -->
+        <div class="algo-group" data-group="PLL">
+
+            <!-- ---- Barre de 3 ---- -->
+            <h2 class="group-title">Permutation avec une barre</h2>
+            <div data-subgroup="barre">
+                <div class="algo-subgroups-row">
+                    <div class="algo-subgroup">
+                        <p class="algo-subtitle">avec Phares</p>
+                        <article class="algo-card">
+                            <img src="images/algorithme/Ua-Perm.png" class="algo-img">
+                            <div class="algo-content">
+                                <p class="algo-name">Permutation <em>U gauche</em></p>
+                                <p class="algo-formula">
+                                    M2 U <span class="trig-paren">(M U2 M')</span> U M2
+                                </p>
+                            </div>
+                        </article>
+
+                        <article class="algo-card">
+                            <img src="images/algorithme/Ub-Perm.png" class="algo-img">
+                            <div class="algo-content">
+                                <p class="algo-name">Permutation <em>U droite</em></p>
+                                <p class="algo-formula">
+                                    M2 U' <span class="trig-paren">(M U2 M')</span> U' M2
+                                </p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="algo-subgroup">
+                        <p class="algo-subtitle">avec Blocs</p>
+                        <article class="algo-card">
+                            <img src="images/algorithme/Jb-Perm.png" class="algo-img">
+                            <div class="algo-content">
+                                <p class="algo-name">Permutation <em>J droite</em></p>
+                                <p class="algo-formula">
+                                    <span class="trig-lasso">(R U R' F')</span> <span class="trig-sexy">(R U R' U')</span> <span class="trig-sledge">(R' F R2 U' R')</span>
+                                </p>
+                            </div>
+                        </article>
+
+                        <article class="algo-card">
+                            <img src="images/algorithme/Ja-Perm.png" class="algo-img">
+                            <div class="algo-content">
+                                <p class="algo-name">Permutation <em>J gauche</em></p>
+                                <p class="algo-formula">
+                                    <span class="trig-lasso">(L' U' L F)</span> <span class="trig-sexy">(L' U' L U)</span> <span class="trig-sledge">(L F' L2 U L)</span>
+                                </p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="algo-subgroup">
+                        <p class="algo-subtitle">Différent</p>
+                        <article class="algo-card">
+                            <img src="images/algorithme/F-Perm.png" class="algo-img">
+                            <div class="algo-content">
+                                <p class="algo-name">Permutation <em>F</em></p>
+                                <p class="algo-formula">
+                                    (R' U' F') <span class="trig-sexy">(R U R' U')</span> <span class="trig-sledge">(R' F R2 U' R' U')</span> <span class="trig-whip">(R U R' U R)</span>
+                                </p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ---- Centres ---- -->
+            <h2 class="group-title">Permutation des Centres / Coins</h2>
+
+            <div data-subgroup="centres-coins">
+                <div class="algo-subgroups-row">
+                    <div class="algo-subgroup">
+                        <p class="algo-subtitle">Centres opposés</p>
+                        <article class="algo-card">
+                            <img src="images/algorithme/H-Perm.png" class="algo-img">
+                            <div class="algo-content">
+                                <p class="algo-name">Permutation <em>H</em></p>
+                                <p class="algo-formula">
+                                    <span class="trig-paren">(M2 U M2)</span> U2 <span class="trig-paren">(M2 U M2)</span>
+                                </p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="algo-subgroup">
+                        <p class="algo-subtitle">Centres adjacents</p>
+                        <article class="algo-card">
+                            <img src="images/algorithme/Z-Perm.png" class="algo-img">
+                            <div class="algo-content">
+                                <p class="algo-name">Permutation <em>Z</em></p>
+                                <p class="algo-formula">
+                                    <span class="trig-paren">(S M2' S')</span> <span class="trig-paren">(u' M2 u M2)</span>
+                                </p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="algo-subgroup">
+                        <p class="algo-subtitle">Coins : aucun motif</p>
+                        <article class="algo-card">
+                            <img src="images/algorithme/E-Perm.png" class="algo-img">
+                            <div class="algo-content">
+                                <p class="algo-name">Permutation <em>E</em></p>
+                                <p class="algo-formula">
+                                    <span class="trig-paren">(R2 U2 B)</span> <span class="trig-sexy">(R U R' U')</span><sup>3</sup> <span class="trig-paren">(B' U2 R2)</span>
+                                </p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="group-title">Permutation avec blocs distinctifs</h2>
+
+            <div data-subgroup="blocs-distinctifs">
+                <div class="algo-subgroups-row">
+                    <div class="algo-subgroup">
+                        <p class="algo-subtitle">En forme de Y</p>
+                        <article class="algo-card">
+                            <img src="images/algorithme/Y-Perm.png" class="algo-img">
+                            <div class="algo-content">
+                                <p class="algo-name">Permutation <em>Y</em></p>
+                                <p class="algo-formula">
+                                    <span class="trig-hedge">(F R' F' R)</span> <span class="trig-paren">(U R U' R2 U' R U R)</span> <span class="trig-paren">(f' U' f)</span>
+                                </p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="algo-subgroup">
+                        <p class="algo-subtitle">En forme de V</p>
+                        <article class="algo-card">
+                            <img src="images/algorithme/V-Perm.png" class="algo-img">
+                            <div class="algo-content">
+                                <p class="algo-name">Permutation <em>V</em></p>
+                                <p class="algo-formula">
+                                    R' f' <span class="trig-whip">(R U R' U)</span> <span class="trig-paren">(R U2 R' U)</span> f <span class="trig-sexy">(R U R' U' R)</span>
+                                </p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="algo-subgroups-row">
+                    <div class="algo-subgroup">
+                        <p class="algo-subtitle">quatre blocs</p>
+                        <article class="algo-card">
+                            <img src="images/algorithme/Nb-Perm.png" class="algo-img">
+                            <div class="algo-content">
+                                <p class="algo-name">Permutation <em>N droite</em></p>
+                                <p class="algo-formula">
+                                    <span class="trig-paren">(R' U L' U2 R U' L)</span><sup>2</sup>
+                                </p>
+                            </div>
+                        </article>
+
+                        <article class="algo-card">
+                            <img src="images/algorithme/Na-Perm.png" class="algo-img">
+                            <div class="algo-content">
+                                <p class="algo-name">Permutation <em>N gauche</em></p>
+                                <p class="algo-formula">
+                                    <span class="trig-paren">(L U' R U2 L' U R')</span><sup>2</sup>
+                                </p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="algo-subgroup">
+                        <p class="algo-subtitle">Forme V + Phares</p>
+                        <article class="algo-card">
+                            <img src="images/algorithme/Aa-Perm.png" class="algo-img">
+                            <div class="algo-content">
+                                <p class="algo-name">Permutation <em>A droite</em></p>
+                                <p class="algo-formula">
+                                    <span class="trig-lasso">(R U R' F')</span> <span class="trig-sexy">(r U R' U')</span> <span class="trig-sledge">(r' F R2 U' R')</span>
+                                </p>
+                            </div>
+                        </article>
+
+                        <article class="algo-card">
+                            <img src="images/algorithme/Ab-Perm.png" class="algo-img">
+                            <div class="algo-content">
+                                <p class="algo-name">Permutation <em>A gauche</em></p>
+                                <p class="algo-formula">
+                                    <span class="trig-lasso">(L' U' L F)</span> <span class="trig-sexy">(l' U' L U)</span> <span class="trig-sledge">(l F' L2 U L)</span>
+                                </p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ---- Phares ---- -->
+            <h2 class="group-title">Permutation avec des Phares</h2>
+
+            <div data-subgroup="phares">
+                <div class="algo-subgroups-row">
+                    <div class="algo-subgroup">
+                        <p class="algo-subtitle">un bloc attaché</p>
+                        <article class="algo-card">
+                            <img src="images/algorithme/Ra-Perm.png" class="algo-img">
+                            <div class="algo-content">
+                                <p class="algo-name">Permutation <em>R droite</em></p>
+                                <p class="algo-formula">
+                                    <span class="trig-paren">(M' U R U' r')</span> U <span class="trig-paren">(M' U R U' r')</span> U' <span class="trig-hedge">(F R' F' R)</span>
+                                </p>
+                            </div>
+                        </article>
+
+                        <article class="algo-card">
+                            <img src="images/algorithme/Rb-Perm.png" class="algo-img">
+                            <div class="algo-content">
+                                <p class="algo-name">Permutation <em>R gauche</em></p>
+                                <p class="algo-formula">
+                                    <span class="trig-paren">(M' U R U' r')</span> U2 <span class="trig-paren">(R U' R' U')</span> <span class="trig-hedge">(F R' F' R)</span>
+                                </p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="algo-subgroup">
+                        <p class="algo-subtitle">un bloc détaché</p>
+                        <article class="algo-card">
+                            <img src="images/algorithme/Ga-Perm.png" class="algo-img">
+                            <div class="algo-content">
+                                <p class="algo-name">Permutation <em>G droite</em></p>
+                                <p class="algo-formula">
+                                    <span class="trig-paren">(r U2 R U' r' F)</span> <span class="trig-paren">(U R' U' F')</span> <span class="trig-paren">(r U' r')</span>
+                                </p>
+                            </div>
+                        </article>
+
+                        <article class="algo-card">
+                            <img src="images/algorithme/Gc-Perm.png" class="algo-img">
+                            <div class="algo-content">
+                                <p class="algo-name">Permutation <em>G gauche</em></p>
+                                <p class="algo-formula">
+                                    <span class="trig-paren">(l' U2 L' U l F')</span> <span class="trig-paren">(U' L U F)</span> <span class="trig-paren">(l' U l)</span>
+                                </p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="algo-subgroups-row">
+                    <div class="algo-subgroup">
+                        <p class="algo-subtitle">un bloc opposé</p>
+                        <article class="algo-card">
+                            <img src="images/algorithme/Gb-Perm.png" class="algo-img">
+                            <div class="algo-content">
+                                <p class="algo-name">Permutation <em>G' droite</em></p>
+                                <p class="algo-formula">
+                                    <span class="trig-paren">(F' U' F)</span> R2 u <span class="trig-reload">(R' U R U' R)</span> u' R2
+                                </p>
+                            </div>
+                        </article>
+
+                        <article class="algo-card">
+                            <img src="images/algorithme/Gd-Perm.png" class="algo-img">
+                            <div class="algo-content">
+                                <p class="algo-name">Permutation <em>G' gauche</em></p>
+                                <p class="algo-formula">
+                                    <span class="trig-paren">(F U F')</span> L2 u' <span class="trig-reload">(L U' L' U L')</span> u L2
+                                </p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="algo-subgroup">
+                        <p class="algo-subtitle">deux blocs attachés</p>
+                        <article class="algo-card">
+                            <img src="images/algorithme/T-Perm.png" class="algo-img">
+                            <div class="algo-content">
+                                <p class="algo-name">Permutation <em>T</em></p>
+                                <p class="algo-formula">
+                                    <span class="trig-sexy">(R U R' U')</span> <span class="trig-sledge">(R' F R2 U' R' U')</span> <span class="trig-lasso">(R U R' F')</span>
+                                </p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- <h2 class="group-title">Résoudre la forme Pi</h2>
+            <div class="algo-grid" data-subgroup="forme-pi">
                 <article class="algo-card">
                     <img src="images/algorithme/pi-barre-droite.png" class="algo-img">
                     <div class="algo-content">
@@ -224,7 +573,7 @@
                     <div class="algo-content">
                         <p class="algo-name"><em>Pi</em> barre gauche</p>
                         <p class="algo-formula">
-                            R' (F' U' F U') <span class="trig-whip">(R U R' U)</span> R
+                            R' <span class="trig-paren">(F' U' F U')</span> <span class="trig-whip">(R U R' U)</span> R
                         </p>
                     </div>
                 </article>
@@ -234,7 +583,7 @@
                     <div class="algo-content">
                         <p class="algo-name"><em>Pi</em> double barre</p>
                         <p class="algo-formula">
-                            <span class="trig-sledge">(L F' L' F)</span> (l' U l U) L' U L
+                            <span class="trig-sledge">(L F' L' F)</span> <span class="trig-paren">(l' U l U)</span> L' U L
                         </p>
                     </div>
                 </article>
@@ -244,7 +593,7 @@
                     <div class="algo-content">
                         <p class="algo-name"><em>Pi</em> slash X</p>
                         <p class="algo-formula">
-                            (R' F R U) F U' <span class="trig-sexy">(R U R' U')</span> F'
+                            <span class="trig-paren">(R' F R U)</span> F U' <span class="trig-sexy">(R U R' U')</span> F'
                         </p>
                     </div>
                 </article>
@@ -254,7 +603,7 @@
                     <div class="algo-content">
                         <p class="algo-name"><em>Pi</em> slash</p>
                         <p class="algo-formula">
-                            (R U2 R' U') (R U R' U2) <span class="trig-sledge">(R' F R F')</span>
+                            <span class="trig-paren">(R U2 R' U')</span> <span class="trig-paren">(R U R' U2)</span> <span class="trig-sledge">(R' F R F')</span>
                         </p>
                     </div>
                 </article>
@@ -264,13 +613,36 @@
                     <div class="algo-content">
                         <p class="algo-name"><em>Pi</em> anti-slash</p>
                         <p class="algo-formula">
-                            (L' U2 L U) (L' U' L U2) <span class="trig-sledge">(L F' L' F)</span>
+                            <span class="trig-paren">(L' U2 L U)</span> <span class="trig-paren">(L' U' L U2)</span> <span class="trig-sledge">(L F' L' F)</span>
                         </p>
                     </div>
                 </article>
-            </div>
+            </div> -->
 
-            <!-- <h2 class="group-title">Forme U</h2>
+        <!-- <h2 class="group-title">Permuter les coins</h2>
+            <div class="algo-grid">
+                <article class="algo-card">
+                    <img src="images/algorithme/adjacent.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">Permutation <em>Adjacente</em></p>
+                        <p class="algo-formula">
+                            r' L' U2 <span class="trig-paren">(R U R' U2)</span> L U' r
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithme/diagonal.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">Permutation <em>Diagonale</em></p>
+                        <p class="algo-formula">
+                            <span class="trig-paren">(F U' F' U')</span> r2 <span class="trig-paren">(U' R F R' U)</span> r2
+                        </p>
+                    </div>
+                </article>
+            </div> -->
+
+        <!-- <h2 class="group-title">Forme U</h2>
             <div class="algo-grid">
                 <article class="algo-card">
                     <img src="images/algorithme/U-barre-gauche.png" class="algo-img">
@@ -297,7 +669,7 @@
                     <div class="algo-content">
                         <p class="algo-name"><em>U</em> double barre</p>
                         <p class="algo-formula">
-                            F R2 (D R' U R D') R2' U' F'
+                            F R2 <span class="trig-paren">(D R' U R D')</span> R2' U' F'
                         </p>
                     </div>
                 </article>
@@ -307,7 +679,7 @@
                     <div class="algo-content">
                         <p class="algo-name"><em>U</em> slash X</p>
                         <p class="algo-formula">
-                            F (R U' R' U) <span class="trig-whip">(R U R' U)</span> (R U' R' F')
+                            F <span class="trig-paren">(R U' R' U)</span> <span class="trig-whip">(R U R' U)</span> <span class="trig-paren">(R U' R' F')</span>
                         </p>
                     </div>
                 </article>
@@ -317,7 +689,7 @@
                     <div class="algo-content">
                         <p class="algo-name"><em>U</em> slash droit</p>
                         <p class="algo-formula">
-                            (R' F R U)<sup>2</sup> F U2 F'
+                            <span class="trig-paren">(R' F R U)</span><sup>2</sup> F U2 F'
                         </p>
                     </div>
                 </article>
@@ -327,13 +699,13 @@
                     <div class="algo-content">
                         <p class="algo-name"><em>U</em> slash gauche</p>
                         <p class="algo-formula">
-                            (L F' L' U')<sup>2</sup> F' U2 F
+                            <span class="trig-paren">(L F' L' U')</span><sup>2</sup> F' U2 F
                         </p>
                     </div>
                 </article>
             </div> -->
 
-            <!-- <h2 class="group-title">Forme T</h2>
+        <!-- <h2 class="group-title">Forme T</h2>
             <div class="algo-grid">
                 <article class="algo-card">
                     <img src="images/algorithme/T-left-barre.png" class="algo-img">
@@ -360,7 +732,7 @@
                     <div class="algo-content">
                         <p class="algo-name"><span class="algo-num">03</span> Double barre</p>
                         <p class="algo-formula">
-                            <span class="trig-sledge">(R' F R F')</span> (R U2 R' U') F' U' F
+                            <span class="trig-sledge">(R' F R F')</span> <span class="trig-paren">(R U2 R' U')</span> F' U' F
                         </p>
                     </div>
                 </article>
@@ -370,7 +742,7 @@
                     <div class="algo-content">
                         <p class="algo-name"><span class="algo-num">06</span> Double rangs</p>
                         <p class="algo-formula">
-                            F <span class="trig-sexy">(R U R' U')</span> R U R' <span class="trig-sledge">(R' F R F')</span> (R U' R' F')
+                            F <span class="trig-sexy">(R U R' U')</span> R U R' <span class="trig-sledge">(R' F R F')</span> <span class="trig-paren">(R U' R' F')</span>
                         </p>
                     </div>
                 </article>
@@ -390,290 +762,12 @@
                     <div class="algo-content">
                         <p class="algo-name"><span class="algo-num">05</span> Rang dessus</p>
                         <p class="algo-formula">
-                            F <span class="trig-sexy">(R U R' U')</span> (R U' R' U') (R U R' F')
+                            F <span class="trig-sexy">(R U R' U')</span> <span class="trig-paren">(R U' R' U')</span> <span class="trig-paren">(R U R' F')</span>
                         </p>
                     </div>
                 </article>
             </div> -->
-        </div>
 
-        <!-- ============ PERMUTATION ============ -->
-        <div class="algo-group" data-group="PLL">
-
-            <!-- ---- Barre de 3 ---- -->
-            <h2 class="group-title">Permutation avec une barre</h2>
-            <div class="algo-subgroups-row">
-                <div class="algo-subgroup">
-                    <p class="algo-subtitle">avec Phares</p>
-                    <article class="algo-card">
-                        <img src="images/algorithme/Ua-Perm.png" class="algo-img">
-                        <div class="algo-content">
-                            <p class="algo-name">Permutation <em>U gauche</em></p>
-                            <p class="algo-formula">
-                                M2 U <span class="trig-paren">(M U2 M')</span> U M2
-                            </p>
-                        </div>
-                    </article>
-
-                    <article class="algo-card">
-                        <img src="images/algorithme/Ub-Perm.png" class="algo-img">
-                        <div class="algo-content">
-                            <p class="algo-name">Permutation <em>U droite</em></p>
-                            <p class="algo-formula">
-                                M2 U' <span class="trig-paren">(M U2 M')</span> U' M2
-                            </p>
-                        </div>
-                    </article>
-                </div>
-
-                <div class="algo-subgroup">
-                    <p class="algo-subtitle">avec Blocs</p>
-                    <article class="algo-card">
-                        <img src="images/algorithme/Jb-Perm.png" class="algo-img">
-                        <div class="algo-content">
-                            <p class="algo-name">Permutation <em>J droite</em></p>
-                            <p class="algo-formula">
-                                <span class="trig-lasso">(R U R' F')</span> <span class="trig-sexy">(R U R' U')</span> <span class="trig-sledge">(R' F R2 U' R')</span>
-                            </p>
-                        </div>
-                    </article>
-
-                    <article class="algo-card">
-                        <img src="images/algorithme/Ja-Perm.png" class="algo-img">
-                        <div class="algo-content">
-                            <p class="algo-name">Permutation <em>J gauche</em></p>
-                            <p class="algo-formula">
-                                <span class="trig-lasso">(L' U' L F)</span> <span class="trig-sexy">(L' U' L U)</span> <span class="trig-sledge">(L F' L2 U L)</span>
-                            </p>
-                        </div>
-                    </article>
-                </div>
-
-                <div class="algo-subgroup">
-                    <p class="algo-subtitle">Différent</p>
-                    <article class="algo-card">
-                        <img src="images/algorithme/F-Perm.png" class="algo-img">
-                        <div class="algo-content">
-                            <p class="algo-name">Permutation <em>F</em></p>
-                            <p class="algo-formula">
-                                <span class="trig-reload">(R' U R U')</span> R2 (F' U' F U R) <span class="trig-hedge">(F R' F' R2)</span>
-                            </p>
-                        </div>
-                    </article>
-                </div>
-            </div>
-
-            <!-- ---- Centres ---- -->
-            <h2 class="group-title">Permutation des Centres / Coins</h2>
-
-            <div class="algo-subgroups-row">
-                <div class="algo-subgroup">
-                    <p class="algo-subtitle">Centres opposés</p>
-                    <article class="algo-card">
-                        <img src="images/algorithme/H-Perm.png" class="algo-img">
-                        <div class="algo-content">
-                            <p class="algo-name">Permutation <em>H</em></p>
-                            <p class="algo-formula">
-                                <span class="trig-paren">(M2 U M2)</span> U2 <span class="trig-paren">(M2 U M2)</span>
-                            </p>
-                        </div>
-                    </article>
-                </div>
-
-                <div class="algo-subgroup">
-                    <p class="algo-subtitle">Centres adjacents</p>
-                    <article class="algo-card">
-                        <img src="images/algorithme/Z-Perm.png" class="algo-img">
-                        <div class="algo-content">
-                            <p class="algo-name">Permutation <em>Z</em></p>
-                            <p class="algo-formula">
-                                <span class="trig-paren">(S M2' S')</span> <span class="trig-paren">(u' M2 u M2)</span>
-                            </p>
-                        </div>
-                    </article>
-                </div>
-
-                <div class="algo-subgroup">
-                    <p class="algo-subtitle">Coins : aucun motif</p>
-                    <article class="algo-card">
-                        <img src="images/algorithme/E-Perm.png" class="algo-img">
-                        <div class="algo-content">
-                            <p class="algo-name">Permutation <em>E</em></p>
-                            <p class="algo-formula">
-                                (R2 U2 B) <span class="trig-sexy">(R U R' U')</span><sup>3</sup> <span class="trig-paren">(B' U2 R2)</span>
-                            </p>
-                        </div>
-                    </article>
-                </div>
-            </div>
-
-            <h2 class="group-title">Permutation avec blocs distinctifs</h2>
-
-            <div class="algo-subgroups-row">
-                <div class="algo-subgroup">
-                    <p class="algo-subtitle">En forme de Y</p>
-                    <article class="algo-card">
-                        <img src="images/algorithme/Y-Perm.png" class="algo-img">
-                        <div class="algo-content">
-                            <p class="algo-name">Permutation <em>Y</em></p>
-                            <p class="algo-formula">
-                                F <span class="trig-paren">(R U' R' U')</span> <span class="trig-lasso">(R U R' F')</span> <span class="trig-sexy">(R U R' U')</span> <span class="trig-sledge">(R' F R F')</span>
-                            </p>
-                        </div>
-                    </article>
-                </div>
-
-                <div class="algo-subgroup">
-                    <p class="algo-subtitle">En forme de V</p>
-                    <article class="algo-card">
-                        <img src="images/algorithme/V-Perm.png" class="algo-img">
-                        <div class="algo-content">
-                            <p class="algo-name">Permutation <em>V</em></p>
-                            <p class="algo-formula">
-                                <span class="trig-reload">(R' U R U')</span> R' f' U' <span class="trig-sexy">(R U2 R' U')</span> <span class="trig-paren">(R U' R' f R)</span>
-                            </p>
-                        </div>
-                    </article>
-                </div>
-            </div>
-
-            <div class="algo-subgroups-row">
-                <div class="algo-subgroup">
-                    <p class="algo-subtitle">quatre blocs</p>
-                    <article class="algo-card">
-                        <img src="images/algorithme/Na-Perm.png" class="algo-img">
-                        <div class="algo-content">
-                            <p class="algo-name">Permutation <em>N droite</em></p>
-                            <p class="algo-formula">
-                                <span class="trig-paren">(R' B' R U2)</span><sup>5</sup>
-                            </p>
-                        </div>
-                    </article>
-
-                    <article class="algo-card">
-                        <img src="images/algorithme/Nb-Perm.png" class="algo-img">
-                        <div class="algo-content">
-                            <p class="algo-name">Permutation <em>N gauche</em></p>
-                            <p class="algo-formula">
-                                <span class="trig-paren">(L B L' U2)</span><sup>5</sup>
-                            </p>
-                        </div>
-                    </article>
-                </div>
-
-                <div class="algo-subgroup">
-                    <p class="algo-subtitle">Forme V + Phares</p>
-                    <article class="algo-card">
-                        <img src="images/algorithme/Aa-Perm.png" class="algo-img">
-                        <div class="algo-content">
-                            <p class="algo-name">Permutation <em>A droite</em></p>
-                            <p class="algo-formula">
-                                <span class="trig-lasso">(R U R' F')</span> <span class="trig-sexy">(r U R' U')</span> <span class="trig-sledge">(r' F R2 U' R')</span>
-                            </p>
-                        </div>
-                    </article>
-
-                    <article class="algo-card">
-                        <img src="images/algorithme/Ab-Perm.png" class="algo-img">
-                        <div class="algo-content">
-                            <p class="algo-name">Permutation <em>A gauche</em></p>
-                            <p class="algo-formula">
-                                <span class="trig-lasso">(L' U' L F)</span> <span class="trig-sexy">(l' U' L U)</span> <span class="trig-sledge">(l F' L2 U L)</span>
-                            </p>
-                        </div>
-                    </article>
-                </div>
-            </div>
-
-            <!-- ---- Phares ---- -->
-            <h2 class="group-title">Permutation avec des Phares</h2>
-
-            <div class="algo-subgroups-row">
-                <div class="algo-subgroup">
-                    <p class="algo-subtitle">un bloc attaché</p>
-                    <article class="algo-card">
-                        <img src="images/algorithme/Ra-Perm.png" class="algo-img">
-                        <div class="algo-content">
-                            <p class="algo-name">Permutation <em>R droite</em></p>
-                            <p class="algo-formula">
-                                <span class="trig-paren">(M' U R U' r')</span> U <span class="trig-paren">(M' U R U' r')</span> U' <span class="trig-hedge">(F R' F' R)</span>
-                            </p>
-                        </div>
-                    </article>
-
-                    <article class="algo-card">
-                        <img src="images/algorithme/Rb-Perm.png" class="algo-img">
-                        <div class="algo-content">
-                            <p class="algo-name">Permutation <em>R gauche</em></p>
-                            <p class="algo-formula">
-                                <span class="trig-paren">(M' U R U' r')</span> U2 <span class="trig-paren">(R U' R' U')</span> <span class="trig-hedge">(F R' F' R)</span>
-                            </p>
-                        </div>
-                    </article>
-                </div>
-
-                <div class="algo-subgroup">
-                    <p class="algo-subtitle">un bloc détaché</p>
-                    <article class="algo-card">
-                        <img src="images/algorithme/Ga-Perm.png" class="algo-img">
-                        <div class="algo-content">
-                            <p class="algo-name">Permutation <em>G droite</em></p>
-                            <p class="algo-formula">
-                                (r U2 R U' r' F) (U R' U' F') (r U' r') </p>
-                        </div>
-                    </article>
-
-                    <article class="algo-card">
-                        <img src="images/algorithme/Gc-Perm.png" class="algo-img">
-                        <div class="algo-content">
-                            <p class="algo-name">Permutation <em>G gauche</em></p>
-                            <p class="algo-formula">
-                                (l' U2 L' U l F') (U' L U F) (l' U l)
-                            </p>
-                        </div>
-                    </article>
-                </div>
-            </div>
-
-            <div class="algo-subgroups-row">
-                <div class="algo-subgroup">
-                    <p class="algo-subtitle">un bloc opposé</p>
-                    <article class="algo-card">
-                        <img src="images/algorithme/Gb-Perm.png" class="algo-img">
-                        <div class="algo-content">
-                            <p class="algo-name">Permutation <em>G' droite</em></p>
-                            <p class="algo-formula">
-                                (F' U' F) R2 u <span class="trig-reload">(R' U R U' R)</span> u' R2
-                            </p>
-                        </div>
-                    </article>
-
-                    <article class="algo-card">
-                        <img src="images/algorithme/Gd-Perm.png" class="algo-img">
-                        <div class="algo-content">
-                            <p class="algo-name">Permutation <em>G' gauche</em></p>
-                            <p class="algo-formula">
-                                (F U F') L2 u' <span class="trig-reload">(L U' L' U L')</span> u L2
-                            </p>
-                        </div>
-                    </article>
-                </div>
-
-                <div class="algo-subgroup">
-                    <p class="algo-subtitle">deux blocs attachés</p>
-                    <article class="algo-card">
-                        <img src="images/algorithme/T-Perm.png" class="algo-img">
-                        <div class="algo-content">
-                            <p class="algo-name">Permutation <em>T</em></p>
-                            <p class="algo-formula">
-                                <span class="trig-sexy">(R U R' U')</span> <span class="trig-sledge">(R' F R2 U' R' U')</span> <span class="trig-lasso">(R U R' F')</span>
-                            </p>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </div>
-            
         <script src="js/algorithme-entrainement.js"></script>
 </body>
 

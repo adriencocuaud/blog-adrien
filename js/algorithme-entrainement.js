@@ -23,21 +23,10 @@
 
         var groupEl = card.closest('.algo-group');
 
-        // Sous-groupe = le titre (h2.group-title) qui précède le conteneur de la
-        // carte (grille CLL ou rangée de sous-groupes PLL), utilisé pour le
-        // tirage "un cas par sous-groupe" de l'entraînement.
-        var subKey = '';
-        var container = card;
-        while (container && container.parentElement !== groupEl) {
-            container = container.parentElement;
-        }
-        while (container) {
-            if (container.classList.contains('group-title')) {
-                subKey = container.textContent.trim();
-                break;
-            }
-            container = container.previousElementSibling;
-        }
+        // Sous-groupe (section h2) = conteneur [data-subgroup] le plus proche,
+        // utilisé pour le tirage "un cas par sous-groupe" de l'entraînement
+        var subEl = card.closest('[data-subgroup]');
+        var subKey = subEl ? subEl.getAttribute('data-subgroup') : '';
 
         pool.push({
             img: img.getAttribute('src'),
@@ -49,6 +38,21 @@
         });
     });
 
+    // Registre des sous-groupes par groupe (ordre du document), avec pour
+    // libellé le titre h2 qui précède le conteneur [data-subgroup]
+    var subgroupsByGroup = {};
+    document.querySelectorAll('.algo-group[data-group] [data-subgroup]').forEach(function (el) {
+        var groupKey = el.closest('.algo-group').getAttribute('data-group');
+        var key = el.getAttribute('data-subgroup');
+        var list = (subgroupsByGroup[groupKey] = subgroupsByGroup[groupKey] || []);
+        if (list.some(function (sub) { return sub.key === key; })) return;
+        var titleEl = el.previousElementSibling;
+        var label = (titleEl && titleEl.classList.contains('group-title'))
+            ? titleEl.textContent.trim()
+            : key;
+        list.push({ key: key, label: label });
+    });
+
     var card = document.getElementById('training-card');
     if (!card || pool.length === 0) return;
 
@@ -58,6 +62,8 @@
     var progressBar = document.getElementById('training-progress-bar');
     var switchEl = document.getElementById('training-switch');
     var switchButtons = document.querySelectorAll('.training-switch-option');
+    var optionsBtn = document.getElementById('training-options-btn');
+    var optionsPanel = document.getElementById('training-options');
     var timerControl = document.getElementById('training-timer-control');
     var timerValueEl = document.getElementById('training-timer-value');
     var timerMinusBtn = document.getElementById('training-timer-minus');
@@ -104,11 +110,69 @@
     }
     updateGroupSections();
 
+    // --- Sélection des sous-groupes inclus dans le tirage ---
+    // On mémorise les EXCLUSIONS (par groupe) : un sous-groupe ajouté plus tard
+    // est donc inclus par défaut.
+    var subgroupsBar = document.getElementById('training-subgroups');
+    var excludedByGroup = {};
+    try {
+        excludedByGroup = JSON.parse(localStorage.getItem('trainingExcludedSubgroups')) || {};
+    } catch (e) { /* localStorage indisponible : tout est inclus */ }
+
+    function isSelected(groupKey, subKey) {
+        return !(excludedByGroup[groupKey] || {})[subKey];
+    }
+
+    function renderSubgroups() {
+        if (!subgroupsBar) return;
+        subgroupsBar.innerHTML = '';
+        var list = subgroupsByGroup[activeGroup] || [];
+        subgroupsBar.hidden = list.length < 2; // inutile s'il n'y a rien à choisir
+        list.forEach(function (sub) {
+            var btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'training-subgroup-btn' + (isSelected(activeGroup, sub.key) ? ' active' : '');
+            btn.textContent = sub.label;
+            btn.setAttribute('aria-pressed', String(isSelected(activeGroup, sub.key)));
+            btn.addEventListener('click', function (event) {
+                event.stopPropagation();
+                toggleSubgroup(sub.key);
+            });
+            subgroupsBar.appendChild(btn);
+        });
+    }
+
+    // Le panneau d'options étant ouvert (tirage en pause), on prépare juste le
+    // nouveau cycle : il démarrera à la fermeture du panneau
+    var settingsChanged = false;
+
+    function toggleSubgroup(subKey) {
+        var excluded = (excludedByGroup[activeGroup] = excludedByGroup[activeGroup] || {});
+        if (excluded[subKey]) {
+            delete excluded[subKey];
+        } else {
+            // Verrou : au moins un sous-groupe doit rester dans le tirage
+            var list = subgroupsByGroup[activeGroup] || [];
+            var selectedCount = list.filter(function (sub) { return !excluded[sub.key]; }).length;
+            if (selectedCount <= 1) return;
+            excluded[subKey] = true;
+        }
+        try { localStorage.setItem('trainingExcludedSubgroups', JSON.stringify(excludedByGroup)); } catch (e) { /* ignore */ }
+        renderSubgroups();
+        resetDraw();
+        settingsChanged = true;
+    }
+
     function activePool() {
-        var filtered = pool.filter(function (item) {
+        var inGroup = pool.filter(function (item) {
             return item.groupKey === activeGroup;
         });
-        return filtered.length ? filtered : pool;
+        if (inGroup.length === 0) inGroup = pool;
+        var selected = inGroup.filter(function (item) {
+            return isSelected(activeGroup, item.subKey);
+        });
+        // Sélection vide (ex: stockage périmé) : on retombe sur tout le groupe
+        return selected.length ? selected : inGroup;
     }
 
     var revealTimer = null;
@@ -126,47 +190,31 @@
         return array;
     }
 
-    // Sac de tirage "un par sous-groupe" : à chaque passe, on tire un cas dans
-    // chaque sous-groupe (ordre des sous-groupes mélangé), puis on recommence
-    // une passe, sans remise, jusqu'à épuiser tous les cas.
-    var bagByGroup = {};   // subKey -> cas restants (mélangés)
-    var passOrder = [];    // sous-groupes restant à visiter dans la passe en cours
-
-    function refillBag() {
-        bagByGroup = {};
-        passOrder = [];
-        activePool().forEach(function (item) {
-            if (!bagByGroup[item.subKey]) bagByGroup[item.subKey] = [];
-            bagByGroup[item.subKey].push(item);
-        });
-        Object.keys(bagByGroup).forEach(function (key) {
-            shuffle(bagByGroup[key]);
-        });
-    }
+    // Tirage "un par sous-groupe" : toute la séquence du cycle est pré-calculée.
+    // Passe par passe, on prend un cas (mélangé, sans remise) dans chaque
+    // sous-groupe non épuisé, l'ordre des sous-groupes étant remélangé à
+    // chaque passe. Ensuite pickCase() se contente de dépiler.
+    var sequence = [];
 
     function resetDraw() {
-        refillBag();
+        var byGroup = {};
+        activePool().forEach(function (item) {
+            (byGroup[item.subKey] = byGroup[item.subKey] || []).push(item);
+        });
+        var keys = Object.keys(byGroup);
+        keys.forEach(function (key) { shuffle(byGroup[key]); });
+
+        sequence = [];
+        var pass;
+        while ((pass = keys.filter(function (k) { return byGroup[k].length > 0; })).length > 0) {
+            shuffle(pass).forEach(function (k) { sequence.push(byGroup[k].shift()); });
+        }
         finished = false;
     }
 
     // Retourne le prochain cas, ou null quand tous les cas ont été tirés
     function pickCase() {
-        for (var attempt = 0; attempt < 2; attempt++) {
-            // Nouvelle passe : ordre aléatoire des sous-groupes non épuisés
-            if (passOrder.length === 0) {
-                passOrder = shuffle(Object.keys(bagByGroup).filter(function (key) {
-                    return bagByGroup[key].length > 0;
-                }));
-                if (passOrder.length === 0) return null;
-            }
-            while (passOrder.length > 0) {
-                var subKey = passOrder.shift();
-                if (bagByGroup[subKey] && bagByGroup[subKey].length > 0) {
-                    return bagByGroup[subKey].shift();
-                }
-            }
-        }
-        return null;
+        return sequence.shift() || null;
     }
 
     // Tous les cas ont été tirés : message de fin, un clic relance un cycle complet.
@@ -224,7 +272,7 @@
         revealDelay = next;
         updateTimerValue();
         try { localStorage.setItem('trainingRevealDelay', String(revealDelay)); } catch (e) { /* ignore */ }
-        restartTimer(); // applique la nouvelle durée immédiatement, sans consommer un cas du sac
+        // La nouvelle durée s'appliquera à la fermeture du panneau d'options
     }
 
     // Relance la barre + le timer sur le cas courant (réglage de durée)
@@ -243,12 +291,48 @@
         }, revealDelay);
     }
 
-    if (timerControl) {
-        // La carte entière tire un nouveau cas au clic : le contrôle du timer ne doit pas déclencher ça
-        timerControl.addEventListener('click', function (event) {
+    // --- Panneau d'options (timer + sous-groupes), affiché à la place de l'image ---
+    function optionsOpen() {
+        return card.classList.contains('options-open');
+    }
+
+    function openOptions() {
+        // Met le tirage en pause pendant le réglage
+        clearTimeout(revealTimer);
+        clearTimeout(nextTimer);
+        progressBar.classList.remove('running');
+        card.classList.remove('revealed');
+        card.classList.add('options-open');
+        if (optionsBtn) optionsBtn.setAttribute('aria-expanded', 'true');
+    }
+
+    function closeOptions() {
+        card.classList.remove('options-open');
+        if (optionsBtn) optionsBtn.setAttribute('aria-expanded', 'false');
+        if (settingsChanged || !current) {
+            settingsChanged = false;
+            newRound(); // la sélection a changé : nouveau cycle
+        } else {
+            restartTimer(); // rien n'a changé : on reprend le cas en cours (durée à jour)
+        }
+    }
+
+    if (optionsBtn) {
+        optionsBtn.addEventListener('click', function (event) {
+            event.stopPropagation();
+            if (optionsOpen()) closeOptions();
+            else openOptions();
+        });
+        optionsBtn.addEventListener('keydown', function (event) {
             event.stopPropagation();
         });
-        timerControl.addEventListener('keydown', function (event) {
+    }
+    if (optionsPanel) {
+        // Le panneau recouvre la carte : ses clics ne doivent pas tirer un nouveau cas
+        optionsPanel.addEventListener('click', function (event) {
+            event.stopPropagation();
+        });
+        optionsPanel.addEventListener('keydown', function (event) {
             event.stopPropagation();
         });
     }
@@ -270,6 +354,11 @@
             if (switchEl) switchEl.setAttribute('data-active', activeGroup);
             updateSwitchThumb();
             updateGroupSections();
+            renderSubgroups();
+            // Changer de groupe referme le panneau d'options s'il était ouvert
+            card.classList.remove('options-open');
+            if (optionsBtn) optionsBtn.setAttribute('aria-expanded', 'false');
+            settingsChanged = false;
             resetDraw(); // nouveau groupe = nouveau cycle complet
             newRound();
         });
@@ -279,15 +368,18 @@
     });
 
     card.addEventListener('click', function () {
+        if (optionsOpen()) return;
         newRound();
     });
     card.addEventListener('keydown', function (event) {
         if (event.key === 'Enter' || event.key === ' ') {
+            if (optionsOpen()) return;
             event.preventDefault();
             newRound();
         }
     });
 
+    renderSubgroups();
     resetDraw();
     newRound();
 })();
