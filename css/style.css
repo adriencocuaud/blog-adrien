@@ -126,7 +126,7 @@ nav {
     animation: navReveal 0.8s ease-out forwards, shrinkAndDarken both linear;
     animation-delay: 1.5s, 0s;
     animation-timeline: auto, scroll();
-    animation-range: normal, 0 400px;
+    animation-range: normal, 300px 500px;
 }
 
 @keyframes navReveal {
@@ -203,7 +203,7 @@ nav {
         animation: navReveal 0.8s ease-out forwards, shrinkAndDarkenMobile both linear;
         animation-delay: 1.5s, 0s;
         animation-timeline: auto, scroll();
-        animation-range: normal, 0 400px;
+        animation-range: normal, 300px 500px;
     }
 
     .nav-links {
@@ -317,7 +317,7 @@ nav {
 
 #travel-map {
     width: 90vw;
-    margin: 60px auto 0;
+    margin: 80px auto 0;
     background: transparent;
     opacity: 0;
     transform: translateY(40px);
@@ -433,7 +433,7 @@ nav {
     font-family: "Lora", serif;
     font-size: 2.8em;
     text-align: center;
-    margin: 10px auto;
+    margin: 10px auto 30px;
     color: #3A4B58;
     clip-path: inset(0 100% 0 0);
     display: flex;
@@ -474,10 +474,20 @@ nav {
    Dessinée en CSS via 2 masques : corps fixe (::before) + aiguille tournante (::after).
    La couleur vient de `color` (currentColor) → ocre pour les sections, crème pour le footer. */
 .section-compass {
-    width: 50px;
-    height: 50px;
-    margin: 0 auto -30px;
+    width: 130px;
+    height: 130px;
+    /* Filigrane derrière le titre qui suit : remonte le bloc suivant sur soi */
+    margin: 0 auto -110px;
     color: #cb8f50;
+    opacity: 0.22;
+    z-index: -1;
+}
+
+/* Neutralise la marge haute du bloc qui suit, sinon le fusion des marges
+   (négative + positive) décale le centrage du filigrane selon la section */
+.section-compass + .sections-access-wrapper,
+.section-compass + .travel-map-section {
+    margin-top: 0;
 }
 
 .section-compass,

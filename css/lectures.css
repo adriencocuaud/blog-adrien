@@ -58,7 +58,7 @@ nav {
     animation: navReveal 0.8s ease-out forwards, shrinkAndDarken both linear;
     animation-delay: 0.5s, 0s;
     animation-timeline: auto, scroll();
-    animation-range: normal, 0 400px;
+    animation-range: normal, 0 270px;
 }
 
 @keyframes navReveal {
