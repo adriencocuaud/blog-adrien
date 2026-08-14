@@ -40,9 +40,9 @@
         <div class="algo-group">
             <div class="training-switch-bar">
                 <div class="training-switch" id="training-switch" data-active="PLL" role="radiogroup" aria-label="Groupe à tirer">
-                    <button type="button" class="training-switch-option" data-group="CLL" role="radio" aria-checked="false">OLL</button>
+                    <button type="button" class="training-switch-option" data-group="OLL" role="radio" aria-checked="false">OLL</button>
                     <button type="button" class="training-switch-option active" data-group="PLL" role="radio" aria-checked="true">PLL</button>
-                    <!-- <button type="button" class="training-switch-option" data-group="CMLL" role="radio" aria-checked="false">CMLL</button> -->
+                    <button type="button" class="training-switch-option" data-group="CLL" role="radio" aria-checked="false">CLL</button>
                     <div class="training-switch-thumb" aria-hidden="true"></div>
                 </div>
             </div>
@@ -79,7 +79,39 @@
         </div>
 
         <!-- ============ ORIENTATION ============ -->
-        <div class="algo-group" data-group="CLL">
+        <div class="algo-group" data-group="OLL">
+            <h2 class="group-title">Faire la croix jaune</h2>
+            <div class="algo-grid" data-subgroup="faire-croix">
+                <article class="algo-card">
+                    <img src="images/algorithme/OLL-Line.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">Forme de <em>ligne</em></p>
+                        <p class="algo-formula">
+                            F <span class="trig-sexy">(R U R' U')</span> F'
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithme/OLL-coin.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">Forme de <em>coin</em></p>
+                        <p class="algo-formula">
+                            f <span class="trig-sexy">(R U R' U')</span> f'
+                        </p>
+                    </div>
+                </article>
+                <article class="algo-card">
+                    <img src="images/algorithme/OLL-Dot.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">Forme de <em>point</em></p>
+                        <p class="algo-formula">
+                            F <span class="trig-sexy">(R U R' U')</span> S <span class="trig-sexy">(R U R' U')</span> f'
+                        </p>
+                    </div>
+                </article>
+            </div>
+
             <h2 class="group-title">Orienter la dernière face</h2>
             <div class="algo-grid" data-subgroup="orienter-face">
                 <article class="algo-card">
@@ -151,128 +183,10 @@
                     </div>
                 </article>
             </div>
-
-            <h2 class="group-title">Orienter les coins</h2>
-            <div class="algo-grid" data-subgroup="orienter-coins">
-                <article class="algo-card">
-                    <img src="images/algorithme/cll-U.png" class="algo-img">
-                    <div class="algo-content">
-                        <p class="algo-name">Forme <em>U</em></p>
-                        <p class="algo-formula">
-                            F <span class="trig-sexy">(R U R' U')</span> F'
-                        </p>
-                    </div>
-                </article>
-
-                <article class="algo-card">
-                    <img src="images/algorithme/cll-Pi.png" class="algo-img">
-                    <div class="algo-content">
-                        <p class="algo-name">Forme <em>Pi</em></p>
-                        <p class="algo-formula">
-                            F <span class="trig-sexy">(R U R' U')</span><sup>2</sup> F'
-                        </p>
-                    </div>
-                </article>
-                <article class="algo-card">
-                    <img src="images/algorithme/cll-H.png" class="algo-img">
-                    <div class="algo-content">
-                        <p class="algo-name">Forme <em>H</em></p>
-                        <p class="algo-formula">
-                            F <span class="trig-sexy">(R U R' U')</span><sup>3</sup> F'
-                        </p>
-                    </div>
-                </article>
-
-                <article class="algo-card">
-                    <img src="images/algorithme/cll-T.png" class="algo-img">
-                    <div class="algo-content">
-                        <p class="algo-name">Forme <em>T</em></p>
-                        <p class="algo-formula">
-                            <span class="trig-sexy">(R U R' U')</span> <span class="trig-sledge">(R' F R F')</span>
-                        </p>
-                    </div>
-                </article>
-
-                <article class="algo-card">
-                    <img src="images/algorithme/cll-S.png" class="algo-img">
-                    <div class="algo-content">
-                        <p class="algo-name">Forme <em>Sune</em></p>
-                        <p class="algo-formula">
-                            <span class="trig-whip">(R U R' U)</span> R U2 R'
-                        </p>
-                    </div>
-                </article>
-
-                <article class="algo-card">
-                    <img src="images/algorithme/cll-AS.png" class="algo-img">
-                    <div class="algo-content">
-                        <p class="algo-name">Forme <em>Anti Sune</em></p>
-                        <p class="algo-formula">
-                            <span class="trig-whip">(L' U' L U')</span> L' U2 L
-                        </p>
-                    </div>
-                </article>
-
-                <article class="algo-card">
-                    <img src="images/algorithme/cll-L.png" class="algo-img">
-                    <div class="algo-content">
-                        <p class="algo-name">Forme <em>L</em></p>
-                        <p class="algo-formula">
-                            <span class="trig-hedge">(F R' F' R)</span> <span class="trig-paren">(U R U' R')</span>
-                        </p>
-                    </div>
-                </article>
-            </div>
-
-            <h2 class="group-title">Résoudre la forme H</h2>
-            <div class="algo-grid" data-subgroup="forme-h">
-                <article class="algo-card">
-                    <img src="images/algorithme/H-rangs.png" class="algo-img">
-                    <div class="algo-content">
-                        <p class="algo-name"><em>H</em> rangs</p>
-                        <p class="algo-formula">
-                            F <span class="trig-sexy">(R U R' U')</span><sup>3</sup> F'
-                        </p>
-                    </div>
-                </article>
-
-                <article class="algo-card">
-                    <img src="images/algorithme/H-colones.png" class="algo-img">
-                    <div class="algo-content">
-                        <p class="algo-name"><em>H</em> colones</p>
-                        <p class="algo-formula">
-                            <span class="trig-paren">(R U2 R' U')</span> <span class="trig-sexy">(R U R' U')</span> R U' R'
-                        </p>
-                    </div>
-                </article>
-
-                <article class="algo-card">
-                    <img src="images/algorithme/H-barre-bas.png" class="algo-img">
-                    <div class="algo-content">
-                        <p class="algo-name"><em>H</em> barre en bas</p>
-                        <p class="algo-formula">
-                            F <span class="trig-paren">(R U' R' U)</span> <span class="trig-paren">(R U2 R' U')</span> <span class="trig-sexy">(R U R' U')</span> F'
-                        </p>
-                    </div>
-                </article>
-
-                <article class="algo-card">
-                    <img src="images/algorithme/H-barre-droite.png" class="algo-img">
-                    <div class="algo-content">
-                        <p class="algo-name"><em>H</em> barre droite</p>
-                        <p class="algo-formula">
-                            <span class="trig-whip">(R U R' U)</span> <span class="trig-paren">(R U L' U)</span> R' U' L
-                        </p>
-                    </div>
-                </article>
-            </div>
-
-
         </div>
 
         <!-- ============ PERMUTATION ============ -->
         <div class="algo-group" data-group="PLL">
-
             <!-- ---- Barre de 3 ---- -->
             <h2 class="group-title">Permutation avec une barre</h2>
             <div data-subgroup="barre">
@@ -330,7 +244,7 @@
                             <div class="algo-content">
                                 <p class="algo-name">Permutation <em>F</em></p>
                                 <p class="algo-formula">
-                                    (R' U' F') <span class="trig-sexy">(R U R' U')</span> <span class="trig-sledge">(R' F R2 U' R' U')</span> <span class="trig-whip">(R U R' U R)</span>
+                                    <span class="trig-reload">(R' U R U')</span> R2 <span class="trig-paren">(F' U' F U R)</span> <span class="trig-hedge">(F R' F' R2)</span>
                                 </p>
                             </div>
                         </article>
@@ -545,9 +459,19 @@
                         <article class="algo-card">
                             <img src="images/algorithme/T-Perm.png" class="algo-img">
                             <div class="algo-content">
-                                <p class="algo-name">Permutation <em>T</em></p>
+                                <p class="algo-name">Permutation <em>T droite</em></p>
                                 <p class="algo-formula">
                                     <span class="trig-sexy">(R U R' U')</span> <span class="trig-sledge">(R' F R2 U' R' U')</span> <span class="trig-lasso">(R U R' F')</span>
+                                </p>
+                            </div>
+                        </article>
+
+                        <article class="algo-card">
+                            <img src="images/algorithme/Tb-Perm.png" class="algo-img">
+                            <div class="algo-content">
+                                <p class="algo-name">Permutation <em>T gauche</em></p>
+                                <p class="algo-formula">
+                                    <span class="trig-sexy">(L' U' L U)</span> <span class="trig-sledge">(L F' L2 U L U)</span> <span class="trig-lasso">(L' U' L F)</span>
                                 </p>
                             </div>
                         </article>
@@ -556,7 +480,124 @@
             </div>
         </div>
 
-        <!-- <h2 class="group-title">Résoudre la forme Pi</h2>
+        <!-- ============ COINS (CLL) ============ -->
+        <div class="algo-group" data-group="CLL">
+            <h2 class="group-title">Orienter les coins</h2>
+            <div class="algo-grid" data-subgroup="orienter-coins">
+                <article class="algo-card">
+                    <img src="images/algorithme/cll-U.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">Forme <em>U</em></p>
+                        <p class="algo-formula">
+                            F <span class="trig-sexy">(R U R' U')</span> F'
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithme/cll-Pi.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">Forme <em>Pi</em></p>
+                        <p class="algo-formula">
+                            F <span class="trig-sexy">(R U R' U')</span><sup>2</sup> F'
+                        </p>
+                    </div>
+                </article>
+                <article class="algo-card">
+                    <img src="images/algorithme/cll-H.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">Forme <em>H</em></p>
+                        <p class="algo-formula">
+                            F <span class="trig-sexy">(R U R' U')</span><sup>3</sup> F'
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithme/cll-T.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">Forme <em>T</em></p>
+                        <p class="algo-formula">
+                            <span class="trig-sexy">(R U R' U')</span> <span class="trig-sledge">(R' F R F')</span>
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithme/cll-S.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">Forme <em>Sune</em></p>
+                        <p class="algo-formula">
+                            <span class="trig-whip">(R U R' U)</span> R U2 R'
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithme/cll-AS.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">Forme <em>Anti Sune</em></p>
+                        <p class="algo-formula">
+                            <span class="trig-whip">(L' U' L U')</span> L' U2 L
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithme/cll-L.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">Forme <em>L</em></p>
+                        <p class="algo-formula">
+                            <span class="trig-hedge">(F R' F' R)</span> <span class="trig-paren">(U R U' R')</span>
+                        </p>
+                    </div>
+                </article>
+            </div>
+
+            <h2 class="group-title">Résoudre la forme H</h2>
+            <div class="algo-grid" data-subgroup="forme-h">
+                <article class="algo-card">
+                    <img src="images/algorithme/H-rangs.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name"><em>H</em> rangs</p>
+                        <p class="algo-formula">
+                            F <span class="trig-sexy">(R U R' U')</span><sup>3</sup> F'
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithme/H-colones.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name"><em>H</em> colones</p>
+                        <p class="algo-formula">
+                            <span class="trig-paren">(R U2 R' U')</span> <span class="trig-sexy">(R U R' U')</span> R U' R'
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithme/H-barre-bas.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name"><em>H</em> barre en haut</p>
+                        <p class="algo-formula">
+                            F <span class="trig-sexy">(R U R' U')</span> <span class="trig-paren">(R U' R' U)</span> <span class="trig-lasso">(R U R' F')</span>
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithme/H-barre-droite.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name"><em>H</em> barre droite</p>
+                        <p class="algo-formula">
+                            <span class="trig-whip">(R U R' U)</span> <span class="trig-paren">(R U L' U)</span> R' U' L
+                        </p>
+                    </div>
+                </article>
+            </div>
+
+            <h2 class="group-title">Résoudre la forme Pi</h2>
             <div class="algo-grid" data-subgroup="forme-pi">
                 <article class="algo-card">
                     <img src="images/algorithme/pi-barre-droite.png" class="algo-img">
@@ -617,32 +658,9 @@
                         </p>
                     </div>
                 </article>
-            </div> -->
+            </div>
 
-        <!-- <h2 class="group-title">Permuter les coins</h2>
-            <div class="algo-grid">
-                <article class="algo-card">
-                    <img src="images/algorithme/adjacent.png" class="algo-img">
-                    <div class="algo-content">
-                        <p class="algo-name">Permutation <em>Adjacente</em></p>
-                        <p class="algo-formula">
-                            r' L' U2 <span class="trig-paren">(R U R' U2)</span> L U' r
-                        </p>
-                    </div>
-                </article>
-
-                <article class="algo-card">
-                    <img src="images/algorithme/diagonal.png" class="algo-img">
-                    <div class="algo-content">
-                        <p class="algo-name">Permutation <em>Diagonale</em></p>
-                        <p class="algo-formula">
-                            <span class="trig-paren">(F U' F' U')</span> r2 <span class="trig-paren">(U' R F R' U)</span> r2
-                        </p>
-                    </div>
-                </article>
-            </div> -->
-
-        <!-- <h2 class="group-title">Forme U</h2>
+            <!-- <h2 class="group-title">Forme U</h2>
             <div class="algo-grid">
                 <article class="algo-card">
                     <img src="images/algorithme/U-barre-gauche.png" class="algo-img">
@@ -705,7 +723,7 @@
                 </article>
             </div> -->
 
-        <!-- <h2 class="group-title">Forme T</h2>
+            <!-- <h2 class="group-title">Forme T</h2>
             <div class="algo-grid">
                 <article class="algo-card">
                     <img src="images/algorithme/T-left-barre.png" class="algo-img">
@@ -767,6 +785,7 @@
                     </div>
                 </article>
             </div> -->
+        </div>
 
         <script src="js/algorithme-entrainement.js"></script>
 </body>

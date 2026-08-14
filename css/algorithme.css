@@ -336,7 +336,8 @@ nav {
 }
 
 .algo-grid[data-subgroup="orienter-coins"],
-.algo-grid[data-subgroup="orienter-face"] {
+.algo-grid[data-subgroup="orienter-face"],
+.algo-grid[data-subgroup="faire-croix"] {
     grid-template-columns: repeat(3, 1fr);
 }
 
@@ -846,7 +847,8 @@ nav {
 @media (max-width: 980px) {
     .algo-grid,
     .algo-grid[data-subgroup="orienter-coins"],
-    .algo-grid[data-subgroup="orienter-face"] {
+    .algo-grid[data-subgroup="orienter-face"],
+    .algo-grid[data-subgroup="faire-croix"] {
         grid-template-columns: repeat(2, 1fr);
     }
 }
@@ -900,7 +902,8 @@ nav {
 
     .algo-grid,
     .algo-grid[data-subgroup="orienter-coins"],
-    .algo-grid[data-subgroup="orienter-face"] {
+    .algo-grid[data-subgroup="orienter-face"],
+    .algo-grid[data-subgroup="faire-croix"] {
         grid-template-columns: 1fr;
     }
 
