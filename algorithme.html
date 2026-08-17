@@ -42,7 +42,7 @@
                 <div class="training-switch" id="training-switch" data-active="PLL" role="radiogroup" aria-label="Groupe à tirer">
                     <button type="button" class="training-switch-option" data-group="OLL" role="radio" aria-checked="false">OLL</button>
                     <button type="button" class="training-switch-option active" data-group="PLL" role="radio" aria-checked="true">PLL</button>
-                    <button type="button" class="training-switch-option" data-group="CLL" role="radio" aria-checked="false">CLL</button>
+                    <!-- <button type="button" class="training-switch-option" data-group="CLL" role="radio" aria-checked="false">CLL</button> -->
                     <div class="training-switch-thumb" aria-hidden="true"></div>
                 </div>
             </div>
@@ -119,7 +119,7 @@
                     <div class="algo-content">
                         <p class="algo-name">Forme <em>U</em></p>
                         <p class="algo-formula">
-                            R2 D' <span class="trig-paren">(R U2 R')</span> D <span class="trig-paren">(R U2 R)</span>
+                            F <span class="trig-paren">(U' R' U R U)</span> F' R' U2 R
                         </p>
                     </div>
                 </article>
@@ -183,6 +183,78 @@
                     </div>
                 </article>
             </div>
+
+            <h2 class="group-title">Orienter les coins</h2>
+            <div class="algo-grid" data-subgroup="orienter-coins">
+                <article class="algo-card">
+                    <img src="images/algorithme/cll-U.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">Forme <em>U</em></p>
+                        <p class="algo-formula">
+                            F <span class="trig-sexy">(R U R' U')</span> F'
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithme/cll-Pi.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">Forme <em>Pi</em></p>
+                        <p class="algo-formula">
+                            F <span class="trig-sexy">(R U R' U')</span><sup>2</sup> F'
+                        </p>
+                    </div>
+                </article>
+                <article class="algo-card">
+                    <img src="images/algorithme/cll-H.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">Forme <em>H</em></p>
+                        <p class="algo-formula">
+                            F <span class="trig-sexy">(R U R' U')</span><sup>3</sup> F'
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithme/cll-T.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">Forme <em>T</em></p>
+                        <p class="algo-formula">
+                            <span class="trig-sexy">(R U R' U')</span> <span class="trig-sledge">(R' F R F')</span>
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithme/cll-S.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">Forme <em>Sune</em></p>
+                        <p class="algo-formula">
+                            <span class="trig-whip">(R U R' U)</span> R U2 R'
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithme/cll-AS.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">Forme <em>Anti Sune</em></p>
+                        <p class="algo-formula">
+                            <span class="trig-whip">(L' U' L U')</span> L' U2 L
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithme/cll-L.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">Forme <em>L</em></p>
+                        <p class="algo-formula">
+                            <span class="trig-hedge">(F R' F' R)</span> <span class="trig-paren">(U R U' R')</span>
+                        </p>
+                    </div>
+                </article>
+            </div>
         </div>
 
         <!-- ============ PERMUTATION ============ -->
@@ -232,6 +304,7 @@
                                 <p class="algo-name">Permutation <em>J gauche</em></p>
                                 <p class="algo-formula">
                                     <span class="trig-lasso">(L' U' L F)</span> <span class="trig-sexy">(L' U' L U)</span> <span class="trig-sledge">(L F' L2 U L)</span>
+                                    <!-- M' (R' F R F') R U2 r' U r U2 r' -->
                                 </p>
                             </div>
                         </article>
@@ -481,79 +554,7 @@
         </div>
 
         <!-- ============ COINS (CLL) ============ -->
-        <div class="algo-group" data-group="CLL">
-            <h2 class="group-title">Orienter les coins</h2>
-            <div class="algo-grid" data-subgroup="orienter-coins">
-                <article class="algo-card">
-                    <img src="images/algorithme/cll-U.png" class="algo-img">
-                    <div class="algo-content">
-                        <p class="algo-name">Forme <em>U</em></p>
-                        <p class="algo-formula">
-                            F <span class="trig-sexy">(R U R' U')</span> F'
-                        </p>
-                    </div>
-                </article>
-
-                <article class="algo-card">
-                    <img src="images/algorithme/cll-Pi.png" class="algo-img">
-                    <div class="algo-content">
-                        <p class="algo-name">Forme <em>Pi</em></p>
-                        <p class="algo-formula">
-                            F <span class="trig-sexy">(R U R' U')</span><sup>2</sup> F'
-                        </p>
-                    </div>
-                </article>
-                <article class="algo-card">
-                    <img src="images/algorithme/cll-H.png" class="algo-img">
-                    <div class="algo-content">
-                        <p class="algo-name">Forme <em>H</em></p>
-                        <p class="algo-formula">
-                            F <span class="trig-sexy">(R U R' U')</span><sup>3</sup> F'
-                        </p>
-                    </div>
-                </article>
-
-                <article class="algo-card">
-                    <img src="images/algorithme/cll-T.png" class="algo-img">
-                    <div class="algo-content">
-                        <p class="algo-name">Forme <em>T</em></p>
-                        <p class="algo-formula">
-                            <span class="trig-sexy">(R U R' U')</span> <span class="trig-sledge">(R' F R F')</span>
-                        </p>
-                    </div>
-                </article>
-
-                <article class="algo-card">
-                    <img src="images/algorithme/cll-S.png" class="algo-img">
-                    <div class="algo-content">
-                        <p class="algo-name">Forme <em>Sune</em></p>
-                        <p class="algo-formula">
-                            <span class="trig-whip">(R U R' U)</span> R U2 R'
-                        </p>
-                    </div>
-                </article>
-
-                <article class="algo-card">
-                    <img src="images/algorithme/cll-AS.png" class="algo-img">
-                    <div class="algo-content">
-                        <p class="algo-name">Forme <em>Anti Sune</em></p>
-                        <p class="algo-formula">
-                            <span class="trig-whip">(L' U' L U')</span> L' U2 L
-                        </p>
-                    </div>
-                </article>
-
-                <article class="algo-card">
-                    <img src="images/algorithme/cll-L.png" class="algo-img">
-                    <div class="algo-content">
-                        <p class="algo-name">Forme <em>L</em></p>
-                        <p class="algo-formula">
-                            <span class="trig-hedge">(F R' F' R)</span> <span class="trig-paren">(U R U' R')</span>
-                        </p>
-                    </div>
-                </article>
-            </div>
-
+        <!-- <div class="algo-group" data-group="CLL">
             <h2 class="group-title">Résoudre la forme H</h2>
             <div class="algo-grid" data-subgroup="forme-h">
                 <article class="algo-card">
@@ -660,7 +661,7 @@
                 </article>
             </div>
 
-            <!-- <h2 class="group-title">Forme U</h2>
+            <h2 class="group-title">Forme U</h2>
             <div class="algo-grid">
                 <article class="algo-card">
                     <img src="images/algorithme/U-barre-gauche.png" class="algo-img">
@@ -721,9 +722,9 @@
                         </p>
                     </div>
                 </article>
-            </div> -->
+            </div>
 
-            <!-- <h2 class="group-title">Forme T</h2>
+            <h2 class="group-title">Forme T</h2>
             <div class="algo-grid">
                 <article class="algo-card">
                     <img src="images/algorithme/T-left-barre.png" class="algo-img">
@@ -784,8 +785,8 @@
                         </p>
                     </div>
                 </article>
-            </div> -->
-        </div>
+            </div>
+        </div> -->
 
         <script src="js/algorithme-entrainement.js"></script>
 </body>
