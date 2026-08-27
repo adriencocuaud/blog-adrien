@@ -404,51 +404,6 @@ nav {
     margin-bottom: 40px;
 }
 
-/* Contrôle du timer, à côté du titre dans l'encoche */
-.training-timer-control {
-    display: inline-flex;
-    align-items: center;
-    gap: 1px;
-    cursor: default;
-}
-
-.training-timer-btn {
-    width: 20px;
-    height: 20px;
-    border: none;
-    background: transparent;
-    color: var(--text-light);
-    font-size: 0.9rem;
-    line-height: 1;
-    cursor: pointer;
-    opacity: 0.6;
-    transition: opacity 0.2s ease, color 0.2s ease, transform 0.2s ease, text-shadow 0.2s ease;
-}
-
-.training-timer-btn:hover {
-    opacity: 1;
-    color: var(--accent);
-    text-shadow: 0 0 8px var(--accent);
-}
-
-/* Les flèches glissent dans leur direction au survol */
-#training-timer-minus:hover { transform: translateX(-2px); }
-#training-timer-plus:hover { transform: translateX(2px); }
-
-.training-timer-btn:active {
-    transform: scale(0.85);
-}
-
-.training-timer-value {
-    min-width: 22px;
-    text-align: center;
-    font-size: 1rem;
-    font-weight: 700;
-    letter-spacing: normal;
-    text-transform: none;
-    color: var(--text-light);
-}
-
 .training-switch {
     position: relative;
     display: inline-flex;
@@ -522,7 +477,7 @@ nav {
     transform: rotate(60deg);
 }
 
-/* Panneau d'options (timer + sous-groupes) : superposé à la zone image/résultat,
+/* Panneau d'options (vitesse, vue, sous-groupes) : superposé à la zone cube/résultat,
    la carte garde exactement sa taille */
 .training-options {
     display: none;
@@ -532,7 +487,9 @@ nav {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 34px;
+    gap: 18px;
+    /* dégage l'encoche du titre, qui recouvre le haut de la carte (38px mesurés) */
+    padding-top: 38px;
     cursor: default;
 }
 
@@ -577,7 +534,7 @@ nav {
     z-index: 3;
 }
 
-.training-card.options-open .training-img,
+.training-card.options-open .training-3d,
 .training-card.options-open .training-result,
 .training-card.options-open .training-finished {
     visibility: hidden;
@@ -592,36 +549,34 @@ nav {
     opacity: 0;
 }
 
-.training-options .training-timer-control {
-    gap: 6px;
-}
-
-.training-options .training-timer-value {
-    font-size: 1.4rem;
-    min-width: 30px;
-}
-
-.training-options .training-timer-btn {
-    width: 26px;
-    height: 26px;
-    font-size: 0.9rem;
-}
-
-.training-timer-unit {
-    margin-left: 2px;
-    font-size: 0.8rem;
-    letter-spacing: 0.08em;
-    color: var(--text-dim);
-}
-
-/* Pastilles de sélection des sous-groupes inclus dans le tirage */
-.training-subgroups {
+/* Rangées de réglages (vitesse, vue) : mêmes pastilles que les sous-groupes, en ligne */
+.training-option-choices {
     display: flex;
-    flex-direction: column;
-    align-items: stretch;
     gap: 8px;
-    max-width: 480px;
-    padding: 0 24px;
+}
+
+/* Pastilles de sélection des cas inclus dans le tirage : une par cas, donc
+   sur plusieurs rangées (~5 par ligne) plutôt qu'une colonne */
+.training-cases {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+    max-width: 360px;
+    padding: 0 12px;
+}
+
+/* Rupture de ligne insérée par le JS pour équilibrer les rangées */
+.training-cases-break {
+    flex-basis: 100%;
+    height: 0;
+}
+
+/* Variante compacte : beaucoup de pastilles à libellé court */
+.training-case-btn {
+    padding: 3px 10px;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
 }
 
 .training-subgroup-btn {
@@ -657,7 +612,7 @@ nav {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 24px;
+    gap: 10px;
     width: fit-content;
     min-width: 70%;
     max-width: 100%;
@@ -729,12 +684,15 @@ nav {
             var(--notch-bg) calc(var(--notch-radius) + 0.5px));
 }
 
-.training-img {
-    width: 200px;
-    height: 200px;
-    object-fit: contain;
-    filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.5));
-    transition: transform 0.25s ease;
+/* pointer-events: none : le player capterait sinon le clic/drag, alors qu'un
+   clic sur la carte doit toujours tirer un nouveau cas (pas de rotation manuelle). */
+.training-3d {
+    display: grid; /* jamais block : le player rend dans une grille interne, block la casse (rien ne s'affiche) */
+    width: 260px;
+    height: 260px;
+    max-width: 100%;
+    margin: -10px 0 0 0;
+    pointer-events: none;
 }
 
 .training-result {
@@ -819,7 +777,7 @@ nav {
     display: flex;
 }
 
-.training-card.finished .training-img,
+.training-card.finished .training-3d,
 .training-card.finished .training-progress-track {
     visibility: hidden;
 }
@@ -920,9 +878,23 @@ nav {
         min-width: 0;
     }
 
-    .training-img {
-        width: 140px;
-        height: 140px;
+    .training-3d {
+        width: 180px;
+        height: 180px;
+    }
+
+    /* Carte plus courte : les 3 blocs de réglages doivent tenir sous l'encoche */
+    .training-options {
+        gap: 8px;
+        padding-top: 34px;
+    }
+
+    .training-option-block {
+        gap: 8px;
+    }
+
+    .training-cases {
+        gap: 5px;
     }
 
     .training-progress-track {
