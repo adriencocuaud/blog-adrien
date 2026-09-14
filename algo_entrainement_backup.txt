@@ -1,3 +1,5 @@
+==================== BACKUP JS (js/algorithme-entrainement.js, fichier complet ; le switch OLL/PLL vit desormais dans js/algorithme-switch.js : retirer sa partie avant de restaurer) ====================
+
 // Entraînement : tire un cas au hasard parmi toutes les cartes .algo-card
 // présentes sur la page (perm, H, Pi, U, et celles ajoutées plus tard),
 // affiche le cas à résoudre sur un cube 3D (cubing.js twisty-player), puis révèle
@@ -731,3 +733,415 @@
         } catch (e) { /* ignore */ }
     }
 })();
+
+==================== BACKUP HTML (algorithme.html, dans <section class="algo-section"> apres .intro-header ; + <script src="js/algorithme-entrainement.js"></script> avant </body>) ====================
+
+        <!-- ============ ENTRAINEMENT ============ -->
+        <div class="algo-group">
+            <div class="training-card" id="training-card" tabindex="0" role="button" aria-label="Cliquer pour tirer un nouveau cas">
+                <h2 class="training-title">
+                    <span>Entrainement</span>
+                    <button type="button" class="training-options-btn" id="training-options-btn" aria-label="Options d'entrainement" aria-expanded="false">&#9881;</button>
+                </h2>
+                <!-- Cube : l'état affiché est le cas à résoudre (ancre en fin d'algo), l'animation joue au reveal -->
+                <twisty-player id="training-3d" class="training-3d"
+                    puzzle="3x3x3"
+                    control-panel="none"
+                    background="none"
+                    hint-facelets="none"
+                    experimental-setup-anchor="end"
+                    camera-latitude="38"
+                    camera-longitude="30"
+                    tempo-scale="2.2"></twisty-player>
+                <div class="training-options" id="training-options">
+                    <div class="training-option-block">
+                        <p class="training-option-label">Vitesse</p>
+                        <div class="training-option-choices" id="training-speed" role="group" aria-label="Vitesse d'inspection et d'animation">
+                            <button type="button" class="training-subgroup-btn" data-speed="lent" aria-pressed="false">Lent</button>
+                            <button type="button" class="training-subgroup-btn active" data-speed="moyen" aria-pressed="true">Moyen</button>
+                            <button type="button" class="training-subgroup-btn" data-speed="rapide" aria-pressed="false">Rapide</button>
+                        </div>
+                    </div>
+
+                    <div class="training-option-block">
+                        <p class="training-option-label">Vue</p>
+                        <div class="training-option-choices" role="group" aria-label="Options d'affichage du cube">
+                            <button type="button" class="training-subgroup-btn" id="training-top-color" aria-label="Couleur de la face du dessus">Blanc</button>
+                            <button type="button" class="training-subgroup-btn" id="training-back-view" aria-pressed="false">4 côtés</button>
+                            <button type="button" class="training-subgroup-btn active" id="training-auf" aria-pressed="true">AUF</button>
+                        </div>
+                    </div>
+
+                    <div class="training-option-block">
+                        <p class="training-option-label">Cas</p>
+                        <div class="training-cases" id="training-cases" role="group" aria-label="Cas inclus dans le tirage"></div>
+                    </div>
+                </div>
+                <p class="training-finished" aria-hidden="true">Terminé, bravo&nbsp;!</p>
+                <div class="training-result" id="training-result">
+                    <div class="training-progress-track" id="training-progress-track">
+                        <div class="training-progress-bar" id="training-progress-bar"></div>
+                    </div>
+                    <p class="algo-name" id="training-name"></p>
+                    <p class="algo-formula" id="training-formula"></p>
+                </div>
+            </div>
+        </div>
+
+==================== BACKUP CSS (css/algorithme.css : section ENTRAINEMENT avant TRIGGERS COLORES) ====================
+
+/* === ENTRAINEMENT === */
+/* Bouton d'ouverture des options, dans l'encoche du titre */
+.training-options-btn {
+    border: none;
+    background: transparent;
+    font-size: 1.15rem;
+    line-height: 1;
+    color: var(--text-dim);
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s ease, color 0.2s ease, transform 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.training-options-btn:hover {
+    opacity: 1;
+    color: var(--accent);
+    transform: rotate(60deg);
+}
+
+/* Panneau d'options (vitesse, vue, sous-groupes) : superposé à la zone cube/résultat,
+   la carte garde exactement sa taille */
+.training-options {
+    display: none;
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    /* dégage l'encoche du titre, qui recouvre le haut de la carte (38px mesurés) */
+    padding-top: 38px;
+    cursor: default;
+}
+
+.training-option-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+}
+
+/* Intitulé de section, encadré de deux filets */
+.training-option-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: "Rajdhani", sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+}
+
+.training-option-label::before,
+.training-option-label::after {
+    content: "";
+    height: 1px;
+    width: 32px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.18));
+}
+
+.training-option-label::after {
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.18), transparent);
+}
+
+.training-card.options-open .training-options {
+    display: flex;
+}
+
+/* Le titre (et son bouton) reste cliquable au-dessus du panneau */
+.training-title {
+    z-index: 3;
+}
+
+.training-card.options-open .training-3d,
+.training-card.options-open .training-result,
+.training-card.options-open .training-finished {
+    visibility: hidden;
+}
+
+/* Un enfant avec visibility:visible réapparaît dans un parent masqué : il faut
+   donc re-masquer explicitement la solution (règles .revealed) sous le panneau */
+.training-card.options-open .training-result .algo-name,
+.training-card.options-open .training-result .algo-formula,
+.training-card.options-open .training-result .training-progress-track {
+    visibility: hidden;
+    opacity: 0;
+}
+
+/* Rangées de réglages (vitesse, vue) : mêmes pastilles que les sous-groupes, en ligne */
+.training-option-choices {
+    display: flex;
+    gap: 8px;
+}
+
+/* Pastilles de sélection des cas inclus dans le tirage : une par cas, donc
+   sur plusieurs rangées (~5 par ligne) plutôt qu'une colonne */
+.training-cases {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+    max-width: 360px;
+    padding: 0 12px;
+}
+
+/* Rupture de ligne insérée par le JS pour équilibrer les rangées */
+.training-cases-break {
+    flex-basis: 100%;
+    height: 0;
+}
+
+/* Variante compacte : beaucoup de pastilles à libellé court */
+.training-case-btn {
+    padding: 3px 10px;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+}
+
+.training-subgroup-btn {
+    font-family: "Rajdhani", sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 5px 16px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-dim);
+    cursor: pointer;
+    transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.training-subgroup-btn:hover {
+    border-color: rgba(255, 255, 255, 0.28);
+    color: var(--text-light);
+}
+
+.training-subgroup-btn.active {
+    border-color: rgba(255, 122, 26, 0.45);
+    background: rgba(255, 122, 26, 0.1);
+    color: var(--accent);
+    box-shadow: 0 0 12px rgba(255, 122, 26, 0.12) inset;
+}
+
+.training-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: fit-content;
+    min-width: 70%;
+    max-width: 100%;
+    --training-pad: 36px;
+    margin: 0 auto;
+    padding: var(--training-pad);
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    cursor: pointer;
+    user-select: none;
+    text-align: center;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.training-card:hover {
+    border-color: rgba(255, 122, 26, 0.45);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.35);
+}
+
+.training-card:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+}
+
+.training-title {
+    --notch-radius: 20px;
+    --notch-bg: #1e2128;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: fit-content;
+    margin: calc(var(--training-pad) * -1) auto 0;
+    padding: 7px 34px 9px;
+    border-radius: 0 0 var(--notch-radius) var(--notch-radius);
+    background: var(--notch-bg);
+    font-family: "Rajdhani", sans-serif;
+    font-weight: 700;
+    font-size: 0.95em;
+    line-height: 1.4;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-light);
+}
+
+/* raccords concaves : l'encoche se fond dans le bord haut de la carte */
+.training-title::before,
+.training-title::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: var(--notch-radius);
+    height: var(--notch-radius);
+}
+
+.training-title::before {
+    left: calc(var(--notch-radius) * -1);
+    background: radial-gradient(circle at 0 100%,
+            transparent var(--notch-radius),
+            var(--notch-bg) calc(var(--notch-radius) + 0.5px));
+}
+
+.training-title::after {
+    right: calc(var(--notch-radius) * -1);
+    background: radial-gradient(circle at 100% 100%,
+            transparent var(--notch-radius),
+            var(--notch-bg) calc(var(--notch-radius) + 0.5px));
+}
+
+/* pointer-events: none : le player capterait sinon le clic/drag, alors qu'un
+   clic sur la carte doit toujours tirer un nouveau cas (pas de rotation manuelle). */
+.training-3d {
+    display: grid; /* jamais block : le player rend dans une grille interne, block la casse (rien ne s'affiche) */
+    width: 260px;
+    height: 260px;
+    max-width: 100%;
+    margin: -10px 0 0 0;
+    pointer-events: none;
+}
+
+.training-result {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.training-progress-track {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.training-progress-bar {
+    height: 100%;
+    width: 0%;
+    background: var(--accent);
+    border-radius: 2px;
+}
+
+.training-progress-bar.running {
+    animation: trainingProgress 4s linear forwards;
+}
+
+@keyframes trainingProgress {
+    from { width: 0%; }
+    to { width: 100%; }
+}
+
+.training-result .algo-name,
+.training-result .algo-formula {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.training-card.revealed .training-progress-track {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.training-card.revealed .algo-name,
+.training-card.revealed .algo-formula {
+    visibility: visible;
+    opacity: 1;
+}
+
+.training-result .algo-name {
+    margin-bottom: 8px;
+}
+
+/* État "cycle terminé" : l'image et la barre sont masquées sans libérer
+   leur place (la carte garde sa taille), le message s'affiche par-dessus */
+.training-finished {
+    display: none;
+    position: absolute;
+    inset: 0;
+    align-items: center;
+    justify-content: center;
+    font-family: "Orbitron", sans-serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-shadow: 0 0 18px rgba(255, 122, 26, 0.45);
+    pointer-events: none;
+}
+
+.training-card.finished .training-finished {
+    display: flex;
+}
+
+.training-card.finished .training-3d,
+.training-card.finished .training-progress-track {
+    visibility: hidden;
+}
+
+/* --- dans @media (max-width: 768px) --- */
+    .training-card {
+        flex-direction: column;
+        text-align: center;
+        width: 100%;
+        min-width: 0;
+    }
+
+    .training-3d {
+        width: 180px;
+        height: 180px;
+    }
+
+    /* Carte plus courte : les 3 blocs de réglages doivent tenir sous l'encoche */
+    .training-options {
+        gap: 8px;
+        padding-top: 34px;
+    }
+
+    .training-option-block {
+        gap: 8px;
+    }
+
+    .training-cases {
+        gap: 5px;
+    }
+
+    .training-progress-track {
+        width: 110px;
+    }

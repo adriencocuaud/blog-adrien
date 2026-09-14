@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500..800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Cube 3D de l'entrainement ; si le CDN est injoignable, le tirage tourne sans cube -->
+    <!-- Cube 3D de la popup démo ; si le CDN est injoignable, la popup affiche la formule seule -->
     <script type="module" src="https://cdn.cubing.net/v0/js/cubing/twisty"></script>
 </head>
 
@@ -27,7 +27,6 @@
             <a href="pedagogie.html">Pédagogie</a>
             <a href="lectures.html">Lecture</a>
             <a href="algorithme.html" class="actif">Algorithme</a>
-            <!-- <a href="detente.html">Détente</a> -->
         </div>
         <div class="nav-spacer"></div>
     </nav>
@@ -38,63 +37,12 @@
             <p class="subtitle">Résoudre le Rubik's cube en s'amusant</p>
         </div>
 
-        <!-- ============ ENTRAINEMENT ============ -->
-        <div class="algo-group">
-            <div class="training-switch-bar">
-                <div class="training-switch" id="training-switch" data-active="PLL" role="radiogroup" aria-label="Groupe à tirer">
-                    <button type="button" class="training-switch-option" data-group="OLL" role="radio" aria-checked="false">OLL</button>
-                    <button type="button" class="training-switch-option active" data-group="PLL" role="radio" aria-checked="true">PLL</button>
-                    <!-- <button type="button" class="training-switch-option" data-group="CLL" role="radio" aria-checked="false">CLL</button> -->
-                    <div class="training-switch-thumb" aria-hidden="true"></div>
-                </div>
-            </div>
-            <div class="training-card" id="training-card" tabindex="0" role="button" aria-label="Cliquer pour tirer un nouveau cas">
-                <h2 class="training-title">
-                    <span>Entrainement</span>
-                    <button type="button" class="training-options-btn" id="training-options-btn" aria-label="Options d'entrainement" aria-expanded="false">&#9881;</button>
-                </h2>
-                <!-- Cube : l'état affiché est le cas à résoudre (ancre en fin d'algo), l'animation joue au reveal -->
-                <twisty-player id="training-3d" class="training-3d"
-                    puzzle="3x3x3"
-                    control-panel="none"
-                    background="none"
-                    hint-facelets="none"
-                    experimental-setup-anchor="end"
-                    camera-latitude="38"
-                    camera-longitude="30"
-                    tempo-scale="2.2"></twisty-player>
-                <div class="training-options" id="training-options">
-                    <div class="training-option-block">
-                        <p class="training-option-label">Vitesse</p>
-                        <div class="training-option-choices" id="training-speed" role="group" aria-label="Vitesse d'inspection et d'animation">
-                            <button type="button" class="training-subgroup-btn" data-speed="lent" aria-pressed="false">Lent</button>
-                            <button type="button" class="training-subgroup-btn active" data-speed="moyen" aria-pressed="true">Moyen</button>
-                            <button type="button" class="training-subgroup-btn" data-speed="rapide" aria-pressed="false">Rapide</button>
-                        </div>
-                    </div>
-
-                    <div class="training-option-block">
-                        <p class="training-option-label">Vue</p>
-                        <div class="training-option-choices" role="group" aria-label="Options d'affichage du cube">
-                            <button type="button" class="training-subgroup-btn" id="training-top-color" aria-label="Couleur de la face du dessus">Blanc</button>
-                            <button type="button" class="training-subgroup-btn" id="training-back-view" aria-pressed="false">4 côtés</button>
-                            <button type="button" class="training-subgroup-btn active" id="training-auf" aria-pressed="true">AUF</button>
-                        </div>
-                    </div>
-
-                    <div class="training-option-block">
-                        <p class="training-option-label">Cas</p>
-                        <div class="training-cases" id="training-cases" role="group" aria-label="Cas inclus dans le tirage"></div>
-                    </div>
-                </div>
-                <p class="training-finished" aria-hidden="true">Terminé, bravo&nbsp;!</p>
-                <div class="training-result" id="training-result">
-                    <div class="training-progress-track" id="training-progress-track">
-                        <div class="training-progress-bar" id="training-progress-bar"></div>
-                    </div>
-                    <p class="algo-name" id="training-name"></p>
-                    <p class="algo-formula" id="training-formula"></p>
-                </div>
+        <!-- ============ SWITCH OLL / PLL ============ -->
+        <div class="group-switch-bar">
+            <div class="group-switch" id="group-switch" data-active="PLL" role="radiogroup" aria-label="Groupe affiché">
+                <button type="button" class="group-switch-option" data-group="OLL" role="radio" aria-checked="false">OLL</button>
+                <button type="button" class="group-switch-option active" data-group="PLL" role="radio" aria-checked="true">PLL</button>
+                <div class="group-switch-thumb" aria-hidden="true"></div>
             </div>
         </div>
 
@@ -326,6 +274,29 @@
             <div>
                 <div class="algo-subgroups-row">
                     <div class="algo-subgroup">
+                        <p class="algo-subtitle">quatre blocs</p>
+                        <article class="algo-card">
+                            <img src="images/algorithme/PLL-Nb.png" class="algo-img">
+                            <div class="algo-content">
+                                <p class="algo-name">Permutation <em>N droite</em></p>
+                                <p class="algo-formula">
+                                    <span class="trig-paren">(R' U L' U2 R U' L)</span><sup>2</sup>
+                                </p>
+                            </div>
+                        </article>
+
+                        <article class="algo-card">
+                            <img src="images/algorithme/PLL-Na.png" class="algo-img">
+                            <div class="algo-content">
+                                <p class="algo-name">Permutation <em>N gauche</em></p>
+                                <p class="algo-formula">
+                                    <span class="trig-paren">(L U' R U2 L' U R')</span><sup>2</sup>
+                                </p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="algo-subgroup">
                         <p class="algo-subtitle">En forme de Y</p>
                         <article class="algo-card">
                             <img src="images/algorithme/PLL-Y.png" class="algo-img">
@@ -351,58 +322,10 @@
                         </article>
                     </div>
                 </div>
-
-                <div class="algo-subgroups-row">
-                    <div class="algo-subgroup">
-                        <p class="algo-subtitle">quatre blocs</p>
-                        <article class="algo-card">
-                            <img src="images/algorithme/PLL-Nb.png" class="algo-img">
-                            <div class="algo-content">
-                                <p class="algo-name">Permutation <em>N droite</em></p>
-                                <p class="algo-formula">
-                                    <span class="trig-paren">(R' U L' U2 R U' L)</span><sup>2</sup>
-                                </p>
-                            </div>
-                        </article>
-
-                        <article class="algo-card">
-                            <img src="images/algorithme/PLL-Na.png" class="algo-img">
-                            <div class="algo-content">
-                                <p class="algo-name">Permutation <em>N gauche</em></p>
-                                <p class="algo-formula">
-                                    <span class="trig-paren">(L U' R U2 L' U R')</span><sup>2</sup>
-                                </p>
-                            </div>
-                        </article>
-                    </div>
-
-                    <div class="algo-subgroup">
-                        <p class="algo-subtitle">Forme V + Phares</p>
-                        <article class="algo-card">
-                            <img src="images/algorithme/PLL-Aa.png" class="algo-img">
-                            <div class="algo-content">
-                                <p class="algo-name">Permutation <em>A droite</em></p>
-                                <p class="algo-formula">
-                                    <span class="trig-lasso">(R U R' F')</span> <span class="trig-sexy">(r U R' U')</span> <span class="trig-sledge">(r' F R2 U' R')</span>
-                                </p>
-                            </div>
-                        </article>
-
-                        <article class="algo-card">
-                            <img src="images/algorithme/PLL-Ab.png" class="algo-img">
-                            <div class="algo-content">
-                                <p class="algo-name">Permutation <em>A gauche</em></p>
-                                <p class="algo-formula">
-                                    <span class="trig-lasso">(L' U' L F)</span> <span class="trig-sexy">(l' U' L U)</span> <span class="trig-sledge">(l F' L2 U L)</span>
-                                </p>
-                            </div>
-                        </article>
-                    </div>
-                </div>
             </div>
 
-            <!-- ---- Phares ---- -->
-            <h2 class="group-title">Permutation avec des Phares</h2>
+            <!-- ---- Un phare et un bloc ---- -->
+            <h2 class="group-title">Permutation avec un phare et un bloc</h2>
 
             <div>
                 <div class="algo-subgroups-row">
@@ -451,9 +374,7 @@
                             </div>
                         </article>
                     </div>
-                </div>
 
-                <div class="algo-subgroups-row">
                     <div class="algo-subgroup">
                         <p class="algo-subtitle">un bloc opposé</p>
                         <article class="algo-card">
@@ -476,6 +397,36 @@
                             </div>
                         </article>
                     </div>
+                </div>
+            </div>
+
+            <!-- ---- Un phare et deux blocs ---- -->
+            <h2 class="group-title">Permutation avec un phare et deux blocs</h2>
+
+            <div>
+                <div class="algo-subgroups-row">
+                    <div class="algo-subgroup algo-subgroup-duo">
+                        <p class="algo-subtitle">Forme V + Phares</p>
+                        <article class="algo-card">
+                            <img src="images/algorithme/PLL-Aa.png" class="algo-img">
+                            <div class="algo-content">
+                                <p class="algo-name">Permutation <em>A droite</em></p>
+                                <p class="algo-formula">
+                                    <span class="trig-lasso">(R U R' F')</span> <span class="trig-sexy">(r U R' U')</span> <span class="trig-sledge">(r' F R2 U' R')</span>
+                                </p>
+                            </div>
+                        </article>
+
+                        <article class="algo-card">
+                            <img src="images/algorithme/PLL-Ab.png" class="algo-img">
+                            <div class="algo-content">
+                                <p class="algo-name">Permutation <em>A gauche</em></p>
+                                <p class="algo-formula">
+                                    <span class="trig-lasso">(L' U' L F)</span> <span class="trig-sexy">(l' U' L U)</span> <span class="trig-sledge">(l F' L2 U L)</span>
+                                </p>
+                            </div>
+                        </article>
+                    </div>
 
                     <div class="algo-subgroup">
                         <p class="algo-subtitle">deux blocs attachés</p>
@@ -493,7 +444,8 @@
             </div>
         </div>
 
-        <script src="js/algorithme-entrainement.js"></script>
+        <script src="js/algorithme-switch.js"></script>
+        <script src="js/algorithme-popup.js"></script>
 </body>
 
 </html>
