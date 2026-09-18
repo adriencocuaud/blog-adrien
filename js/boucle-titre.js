@@ -1,9 +1,9 @@
 // Carrousel de titres - Section présentation
 const titles = [
     "Point de départ",
-    "Aventurier moderne",
-    "Enseignant passionné",
-    "Développeur curieux"
+    "Enseignant sans frontières",
+    "Promeneur des livres et chemins",
+    "Développeur au gré des idées"
 ];
 
 let currentIndex = 0;
