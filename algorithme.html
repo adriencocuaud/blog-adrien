@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500..800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Cube 3D de la popup démo ; si le CDN est injoignable, la popup affiche la formule seule -->
+    <!-- Cube 3D de l'entrainement et de la popup démo ; si le CDN est injoignable, le tirage tourne sans cube et la popup affiche la formule seule -->
     <script type="module" src="https://cdn.cubing.net/v0/js/cubing/twisty"></script>
 </head>
 
@@ -43,6 +43,51 @@
                 <button type="button" class="group-switch-option" data-group="OLL" role="radio" aria-checked="false">OLL</button>
                 <button type="button" class="group-switch-option active" data-group="PLL" role="radio" aria-checked="true">PLL</button>
                 <div class="group-switch-thumb" aria-hidden="true"></div>
+            </div>
+        </div>
+
+        <!-- ============ ENTRAINEMENT ============ -->
+        <div class="algo-group">
+            <div class="training-card" id="training-card" tabindex="0" role="button" aria-label="Cliquer pour tirer un nouveau cas">
+                <h2 class="training-title">
+                    <span>Entrainement</span>
+                    <button type="button" class="training-options-btn" id="training-options-btn" aria-label="Options d'entrainement" aria-expanded="false">&#9881;</button>
+                </h2>
+                <!-- Cube : l'état affiché est le cas à résoudre (ancre en fin d'algo), l'animation joue au reveal -->
+                <twisty-player id="training-3d" class="training-3d" puzzle="3x3x3" control-panel="none" background="none" hint-facelets="none" experimental-setup-anchor="end" camera-latitude="38" camera-longitude="30" tempo-scale="2.2"></twisty-player>
+                <div class="training-options" id="training-options">
+                    <div class="training-option-block">
+                        <p class="training-option-label">Timer</p>
+                        <span class="training-timer-control" id="training-timer-control" role="group" aria-label="Temps d'inspection">
+                            <button type="button" class="training-timer-btn" id="training-timer-minus" aria-label="Réduire le temps">&#10094;</button>
+                            <span class="training-timer-value" id="training-timer-value">4</span>
+                            <span class="training-timer-unit">sec</span>
+                            <button type="button" class="training-timer-btn" id="training-timer-plus" aria-label="Augmenter le temps">&#10095;</button>
+                        </span>
+                    </div>
+
+                    <div class="training-option-block">
+                        <p class="training-option-label">Vue</p>
+                        <div class="training-option-choices" role="group" aria-label="Options d'affichage du cube">
+                            <button type="button" class="training-subgroup-btn" id="training-top-color" aria-label="Couleur de la face du dessus">Blanc</button>
+                            <button type="button" class="training-subgroup-btn" id="training-back-view" aria-pressed="false">4 côtés</button>
+                            <button type="button" class="training-subgroup-btn active" id="training-auf" aria-pressed="true">AUF</button>
+                        </div>
+                    </div>
+
+                    <div class="training-option-block">
+                        <p class="training-option-label">Cas</p>
+                        <div class="training-cases" id="training-cases" role="group" aria-label="Cas inclus dans le tirage"></div>
+                    </div>
+                </div>
+                <p class="training-finished" aria-hidden="true">Terminé, bravo&nbsp;!</p>
+                <div class="training-result" id="training-result">
+                    <div class="training-progress-track" id="training-progress-track">
+                        <div class="training-progress-bar" id="training-progress-bar"></div>
+                    </div>
+                    <p class="algo-name" id="training-name"></p>
+                    <p class="algo-formula" id="training-formula"></p>
+                </div>
             </div>
         </div>
 
@@ -153,7 +198,7 @@
                 </article>
             </div>
         </div>
-        
+
         <!-- ============ PERMUTATION ============ -->
         <div class="algo-group" data-group="PLL">
             <!-- ---- Barre de 3 ---- -->
@@ -378,21 +423,24 @@
                     <div class="algo-subgroup">
                         <p class="algo-subtitle">un bloc opposé</p>
                         <article class="algo-card">
-                            <img src="images/algorithme/PLL-Gb.png" class="algo-img">
+                            <img src="images/algorithme/PLL-Gd.png" class="algo-img">
                             <div class="algo-content">
                                 <p class="algo-name">Permutation <em>G' droite</em></p>
                                 <p class="algo-formula">
-                                    <span class="trig-paren">(F' U' F)</span> R2 u <span class="trig-paren">(R' U R U' R)</span> u' R2
+                                    <!-- (F' U' F)</span> R2 u <span class="trig-paren">(R' U R U' R)</span> u' R2 -->
+                                    <span class="trig-sexy">(R U R' U')</span> D <span class="trig-paren">(R2 U' R U')</span> <span class="trig-paren">(R' U R' U)</span> R2 D'
                                 </p>
                             </div>
                         </article>
 
                         <article class="algo-card">
-                            <img src="images/algorithme/PLL-Gd.png" class="algo-img">
+                            <img src="images/algorithme/PLL-Gb.png" class="algo-img">
                             <div class="algo-content">
                                 <p class="algo-name">Permutation <em>G' gauche</em></p>
                                 <p class="algo-formula">
-                                    <span class="trig-paren">(F U F')</span> L2 u' <span class="trig-paren">(L U' L' U L')</span> u L2
+                                    <!-- <span class="trig-paren">(F U F')</span> L2 u' <span class="trig-paren">(L U' L' U L')</span> u L2 -->
+                                    <span class="trig-sexy">(L' U' L U)</span> D' <span class="trig-paren">(L2 U L' U)</span> <span class="trig-paren">(L U' L U')</span> L2 D
+
                                 </p>
                             </div>
                         </article>
@@ -446,6 +494,7 @@
 
         <script src="js/algorithme-switch.js"></script>
         <script src="js/algorithme-popup.js"></script>
+        <script src="js/algorithme-entrainement.js"></script>
 </body>
 
 </html>
