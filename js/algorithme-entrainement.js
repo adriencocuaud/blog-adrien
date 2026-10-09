@@ -88,9 +88,10 @@
     }
 
     // Clé de persistance : slug du libellé (l'apostrophe de G' devient "-prime",
-    // sinon G et G' se réduiraient à la même clé)
+    // sinon G et G' se réduiraient à la même clé) ; une lettre isolée en minuscule
+    // prend "-min" (L / l, Z / z)
     function slugify(label) {
-        var text = label.replace(/'/g, '-prime');
+        var text = label.replace(/'/g, '-prime').replace(/\b([a-z])\b/g, '$1-min');
         if (text.normalize) text = text.normalize('NFD').replace(/[̀-ͯ]/g, '');
         return text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
     }
@@ -103,6 +104,7 @@
         var list = (entriesByGroup[groupKey] = []);
         var seen = [];
         groupEl.querySelectorAll('.algo-card').forEach(function (cardEl) {
+            if (cardEl.closest('[data-training-exclude]')) return;
             var entryEl = cardEl.closest('[data-case-label], .algo-subgroup') || cardEl;
             if (seen.indexOf(entryEl) >= 0) return;
             seen.push(entryEl);
@@ -122,6 +124,8 @@
         var formulaEl = card.querySelector('.algo-formula');
         var nameEl = card.querySelector('.algo-name');
         if (!formulaEl || !nameEl) return;
+        // data-training-exclude : grille affichée sur la page mais hors entraînement
+        if (card.closest('[data-training-exclude]')) return;
 
         var groupEl = card.closest('.algo-group');
 
