@@ -113,7 +113,10 @@
             var label = entryEl.getAttribute('data-case-label') || entryLabel(cards);
             var key = slugify(label);
             entryEl.setAttribute('data-case-key', key);
-            list.push({ key: key, label: label, count: cards.length });
+            // Même libellé sur plusieurs conteneurs (ex. les deux grilles "Croix") = une seule pastille
+            var existing = list.filter(function (entry) { return entry.key === key; })[0];
+            if (existing) existing.count += cards.length;
+            else list.push({ key: key, label: label, count: cards.length });
         });
     });
 

@@ -39,9 +39,9 @@
 
         <!-- ============ SWITCH OLL / PLL ============ -->
         <div class="group-switch-bar">
-            <div class="group-switch" id="group-switch" data-active="PLL" role="radiogroup" aria-label="Groupe affiché">
-                <button type="button" class="group-switch-option" data-group="OLL" role="radio" aria-checked="false">OLL</button>
-                <button type="button" class="group-switch-option active" data-group="PLL" role="radio" aria-checked="true">PLL</button>
+            <div class="group-switch" id="group-switch" data-active="OLL" role="radiogroup" aria-label="Groupe affiché">
+                <button type="button" class="group-switch-option active" data-group="OLL" role="radio" aria-checked="true">OLL</button>
+                <button type="button" class="group-switch-option" data-group="PLL" role="radio" aria-checked="false">PLL</button>
                 <div class="group-switch-thumb" aria-hidden="true"></div>
             </div>
         </div>
@@ -71,7 +71,7 @@
                         <div class="training-option-choices" role="group" aria-label="Options d'affichage du cube">
                             <button type="button" class="training-subgroup-btn" id="training-top-color" aria-label="Couleur de la face du dessus">Blanc</button>
                             <button type="button" class="training-subgroup-btn" id="training-back-view" aria-pressed="false">4 côtés</button>
-                            <button type="button" class="training-subgroup-btn active" id="training-auf" aria-pressed="true">AUF</button>
+                            <button type="button" class="training-subgroup-btn active" id="training-auf" aria-pressed="true">Orienté</button>
                         </div>
                     </div>
 
@@ -106,9 +106,9 @@
                 </article>
 
                 <article class="algo-card">
-                    <img src="images/algorithme/OLL-coin.png" class="algo-img">
+                    <img src="images/algorithme/OLL-L.png" class="algo-img">
                     <div class="algo-content">
-                        <p class="algo-name">Forme de <em>coin</em></p>
+                        <p class="algo-name">Forme de <em>L</em></p>
                         <p class="algo-formula">
                             f <span class="trig-sexy">(R U R' U')</span> f'
                         </p>
@@ -125,12 +125,12 @@
                 </article>
             </div>
 
-            <h2 class="group-title">Orienter la dernière face</h2>
-            <div class="algo-grid" data-subgroup="orienter-face">
+            <h2 class="group-title">Orienter les coins</h2>
+            <div class="algo-grid" data-subgroup="orienter-face" data-case-label="Croix">
                 <article class="algo-card">
-                    <img src="images/algorithme/OLL-U.png" class="algo-img">
+                    <img src="images/algorithme/OLL-23.png" class="algo-img">
                     <div class="algo-content">
-                        <p class="algo-name">Forme <em>U</em></p>
+                        <p class="algo-name">23 <em>Phares</em></p>
                         <p class="algo-formula">
                             R2 D' <span class="trig-paren">(R U2 R' D)</span> <span class="trig-paren">(R U2 R)</span>
                             <!-- F <span class="trig-paren">(U' R' U R U)</span> F' <span class="trig-paren">(R' U2 R)</span> -->
@@ -139,18 +139,18 @@
                 </article>
 
                 <article class="algo-card">
-                    <img src="images/algorithme/OLL-Pi.png" class="algo-img">
+                    <img src="images/algorithme/OLL-22.png" class="algo-img">
                     <div class="algo-content">
-                        <p class="algo-name">Forme <em>Pi</em></p>
+                        <p class="algo-name">22 <em>Pi</em></p>
                         <p class="algo-formula">
                             f <span class="trig-sexy">(R U R' U')</span> S' <span class="trig-sexy">(R U R' U')</span> F'
                         </p>
                     </div>
                 </article>
                 <article class="algo-card">
-                    <img src="images/algorithme/OLL-H.png" class="algo-img">
+                    <img src="images/algorithme/OLL-21.png" class="algo-img">
                     <div class="algo-content">
-                        <p class="algo-name">Forme <em>H</em></p>
+                        <p class="algo-name">21 <em>Roues</em></p>
                         <p class="algo-formula">
                             F <span class="trig-sexy">(R U R' U')</span><sup>3</sup> F'
                         </p>
@@ -158,29 +158,29 @@
                 </article>
 
                 <article class="algo-card">
-                    <img src="images/algorithme/OLL-T.png" class="algo-img">
+                    <img src="images/algorithme/OLL-24.png" class="algo-img">
                     <div class="algo-content">
-                        <p class="algo-name">Forme <em>T</em></p>
+                        <p class="algo-name">24 <em>Marteau</em></p>
                         <p class="algo-formula">
                             <span class="trig-sexy">(r U R' U')</span> <span class="trig-sledge">(r' F R F')</span>
                         </p>
                     </div>
                 </article>
 
-                <article class="algo-card" data-case-label="S">
-                    <img src="images/algorithme/OLL-Sune.png" class="algo-img">
+                <article class="algo-card">
+                    <img src="images/algorithme/OLL-27.png" class="algo-img">
                     <div class="algo-content">
-                        <p class="algo-name">Forme <em>Sune</em></p>
+                        <p class="algo-name">27 <em>Poisson D</em></p>
                         <p class="algo-formula">
                             <span class="trig-paren">(R U R' U)</span> R U2 R'
                         </p>
                     </div>
                 </article>
 
-                <article class="algo-card" data-case-label="AS">
-                    <img src="images/algorithme/OLL-Antisune.png" class="algo-img">
+                <article class="algo-card">
+                    <img src="images/algorithme/OLL-26.png" class="algo-img">
                     <div class="algo-content">
-                        <p class="algo-name">Forme <em>Anti Sune</em></p>
+                        <p class="algo-name">26 <em>Poisson G</em></p>
                         <p class="algo-formula">
                             <span class="trig-paren">(L' U' L U')</span> L' U2 L
                         </p>
@@ -188,11 +188,553 @@
                 </article>
 
                 <article class="algo-card">
-                    <img src="images/algorithme/OLL-L.png" class="algo-img">
+                    <img src="images/algorithme/OLL-25.png" class="algo-img">
                     <div class="algo-content">
-                        <p class="algo-name">Forme <em>L</em></p>
+                        <p class="algo-name">25 <em>Papillon</em></p>
                         <p class="algo-formula">
                             <span class="trig-hedge">(F R' F' r)</span> <span class="trig-paren">(U R U' r')</span>
+                        </p>
+                    </div>
+                </article>
+            </div>
+
+            <h2 class="group-title">Forme en T</h2>
+            <div class="algo-grid" data-subgroup="oll-t" data-case-label="T">
+                <article class="algo-card">
+                    <img src="images/algorithme/OLL-33.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">33 <em>Lacets</em></p>
+                        <p class="algo-formula">
+                            <span class="trig-sexy">(R U R' U')</span> <span class="trig-sledge">(R' F R F')</span>
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithme/OLL-45.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">45 <em>Chasseur</em></p>
+                        <p class="algo-formula">
+                            F <span class="trig-sexy">(R U R' U')</span> F'
+                        </p>
+                    </div>
+                </article>
+            </div>
+
+            <h2 class="group-title">Forme en carré</h2>
+            <div class="algo-grid" data-subgroup="oll-square" data-case-label="Carré">
+                <article class="algo-card">
+                    <img src="images/algorithme/OLL-6.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">6 <em>Carré D</em></p>
+                        <p class="algo-formula">
+                            r U2 <span class="trig-paren">(R' U' R U')</span> r'
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithme/OLL-5.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">5 <em>Carré G</em></p>
+                        <p class="algo-formula">
+                            l' U2 <span class="trig-paren">(L U L' U)</span> l
+                        </p>
+                    </div>
+                </article>
+            </div>
+
+            <h2 class="group-title">Forme en C</h2>
+            <div class="algo-grid" data-subgroup="oll-c" data-case-label="C">
+                <article class="algo-card">
+                    <img src="images/algorithme/OLL-34.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">34 <em>Ville</em></p>
+                        <p class="algo-formula">
+                            <span class="trig-sexy">(R U R' U')</span> B' <span class="trig-sledge">(R' F R)</span> S z'
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithme/OLL-46.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">46 <em>Pont</em></p>
+                        <p class="algo-formula">
+                            R' U' <span class="trig-sledge">(R' F R F')</span> U R
+                        </p>
+                    </div>
+                </article>
+            </div>
+
+            <h2 class="group-title">Forme en W</h2>
+            <div class="algo-grid" data-subgroup="oll-w" data-case-label="W">
+                <article class="algo-card">
+                    <img src="images/algorithme/OLL-36.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">36 <em>Wario</em></p>
+                        <p class="algo-formula">
+                            <span class="trig-paren">(R' U' R U')</span> <span class="trig-paren">(R' U R U)</span> l U' R' U x
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithme/OLL-38.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">38 <em>Mario</em></p>
+                        <p class="algo-formula">
+                            <span class="trig-paren">(R U R' U)</span> <span class="trig-paren">(R U' R' U')</span> <span class="trig-sledge">(R' F R F')</span>
+                        </p>
+                    </div>
+                </article>
+            </div>
+
+            <h2 class="group-title">Coins orientés</h2>
+            <div class="algo-grid" data-subgroup="oll-corners" data-case-label="Coins">
+                <article class="algo-card">
+                    <img src="images/algorithme/OLL-28.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">28 <em>Furtif</em></p>
+                        <p class="algo-formula">
+                            <span class="trig-sexy">(r U R' U')</span> M <span class="trig-paren">(U R U' R')</span>
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithme/OLL-57.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">57 <em>Momie</em></p>
+                        <p class="algo-formula">
+                            <span class="trig-sexy">(R U R' U')</span> M' <span class="trig-paren">(U R U' r')</span>
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithme/OLL-20.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">20 <em>Damier</em></p>
+                        <p class="algo-formula">
+                            M U <span class="trig-sexy">(R U R' U')</span> M2' <span class="trig-paren">(U R U' r')</span>
+                        </p>
+                    </div>
+                </article>
+            </div>
+
+            <h2 class="group-title">Forme en P</h2>
+            <div class="algo-grid" data-subgroup="oll-p" data-case-label="P">
+                <article class="algo-card">
+                    <img src="images/algorithme/OLL-31.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">31 <em>Canapé D</em></p>
+                        <p class="algo-formula">
+                            <span class="trig-paren">(R' U' F)</span> <span class="trig-paren">(U R U' R')</span> F' R
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithme/OLL-32.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">32 <em>Canapé G</em></p>
+                        <p class="algo-formula">
+                            S <span class="trig-sexy">(R U R' U')</span> <span class="trig-sledge">(R' F R f')</span>
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithme/OLL-43.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">43 <em>P G</em></p>
+                        <p class="algo-formula">
+                            f' <span class="trig-sexy">(L' U' L U)</span> f
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithme/OLL-44.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">44 <em>P D</em></p>
+                        <p class="algo-formula">
+                            f <span class="trig-sexy">(R U R' U')</span> f'
+                        </p>
+                    </div>
+                </article>
+            </div>
+
+            <h2 class="group-title">Forme en I</h2>
+            <div class="algo-grid" data-subgroup="oll-i" data-case-label="I">
+                <article class="algo-card">
+                    <img src="images/algorithme/OLL-51.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">51 <em>Capsule</em></p>
+                        <p class="algo-formula">
+                            f <span class="trig-sexy">(R U R' U')</span><sup>2</sup> f'
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithme/OLL-56.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">56 <em>Lampadaires</em></p>
+                        <p class="algo-formula">
+                            F <span class="trig-sexy">(R U R' U')</span> R F' <span class="trig-sexy">(r U R' U')</span> r'
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithme/OLL-52.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">52 <em>Rice Cooker</em></p>
+                        <p class="algo-formula">
+                            <span class="trig-paren">(R U R' U)</span> R d' R U' R' F'
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithme/OLL-55.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">55 <em>Autoroute</em></p>
+                        <p class="algo-formula">
+                            y <span class="trig-sledge">(R' F R U)</span> <span class="trig-paren">(R U' R2' F')</span> R2 U' R' <span class="trig-paren">(U R U R')</span>
+                        </p>
+                    </div>
+                </article>
+            </div>
+
+            <h2 class="group-title">Forme de flèche</h2>
+            <div class="algo-grid" data-subgroup="oll-fleche" data-case-label="Flèche">
+                <article class="algo-card">
+                    <img src="images/algorithme/OLL-9.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">9 <em>Cerf-volant D</em></p>
+                        <p class="algo-formula">
+                            <span class="trig-sexy">(R U R' U')</span> R' F <span class="trig-paren">(R2 U R' U')</span> F'
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithme/OLL-10.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">10 <em>Cerf-volant G</em></p>
+                        <p class="algo-formula">
+                            <span class="trig-paren">(R U R' U)</span> <span class="trig-sledge">(R' F R F')</span> <span class="trig-paren">(R U2' R')</span>
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithme/OLL-35.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">35 <em>Fish Salad</em></p>
+                        <p class="algo-formula">
+                            <span class="trig-paren">(R U2 R')</span> <span class="trig-sledge">(R' F R F')</span> <span class="trig-paren">(R U2 R')</span>
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithme/OLL-37.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">37 <em>Mounted Fish</em></p>
+                        <p class="algo-formula">
+                            <span class="trig-hedge">(F R' F' R)</span> <span class="trig-paren">(U R U' R')</span>
+                        </p>
+                    </div>
+                </article>
+            </div>
+
+            <h2 class="group-title">Grand L</h2>
+            <div class="algo-grid" data-subgroup="oll-l-big" data-case-label="Grand L">
+                <article class="algo-card">
+                    <img src="images/algorithme/OLL-13.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">13 <em>Pistolet D</em></p>
+                        <p class="algo-formula">
+                            F <span class="trig-paren">(U R U' R2)</span> F' <span class="trig-paren">(R U R U')</span> R'
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithme/OLL-14.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">14 <em>Pistolet G</em></p>
+                        <p class="algo-formula">
+                            <span class="trig-sledge">(R' F R)</span> U <span class="trig-paren">(R' F' R)</span> y' <span class="trig-paren">(R U' R')</span>
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithme/OLL-15.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">15 <em>Raclette D</em></p>
+                        <p class="algo-formula">
+                            <span class="trig-paren">(r' U' r)</span> <span class="trig-paren">(R' U' R U)</span> <span class="trig-paren">(r' U r)</span>
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithme/OLL-16.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">16 <em>Raclette G</em></p>
+                        <p class="algo-formula">
+                            <span class="trig-paren">(r U r')</span> <span class="trig-sexy">(R U R' U')</span> <span class="trig-paren">(r U' r')</span>
+                        </p>
+                    </div>
+                </article>
+            </div>
+
+            <h2 class="group-title">Petit L</h2>
+            <div class="algo-grid" data-subgroup="oll-l" data-case-label="Petit L">
+                <article class="algo-card">
+                    <img src="images/algorithme/OLL-48.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">48 <em>Casse-cou D</em></p>
+                        <p class="algo-formula">
+                            F <span class="trig-sexy">(R U R' U')</span><sup>2</sup> F'
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithme/OLL-47.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">47 <em>Casse-cou G</em></p>
+                        <p class="algo-formula">
+                            F' <span class="trig-sexy">(L' U' L U)</span><sup>2</sup> F
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithme/OLL-49.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">49 <em>Right Back Squeezy</em></p>
+                        <p class="algo-formula">
+                            r U' r2' U r2 U r2' U' r
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithme/OLL-50.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">50 <em>Right Front Squeezy</em></p>
+                        <p class="algo-formula">
+                            r' U r2 U' r2' U' r2 U r'
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithme/OLL-53.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">53 <em>Poêle D</em></p>
+                        <p class="algo-formula">
+                            <span class="trig-paren">(r' U' R U')</span> <span class="trig-paren">(R' U R U')</span> R' U2 r
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithme/OLL-54.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">54 <em>Poêle G</em></p>
+                        <p class="algo-formula">
+                            <span class="trig-paren">(r U R' U)</span> <span class="trig-paren">(R U' R' U)</span> R U2' r'
+                        </p>
+                    </div>
+                </article>
+            </div>
+
+            <h2 class="group-title">Forme en Y</h2>
+            <div class="algo-grid" data-subgroup="oll-y" data-case-label="Y">
+                <article class="algo-card">
+                    <img src="images/algorithme/OLL-29.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">29 <em>Spotted Chameleon D</em></p>
+                        <p class="algo-formula">
+                            y <span class="trig-sexy">(R U R' U')</span> <span class="trig-paren">(R U' R')</span> <span class="trig-paren">(F' U' F)</span> <span class="trig-paren">(R U R')</span>
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithme/OLL-30.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">30 <em>Spotted Chameleon G</em></p>
+                        <p class="algo-formula">
+                            y' F U <span class="trig-paren">(R U2 R' U')</span><sup>2</sup> F'
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithme/OLL-41.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">41 <em>Awkward Fish</em></p>
+                        <p class="algo-formula">
+                            <span class="trig-paren">(R U R' U)</span> <span class="trig-paren">(R U2' R')</span> F <span class="trig-sexy">(R U R' U')</span> F'
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithme/OLL-42.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">42 <em>Lefty Awkward Fish</em></p>
+                        <p class="algo-formula">
+                            <span class="trig-paren">(R' U' R U')</span> <span class="trig-paren">(R' U2 R)</span> F <span class="trig-sexy">(R U R' U')</span> F'
+                        </p>
+                    </div>
+                </article>
+            </div>
+
+            <h2 class="group-title">Grand Z</h2>
+            <div class="algo-grid" data-subgroup="oll-z-big" data-case-label="Grand Z">
+                <article class="algo-card">
+                    <img src="images/algorithme/OLL-40.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">40 <em>Fung G</em></p>
+                        <p class="algo-formula">
+                            R' F <span class="trig-sexy">(R U R' U')</span> F' U R
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithme/OLL-39.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">39 <em>Fung D</em></p>
+                        <p class="algo-formula">
+                            L F' <span class="trig-sexy">(L' U' L U)</span> F U' L'
+                        </p>
+                    </div>
+                </article>
+            </div>
+
+            <h2 class="group-title">Petit Z</h2>
+            <div class="algo-grid" data-subgroup="oll-z" data-case-label="Petit Z">
+                <article class="algo-card">
+                    <img src="images/algorithme/OLL-7.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">7 <em>Éclair</em></p>
+                        <p class="algo-formula">
+                            <span class="trig-paren">(r U R' U)</span> R U2 r'
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithme/OLL-8.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">8 <em>Éclair inversé</em></p>
+                        <p class="algo-formula">
+                            <span class="trig-paren">(r' U' R U')</span> R' U2 r
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithme/OLL-11.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">11 <em>Downstairs</em></p>
+                        <p class="algo-formula">
+                            r' <span class="trig-paren">(R2 U R' U R U2 R')</span> U M'
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithme/OLL-12.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">12 <em>Upstairs</em></p>
+                        <p class="algo-formula">
+                            M' <span class="trig-paren">(R' U' R U' R' U2 R)</span> U' M
+                        </p>
+                    </div>
+                </article>
+            </div>
+
+            <h2 class="group-title">Forme de point</h2>
+            <div class="algo-grid" data-subgroup="oll-dot" data-case-label="Point">
+                <article class="algo-card">
+                    <img src="images/algorithme/OLL-1.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">1 <em>Piste</em></p>
+                        <p class="algo-formula">
+                            <span class="trig-paren">(R U2 R')</span> <span class="trig-sledge">(R' F R F')</span> U2 <span class="trig-sledge">(R' F R F')</span>
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithme/OLL-2.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">2 <em>Zamboni</em></p>
+                        <p class="algo-formula">
+                            F <span class="trig-sexy">(R U R' U')</span> F' f <span class="trig-sexy">(R U R' U')</span> f'
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithme/OLL-3.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">3 <em>Moulin G</em></p>
+                        <p class="algo-formula">
+                            f <span class="trig-sexy">(R U R' U')</span> f' U' F <span class="trig-sexy">(R U R' U')</span> F'
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithme/OLL-4.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">4 <em>Moulin D</em></p>
+                        <p class="algo-formula">
+                            f <span class="trig-sexy">(R U R' U')</span> f' U F <span class="trig-sexy">(R U R' U')</span> F'
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithme/OLL-18.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">18 <em>Couronne</em></p>
+                        <p class="algo-formula">
+                            <span class="trig-paren">(r U R' U)</span> <span class="trig-paren">(R U2 r')</span> <span class="trig-paren">(r' U' R U')</span> <span class="trig-paren">(R' U2 r)</span>
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithme/OLL-19.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">19 <em>Lapin</em></p>
+                        <p class="algo-formula">
+                            M U <span class="trig-sexy">(R U R' U')</span> M' <span class="trig-sledge">(R' F R F')</span>
+                        </p>
+                    </div>
+                </article>
+
+                <article class="algo-card">
+                    <img src="images/algorithme/OLL-17.png" class="algo-img">
+                    <div class="algo-content">
+                        <p class="algo-name">17 <em>Slash</em></p>
+                        <p class="algo-formula">
+                            <span class="trig-paren">(R U R' U)</span> <span class="trig-sledge">(R' F R F')</span> U2' <span class="trig-sledge">(R' F R F')</span>
                         </p>
                     </div>
                 </article>

@@ -288,16 +288,11 @@ nav {
 }
 
 .algo-subgroups-row {
-    display: flex;
-    gap: 24px;
-    flex-wrap: wrap;
-    align-items: flex-start;
+    align-items: start;
     margin-bottom: 40px;
 }
 
 .algo-subgroups-row .algo-subgroup {
-    flex: 1 1 260px;
-    min-width: 240px;
     margin-bottom: 0;
 }
 
@@ -328,14 +323,12 @@ nav {
     border-radius: 20px;
 }
 
-/* Sous-groupe "duo" : ses 2 cartes côte à côte, il occupe 2 parts de la rangée
-   (ex. A droite + A gauche à côté de T) */
+/* Sous-groupe "duo" : ses 2 cartes côte à côte, il occupe 2 colonnes */
 .algo-subgroups-row .algo-subgroup-duo {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 24px;
-    row-gap: 20px;
-    flex: 2 1 544px;
+    grid-template-columns: repeat(min(2, var(--algo-cols)), 1fr);
+    grid-column: span min(2, var(--algo-cols));
+    gap: 20px;
 }
 
 .algo-subgroup-duo .algo-subtitle {
@@ -343,15 +336,17 @@ nav {
 }
 
 /* === GRILLE DE CARTES === */
-.algo-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+/* --algo-cols : un seul nombre de colonnes pour toute la page (grilles OLL et
+   rangées de sous-groupes PLL), réduit d'un bloc aux media queries */
+.algo-section {
+    --algo-cols: 3;
 }
 
-.algo-grid[data-subgroup="orienter-face"],
-.algo-grid[data-subgroup="faire-croix"] {
-    grid-template-columns: repeat(3, 1fr);
+.algo-grid,
+.algo-subgroups-row {
+    display: grid;
+    grid-template-columns: repeat(var(--algo-cols), 1fr);
+    gap: 20px;
 }
 
 .algo-card {
@@ -774,9 +769,8 @@ nav {
     flex-direction: column;
     align-items: center;
     gap: 10px;
-    width: fit-content;
-    min-width: 70%;
-    max-width: 100%;
+    /* 50 % du conteneur à 1280px, 100 % à 400px, linéaire entre les deux */
+    width: clamp(50%, calc(27.27% + 291px), 100%);
     --training-pad: 36px;
     margin: 0 auto;
     padding: var(--training-pad);
@@ -849,8 +843,9 @@ nav {
    clic sur la carte doit toujours tirer un nouveau cas (pas de rotation manuelle). */
 .training-3d {
     display: grid; /* jamais block : le player rend dans une grille interne, block la casse (rien ne s'affiche) */
-    width: 260px;
-    height: 260px;
+    /* 180px à 400px d'écran, 260px à 1280px, linéaire entre les deux */
+    width: clamp(180px, calc(9.09vw + 144px), 260px);
+    height: clamp(180px, calc(9.09vw + 144px), 260px);
     max-width: 100%;
     margin: -10px 0 0 0;
     pointer-events: none;
@@ -962,12 +957,12 @@ nav {
 }
 
 /* === RESPONSIVE === */
-@media (max-width: 980px) {
-    .algo-grid,
-    .algo-grid[data-subgroup="orienter-face"],
-    .algo-grid[data-subgroup="faire-croix"] {
-        grid-template-columns: repeat(2, 1fr);
-    }
+@media (max-width: 900px) {
+    .algo-section { --algo-cols: 2; }
+}
+
+@media (max-width: 600px) {
+    .algo-section { --algo-cols: 1; }
 }
 
 @keyframes shrinkAndDarkenMobile {
@@ -1015,29 +1010,6 @@ nav {
 
     .intro-header .subtitle {
         font-size: 1.05em;
-    }
-
-    .algo-grid,
-    .algo-grid[data-subgroup="orienter-face"],
-    .algo-grid[data-subgroup="faire-croix"] {
-        grid-template-columns: 1fr;
-    }
-
-    .algo-subgroups-row .algo-subgroup-duo {
-        grid-template-columns: 1fr;
-        flex-basis: 260px;
-    }
-
-    .training-card {
-        flex-direction: column;
-        text-align: center;
-        width: 100%;
-        min-width: 0;
-    }
-
-    .training-3d {
-        width: 180px;
-        height: 180px;
     }
 
     /* Carte plus courte : les 3 blocs de réglages doivent tenir sous l'encoche */
