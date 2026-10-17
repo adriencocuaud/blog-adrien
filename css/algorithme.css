@@ -1047,6 +1047,47 @@ nav {
     line-height: 1.2;
     }
 
+    /* Téléphone : 4 rangées de cas OLL dans une carte de ~315px → pastilles et
+       espacements resserrés ; safe center = un débordement éventuel part vers
+       le bas (scrollable) au lieu de passer sous l'encoche */
+    .training-options {
+        gap: 6px;
+        padding: 40px 8px 8px;
+        justify-content: safe center;
+        overflow-y: auto;
+    }
+
+    .training-option-block {
+        gap: 5px;
+    }
+
+    .training-option-label {
+        font-size: 0.66rem;
+    }
+
+    .training-timer-btn {
+        height: 22px;
+    }
+
+    .training-timer-value {
+        font-size: 1.2rem;
+        line-height: 1.1;
+    }
+
+    .training-subgroup-btn {
+        padding: 3px 12px;
+        font-size: 0.74rem;
+    }
+
+    .training-subgroup-btn.training-case-btn {
+        padding: 2px 11px;
+        font-size: 0.74rem;
+    }
+
+    .training-cases {
+        gap: 4px;
+        padding: 0;
+    }
 }
 
 /* === IMPRESSION === */
