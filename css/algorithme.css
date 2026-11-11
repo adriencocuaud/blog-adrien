@@ -1,21 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500..800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;600&display=swap');
+/* Polices chargées par <link> dans algorithme.html */
 
 :root {
     --bg-dark: #0c0e13;
-    --bg-panel: #14171fdd;
     --card-bg: #14171fdd;
     --card-border: rgba(255, 255, 255, 0.09);
     --text-light: #e7e9f0;
     --text-dim: #8890a4;
     --accent: #ff7a1a;
+    --accent-border: rgba(255, 122, 26, 0.45);
 
     --trig-sexy: #ef4444;
     --trig-sledge: #3b82f6;
-    --trig-whip: #22c55e;
     --trig-lasso: #ffc928;
-    --trig-reload: #c084fc;
     --trig-hedge: #22d3ee;
 }
 
@@ -37,6 +33,9 @@ body {
 
 /* === NAVIGATION === */
 nav {
+    --nav-px: 3rem;
+    --nav-py-top: 1.5rem;
+    --nav-py-scrolled: 0.5rem;
     font-family: "Rajdhani", sans-serif;
     font-weight: 600;
     letter-spacing: 1px;
@@ -48,10 +47,7 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 3rem;
-    background: rgba(12, 14, 19, 0);
-    backdrop-filter: blur(0px);
-    transition: background 0.3s ease;
+    padding: 1rem var(--nav-px);
     opacity: 0;
     transform: translateY(-100%);
     animation: navReveal 0.8s ease-out forwards, shrinkAndDarken both linear;
@@ -61,10 +57,6 @@ nav {
 }
 
 @keyframes navReveal {
-    from {
-        opacity: 0;
-        transform: translateY(-100%);
-    }
     to {
         opacity: 1;
         transform: translateY(0);
@@ -73,12 +65,12 @@ nav {
 
 @keyframes shrinkAndDarken {
     0% {
-        padding: 1.5rem 3rem;
+        padding: var(--nav-py-top) var(--nav-px);
         background: rgba(12, 14, 19, 0);
         backdrop-filter: blur(0px);
     }
     100% {
-        padding: 0.5rem 3rem;
+        padding: var(--nav-py-scrolled) var(--nav-px);
         background: rgba(12, 14, 19, 0.85);
         backdrop-filter: blur(6px);
         box-shadow: 0 2px 14px rgba(0, 0, 0, 0.4);
@@ -90,46 +82,16 @@ nav {
     gap: 2em;
 }
 
-.nav-links a {
-    text-decoration: none;
-    color: var(--text-light);
-    font-size: 0.85em;
-    position: relative;
-    text-transform: uppercase;
-}
-
-.nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: -3px;
-    left: 0;
-    width: 0%;
-    height: 1.5px;
-    background: var(--accent);
-    transition: width 0.3s ease;
-}
-
-.nav-links a:hover::after {
-    width: 100%;
-}
-
-.nav-links a.actif {
-    pointer-events: none;
-    color: var(--accent);
-}
-
-.nav-links a.actif::after {
-    display: none;
-}
-
+.nav-links a,
 .nav-home {
+    position: relative;
     text-decoration: none;
     color: var(--text-light);
     font-size: 0.85em;
     text-transform: uppercase;
-    position: relative;
 }
 
+.nav-links a::after,
 .nav-home::after {
     content: '';
     position: absolute;
@@ -141,8 +103,18 @@ nav {
     transition: width 0.3s ease;
 }
 
+.nav-links a:hover::after,
 .nav-home:hover::after {
     width: 100%;
+}
+
+.nav-links a.actif {
+    pointer-events: none;
+    color: var(--accent);
+}
+
+.nav-links a.actif::after {
+    display: none;
 }
 
 .nav-back-arrow {
@@ -158,8 +130,9 @@ nav {
     width: 120px;
 }
 
-/* === SECTION — fond quadrillage façon pièce de Rubik's cube (stickers arrondis) === */
+/* === SECTION — fond quadrillage façon Rubik's cube === */
 .algo-section {
+    --algo-cols: 3; /* colonnes de toutes les grilles, réduit aux media queries */
     position: relative;
     min-height: 100vh;
     padding: 60px 60px 80px;
@@ -190,19 +163,16 @@ nav {
     letter-spacing: 0.08em;
     text-transform: uppercase;
     margin-bottom: 10px;
-    text-align: center;
     color: var(--text-light);
     text-shadow: 0 0 22px rgba(255, 122, 26, 0.35);
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 1.2rem;
     clip-path: inset(0 100% 0 0);
-    animation: revealFromRight 0.8s ease forwards;
-    animation-delay: 0.3s;
+    animation: revealFromRight 0.8s ease 0.3s forwards;
 }
 
-/* Déco latérale : petit cube isométrique façon Rubik's cube */
+/* Déco latérale : petit cube isométrique */
 .intro-header h1::before,
 .intro-header h1::after {
     content: '';
@@ -217,7 +187,6 @@ nav {
 }
 
 @keyframes revealFromRight {
-    from { clip-path: inset(0 100% 0 0); }
     to { clip-path: inset(0 0 0 0); }
 }
 
@@ -229,39 +198,34 @@ nav {
     text-align: center;
     color: var(--accent);
     opacity: 0;
-    animation: fadeUp 0.6s ease forwards;
-    animation-delay: 0.8s;
+    animation: fadeUp 0.6s ease 0.8s forwards;
 }
 
 @keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
+    from { transform: translateY(20px); }
     to {
         opacity: 0.9;
         transform: translateY(0);
     }
 }
 
-/* === GROUPES COLL === */
+/* === GROUPES === */
+.algo-group,
+.group-switch-bar {
+    opacity: 0;
+    transform: translateY(40px);
+    animation: cardsSlideUp 0.7s cubic-bezier(0.4, 0, 0.2, 1) 1.1s forwards;
+}
+
 .algo-group {
     max-width: 1280px;
     margin: 0 auto 56px;
-    opacity: 0;
-    transform: translateY(40px);
-    animation: cardsSlideUp 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    animation-delay: 1.1s;
 }
 
 .algo-group:nth-of-type(2) { animation-delay: 1.25s; }
 .algo-group:nth-of-type(3) { animation-delay: 1.4s; }
 
 @keyframes cardsSlideUp {
-    from {
-        opacity: 0;
-        transform: translateY(40px);
-    }
     to {
         opacity: 1;
         transform: translateY(0);
@@ -274,10 +238,9 @@ nav {
     font-size: 1.15em;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--text-light);
     padding: 10px 18px;
     margin-bottom: 40px;
-    background: var(--bg-panel);
+    background: var(--card-bg);
     border: 1px solid var(--card-border);
     border-left: 4px solid var(--accent);
     border-radius: 5px;
@@ -287,24 +250,34 @@ nav {
     margin-top: 40px;
 }
 
+/* === GRILLES DE CARTES === */
+.algo-grid,
+.algo-subgroups-row {
+    display: grid;
+    grid-template-columns: repeat(var(--algo-cols), 1fr);
+    gap: 20px;
+}
+
 .algo-subgroups-row {
     align-items: start;
     margin-bottom: 40px;
-}
-
-.algo-subgroups-row .algo-subgroup {
-    margin-bottom: 0;
 }
 
 .algo-subgroup {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    margin-bottom: 28px;
 }
 
-.algo-subgroup:last-child {
-    margin-bottom: 0;
+/* Sous-groupe "duo" : ses 2 cartes côte à côte, il occupe 2 colonnes */
+.algo-subgroup-duo {
+    display: grid;
+    grid-template-columns: repeat(min(2, var(--algo-cols)), 1fr);
+    grid-column: span min(2, var(--algo-cols));
+}
+
+.algo-subgroup-duo .algo-subtitle {
+    grid-column: 1 / -1;
 }
 
 .algo-subtitle {
@@ -314,41 +287,16 @@ nav {
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--accent);
-    text-align: center;
     width: fit-content;
     margin: 0 auto 16px;
     padding: 6px 16px;
-    background: var(--bg-panel);
+    background: var(--card-bg);
     border: 1px solid var(--card-border);
     border-radius: 20px;
 }
 
-/* Sous-groupe "duo" : ses 2 cartes côte à côte, il occupe 2 colonnes */
-.algo-subgroups-row .algo-subgroup-duo {
-    display: grid;
-    grid-template-columns: repeat(min(2, var(--algo-cols)), 1fr);
-    grid-column: span min(2, var(--algo-cols));
-    gap: 20px;
-}
-
-.algo-subgroup-duo .algo-subtitle {
-    grid-column: 1 / -1;
-}
-
-/* === GRILLE DE CARTES === */
-/* --algo-cols : un seul nombre de colonnes pour toute la page (grilles OLL et
-   rangées de sous-groupes PLL), réduit d'un bloc aux media queries */
-.algo-section {
-    --algo-cols: 3;
-}
-
-.algo-grid,
-.algo-subgroups-row {
-    display: grid;
-    grid-template-columns: repeat(var(--algo-cols), 1fr);
-    gap: 20px;
-}
-
+/* Carte : image puis titre ; la formule reste dans le HTML (lue par la popup et
+   l'entraînement) mais n'est pas affichée */
 .algo-card {
     display: flex;
     flex-direction: column;
@@ -358,98 +306,23 @@ nav {
     background: var(--card-bg);
     border: 1px solid var(--card-border);
     border-radius: 10px;
-    transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
     cursor: pointer;
-}
-
-/* === POPUP DÉMO 3D (clic sur une carte) === */
-.algo-popup {
-    position: fixed;
-    inset: 0;
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 16px;
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(4px);
-    animation: algoPopupIn 0.2s ease-out;
-}
-
-/* display:flex ci-dessus écrase l'attribut hidden : il faut le rétablir */
-.algo-popup[hidden] {
-    display: none;
-}
-
-.algo-popup-box {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    padding: 9px 24px 24px; /* 9px + 1px de bordure = 10px au-dessus du cube */
-    max-width: 100%;
-    background: #14171f;
-    border: 1px solid var(--card-border);
-    border-radius: 10px;
-    text-align: center;
-}
-
-.algo-popup-close {
-    position: absolute;
-    top: 8px;
-    right: 12px;
-    border: none;
-    background: transparent;
-    font-size: 1.5rem;
-    line-height: 1;
-    color: var(--text-dim);
-    opacity: 0.6;
-    cursor: pointer;
-    transition: opacity 0.2s ease, color 0.2s ease;
-}
-
-.algo-popup-close:hover {
-    opacity: 1;
-    color: var(--text-light);
-}
-
-.algo-popup-3d {
-    display: grid; /* jamais block : casse le rendu du player */
-    width: 320px;
-    height: 320px;
-    max-width: 100%;
-    pointer-events: none;
-}
-
-/* titre un peu plus proche de la formule (.algo-name met 8px) */
-.algo-popup .algo-popup-name {
-    margin-bottom: 0;
-}
-
-@keyframes algoPopupIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
 }
 
 .algo-card:hover {
-    border-color: rgba(255, 122, 26, 0.45);
+    border-color: var(--accent-border);
     box-shadow: 0 10px 26px rgba(0, 0, 0, 0.35);
     background: #1d212bdd;
 }
 
 .algo-img {
-    flex: 0 0 auto;
-    width: clamp(90px, 11vw, 160px); /* proportionnelle à la largeur de la page, bornée */
-    height: auto;
+    width: clamp(90px, 11vw, 160px);
     aspect-ratio: 1;
     object-fit: contain;
     filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.5));
 }
 
-/* Carte : image puis titre en dessous, formule masquée (elle reste dans le HTML,
-   la popup la lit et l'affiche au clic). display: contents fait du titre un
-   enfant direct du flex de la carte. */
 .algo-content {
     display: contents;
 }
@@ -487,13 +360,94 @@ nav {
     font-size: 1.15em;
     word-spacing: -0.25em;
     line-height: 1.5;
-    color: var(--text-light);
     word-break: break-word;
 }
 
 .algo-formula sup {
-    color: inherit;
     font-size: 0.7em;
+}
+
+/* === TRIGGERS COLORÉS === */
+.trig-sexy { color: var(--trig-sexy); }
+.trig-sledge { color: var(--trig-sledge); }
+.trig-lasso { color: var(--trig-lasso); }
+.trig-hedge { color: var(--trig-hedge); }
+
+.algo-formula span {
+    white-space: nowrap;
+}
+
+/* === CUBE 3D (twisty-player) === */
+/* display: grid obligatoire (block casse le rendu) ; pointer-events: none =
+   pas de rotation manuelle, le clic revient à la carte */
+.cube-3d {
+    display: grid;
+    max-width: 100%;
+    pointer-events: none;
+}
+
+/* === POPUP DÉMO 3D (clic sur une carte) === */
+.algo-popup {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    animation: fadeIn 0.2s ease-out;
+}
+
+.algo-popup[hidden] {
+    display: none;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+}
+
+.algo-popup-box {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 24px 24px;
+    max-width: 100%;
+    background: #14171f;
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    text-align: center;
+}
+
+.algo-popup-box .algo-name {
+    margin-bottom: 0;
+}
+
+.algo-popup-close {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    border: none;
+    background: transparent;
+    font-size: 1.5rem;
+    line-height: 1;
+    color: var(--text-dim);
+    opacity: 0.6;
+    cursor: pointer;
+    transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+.algo-popup-close:hover {
+    opacity: 1;
+    color: var(--text-light);
+}
+
+.algo-popup-3d {
+    width: 320px;
+    height: 320px;
 }
 
 /* === SWITCH OLL / PLL === */
@@ -501,17 +455,11 @@ nav {
     display: flex;
     justify-content: center;
     margin-bottom: 40px;
-    opacity: 0;
-    transform: translateY(40px);
-    animation: cardsSlideUp 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    animation-delay: 1.1s;
 }
 
 .group-switch {
     position: relative;
     display: inline-flex;
-    justify-content: center;
-    margin: 0 auto;
     background: var(--card-bg);
     border: 1px solid var(--card-border);
     border-radius: 24px;
@@ -527,10 +475,8 @@ nav {
     background: rgba(255, 122, 26, 0.15);
     border: 1px solid rgba(255, 122, 26, 0.55);
     border-radius: 17px;
-    box-shadow: 0 0 0 1px rgba(255, 122, 26, 0.12) inset;
     transition: transform 0.2s ease, width 0.2s ease;
     pointer-events: none;
-    z-index: 0;
 }
 
 .group-switch-option {
@@ -543,7 +489,6 @@ nav {
     color: var(--text-dim);
     background: transparent;
     border: none;
-    border-radius: 20px;
     padding: 8px 30px;
     cursor: pointer;
     transition: color 0.2s ease;
@@ -557,12 +502,79 @@ nav {
     color: #ffb27a;
 }
 
-.group-switch-option.active:hover {
-    color: #ffc596;
+/* === ENTRAINEMENT === */
+.training-card {
+    --training-pad: 36px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    /* 50 % du conteneur à 1280px, 100 % à 400px, linéaire entre les deux */
+    width: clamp(50%, calc(27.27% + 291px), 100%);
+    margin: 0 auto;
+    padding: var(--training-pad);
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    cursor: pointer;
+    user-select: none;
+    text-align: center;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    -webkit-tap-highlight-color: transparent;
 }
 
-/* === ENTRAINEMENT === */
-/* Bouton d'ouverture des options, dans l'encoche du titre */
+.training-card:hover {
+    border-color: var(--accent-border);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.35);
+}
+
+.training-card:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+}
+
+/* Titre en encoche sur le bord haut ; reste cliquable au-dessus du panneau */
+.training-title {
+    --notch-radius: 20px;
+    --notch-bg: #1e2128;
+    position: relative;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: calc(var(--training-pad) * -1) auto 0;
+    padding: 7px 34px 9px;
+    border-radius: 0 0 var(--notch-radius) var(--notch-radius);
+    background: var(--notch-bg);
+    font-family: "Rajdhani", sans-serif;
+    font-weight: 700;
+    font-size: 0.95em;
+    line-height: 1.4;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+/* raccords concaves : l'encoche se fond dans le bord haut de la carte */
+.training-title::before,
+.training-title::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: var(--notch-radius);
+    height: var(--notch-radius);
+}
+
+.training-title::before {
+    left: calc(var(--notch-radius) * -1);
+    background: radial-gradient(circle at 0 100%, transparent var(--notch-radius), var(--notch-bg) calc(var(--notch-radius) + 0.5px));
+}
+
+.training-title::after {
+    right: calc(var(--notch-radius) * -1);
+    background: radial-gradient(circle at 100% 100%, transparent var(--notch-radius), var(--notch-bg) calc(var(--notch-radius) + 0.5px));
+}
+
 .training-options-btn {
     border: none;
     background: transparent;
@@ -572,7 +584,6 @@ nav {
     cursor: pointer;
     opacity: 0.7;
     transition: opacity 0.2s ease, color 0.2s ease, transform 0.3s ease;
-    -webkit-tap-highlight-color: transparent;
 }
 
 .training-options-btn:hover {
@@ -581,8 +592,90 @@ nav {
     transform: rotate(60deg);
 }
 
-/* Panneau d'options (vitesse, vue, cas) : superposé à la zone cube/résultat,
-   la carte garde exactement sa taille */
+/* 180px à 400px d'écran, 260px à 1280px, linéaire entre les deux */
+.training-3d {
+    width: clamp(180px, calc(9.09vw + 144px), 260px);
+    height: clamp(180px, calc(9.09vw + 144px), 260px);
+    margin-top: -10px;
+}
+
+.training-result {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+}
+
+.training-progress-track {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.training-progress-bar {
+    height: 100%;
+    width: 0%;
+    background: var(--accent);
+}
+
+.training-progress-bar.running {
+    animation: trainingProgress 4s linear forwards; /* durée posée par le JS */
+}
+
+@keyframes trainingProgress {
+    to { width: 100%; }
+}
+
+/* Solution masquée pendant l'inspection, révélée ensuite (la barre disparaît) */
+.training-result .algo-name,
+.training-result .algo-formula {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.training-card.revealed .training-result .algo-name,
+.training-card.revealed .training-result .algo-formula {
+    visibility: visible;
+    opacity: 1;
+}
+
+.training-card.revealed .training-progress-track {
+    visibility: hidden;
+}
+
+/* Cycle terminé : cube et barre masqués sans libérer leur place, message par-dessus */
+.training-finished {
+    display: none;
+    position: absolute;
+    inset: 0;
+    align-items: center;
+    justify-content: center;
+    font-family: "Orbitron", sans-serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-shadow: 0 0 18px rgba(255, 122, 26, 0.45);
+    pointer-events: none;
+}
+
+.training-card.finished .training-finished {
+    display: flex;
+}
+
+.training-card.finished .training-3d,
+.training-card.finished .training-progress-track {
+    visibility: hidden;
+}
+
+/* --- Panneau d'options : superposé au cube/résultat, la carte garde sa taille --- */
 .training-options {
     display: none;
     position: absolute;
@@ -592,9 +685,18 @@ nav {
     align-items: center;
     justify-content: center;
     gap: 18px;
-    /* dégage l'encoche du titre, qui recouvre le haut de la carte (38px mesurés) */
-    padding-top: 38px;
+    padding-top: 38px; /* dégage l'encoche du titre */
     cursor: default;
+}
+
+.training-card.options-open .training-options {
+    display: flex;
+}
+
+.training-card.options-open .training-3d,
+.training-card.options-open .training-result,
+.training-card.options-open .training-finished {
+    visibility: hidden;
 }
 
 .training-option-block {
@@ -626,39 +728,14 @@ nav {
 }
 
 .training-option-label::after {
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0.18), transparent);
+    transform: scaleX(-1);
 }
 
-.training-card.options-open .training-options {
-    display: flex;
-}
-
-/* Le titre (et son bouton) reste cliquable au-dessus du panneau */
-.training-title {
-    z-index: 3;
-}
-
-.training-card.options-open .training-3d,
-.training-card.options-open .training-result,
-.training-card.options-open .training-finished {
-    visibility: hidden;
-}
-
-/* Un enfant avec visibility:visible réapparaît dans un parent masqué : il faut
-   donc re-masquer explicitement la solution (règles .revealed) sous le panneau */
-.training-card.options-open .training-result .algo-name,
-.training-card.options-open .training-result .algo-formula,
-.training-card.options-open .training-result .training-progress-track {
-    visibility: hidden;
-    opacity: 0;
-}
-
-/* Réglage du temps d'inspection : valeur encadrée de deux flèches */
+/* Temps d'inspection : valeur encadrée de deux flèches */
 .training-timer-control {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    cursor: default;
 }
 
 .training-timer-btn {
@@ -680,7 +757,6 @@ nav {
     text-shadow: 0 0 8px var(--accent);
 }
 
-/* Les flèches glissent dans leur direction au survol */
 #training-timer-minus:hover { transform: translateX(-2px); }
 #training-timer-plus:hover { transform: translateX(2px); }
 
@@ -690,12 +766,8 @@ nav {
 
 .training-timer-value {
     min-width: 30px;
-    text-align: center;
     font-size: 1.4rem;
     font-weight: 700;
-    letter-spacing: normal;
-    text-transform: none;
-    color: var(--text-light);
 }
 
 .training-timer-unit {
@@ -705,38 +777,13 @@ nav {
     color: var(--text-dim);
 }
 
-/* Rangées de réglages (vue) : mêmes pastilles que les cas, en ligne */
 .training-option-choices {
     display: flex;
     gap: 8px;
 }
 
-/* Pastilles de sélection des cas inclus dans le tirage : une par cas, donc
-   sur plusieurs rangées (~5 par ligne) plutôt qu'une colonne */
-.training-cases {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 6px;
-    max-width: 360px;
-    padding: 0 12px;
-}
-
-/* Rupture de ligne insérée par le JS pour équilibrer les rangées */
-.training-cases-break {
-    flex-basis: 100%;
-    height: 0;
-}
-
-/* Variante compacte : beaucoup de pastilles à libellé court */
-.training-subgroup-btn.training-case-btn {
-    padding: 4px 13px;
-    font-size: 0.78rem;
-    letter-spacing: 0.06em;
-    text-transform: none; /* L / l, Z / z : la casse distingue les cas */
-}
-
-.training-subgroup-btn {
+/* Pastilles : réglages de vue et cas inclus dans le tirage */
+.training-pill {
     font-family: "Rajdhani", sans-serif;
     font-size: 0.8rem;
     font-weight: 600;
@@ -748,213 +795,41 @@ nav {
     border: 1px solid rgba(255, 255, 255, 0.1);
     color: var(--text-dim);
     cursor: pointer;
-    transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
-    -webkit-tap-highlight-color: transparent;
+    transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
 }
 
-.training-subgroup-btn:hover {
+.training-pill:hover {
     border-color: rgba(255, 255, 255, 0.28);
     color: var(--text-light);
 }
 
-.training-subgroup-btn.active {
-    border-color: rgba(255, 122, 26, 0.45);
+.training-pill.active {
+    border-color: var(--accent-border);
     background: rgba(255, 122, 26, 0.1);
     color: var(--accent);
     box-shadow: 0 0 12px rgba(255, 122, 26, 0.12) inset;
 }
 
-.training-card {
-    position: relative;
+.training-cases {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    /* 50 % du conteneur à 1280px, 100 % à 400px, linéaire entre les deux */
-    width: clamp(50%, calc(27.27% + 291px), 100%);
-    --training-pad: 36px;
-    margin: 0 auto;
-    padding: var(--training-pad);
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 10px;
-    cursor: pointer;
-    user-select: none;
-    text-align: center;
-    transition: border-color 0.25s ease, box-shadow 0.25s ease;
-    -webkit-tap-highlight-color: transparent;
-}
-
-.training-card:hover {
-    border-color: rgba(255, 122, 26, 0.45);
-    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.35);
-}
-
-.training-card:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 4px;
-}
-
-.training-title {
-    --notch-radius: 20px;
-    --notch-bg: #1e2128;
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    width: fit-content;
-    margin: calc(var(--training-pad) * -1) auto 0;
-    padding: 7px 34px 9px;
-    border-radius: 0 0 var(--notch-radius) var(--notch-radius);
-    background: var(--notch-bg);
-    font-family: "Rajdhani", sans-serif;
-    font-weight: 700;
-    font-size: 0.95em;
-    line-height: 1.4;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--text-light);
-}
-
-/* raccords concaves : l'encoche se fond dans le bord haut de la carte */
-.training-title::before,
-.training-title::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    width: var(--notch-radius);
-    height: var(--notch-radius);
-}
-
-.training-title::before {
-    left: calc(var(--notch-radius) * -1);
-    background: radial-gradient(circle at 0 100%,
-            transparent var(--notch-radius),
-            var(--notch-bg) calc(var(--notch-radius) + 0.5px));
-}
-
-.training-title::after {
-    right: calc(var(--notch-radius) * -1);
-    background: radial-gradient(circle at 100% 100%,
-            transparent var(--notch-radius),
-            var(--notch-bg) calc(var(--notch-radius) + 0.5px));
-}
-
-/* pointer-events: none : le player capterait sinon le clic/drag, alors qu'un
-   clic sur la carte doit toujours tirer un nouveau cas (pas de rotation manuelle). */
-.training-3d {
-    display: grid; /* jamais block : le player rend dans une grille interne, block la casse (rien ne s'affiche) */
-    /* 180px à 400px d'écran, 260px à 1280px, linéaire entre les deux */
-    width: clamp(180px, calc(9.09vw + 144px), 260px);
-    height: clamp(180px, calc(9.09vw + 144px), 260px);
-    max-width: 100%;
-    margin: -10px 0 0 0;
-    pointer-events: none;
-}
-
-.training-result {
-    position: relative;
-    width: 100%;
-    max-width: 480px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-wrap: wrap;
     justify-content: center;
+    gap: 6px;
+    max-width: 360px;
+    padding: 0 12px;
 }
 
-.training-progress-track {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 200px;
-    height: 4px;
-    background: rgba(255, 255, 255, 0.08);
-    border-radius: 2px;
-    overflow: hidden;
+/* Variante compacte : la casse distingue les cas (L / l) */
+.training-cases .training-pill {
+    padding: 4px 13px;
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    text-transform: none;
 }
 
-.training-progress-bar {
-    height: 100%;
-    width: 0%;
-    background: var(--accent);
-    border-radius: 2px;
-}
-
-.training-progress-bar.running {
-    animation: trainingProgress 4s linear forwards;
-}
-
-@keyframes trainingProgress {
-    from { width: 0%; }
-    to { width: 100%; }
-}
-
-.training-result .algo-name,
-.training-result .algo-formula {
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.training-card.revealed .training-progress-track {
-    visibility: hidden;
-    opacity: 0;
-}
-
-.training-card.revealed .algo-name,
-.training-card.revealed .algo-formula {
-    visibility: visible;
-    opacity: 1;
-}
-
-.training-result .algo-name {
-    margin-bottom: 8px;
-}
-
-/* État "cycle terminé" : l'image et la barre sont masquées sans libérer
-   leur place (la carte garde sa taille), le message s'affiche par-dessus */
-.training-finished {
-    display: none;
-    position: absolute;
-    inset: 0;
-    align-items: center;
-    justify-content: center;
-    font-family: "Orbitron", sans-serif;
-    font-size: 1.35rem;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--accent);
-    text-shadow: 0 0 18px rgba(255, 122, 26, 0.45);
-    pointer-events: none;
-}
-
-.training-card.finished .training-finished {
-    display: flex;
-}
-
-.training-card.finished .training-3d,
-.training-card.finished .training-progress-track {
-    visibility: hidden;
-}
-
-/* === TRIGGERS COLORÉS === */
-.trig-sexy { color: var(--trig-sexy); }
-.trig-sledge { color: var(--trig-sledge); }
-.trig-lasso { color: var(--trig-lasso); }
-.trig-reload { color: var(--trig-reload); }
-.trig-whip { color: var(--trig-whip); }
-.trig-hedge { color: var(--trig-hedge); }
-
-.algo-formula .trig-sexy,
-.algo-formula .trig-sledge,
-.algo-formula .trig-lasso,
-.algo-formula .trig-reload,
-.algo-formula .trig-whip,
-.algo-formula .trig-hedge,
-.algo-formula .trig-paren {
-    white-space: nowrap;
+/* Rupture de ligne insérée par le JS pour équilibrer les rangées */
+.training-cases-break {
+    flex-basis: 100%;
 }
 
 /* === RESPONSIVE === */
@@ -962,31 +837,12 @@ nav {
     .algo-section { --algo-cols: 2; }
 }
 
-@media (max-width: 600px) {
-    .algo-section { --algo-cols: 1; }
-}
-
-@keyframes shrinkAndDarkenMobile {
-    0% {
-        padding: 0.9rem 1.2rem;
-        background: rgba(12, 14, 19, 0);
-        backdrop-filter: blur(0px);
-    }
-    100% {
-        padding: 0.35rem 1.2rem;
-        background: rgba(12, 14, 19, 0.85);
-        backdrop-filter: blur(6px);
-        box-shadow: 0 2px 14px rgba(0, 0, 0, 0.4);
-    }
-}
-
 @media (max-width: 768px) {
     nav {
-        padding: 0.7rem 1.2rem;
-        animation: navReveal 0.8s ease-out forwards, shrinkAndDarkenMobile both linear;
-        animation-delay: 0.5s, 0s;
-        animation-timeline: auto, scroll();
-        animation-range: normal, 0 400px;
+        --nav-px: 1.2rem;
+        --nav-py-top: 0.9rem;
+        --nav-py-scrolled: 0.35rem;
+        padding: 0.7rem var(--nav-px);
     }
 
     .nav-links {
@@ -1002,7 +858,7 @@ nav {
     }
 
     .algo-section {
-        padding: 60px 24px 60px;
+        padding: 60px 24px;
     }
 
     .intro-header h1 {
@@ -1032,24 +888,27 @@ nav {
     }
 }
 
+@media (max-width: 600px) {
+    .algo-section { --algo-cols: 1; }
+}
+
 @media (max-width: 480px) {
     .algo-section {
         padding: 60px 16px 50px;
     }
 
     .algo-name {
-    font-size: 1.05em;
-    margin-bottom: 4px;
+        font-size: 1.05em;
+        margin-bottom: 4px;
     }
 
     .algo-formula {
-    font-size: 0.95em;
-    line-height: 1.2;
+        font-size: 0.95em;
+        line-height: 1.2;
     }
 
-    /* Téléphone : 4 rangées de cas OLL dans une carte de ~315px → pastilles et
-       espacements resserrés ; safe center = un débordement éventuel part vers
-       le bas (scrollable) au lieu de passer sous l'encoche */
+    /* Téléphone : pastilles et espacements resserrés ; safe center = un
+       débordement part vers le bas (scrollable) au lieu de passer sous l'encoche */
     .training-options {
         gap: 6px;
         padding: 40px 8px 8px;
@@ -1074,12 +933,8 @@ nav {
         line-height: 1.1;
     }
 
-    .training-subgroup-btn {
-        padding: 3px 12px;
-        font-size: 0.74rem;
-    }
-
-    .training-subgroup-btn.training-case-btn {
+    .training-pill,
+    .training-cases .training-pill {
         padding: 2px 11px;
         font-size: 0.74rem;
     }
@@ -1090,7 +945,6 @@ nav {
     }
 }
 
-/* === IMPRESSION === */
 @media print {
     nav {
         display: none;
